@@ -1,0 +1,9 @@
+mr:
+  language:
+    type: identity
+  vision:
+    type: identity
+  proprio:
+    type: identity
+  env:
+    type: identity

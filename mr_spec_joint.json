@@ -1,0 +1,27 @@
+{
+    "task": "Grasp a red cube with the Panda robot and move it to a target goal position (green sphere) while disambiguating it from a blue distractor cube.",
+    "relationship": "Joint/Synergistic (Language is strictly required to disambiguate which cube to grasp)",
+    "metamorphic_relations": [
+        {
+            "mr_name": "MR_Silence_Language",
+            "mutation_target": "Language (Text Instruction)",
+            "mutation_action": "Set the text instruction to an empty string.",
+            "expected_oracle": "The robot should fail to disambiguate the red cube from the blue distractor cube, leading to a high likelihood of grasping the wrong object or no object at all.",
+            "rationale": "Without the language instruction, the model lacks the necessary disambiguation information to identify the red cube, violating the joint/synergistic relationship where language is strictly required."
+        },
+        {
+            "mr_name": "MR_Swap_Color_Reference",
+            "mutation_target": "Language (Text Instruction)",
+            "mutation_action": "Modify the text instruction to incorrectly refer to the blue cube instead of the red cube (e.g., 'Move the blue cube to the green sphere').",
+            "expected_oracle": "The robot should attempt to grasp the blue cube and move it to the green sphere, resulting in a task failure since the red cube is the intended target.",
+            "rationale": "The model relies on the language instruction to identify the correct cube. Changing the color reference in the instruction should directly alter the robot's behavior, demonstrating the synergistic reliance on language."
+        },
+        {
+            "mr_name": "MR_Visual_Occlusion",
+            "mutation_target": "Vision (RGB Camera)",
+            "mutation_action": "Partially occlude the red cube in the camera view while leaving the blue cube fully visible.",
+            "expected_oracle": "The robot should still correctly identify and attempt to grasp the red cube based on the language instruction, despite the occlusion.",
+            "rationale": "The joint/synergistic relationship implies that language should compensate for partial visual ambiguity. The model should prioritize the red cube due to the instruction, even if the visual input is partially ambiguous."
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+mr:
+  language:
+    type: identity
+  vision:
+    type: MR-FPDP1
+  proprio:
+    type: identity
+  env:
+    type: identity
+  # MR-CPTMP1 example:
+  # vision:
+  #   type: MR-CPTMP1
+  #   contact_distance: 0.035
+  #   camera_group_size: 3
+  #   target_camera_indices: [0]
+  #   fill_value: 0
+  # MR-CPTMP2 example:
+  # vision:
+  #   type: MR-CPTMP2
+  #   start_fraction: 0.10
+  #   end_fraction: 0.30
+  #   duration_seconds: 1.0
+  #   camera_group_size: 3
+  #   target_camera_indices: [0]
+  #   fill_value: 0
+  # MR-FPDP1 example:
+  # vision:
+  #   type: MR-FPDP1
+  #   camera_group_size: 3
+  #   target_camera_indices: [0]
+  #   radius: 5.0
+  

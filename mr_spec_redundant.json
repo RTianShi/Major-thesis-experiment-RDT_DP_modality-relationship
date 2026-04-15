@@ -1,0 +1,27 @@
+{
+    "task": "Grasp a red cube with the Panda robot and move it to a target goal position (green sphere).",
+    "relationship": "Redundant (Vision provides sufficient coordinates, Language is redundant)",
+    "metamorphic_relations": [
+        {
+            "mr_name": "MR_Silence_Language",
+            "mutation_target": "Language (Text Instruction)",
+            "mutation_action": "Set the text instruction to an empty string.",
+            "expected_oracle": "The 3D EEF (End-Effector) trajectory should remain identical to the source task, maintaining a high success rate.",
+            "rationale": "Since the Vision modality provides sufficient spatial information about the cube and goal position, removing the Language input should not affect the model's ability to complete the task successfully."
+        },
+        {
+            "mr_name": "MR_Contradictory_Language",
+            "mutation_target": "Language (Text Instruction)",
+            "mutation_action": "Provide a contradictory text instruction (e.g., 'Move the blue cube to the yellow sphere').",
+            "expected_oracle": "The robot should still execute the correct task (grasp the red cube and move it to the green sphere) without deviation in trajectory.",
+            "rationale": "The redundant relationship implies that the model should rely solely on the Vision modality for spatial reasoning. Contradictory language should be ignored, and the task should proceed based on visual input."
+        },
+        {
+            "mr_name": "MR_Nonsensical_Language",
+            "mutation_target": "Language (Text Instruction)",
+            "mutation_action": "Replace the text instruction with nonsensical or irrelevant text (e.g., 'Lorem ipsum dolor sit amet').",
+            "expected_oracle": "The robot's behavior should remain consistent with the source task, successfully completing the task using visual input alone.",
+            "rationale": "If the Vision modality is sufficient, irrelevant or nonsensical language input should not influence the task execution. The model should rely on visual data to determine the cube and goal positions."
+        }
+    ]
+}
