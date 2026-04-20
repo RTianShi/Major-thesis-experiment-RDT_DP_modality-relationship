@@ -35,7 +35,7 @@ def parse_args(args=None):
     parser.add_argument(
         "--traj-dir",
         type=str,
-        default="/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp",
+        default="/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube",
         help="Base directory to save end-effector trajectories. The default creates a unique timestamped subfolder under /home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube.",
     )
     parser.add_argument("--shader", default="default", type=str, help="Change shader used for rendering. Default is 'default' which is very fast. Can also be 'rt' for ray tracing and generating photo-realistic renders. Can also be 'rt-fast' for a faster but lower quality ray-traced renderer")
@@ -51,6 +51,23 @@ def parse_args(args=None):
 task2lang = {
     "PegInsertionSide-v1": "Pick up a orange-white peg and insert the orange end into the box with a hole in it.",
     "PickCube-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeCubeCenter-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeCubeCorner011-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeEmptyGrasp-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeGhostLift-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeCubeYaw000-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeCubeYaw045-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeGoalZ005-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeGoalZ028-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeInvisibleHeld-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeScale150-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeSceneTrans000-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeSceneTrans04N04-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeBlueCube-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeBlueCylinder-v1": "Grasp a blue cylinder and move it to a target goal position.",
+    "PickCubeBlueTriangularPrism-v1": "Grasp a blue triangular prism and move it to a target goal position.",
+    "PickCubeRedSphereBlueCube-v1": "Grasp a red cube and move it to a target goal position.",
+    "PickCubeWoodTable-v1": "Grasp a red cube and move it to a target goal position.",
     "StackCube-v1":  "Pick up a red cube and stack it on top of a green cube and let go of the cube without it falling.",
     "PlugCharger-v1": "Pick up one of the misplaced shapes on the board/kit and insert it into the correct empty slot.",
     "PushCube-v1": "Push and move a cube to a goal region in front of it."
@@ -83,6 +100,57 @@ def _to_uint8_rgb(img):
             img = np.clip(img, 0.0, 255.0).astype(np.uint8)
     return img
 
+def _to_numpy_1d(x):
+    if x is None:
+        return None
+    if hasattr(x, "detach"):
+        x = x.detach().cpu().numpy()
+    x = np.asarray(x).reshape(-1)
+    return x
+
+def _extract_gripper_width(obs):
+    """
+    返回:
+      gripper_width: float 或 None
+      gripper_finger_qpos: [left, right] 或 None
+    """
+    try:
+        qpos = _to_numpy_1d(obs["agent"]["qpos"])
+        if qpos is None or qpos.size < 2:
+            return None, None
+        left = float(qpos[-2])
+        right = float(qpos[-1])
+        return float(left + right), [left, right]
+    except Exception:
+        return None, None
+
+def _extract_cube_pos(obs, env):
+    # 1) 优先从环境对象读（对 PickCube 系列最稳）
+    unwrapped = getattr(env, "unwrapped", env)
+    for name in ("cube", "obj", "object", "target_object", "source_object"):
+        actor = getattr(unwrapped, name, None)
+        if actor is not None and hasattr(actor, "pose"):
+            p = getattr(actor.pose, "p", None)
+            arr = _to_numpy_1d(p)
+            if arr is not None and arr.size >= 3:
+                return [float(arr[0]), float(arr[1]), float(arr[2])]
+
+    # 2) 退化到 obs["extra"]
+    if isinstance(obs, dict):
+        extra = obs.get("extra", {})
+        if isinstance(extra, dict):
+            for k in ("cube_pos", "obj_pos", "object_pos", "cube_pose", "obj_pose", "object_pose"):
+                if k in extra:
+                    arr = _to_numpy_1d(extra[k])
+                    if arr is not None and arr.size >= 3:
+                        return [float(arr[0]), float(arr[1]), float(arr[2])]
+            for k, v in extra.items():
+                lk = str(k).lower()
+                if ("cube" in lk or "obj" in lk or "object" in lk) and ("pos" in lk or "pose" in lk):
+                    arr = _to_numpy_1d(v)
+                    if arr is not None and arr.size >= 3:
+                        return [float(arr[0]), float(arr[1]), float(arr[2])]
+    return None
 
 args = parse_args()
 if args.vis:
@@ -91,7 +159,7 @@ if args.record_dir:
     args.video_dir = args.record_dir
 
 
-default_pickcube_traj_root = "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp"
+default_pickcube_traj_root = "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube"
 if args.traj_dir == default_pickcube_traj_root:
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     env_tag = _slugify(args.env_id)
@@ -195,6 +263,9 @@ for episode in tqdm.trange(total_episodes):
     global_steps = 0
     video_frames = []
     eef_traj = []
+    gripper_width_traj = []
+    gripper_finger_qpos_traj = []
+    cube_pos_traj = []
     done = False
     info = {"success": False}
 
@@ -218,18 +289,26 @@ for episode in tqdm.trange(total_episodes):
             }) 
             eef_xyz = env.unwrapped.agent.tcp.pose.p
             eef_traj.append(np.array(eef_xyz, dtype=np.float32))
+            gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
+            cube_pos = _extract_cube_pos(obs, env)
+            if gripper_width is not None:
+                gripper_width_traj.append(gripper_width)
+            if gripper_finger_qpos is not None:
+                gripper_finger_qpos_traj.append(gripper_finger_qpos)
+            if cube_pos is not None:
+                cube_pos_traj.append(cube_pos)
             if args.save_video:
-                video_frames.append(img)
+                 video_frames.append(img)
             if args.show:
-                cv2.imshow("maniskill", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
-                cv2.waitKey(1)
-            global_steps += 1
+                 cv2.imshow("maniskill", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+                 cv2.waitKey(1)
+                 global_steps += 1
             if terminated or truncated:
-                assert "success" in info, sorted(info.keys())
-                if info['success']:
-                    done = True
-                    success_count += 1
-                    break 
+                 assert "success" in info, sorted(info.keys())
+                 if info['success']:
+                     done = True
+                     success_count += 1
+                     break 
     if args.save_video and video_frames:
         os.makedirs(args.video_dir, exist_ok=True)
         h, w = video_frames[0].shape[:2]
@@ -252,6 +331,9 @@ for episode in tqdm.trange(total_episodes):
             "trajectory": {
                 "total_steps": int(global_steps),
                 "eef_path": eef_arr.tolist(),
+                "gripper_width": gripper_width_traj,
+                "gripper_finger_qpos": gripper_finger_qpos_traj,
+                "cube_pos": cube_pos_traj,
                 "total_path_length_meters": total_path_length,
             },
         }

@@ -1,0 +1,428 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 40.0,
+    "success_count": 10,
+    "steps": {
+      "n": 25,
+      "mean": 276.92,
+      "median": 400.0,
+      "std": 152.8287721602186,
+      "min": 46.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6123933780193329,
+      "median": 0.502587616443634,
+      "std": 0.270194098887048,
+      "min": 0.3388903737068176,
+      "max": 1.1853420734405518
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.2382347907783664,
+      "median": 0.15436462203098203,
+      "std": 0.17456676775306948,
+      "min": 0.08132905087899633,
+      "max": 0.5985276652906664
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.12196625370642768,
+      "median": 0.10327892488585375,
+      "std": 0.09097994880465705,
+      "min": 0.0018653140158649388,
+      "max": 0.349231866800335
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.053149670326844624,
+      "median": 0.053003863597563074,
+      "std": 0.0062565353916896665,
+      "min": 0.041748149022459984,
+      "max": 0.06357725077019684
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999839216470718,
+      "median": 0.07999999821186066,
+      "std": 6.300948506492678e-06,
+      "min": 0.07996789366006851,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.043766372427344324,
+      "median": 0.04248648136854172,
+      "std": 0.004490943437959534,
+      "min": 0.036601755768060684,
+      "max": 0.05202881060540676
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "steps": {
+      "n": 25,
+      "mean": 185.56,
+      "median": 101.0,
+      "std": 135.4359125195382,
+      "min": 63.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7882125174999237,
+      "median": 0.6992278695106506,
+      "std": 0.3393153945784737,
+      "min": 0.3969409465789795,
+      "max": 1.6235191822052002
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3764855399336657,
+      "median": 0.30036401397107637,
+      "std": 0.23075183063810403,
+      "min": 0.07534093067771676,
+      "max": 0.9261765185419918
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.25869121044570936,
+      "median": 0.2775575704294434,
+      "std": 0.08746150571655179,
+      "min": 0.004209987017706063,
+      "max": 0.34627026009361567
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.054506684580597486,
+      "median": 0.05574199738036288,
+      "std": 0.005302409663894701,
+      "min": 0.04154794237143557,
+      "max": 0.06173664457056412
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999968498945237,
+      "median": 0.07999999821186066,
+      "std": 8.84848542815907e-07,
+      "min": 0.07999663054943085,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.04162120424211025,
+      "median": 0.04026278294622898,
+      "std": 0.004440116497149256,
+      "min": 0.0365461315959692,
+      "max": 0.05159028619527817
+    }
+  },
+  "mr_compare": {
+    "paired_episodes": 25,
+    "violations": 9,
+    "violation_rate_percent": 36.0,
+    "success_drop_count": 2,
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": false,
+        "base_path_len_m": 0.41517868638038635,
+        "mr_path_len_m": 0.3969409465789795,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0001.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0001.json"
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 1.1853420734405518,
+        "mr_path_len_m": 0.7862253189086914,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0002.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0002.json"
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.420074999332428,
+        "mr_path_len_m": 0.6319563984870911,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0003.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0003.json"
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": false,
+        "mr_success": false,
+        "base_path_len_m": 0.9403773546218872,
+        "mr_path_len_m": 0.4954563081264496,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0004.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0004.json"
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3388903737068176,
+        "mr_path_len_m": 0.6023496389389038,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0005.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0005.json"
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 1.0270190238952637,
+        "mr_path_len_m": 0.5853896141052246,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0006.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0006.json"
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": false,
+        "mr_success": false,
+        "base_path_len_m": 0.502587616443634,
+        "mr_path_len_m": 1.4399521350860596,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0007.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0007.json"
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.34102341532707214,
+        "mr_path_len_m": 0.6048434972763062,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0008.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0008.json"
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.8867532014846802,
+        "mr_path_len_m": 1.5490652322769165,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0009.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0009.json"
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.4069327116012573,
+        "mr_path_len_m": 0.6312315464019775,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0010.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0010.json"
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.6003797054290771,
+        "mr_path_len_m": 0.8386932611465454,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0011.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0011.json"
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_path_len_m": 0.42371976375579834,
+        "mr_path_len_m": 0.4315982460975647,
+        "violated": true,
+        "reason": [
+          "base_success_mr_fail"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0012.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0012.json"
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.9544813632965088,
+        "mr_path_len_m": 0.5898411273956299,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0013.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0013.json"
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 1.0545542240142822,
+        "mr_path_len_m": 0.715535044670105,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0014.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0014.json"
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.6154030561447144,
+        "mr_path_len_m": 0.818146824836731,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0015.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0015.json"
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.5604432821273804,
+        "mr_path_len_m": 0.7305997610092163,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0016.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0016.json"
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3791853189468384,
+        "mr_path_len_m": 0.576621413230896,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0017.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0017.json"
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.41173869371414185,
+        "mr_path_len_m": 0.6206653118133545,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0018.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0018.json"
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 1.0985772609710693,
+        "mr_path_len_m": 0.7058670520782471,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0019.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0019.json"
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.506040632724762,
+        "mr_path_len_m": 0.6992278695106506,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0020.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0020.json"
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_path_len_m": 0.4657195806503296,
+        "mr_path_len_m": 1.490504503250122,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0021.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0021.json"
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_path_len_m": 0.6033658385276794,
+        "mr_path_len_m": 1.6235191822052002,
+        "violated": true,
+        "reason": [
+          "base_success_mr_fail"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0022.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0022.json"
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.37375181913375854,
+        "mr_path_len_m": 0.7397007942199707,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0023.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0023.json"
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": false,
+        "mr_success": true,
+        "base_path_len_m": 0.4176710247993469,
+        "mr_path_len_m": 0.7381473183631897,
+        "violated": false,
+        "reason": [],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0024.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0024.json"
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3806234300136566,
+        "mr_path_len_m": 0.6632345914840698,
+        "violated": true,
+        "reason": [
+          "path_len_ratio>1.50"
+        ],
+        "base_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ005-v1_20260420_111917/PickCubeGoalZ005-v1_ep0025.json",
+        "mr_file": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeGoalZ028-v1_20260420_113845/PickCubeGoalZ028-v1_ep0025.json"
+      }
+    ]
+  }
+}
