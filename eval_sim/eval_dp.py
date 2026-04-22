@@ -12,6 +12,7 @@ import cv2
 import json
 from datetime import datetime
 import copy
+import re
 
 from diffusion_policy.workspace.robotworkspace import RobotWorkspace
 from eval_sim.mr import get_lang, get_vision, get_proprio  # registers MRs
@@ -152,6 +153,41 @@ def _extract_cube_pos(obs, env):
                         return [float(arr[0]), float(arr[1]), float(arr[2])]
     return None
 
+def _extract_eef_yaw(env):
+    """从环境获取末端执行器 yaw 角（单位：度），失败返回 None。"""
+    try:
+        eef_pose = env.unwrapped.agent.tcp.pose
+
+        # 1) 优先从 4x4 变换矩阵取 yaw（最稳）
+        if hasattr(eef_pose, "to_transformation_matrix"):
+            mat = np.asarray(eef_pose.to_transformation_matrix())
+            if mat.ndim == 3:  # 兼容 batch 形状 (1,4,4)
+                mat = mat[0]
+            if mat.shape[0] >= 2 and mat.shape[1] >= 2:
+                yaw = np.arctan2(mat[1, 0], mat[0, 0])
+                return float(np.degrees(yaw))
+
+        # 2) 回退：从四元数计算 yaw（按 SAPIEN 常见 wxyz）
+        if hasattr(eef_pose, "q"):
+            q = np.asarray(eef_pose.q, dtype=np.float64).reshape(-1)
+            if q.size < 4:
+                return None
+            if q.size > 4:
+                q = q[:4]
+            w, x, y, z = q
+            n = np.linalg.norm([w, x, y, z])
+            if n < 1e-12:
+                return None
+            w, x, y, z = w / n, x / n, y / n, z / n
+            siny_cosp = 2.0 * (w * z + x * y)
+            cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
+            yaw = np.arctan2(siny_cosp, cosy_cosp)
+            return float(np.degrees(yaw))
+    except Exception:
+        return None
+
+    return None
+
 args = parse_args()
 if args.vis:
     args.show = True
@@ -242,6 +278,53 @@ state_max = torch.tensor(DATA_STAT['state_max']).cuda()
 action_min = torch.tensor(DATA_STAT['action_min']).cuda()
 action_max = torch.tensor(DATA_STAT['action_max']).cuda()
 
+def _extract_cube_yaw_deg(obs, env):
+    """尽力提取 cube yaw（度），失败返回 None。"""
+    try:
+        unwrapped = getattr(env, "unwrapped", env)
+        for name in ("cube", "obj", "object", "target_object", "source_object"):
+            actor = getattr(unwrapped, name, None)
+            if actor is not None and hasattr(actor, "pose") and hasattr(actor.pose, "q"):
+                q = np.asarray(actor.pose.q, dtype=np.float64).reshape(-1)
+                if q.size >= 4:
+                    w, x, y, z = q[:4]
+                    n = np.linalg.norm([w, x, y, z])
+                    if n > 1e-12:
+                        w, x, y, z = w / n, x / n, y / n, z / n
+                        siny_cosp = 2.0 * (w * z + x * y)
+                        cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
+                        return float(np.degrees(np.arctan2(siny_cosp, cosy_cosp)))
+    except Exception:
+        pass
+    return None
+
+def _infer_cube_yaw_from_env_id(env_id: str):
+    m = re.search(r"Yaw(\d{3})", str(env_id))
+    return float(int(m.group(1))) if m else None
+
+def _first_index_ge(seq, thresh: float):
+    for i, v in enumerate(seq):
+        if v is not None and float(v) >= thresh:
+            return int(i)
+    return None
+
+def _first_index_le(seq, thresh: float):
+    for i, v in enumerate(seq):
+        if v is not None and float(v) <= thresh:
+            return int(i)
+    return None
+
+def _detect_open_to_close_transition(cmds, open_thresh=0.1, close_thresh=-0.1):
+    prev = None
+    for i, c in enumerate(cmds):
+        if c is None:
+            continue
+        c = float(c)
+        if prev is not None and prev >= open_thresh and c <= close_thresh:
+            return int(i)
+        prev = c
+    return None
+
 for episode in tqdm.trange(total_episodes):
     
     obs_window = deque(maxlen=2)
@@ -266,8 +349,22 @@ for episode in tqdm.trange(total_episodes):
     gripper_width_traj = []
     gripper_finger_qpos_traj = []
     cube_pos_traj = []
+    eef_yaw_traj = []  # 实时记录每步 yaw(度)
+    cube_yaw_traj = []  # 新增：cube yaw 序列（可能含 None）
     done = False
     info = {"success": False}
+
+    # 兜底推断（可能仍为 None）
+    inferred_cube_yaw_deg = _infer_cube_yaw_from_env_id(env_id)
+
+    # 新增：记录 reset 后（第一步动作前）的物体初始偏航角
+    initial_cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+    if initial_cube_yaw_deg is None:
+        initial_cube_yaw_deg = inferred_cube_yaw_deg
+
+    gripper_action_cmd_traj = []   # 每步夹爪控制指令（原始）
+    open_thresh = 0.1
+    close_thresh = -0.1
 
     while global_steps < MAX_EPISODE_STEPS and not done:
         obs = obs_window[-1]
@@ -278,7 +375,11 @@ for episode in tqdm.trange(total_episodes):
         actions = actions[:8]
         for idx in range(actions.shape[0]):
             action = actions[idx]
+            gripper_cmd = float(action[-1]) if action.shape[0] > 0 else None
+
             obs, reward, terminated, truncated, info = env.step(action)
+            global_steps += 1  # 改为每步都计数，避免仅 --show 时计数
+
             img = _to_uint8_rgb(env.render())
             img_tensor = torch.as_tensor(img, device="cuda").float()
             proprio = obs['agent']['qpos'][:].cuda()
@@ -289,26 +390,40 @@ for episode in tqdm.trange(total_episodes):
             }) 
             eef_xyz = env.unwrapped.agent.tcp.pose.p
             eef_traj.append(np.array(eef_xyz, dtype=np.float32))
+            step_index = len(eef_traj) - 1
+
+            # 新增：每步获取末端执行器yaw
+            eef_yaw = _extract_eef_yaw(env)
+
+            # 仅记录原始序列，不在循环中判定抓取时刻
+            gripper_action_cmd_traj.append(gripper_cmd)
+
             gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
             cube_pos = _extract_cube_pos(obs, env)
+            cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+            if cube_yaw_deg is None:
+                cube_yaw_deg = inferred_cube_yaw_deg  # 兜底推断（可能仍为 None）
+
             if gripper_width is not None:
                 gripper_width_traj.append(gripper_width)
             if gripper_finger_qpos is not None:
                 gripper_finger_qpos_traj.append(gripper_finger_qpos)
             if cube_pos is not None:
                 cube_pos_traj.append(cube_pos)
+            cube_yaw_traj.append(cube_yaw_deg)
+            eef_yaw_traj.append(eef_yaw)  # 保留：每步实时 yaw
             if args.save_video:
                  video_frames.append(img)
             if args.show:
                  cv2.imshow("maniskill", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
                  cv2.waitKey(1)
-                 global_steps += 1
             if terminated or truncated:
                  assert "success" in info, sorted(info.keys())
                  if info['success']:
                      done = True
                      success_count += 1
                      break 
+
     if args.save_video and video_frames:
         os.makedirs(args.video_dir, exist_ok=True)
         h, w = video_frames[0].shape[:2]
@@ -322,18 +437,52 @@ for episode in tqdm.trange(total_episodes):
         eef_arr = np.stack(eef_traj, axis=0)
         diffs = np.diff(eef_arr, axis=0)
         total_path_length = float(np.linalg.norm(diffs, axis=1).sum()) if len(eef_arr) > 1 else 0.0
+        eef_yaw_valid = int(sum(v is not None for v in eef_yaw_traj))
+        cube_yaw_valid = int(sum(v is not None for v in cube_yaw_traj))
+        
+        # 从原始序列统一推导（后处理）
+        grasp_frame_index = _detect_open_to_close_transition(
+            gripper_action_cmd_traj, open_thresh=open_thresh, close_thresh=close_thresh
+        )
+        gripper_fully_closed_frame_index = _first_index_le(gripper_action_cmd_traj, -0.95)
+        gripper_fully_opened_frame_index = _first_index_ge(gripper_action_cmd_traj, 0.95)
+
+        eef_yaw_at_grasp = None
+        if grasp_frame_index is not None and 0 <= grasp_frame_index < len(eef_yaw_traj):
+            eef_yaw_at_grasp = eef_yaw_traj[grasp_frame_index]
+
         result = {
             "episode_id": int(episode + 1),
             "seed": int(episode + base_seed),
             "metrics": {
                 "env_success": bool(info["success"]),
             },
+            "mr_eval": {
+                "mr_type": args.mr_type,
+                "pair_key": f"{episode + base_seed}",
+                "expected_delta_yaw_deg": 45.0,
+                "grasp_frame_index": grasp_frame_index,
+                "initial_cube_yaw_deg": initial_cube_yaw_deg,  # 补回该字段
+                "eef_yaw_at_grasp": eef_yaw_at_grasp,
+                "gripper_fully_closed_frame_index": gripper_fully_closed_frame_index,
+                "gripper_fully_opened_frame_index": gripper_fully_opened_frame_index,
+            },
+            "data_availability": {
+                "eef_yaw_deg_measured": eef_yaw_valid > 0,
+                "cube_yaw_deg_measured_or_inferred": cube_yaw_valid > 0,
+                "cube_yaw_inferred_from_env_id": inferred_cube_yaw_deg is not None,
+                "grasp_frame_index_available": grasp_frame_index is not None,
+                "initial_cube_yaw_available": initial_cube_yaw_deg is not None,  # 新增
+            },
             "trajectory": {
                 "total_steps": int(global_steps),
                 "eef_path": eef_arr.tolist(),
                 "gripper_width": gripper_width_traj,
                 "gripper_finger_qpos": gripper_finger_qpos_traj,
+                "gripper_action_cmd": gripper_action_cmd_traj,  # 新增
                 "cube_pos": cube_pos_traj,
+                "eef_yaw_deg": eef_yaw_traj,
+                "cube_yaw_deg": cube_yaw_traj,
                 "total_path_length_meters": total_path_length,
             },
         }

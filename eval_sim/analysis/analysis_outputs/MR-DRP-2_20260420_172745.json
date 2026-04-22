@@ -1,0 +1,931 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeCubeCenter-v1_20260420_162840",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCubeCubeCorner011-v1_20260420_165848",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10,
+      11,
+      15,
+      16,
+      18,
+      20,
+      21,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 264.08,
+      "median": 334.0,
+      "std": 139.82243596790894,
+      "min": 72.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6256136047840118,
+      "median": 0.542182207107544,
+      "std": 0.2934213369608877,
+      "min": 0.22101694345474243,
+      "max": 1.4568769931793213
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3122045291022658,
+      "median": 0.23453660427396905,
+      "std": 0.21452288094229668,
+      "min": 0.040741425016996645,
+      "max": 0.9353600101874516
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.16448803549998822,
+      "median": 0.1769482585100878,
+      "std": 0.08602031555866926,
+      "min": 0.012236843661293826,
+      "max": 0.31657135759159827
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.052384668814293774,
+      "median": 0.053419034974649546,
+      "std": 0.005734903702146852,
+      "min": 0.0400619133701548,
+      "max": 0.060504751564520926
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799997866153717,
+      "median": 0.07999999821186066,
+      "std": 6.146859940665686e-07,
+      "min": 0.07999714836478233,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.04427861697971821,
+      "median": 0.04428820312023163,
+      "std": 0.0044055676305052565,
+      "min": 0.03707006201148033,
+      "max": 0.052233487367630005
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 12.0,
+    "success_count": 3,
+    "success_episode_ids": [
+      8,
+      11,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 375.92,
+      "median": 400.0,
+      "std": 73.07252287967073,
+      "min": 93.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.72737135887146,
+      "median": 0.6297805309295654,
+      "std": 0.2315632752705373,
+      "min": 0.518968939781189,
+      "max": 1.339866280555725
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.17654367919205138,
+      "median": 0.10837123773297325,
+      "std": 0.21505818858479792,
+      "min": 5.953460195888529e-06,
+      "max": 0.7057172525792844
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.06941819101472356,
+      "median": 0.036236065995455806,
+      "std": 0.08682769387543289,
+      "min": 4.919781470310363e-07,
+      "max": 0.2683202750377191
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.02765792665786915,
+      "median": 0.044754035640507936,
+      "std": 0.024090435385020488,
+      "min": 0.00018362737004615326,
+      "max": 0.05524076552130282
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.06749169453978539,
+      "median": 0.07999717816710472,
+      "std": 0.01821567527616882,
+      "min": 0.04081207327544689,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.024494768753647804,
+      "median": 0.037218399345874786,
+      "std": 0.021909806957448867,
+      "min": 0.0,
+      "max": 0.05157809145748615
+    }
+  },
+  "mr_rule": "MR-DRP-2",
+  "mr_compare": {
+    "mr_id": "MR-DRP-2",
+    "paired_episodes": 25,
+    "violations": 7,
+    "violation_rate_percent": 28.000000000000004,
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.9572913737495183,
+          0.2891249310328669
+        ],
+        "mr_approach_vec": [
+          -0.9912248376021713,
+          0.13218669116272308
+        ],
+        "mr_target_vec": [
+          0.559293718473378,
+          0.8289695630577891
+        ],
+        "angle_to_target": 116.41099656772339,
+        "angle_to_center": 49.94064457646882,
+        "violated": true,
+        "reasons": [
+          "approach_not_point_to_extreme"
+        ],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.09951289639808632,
+          0.995036272429535
+        ],
+        "mr_approach_vec": [
+          0.6242945193701396,
+          0.7811890635975431
+        ],
+        "mr_target_vec": [
+          0.6627356037677293,
+          0.7488534699783552
+        ],
+        "angle_to_target": 2.8784149408649276,
+        "angle_to_center": 29.839296532219386,
+        "violated": true,
+        "reasons": [
+          "center_bias"
+        ],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.5629724178173585,
+          -0.8264756843228223
+        ],
+        "mr_approach_vec": [
+          0.2811921771498849,
+          0.9596514781469926
+        ],
+        "mr_target_vec": [
+          0.722652410284055,
+          0.6912116129743813
+        ],
+        "angle_to_target": 29.942534331900998,
+        "angle_to_center": 176.43593634605455,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.5152686989945761,
+          0.857028685538843
+        ],
+        "mr_approach_vec": [
+          0.6864552350566558,
+          0.7271720637258499
+        ],
+        "mr_target_vec": [
+          0.6080766867803202,
+          0.7938782923057338
+        ],
+        "angle_to_target": 5.899596432919239,
+        "angle_to_center": 52.603842835217286,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.987085965036214,
+          -0.1601914405594946
+        ],
+        "mr_approach_vec": [
+          0.8972783655496736,
+          0.44146521348403694
+        ],
+        "mr_target_vec": [
+          0.753916653696666,
+          0.6569700748731416
+        ],
+        "angle_to_target": 14.87179586371014,
+        "angle_to_center": 36.797129789674294,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.8800500599377957,
+          0.4748809240256782
+        ],
+        "mr_approach_vec": [
+          0.5807857925043785,
+          0.8140564250867756
+        ],
+        "mr_target_vec": [
+          0.6788123950333196,
+          0.7343117405769354
+        ],
+        "angle_to_target": 7.245078868030592,
+        "angle_to_center": 17.011580680504952,
+        "violated": true,
+        "reasons": [
+          "center_bias"
+        ],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.9247066331563977,
+          0.38068049936470255
+        ],
+        "mr_approach_vec": [
+          0.7982968753038984,
+          0.6022641437774892
+        ],
+        "mr_target_vec": [
+          0.6784514610123284,
+          0.7346452307408229
+        ],
+        "angle_to_target": 10.24501937991738,
+        "angle_to_center": 23.303302235289202,
+        "violated": true,
+        "reasons": [
+          "center_bias"
+        ],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.32269479306457016,
+          -0.9465030747594084
+        ],
+        "mr_approach_vec": [
+          0.7057544734078008,
+          0.7084565076734618
+        ],
+        "mr_target_vec": [
+          0.7341873685110555,
+          0.678946910972288
+        ],
+        "angle_to_target": 2.3480652549553884,
+        "angle_to_center": 158.74651061221746,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.4442366903278337,
+          -0.8959094613668126
+        ],
+        "mr_approach_vec": [
+          0.9873249350891704,
+          0.1587119168530376
+        ],
+        "mr_target_vec": [
+          0.8025661232956942,
+          0.5965631716240289
+        ],
+        "angle_to_target": 27.49200828119289,
+        "angle_to_center": 73.97700647313546,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.9046394781620787,
+          0.42617767955471575
+        ],
+        "mr_approach_vec": [
+          0.9836502429862621,
+          -0.18008942076942647
+        ],
+        "mr_target_vec": [
+          0.7239002014985297,
+          0.6899047023106801
+        ],
+        "angle_to_target": 53.997534057844646,
+        "angle_to_center": 1.9921828668030945,
+        "violated": true,
+        "reasons": [
+          "approach_not_point_to_extreme",
+          "center_bias"
+        ],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.6502211163783619,
+          0.7597450228962851
+        ],
+        "mr_approach_vec": [
+          0.7470271081320274,
+          0.6647935767709404
+        ],
+        "mr_target_vec": [
+          0.7357418124030614,
+          0.6772621246473617
+        ],
+        "angle_to_target": 0.9635733826739415,
+        "angle_to_center": 65.1069273474939,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.7636291657462313,
+          0.6456550915324023
+        ],
+        "mr_approach_vec": [
+          0.5192665618315493,
+          0.854612331857926
+        ],
+        "mr_target_vec": [
+          0.68624471917899,
+          0.7273707344944181
+        ],
+        "angle_to_target": 12.050509285931259,
+        "angle_to_center": 83.26549861386253,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.7709427001361399,
+          -0.636904508624957
+        ],
+        "mr_approach_vec": [
+          0.7168550226923653,
+          0.6972222575626288
+        ],
+        "mr_target_vec": [
+          0.7998100342639474,
+          0.6002532041486355
+        ],
+        "angle_to_target": 7.316533793614151,
+        "angle_to_center": 90.25857360916909,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.12400649870642338,
+          -0.9922814057910053
+        ],
+        "mr_approach_vec": [
+          0.9013551308310429,
+          0.4330807408839068
+        ],
+        "mr_target_vec": [
+          0.7950714052553851,
+          0.6065158370110604
+        ],
+        "angle_to_target": 11.674768249091349,
+        "angle_to_center": 123.76318262097394,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.1304988369811765,
+          -0.9914484623754077
+        ],
+        "mr_approach_vec": [
+          0.5383192074135952,
+          0.8427410224556526
+        ],
+        "mr_target_vec": [
+          0.8356016559835127,
+          0.5493358467436941
+        ],
+        "angle_to_target": 24.109245643604616,
+        "angle_to_center": 141.07930679826563,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.7173573012860016,
+          -0.6967054630844117
+        ],
+        "mr_approach_vec": [
+          0.9773119598178431,
+          0.2118049413894934
+        ],
+        "mr_target_vec": [
+          0.7573028653114078,
+          0.6530638331672732
+        ],
+        "angle_to_target": 28.544854635352635,
+        "angle_to_center": 58.8056017602588,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.7355399882836542,
+          -0.6774813101744445
+        ],
+        "mr_approach_vec": [
+          0.935980188636935,
+          0.35205267571652893
+        ],
+        "mr_target_vec": [
+          0.7879673333448374,
+          0.6157170466873774
+        ],
+        "angle_to_target": 17.39112323756275,
+        "angle_to_center": 67.48838379723402,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.2909643617984364,
+          -0.956733892032277
+        ],
+        "mr_approach_vec": [
+          0.9366394176659584,
+          0.3502950203391055
+        ],
+        "mr_target_vec": [
+          0.8200215212578207,
+          0.5723326870571082
+        ],
+        "angle_to_target": 14.407690895721432,
+        "angle_to_center": 121.75045735042576,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.9254047351732171,
+          0.37898031099120166
+        ],
+        "mr_approach_vec": [
+          0.5262538181741918,
+          0.8503275362218283
+        ],
+        "mr_target_vec": [
+          0.720281357000315,
+          0.6936820357756028
+        ],
+        "angle_to_target": 14.32502659194943,
+        "angle_to_center": 155.43150799279164,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.10157860051344424,
+          -0.9948275166669498
+        ],
+        "mr_approach_vec": [
+          0.4263447590623607,
+          0.9045607477776479
+        ],
+        "mr_target_vec": [
+          0.7403992852373152,
+          0.6721673143050567
+        ],
+        "angle_to_target": 22.529627657174718,
+        "angle_to_center": 171.9049514190453,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.9503371521602806,
+          -0.3112222633808317
+        ],
+        "mr_approach_vec": [
+          -0.9507697927090438,
+          0.3098980498034828
+        ],
+        "mr_target_vec": [
+          0.7346121238166406,
+          0.6784873083128413
+        ],
+        "angle_to_target": 119.22136462231178,
+        "angle_to_center": 91.15816141675589,
+        "violated": true,
+        "reasons": [
+          "approach_not_point_to_extreme"
+        ],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.485706776960782,
+          0.8741218031912769
+        ],
+        "mr_approach_vec": [
+          -0.8518839828844433,
+          0.5237305411229495
+        ],
+        "mr_target_vec": [
+          0.5394816813115273,
+          0.84199733700843
+        ],
+        "angle_to_target": 91.06553845799628,
+        "angle_to_center": 50.095210769435816,
+        "violated": true,
+        "reasons": [
+          "approach_not_point_to_extreme"
+        ],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          -0.8306969869491663,
+          0.5567248116202266
+        ],
+        "mr_approach_vec": [
+          0.21841951028520093,
+          0.9758549674653365
+        ],
+        "mr_target_vec": [
+          0.6094693429670321,
+          0.7928096366614965
+        ],
+        "angle_to_target": 24.93492271330137,
+        "angle_to_center": 38.9146936186579,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.12436652504072937,
+          -0.9922363465673355
+        ],
+        "mr_approach_vec": [
+          0.6032432879550069,
+          0.7975572302582634
+        ],
+        "mr_target_vec": [
+          0.738199375031639,
+          0.6745825988734794
+        ],
+        "angle_to_target": 10.475719113616018,
+        "angle_to_center": 155.09348563179063,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_cube_xy": [
+          -3.743043066606333e-07,
+          -6.985584946050949e-07
+        ],
+        "mr_cube_xy": [
+          0.09999965131282806,
+          0.0999993234872818
+        ],
+        "mr_is_extreme": true,
+        "base_approach_vec": [
+          0.9991468646096352,
+          -0.041298219583117315
+        ],
+        "mr_approach_vec": [
+          0.5879340725835633,
+          0.8089088491884022
+        ],
+        "mr_target_vec": [
+          0.7604842285997829,
+          0.6493564029490994
+        ],
+        "angle_to_target": 13.496364649014534,
+        "angle_to_center": 72.63026809780163,
+        "violated": false,
+        "reasons": [],
+        "source_success": false,
+        "followup_success": false
+      }
+    ],
+    "config": {
+      "approach_n": 10,
+      "extreme_eps": 0.09,
+      "center_bias_angle": 30.0
+    }
+  },
+  "followup_mr_violation_count": 7,
+  "followup_mr_violation_rate_percent": 28.000000000000004,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 0
+}

@@ -1,0 +1,638 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PickCube/PickCubeCubeYaw000-v1_20260421_141350",
+  "mr_traj_dir": "eef_traj_dp/PickCube/PickCubeCubeYaw045-v1_20260421_142222",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 64.0,
+    "success_count": 16,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      11,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      21,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 204.76,
+      "median": 108.0,
+      "std": 154.57458523314887,
+      "min": 55.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7196705102920532,
+      "median": 0.6165699362754822,
+      "std": 0.3351210202069901,
+      "min": 0.3079385757446289,
+      "max": 1.7544227838516235
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.31607874032658423,
+      "median": 0.24215315032360896,
+      "std": 0.23774858078055155,
+      "min": 0.07366657019927977,
+      "max": 1.0599113213735085
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.184381939997902,
+      "median": 0.19225183208341448,
+      "std": 0.08178245542895968,
+      "min": 0.0097433444853333,
+      "max": 0.32320347207636274
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05440976910288123,
+      "median": 0.05658533015469117,
+      "std": 0.006862432527775361,
+      "min": 0.04046306148637086,
+      "max": 0.0648079608857143
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999979838728905,
+      "median": 0.07999999821186066,
+      "std": 5.510205618193616e-07,
+      "min": 0.07999766990542412,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.04145172268152237,
+      "median": 0.040518373250961304,
+      "std": 0.004315601519497732,
+      "min": 0.03650898113846779,
+      "max": 0.05212851241230965
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 64.0,
+    "success_count": 16,
+    "success_episode_ids": [
+      3,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      15,
+      16,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 219.36,
+      "median": 130.0,
+      "std": 150.32175624306683,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7222305083274841,
+      "median": 0.664804220199585,
+      "std": 0.32625260625905644,
+      "min": 0.30668020248413086,
+      "max": 1.576406478881836
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.31815121233356836,
+      "median": 0.21162662153016085,
+      "std": 0.22182460572909005,
+      "min": 0.09514782592222391,
+      "max": 0.9224843569587502
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18513090561768883,
+      "median": 0.17517358272232575,
+      "std": 0.10272278108979546,
+      "min": 0.020573286967049898,
+      "max": 0.4271547238027214
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05465578624759269,
+      "median": 0.05432187937857474,
+      "std": 0.0070341611427302796,
+      "min": 0.042393240588717164,
+      "max": 0.06517974332335495
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999939903616905,
+      "median": 0.07999999821186066,
+      "std": 1.5256768686352497e-06,
+      "min": 0.07999411597847939,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.042846668511629105,
+      "median": 0.041925689205527306,
+      "std": 0.004786780030422924,
+      "min": 0.036655038595199585,
+      "max": 0.05151577107608318
+    }
+  },
+  "mr_rule": "MR-SEMP-1",
+  "mr_compare": {
+    "mr_id": "MR-SEMP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "passed_count": 7,
+    "pass_count": 7,
+    "drp_only_count": 8,
+    "violations": 18,
+    "pass_rate_percent": 28.000000000000004,
+    "violation_rate_percent": 72.0,
+    "drp_only_rate_percent": 32.0,
+    "config": {
+      "angle_delta": 45.0,
+      "angle_tol": 15.0,
+      "symmetry_period": 90.0
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_yaw_at_grasp": -46.95858383178711,
+        "dst_yaw_at_grasp": -47.57670211791992,
+        "expected_dst_yaw": -1.9585838317871094,
+        "actual_delta_yaw": -0.6181182861328125,
+        "relative_diff_before_symmetry": -45.61811828613281,
+        "yaw_error": 44.38188171386719,
+        "yaw_error_corrected": 44.38188171386719,
+        "src_success": false,
+        "dst_success": false,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 44.4)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_yaw_at_grasp": -15.004729270935059,
+        "dst_yaw_at_grasp": -16.495914459228516,
+        "expected_dst_yaw": 29.99527072906494,
+        "actual_delta_yaw": -1.491185188293457,
+        "relative_diff_before_symmetry": -46.49118518829346,
+        "yaw_error": 43.50881481170654,
+        "yaw_error_corrected": 43.50881481170654,
+        "src_success": true,
+        "dst_success": false,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 43.5)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_yaw_at_grasp": -15.005253791809082,
+        "dst_yaw_at_grasp": -27.299074172973633,
+        "expected_dst_yaw": 29.994746208190918,
+        "actual_delta_yaw": -12.29382038116455,
+        "relative_diff_before_symmetry": -57.29382038116455,
+        "yaw_error": 32.70617961883545,
+        "yaw_error_corrected": 32.70617961883545,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 32.7)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_yaw_at_grasp": 10.571335792541504,
+        "dst_yaw_at_grasp": 6.509807109832764,
+        "expected_dst_yaw": 55.571335792541504,
+        "actual_delta_yaw": -4.06152868270874,
+        "relative_diff_before_symmetry": -49.06152868270874,
+        "yaw_error": 40.93847131729126,
+        "yaw_error_corrected": 40.93847131729126,
+        "src_success": true,
+        "dst_success": false,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 40.9)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_yaw_at_grasp": -32.23921203613281,
+        "dst_yaw_at_grasp": 7.521651268005371,
+        "expected_dst_yaw": 12.760787963867188,
+        "actual_delta_yaw": 39.760863304138184,
+        "relative_diff_before_symmetry": -5.239136695861816,
+        "yaw_error": 5.239136695861816,
+        "yaw_error_corrected": 5.239136695861816,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_yaw_at_grasp": -5.44411563873291,
+        "dst_yaw_at_grasp": -30.74704360961914,
+        "expected_dst_yaw": 39.55588436126709,
+        "actual_delta_yaw": -25.30292797088623,
+        "relative_diff_before_symmetry": -70.30292797088623,
+        "yaw_error": 19.69707202911377,
+        "yaw_error_corrected": 19.69707202911377,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 19.7)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_yaw_at_grasp": -35.792564392089844,
+        "dst_yaw_at_grasp": 22.067445755004883,
+        "expected_dst_yaw": 9.207435607910156,
+        "actual_delta_yaw": 57.86001014709473,
+        "relative_diff_before_symmetry": 12.860010147094727,
+        "yaw_error": 12.860010147094727,
+        "yaw_error_corrected": 12.860010147094727,
+        "src_success": false,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_yaw_at_grasp": -14.011151313781738,
+        "dst_yaw_at_grasp": 17.935033798217773,
+        "expected_dst_yaw": 30.98884868621826,
+        "actual_delta_yaw": 31.94618511199951,
+        "relative_diff_before_symmetry": -13.053814888000488,
+        "yaw_error": 13.053814888000488,
+        "yaw_error_corrected": 13.053814888000488,
+        "src_success": false,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_yaw_at_grasp": 7.551572799682617,
+        "dst_yaw_at_grasp": 23.232370376586914,
+        "expected_dst_yaw": 52.55157279968262,
+        "actual_delta_yaw": 15.680797576904297,
+        "relative_diff_before_symmetry": -29.319202423095703,
+        "yaw_error": 29.319202423095703,
+        "yaw_error_corrected": 29.319202423095703,
+        "src_success": false,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 29.3)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_yaw_at_grasp": -28.682497024536133,
+        "dst_yaw_at_grasp": -27.830312728881836,
+        "expected_dst_yaw": 16.317502975463867,
+        "actual_delta_yaw": 0.8521842956542969,
+        "relative_diff_before_symmetry": -44.1478157043457,
+        "yaw_error": 44.1478157043457,
+        "yaw_error_corrected": 44.1478157043457,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 44.1)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_yaw_at_grasp": 38.72544479370117,
+        "dst_yaw_at_grasp": 40.90885543823242,
+        "expected_dst_yaw": 83.72544479370117,
+        "actual_delta_yaw": 2.18341064453125,
+        "relative_diff_before_symmetry": -42.81658935546875,
+        "yaw_error": 42.81658935546875,
+        "yaw_error_corrected": 42.81658935546875,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 42.8)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_yaw_at_grasp": -33.648311614990234,
+        "dst_yaw_at_grasp": -16.46502113342285,
+        "expected_dst_yaw": 11.351688385009766,
+        "actual_delta_yaw": 17.183290481567383,
+        "relative_diff_before_symmetry": -27.816709518432617,
+        "yaw_error": 27.816709518432617,
+        "yaw_error_corrected": 27.816709518432617,
+        "src_success": false,
+        "dst_success": false,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 27.8)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_yaw_at_grasp": -6.362144947052002,
+        "dst_yaw_at_grasp": 5.670260906219482,
+        "expected_dst_yaw": 38.637855052948,
+        "actual_delta_yaw": 12.032405853271484,
+        "relative_diff_before_symmetry": -32.967594146728516,
+        "yaw_error": 32.967594146728516,
+        "yaw_error_corrected": 32.967594146728516,
+        "src_success": false,
+        "dst_success": false,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 33.0)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_yaw_at_grasp": 14.0821533203125,
+        "dst_yaw_at_grasp": -6.970719814300537,
+        "expected_dst_yaw": 59.0821533203125,
+        "actual_delta_yaw": -21.052873134613037,
+        "relative_diff_before_symmetry": -66.05287313461304,
+        "yaw_error": 23.947126865386963,
+        "yaw_error_corrected": 23.947126865386963,
+        "src_success": true,
+        "dst_success": false,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 23.9)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_yaw_at_grasp": 6.800550937652588,
+        "dst_yaw_at_grasp": 30.779115676879883,
+        "expected_dst_yaw": 51.80055093765259,
+        "actual_delta_yaw": 23.978564739227295,
+        "relative_diff_before_symmetry": -21.021435260772705,
+        "yaw_error": 21.021435260772705,
+        "yaw_error_corrected": 21.021435260772705,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 21.0)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_yaw_at_grasp": -24.47564697265625,
+        "dst_yaw_at_grasp": -8.369752883911133,
+        "expected_dst_yaw": 20.52435302734375,
+        "actual_delta_yaw": 16.105894088745117,
+        "relative_diff_before_symmetry": -28.894105911254883,
+        "yaw_error": 28.894105911254883,
+        "yaw_error_corrected": 28.894105911254883,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 28.9)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_yaw_at_grasp": -11.01891803741455,
+        "dst_yaw_at_grasp": -45.49885559082031,
+        "expected_dst_yaw": 33.98108196258545,
+        "actual_delta_yaw": -34.47993755340576,
+        "relative_diff_before_symmetry": -79.47993755340576,
+        "yaw_error": 10.520062446594238,
+        "yaw_error_corrected": 10.520062446594238,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_yaw_at_grasp": -22.90876579284668,
+        "dst_yaw_at_grasp": -33.14543533325195,
+        "expected_dst_yaw": 22.09123420715332,
+        "actual_delta_yaw": -10.236669540405273,
+        "relative_diff_before_symmetry": -55.23666954040527,
+        "yaw_error": 34.76333045959473,
+        "yaw_error_corrected": 34.76333045959473,
+        "src_success": false,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 34.8)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_yaw_at_grasp": -12.95335865020752,
+        "dst_yaw_at_grasp": 15.769932746887207,
+        "expected_dst_yaw": 32.04664134979248,
+        "actual_delta_yaw": 28.723291397094727,
+        "relative_diff_before_symmetry": -16.276708602905273,
+        "yaw_error": 16.276708602905273,
+        "yaw_error_corrected": 16.276708602905273,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 16.3)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_yaw_at_grasp": -20.670333862304688,
+        "dst_yaw_at_grasp": -37.356197357177734,
+        "expected_dst_yaw": 24.329666137695312,
+        "actual_delta_yaw": -16.685863494873047,
+        "relative_diff_before_symmetry": -61.68586349487305,
+        "yaw_error": 28.314136505126953,
+        "yaw_error_corrected": 28.314136505126953,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 28.3)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_yaw_at_grasp": -11.12132453918457,
+        "dst_yaw_at_grasp": -45.64521408081055,
+        "expected_dst_yaw": 33.87867546081543,
+        "actual_delta_yaw": -34.52388954162598,
+        "relative_diff_before_symmetry": -79.52388954162598,
+        "yaw_error": 10.476110458374023,
+        "yaw_error_corrected": 10.476110458374023,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_yaw_at_grasp": -31.873138427734375,
+        "dst_yaw_at_grasp": -35.6516227722168,
+        "expected_dst_yaw": 13.126861572265625,
+        "actual_delta_yaw": -3.778484344482422,
+        "relative_diff_before_symmetry": -48.77848434448242,
+        "yaw_error": 41.22151565551758,
+        "yaw_error_corrected": 41.22151565551758,
+        "src_success": false,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 41.2)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_yaw_at_grasp": 7.790003776550293,
+        "dst_yaw_at_grasp": -13.75690746307373,
+        "expected_dst_yaw": 52.79000377655029,
+        "actual_delta_yaw": -21.546911239624023,
+        "relative_diff_before_symmetry": -66.54691123962402,
+        "yaw_error": 23.453088760375977,
+        "yaw_error_corrected": 23.453088760375977,
+        "src_success": false,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariance_Broken (Error: 23.5)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_yaw_at_grasp": 11.779379844665527,
+        "dst_yaw_at_grasp": -19.856801986694336,
+        "expected_dst_yaw": 56.77937984466553,
+        "actual_delta_yaw": -31.636181831359863,
+        "relative_diff_before_symmetry": -76.63618183135986,
+        "yaw_error": 13.363818168640137,
+        "yaw_error_corrected": 13.363818168640137,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_yaw_at_grasp": -2.6978883743286133,
+        "dst_yaw_at_grasp": 35.98004913330078,
+        "expected_dst_yaw": 42.30211162567139,
+        "actual_delta_yaw": 38.677937507629395,
+        "relative_diff_before_symmetry": -6.3220624923706055,
+        "yaw_error": 6.3220624923706055,
+        "yaw_error_corrected": 6.3220624923706055,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 18,
+  "followup_mr_violation_rate_percent": 72.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}
