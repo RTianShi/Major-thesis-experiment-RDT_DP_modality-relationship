@@ -21,13 +21,14 @@ class EpisodeRecord:
     success: Optional[bool]
     total_steps: Optional[int]
     path_len: Optional[float]
-    gripper_width: List[float]
+    gripper_width: List[Optional[float]]
     cube_pos: List[List[float]]
     eef_path: List[List[float]]
     gripper_action_cmd: List[Optional[float]]
     eef_yaw_deg: List[Optional[float]]
     mr_eval_grasp_frame_index: Optional[int]
     mr_eval_eef_yaw_at_grasp: Optional[float]
+    mr_eval_initial_goal_pos: Optional[List[float]]
 
     # derived
     cube_path_len: Optional[float]
@@ -57,6 +58,18 @@ def _safe_int(x):
         return None
 
 
+def _safe_xyz(x):
+    try:
+        if x is None:
+            return None
+        arr = np.asarray(x, dtype=np.float64).reshape(-1)
+        if arr.size < 3:
+            return None
+        return [float(arr[0]), float(arr[1]), float(arr[2])]
+    except Exception:
+        return None
+
+
 def _dist_path(points: List[List[float]]) -> Optional[float]:
     if points is None or len(points) < 2:
         return 0.0 if points else None
@@ -78,20 +91,66 @@ def _net_disp(points: List[List[float]]) -> Optional[float]:
 
 def _derive_grasp_from_raw(
     gripper_cmd: List[Optional[float]],
+    gripper_width: List[Optional[float]],
+    eef_path: List[List[float]],
+    cube_pos: List[List[float]],
     eef_yaw_deg: List[Optional[float]],
-    open_thresh: float = 0.1,
-    close_thresh: float = -0.1,
+    open_width_thresh: float = 0.075,
+    close_width_thresh: float = 0.050,
+    min_width_drop: float = 0.015,
+    cmd_close_thresh: float = -0.02,
+    proximity_thresh: float = 0.05,
+    lookahead_frames: int = 5,
+    min_obj_lift: float = 0.01,
 ):
-    prev = None
+    def _xyz(point):
+        if point is None:
+            return None
+        arr = np.asarray(point, dtype=np.float64).reshape(-1)
+        if arr.size < 3:
+            return None
+        return arr[:3]
+
+    prev_width = None
+    was_open = False
     idx = None
-    for i, c in enumerate(gripper_cmd):
-        if c is None:
+    first_intent_idx = None
+    n = min(len(gripper_cmd), len(gripper_width), len(eef_path), len(cube_pos))
+    for i in range(n):
+        c = gripper_cmd[i]
+        width = gripper_width[i]
+        if width is None:
+            prev_width = width
             continue
-        c = float(c)
-        if prev is not None and prev >= open_thresh and c <= close_thresh:
-            idx = int(i)
-            break
-        prev = c
+        width = float(width)
+        c = None if c is None else float(c)
+        if width >= open_width_thresh:
+            was_open = True
+        eef_xyz = _xyz(eef_path[i])
+        cube_xyz = _xyz(cube_pos[i])
+        is_valid_attempt = (
+            was_open
+            and prev_width is not None
+            and c is not None
+            and c <= cmd_close_thresh
+            and (float(prev_width) - width) >= min_width_drop
+            and width <= close_width_thresh
+            and eef_xyz is not None
+            and cube_xyz is not None
+            and float(np.linalg.norm(eef_xyz - cube_xyz)) <= proximity_thresh
+        )
+        if is_valid_attempt:
+            if first_intent_idx is None:
+                first_intent_idx = int(i)
+            future_idx = i + lookahead_frames
+            if future_idx < n:
+                future_cube_xyz = _xyz(cube_pos[future_idx])
+                if future_cube_xyz is not None and float(future_cube_xyz[2] - cube_xyz[2]) > min_obj_lift:
+                    idx = int(i)
+                    break
+        prev_width = width
+    if idx is None:
+        idx = first_intent_idx
     yaw = None
     if idx is not None and 0 <= idx < len(eef_yaw_deg):
         yaw = eef_yaw_deg[idx]
@@ -128,13 +187,14 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             success=bool(metrics.get("env_success")) if "env_success" in metrics else None,
             total_steps=_safe_int(traj.get("total_steps")),
             path_len=_safe_float(traj.get("total_path_length_meters")),
-            gripper_width=[float(x) for x in gripper_width if x is not None],
+            gripper_width=[None if x is None else float(x) for x in gripper_width],
             cube_pos=cube_pos,
             eef_path=eef_path,
             gripper_action_cmd=[None if x is None else float(x) for x in gripper_action_cmd],
             eef_yaw_deg=[None if x is None else float(x) for x in eef_yaw_deg],
             mr_eval_grasp_frame_index=_safe_int(mr_eval.get("grasp_frame_index")),
             mr_eval_eef_yaw_at_grasp=_safe_float(mr_eval.get("eef_yaw_at_grasp")),
+            mr_eval_initial_goal_pos=_safe_xyz(mr_eval.get("initial_goal_pos")),
             cube_path_len=None,
             cube_net_disp=None,
             gripper_mean=None,
@@ -145,15 +205,16 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
         )
 
         rec.derived_grasp_frame_index, rec.derived_eef_yaw_at_grasp = _derive_grasp_from_raw(
-            rec.gripper_action_cmd, rec.eef_yaw_deg
+            rec.gripper_action_cmd, rec.gripper_width, rec.eef_path, rec.cube_pos, rec.eef_yaw_deg
         )
 
         rec.cube_path_len = _dist_path(rec.cube_pos)
         rec.cube_net_disp = _net_disp(rec.cube_pos)
-        if len(rec.gripper_width) > 0:
-            rec.gripper_mean = float(mean(rec.gripper_width))
-            rec.gripper_max = float(max(rec.gripper_width))
-            rec.gripper_min = float(min(rec.gripper_width))
+        valid_gripper_width = [float(x) for x in rec.gripper_width if x is not None]
+        if len(valid_gripper_width) > 0:
+            rec.gripper_mean = float(mean(valid_gripper_width))
+            rec.gripper_max = float(max(valid_gripper_width))
+            rec.gripper_min = float(min(valid_gripper_width))
 
         records.append(rec)
     return records
@@ -206,9 +267,9 @@ def summarize(records: List[EpisodeRecord]) -> Dict:
 
 
 try:
-    from eval_sim.analysis.mr_rules import MR_RULE_REGISTRY
+    from eval_sim.analysis_RDT.mr_rules import MR_RULE_REGISTRY
 except Exception:
-    # 兼容直接运行该脚本（python eval_sim/analysis/mr_eval_analyzer.py）
+    # 兼容直接运行该脚本（python eval_sim/analysis_RDT/mr_eval_analyzer_rdt.py）
     from mr_rules import MR_RULE_REGISTRY
 
 
@@ -220,7 +281,7 @@ def _default_output_path(mr_id: str) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Analyze eval_dp trajectory JSONs for MR evaluation.")
+    parser = argparse.ArgumentParser(description="Analyze RDT trajectory JSONs for MR evaluation.")
     parser.add_argument("--traj-dir", type=str, default=None, help="single-set analysis directory")
     parser.add_argument("--base-traj-dir", type=str, default=None, help="baseline directory for MR compare")
     parser.add_argument("--mr-traj-dir", type=str, default=None, help="MR directory for MR compare")
@@ -238,7 +299,7 @@ def main():
     parser.add_argument("--translation-dx", type=float, default=0.04, help="Expected translation delta x for translation-equivariance MRs")
     parser.add_argument("--translation-dy", type=float, default=-0.04, help="Expected translation delta y for translation-equivariance MRs")
     parser.add_argument("--translation-dz", type=float, default=0.0, help="Expected translation delta z for translation-equivariance MRs")
-    parser.add_argument("--position-tol", type=float, default=0.025, help="Position tolerance for translation-equivariance MRs")
+    parser.add_argument("--position-tol", type=float, default=None, help="Optional position tolerance override for MR rules")
 
     parser.add_argument("--out", type=str, default=None, help="output json path")
     args = parser.parse_args()
@@ -273,16 +334,21 @@ def main():
 
         rule_fn = MR_RULE_REGISTRY[args.mr_id]
         result["mr_rule"] = args.mr_id
+        rule_kwargs = {
+            "path_len_ratio_tol": args.path_len_ratio_tol,
+            "expected_delta_z": args.expected_delta_z,
+            "delta_z_tol": args.delta_z_tol,
+            "low_release_min": args.low_release_min,
+            "low_release_max": args.low_release_max,
+            "translation_delta": [args.translation_dx, args.translation_dy, args.translation_dz],
+        }
+        if args.position_tol is not None:
+            rule_kwargs["position_tol"] = args.position_tol
+
         result["mr_compare"] = rule_fn(
             brecs,
             mrecs,
-            path_len_ratio_tol=args.path_len_ratio_tol,
-            expected_delta_z=args.expected_delta_z,
-            delta_z_tol=args.delta_z_tol,
-            low_release_min=args.low_release_min,
-            low_release_max=args.low_release_max,
-            translation_delta=[args.translation_dx, args.translation_dy, args.translation_dz],
-            position_tol=args.position_tol,
+            **rule_kwargs,
         )
         mr_compare = result["mr_compare"]
         analyzable_count = int(mr_compare.get("analyzable_episodes", 0))
@@ -315,7 +381,7 @@ def main():
             file=sys.stderr,
         )
 
-    # 统一保存：--out 优先；否则自动保存到 analysis/analysis_outputs
+    # 统一保存：--out 优先；否则自动保存到 analysis_RDT/analysis_outputs
     out_path = args.out
     if not out_path:
         auto_mr_id = result.get("mr_rule") or ("single" if result.get("mode") == "single" else args.mr_id)

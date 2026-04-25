@@ -1,0 +1,478 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCubeGoalZ005-v1_20260422_113341",
+  "mr_traj_dir": "eef_traj/PickCubeGoalZ028-v1_20260422_113609",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 84.0,
+    "success_count": 21,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 127.36,
+      "median": 71.0,
+      "std": 120.82214366580324,
+      "min": 51.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.5495663261413575,
+      "median": 0.42258989810943604,
+      "std": 0.3236892001000233,
+      "min": 0.24268782138824463,
+      "max": 1.3322272300720215
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.17745735787026007,
+      "median": 0.11157909128757812,
+      "std": 0.19794242478737797,
+      "min": 0.03053722652987867,
+      "max": 0.7197144303891525
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.11343350100380702,
+      "median": 0.09162149816235302,
+      "std": 0.07887993268090975,
+      "min": 0.019784118741124804,
+      "max": 0.3255198836279084
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05687577170885961,
+      "median": 0.062279519791315706,
+      "std": 0.012306673978233484,
+      "min": 0.013071171694391523,
+      "max": 0.06790837934109527
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999403953552,
+      "median": 0.07999999821186066,
+      "std": 1.3215910344506337e-08,
+      "min": 0.07999993860721588,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.03426732309162617,
+      "median": 0.03657916188240051,
+      "std": 0.010207660709724621,
+      "min": 0.0,
+      "max": 0.04355333559215069
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 80.0,
+    "success_count": 20,
+    "success_episode_ids": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 161.4,
+      "median": 88.0,
+      "std": 130.5689090097639,
+      "min": 69.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7908741307258605,
+      "median": 0.6954925060272217,
+      "std": 0.23758692255927957,
+      "min": 0.5348227024078369,
+      "max": 1.3742444515228271
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.37708998630903096,
+      "median": 0.3040076418671515,
+      "std": 0.150340175817558,
+      "min": 0.26026541063417846,
+      "max": 0.7731732795817448
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.2832455211590602,
+      "median": 0.2831587939325043,
+      "std": 0.02078241465917305,
+      "min": 0.2536903517657907,
+      "max": 0.32968533644908027
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.053627289426752885,
+      "median": 0.05700450571667817,
+      "std": 0.006181514924179694,
+      "min": 0.04116275975480676,
+      "max": 0.05975087131373584
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999821186066,
+      "median": 0.07999999821186066,
+      "std": 0.0,
+      "min": 0.07999999821186066,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.03722315087914467,
+      "median": 0.03668629005551338,
+      "std": 0.0014088446885481163,
+      "min": 0.03653503768146038,
+      "max": 0.043436454609036446
+    }
+  },
+  "mr_rule": "MR-DRP-1",
+  "mr_compare": {
+    "mr_id": "MR-DRP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 4,
+    "violation_rate_percent": 16.0,
+    "config": {
+      "expected_delta_z": 0.23,
+      "delta_z_tol": 0.05,
+      "low_stop_band": [
+        0.05,
+        0.15
+      ]
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "zend_source": 0.0466584637761116,
+        "zend_followup": 0.27046507596969604,
+        "abs_delta_z": 0.22380661219358444,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "zend_source": 0.2884395122528076,
+        "zend_followup": 0.3111095726490021,
+        "abs_delta_z": 0.022670060396194458,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "delta_z_not_match_expected"
+        ],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "zend_source": 0.037815533578395844,
+        "zend_followup": 0.28921473026275635,
+        "abs_delta_z": 0.2513991966843605,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "zend_source": 0.036955103278160095,
+        "zend_followup": 0.2936260402202606,
+        "abs_delta_z": 0.2566709369421005,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "zend_source": 0.03701796382665634,
+        "zend_followup": 0.258789986371994,
+        "abs_delta_z": 0.22177202254533768,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "zend_source": 0.04807927459478378,
+        "zend_followup": 0.2750103771686554,
+        "abs_delta_z": 0.2269311025738716,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "zend_source": 0.051300108432769775,
+        "zend_followup": 0.281476765871048,
+        "abs_delta_z": 0.2301766574382782,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "zend_source": 0.03379739820957184,
+        "zend_followup": 0.2707987427711487,
+        "abs_delta_z": 0.23700134456157684,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "zend_source": 0.291512668132782,
+        "zend_followup": 0.3118411898612976,
+        "abs_delta_z": 0.020328521728515625,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "delta_z_not_match_expected"
+        ],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "zend_source": 0.05776777118444443,
+        "zend_followup": 0.2868048846721649,
+        "abs_delta_z": 0.2290371134877205,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "zend_source": 0.047672733664512634,
+        "zend_followup": 0.2947256565093994,
+        "abs_delta_z": 0.24705292284488678,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "zend_source": 0.03545784950256348,
+        "zend_followup": 0.2818715572357178,
+        "abs_delta_z": 0.2464137077331543,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "zend_source": 0.050682537257671356,
+        "zend_followup": 0.28944358229637146,
+        "abs_delta_z": 0.2387610450387001,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "zend_source": 0.026448704302310944,
+        "zend_followup": 0.27434661984443665,
+        "abs_delta_z": 0.2478979155421257,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "zend_source": 0.04194531589746475,
+        "zend_followup": 0.2677018642425537,
+        "abs_delta_z": 0.22575654834508896,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "zend_source": 0.27850839495658875,
+        "zend_followup": 0.27823394536972046,
+        "abs_delta_z": 0.00027444958686828613,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "delta_z_not_match_expected"
+        ],
+        "source_success": false,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "zend_source": 0.049402378499507904,
+        "zend_followup": 0.2852661907672882,
+        "abs_delta_z": 0.2358638122677803,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "zend_source": 0.05974698066711426,
+        "zend_followup": 0.2972067594528198,
+        "abs_delta_z": 0.23745977878570557,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "zend_source": 0.03788403421640396,
+        "zend_followup": 0.26502206921577454,
+        "abs_delta_z": 0.22713803499937057,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "zend_source": 0.04598836600780487,
+        "zend_followup": 0.30120986700057983,
+        "abs_delta_z": 0.25522150099277496,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "zend_source": 0.03918766230344772,
+        "zend_followup": 0.25752362608909607,
+        "abs_delta_z": 0.21833596378564835,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "zend_source": 0.09018144756555557,
+        "zend_followup": 0.2617207467556,
+        "abs_delta_z": 0.1715392991900444,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "delta_z_not_match_expected"
+        ],
+        "source_success": false,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "zend_source": 0.028074882924556732,
+        "zend_followup": 0.2865543067455292,
+        "abs_delta_z": 0.25847942382097244,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": false
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "zend_source": 0.025668710470199585,
+        "zend_followup": 0.2717045843601227,
+        "abs_delta_z": 0.2460358738899231,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "zend_source": 0.038810715079307556,
+        "zend_followup": 0.27146047353744507,
+        "abs_delta_z": 0.2326497584581375,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [],
+        "source_success": true,
+        "followup_success": true
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 16.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

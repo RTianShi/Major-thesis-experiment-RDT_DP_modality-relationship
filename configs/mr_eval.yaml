@@ -1,6 +1,6 @@
 mr:
   language:
-    type: identity
+    type: MR-JDCP-3
   vision:
     type: identity
   proprio:

@@ -14,6 +14,7 @@ from PIL import Image
 import cv2
 import json
 import copy
+import re
 
 from eval_sim.mr import get_lang, get_vision, get_proprio  # registers MRs
 from eval_sim.env_mr import get_env  # registers env MRs
@@ -74,6 +75,93 @@ def _to_uint8_rgb(img):
         else:
             img = np.clip(img, 0.0, 255.0).astype(np.uint8)
     return img
+
+
+def _to_numpy_1d(x):
+    if x is None:
+        return None
+    if hasattr(x, "detach"):
+        x = x.detach().cpu().numpy()
+    x = np.asarray(x).reshape(-1)
+    return x
+
+
+def _extract_gripper_width(obs):
+    """
+    返回:
+      gripper_width: float 或 None
+      gripper_finger_qpos: [left, right] 或 None
+    """
+    try:
+        qpos = _to_numpy_1d(obs["agent"]["qpos"])
+        if qpos is None or qpos.size < 2:
+            return None, None
+        left = float(qpos[-2])
+        right = float(qpos[-1])
+        return float(left + right), [left, right]
+    except Exception:
+        return None, None
+
+
+def _extract_cube_pos(obs, env):
+    unwrapped = getattr(env, "unwrapped", env)
+    for name in ("cube", "obj", "object", "target_object", "source_object"):
+        actor = getattr(unwrapped, name, None)
+        if actor is not None and hasattr(actor, "pose"):
+            p = getattr(actor.pose, "p", None)
+            arr = _to_numpy_1d(p)
+            if arr is not None and arr.size >= 3:
+                return [float(arr[0]), float(arr[1]), float(arr[2])]
+
+    if isinstance(obs, dict):
+        extra = obs.get("extra", {})
+        if isinstance(extra, dict):
+            for k in ("cube_pos", "obj_pos", "object_pos", "cube_pose", "obj_pose", "object_pose"):
+                if k in extra:
+                    arr = _to_numpy_1d(extra[k])
+                    if arr is not None and arr.size >= 3:
+                        return [float(arr[0]), float(arr[1]), float(arr[2])]
+            for k, v in extra.items():
+                lk = str(k).lower()
+                if ("cube" in lk or "obj" in lk or "object" in lk) and ("pos" in lk or "pose" in lk):
+                    arr = _to_numpy_1d(v)
+                    if arr is not None and arr.size >= 3:
+                        return [float(arr[0]), float(arr[1]), float(arr[2])]
+    return None
+
+
+def _extract_eef_yaw(env):
+    """从环境获取末端执行器 yaw 角（单位：度），失败返回 None。"""
+    try:
+        eef_pose = env.unwrapped.agent.tcp.pose
+
+        if hasattr(eef_pose, "to_transformation_matrix"):
+            mat = np.asarray(eef_pose.to_transformation_matrix())
+            if mat.ndim == 3:
+                mat = mat[0]
+            if mat.shape[0] >= 2 and mat.shape[1] >= 2:
+                yaw = np.arctan2(mat[1, 0], mat[0, 0])
+                return float(np.degrees(yaw))
+
+        if hasattr(eef_pose, "q"):
+            q = np.asarray(eef_pose.q, dtype=np.float64).reshape(-1)
+            if q.size < 4:
+                return None
+            if q.size > 4:
+                q = q[:4]
+            w, x, y, z = q
+            n = np.linalg.norm([w, x, y, z])
+            if n < 1e-12:
+                return None
+            w, x, y, z = w / n, x / n, y / n, z / n
+            siny_cosp = 2.0 * (w * z + x * y)
+            cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
+            yaw = np.arctan2(siny_cosp, cosy_cosp)
+            return float(np.degrees(yaw))
+    except Exception:
+        return None
+
+    return None
 
 def _resolve_hf_snapshot_path(repo_id: str) -> str:
     repo_dir = os.path.expanduser(
@@ -222,6 +310,110 @@ def _get_history_frame(obs_window, history_len, delay_steps, history_idx):
     return obs_window[src_idx]
 
 
+def _extract_cube_yaw_deg(obs, env):
+    """尽力提取 cube yaw（度），失败返回 None。"""
+    try:
+        unwrapped = getattr(env, "unwrapped", env)
+        for name in ("cube", "obj", "object", "target_object", "source_object"):
+            actor = getattr(unwrapped, name, None)
+            if actor is not None and hasattr(actor, "pose") and hasattr(actor.pose, "q"):
+                q = np.asarray(actor.pose.q, dtype=np.float64).reshape(-1)
+                if q.size >= 4:
+                    w, x, y, z = q[:4]
+                    n = np.linalg.norm([w, x, y, z])
+                    if n > 1e-12:
+                        w, x, y, z = w / n, x / n, y / n, z / n
+                        siny_cosp = 2.0 * (w * z + x * y)
+                        cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
+                        return float(np.degrees(np.arctan2(siny_cosp, cosy_cosp)))
+    except Exception:
+        pass
+    return None
+
+
+def _infer_cube_yaw_from_env_id(env_id: str):
+    m = re.search(r"Yaw(\d{3})", str(env_id))
+    return float(int(m.group(1))) if m else None
+
+
+def _first_index_ge(seq, thresh: float):
+    for i, v in enumerate(seq):
+        if v is not None and float(v) >= thresh:
+            return int(i)
+    return None
+
+
+def _first_index_le(seq, thresh: float):
+    for i, v in enumerate(seq):
+        if v is not None and float(v) <= thresh:
+            return int(i)
+    return None
+
+
+def _detect_grasp_from_proprio(
+    cmds,
+    gripper_widths,
+    eef_positions,
+    cube_positions,
+    open_width_thresh=0.075,
+    close_width_thresh=0.050,
+    min_width_drop=0.015,
+    cmd_close_thresh=-0.02,
+    proximity_thresh=0.05,
+    lookahead_frames=5,
+    min_obj_lift=0.01,
+):
+    def _xyz(point):
+        if point is None:
+            return None
+        arr = np.asarray(point, dtype=np.float64).reshape(-1)
+        if arr.size < 3:
+            return None
+        return arr[:3]
+
+    prev_width = None
+    was_open = False
+    first_intent_idx = None
+    n = min(len(cmds), len(gripper_widths), len(eef_positions), len(cube_positions))
+    for i in range(n):
+        cmd = cmds[i]
+        width = gripper_widths[i]
+        if width is None:
+            prev_width = width
+            continue
+
+        width = float(width)
+        cmd_val = None if cmd is None else float(cmd)
+
+        if width >= open_width_thresh:
+            was_open = True
+
+        if was_open and prev_width is not None:
+            width_drop = float(prev_width) - width
+            eef_xyz = _xyz(eef_positions[i])
+            cube_xyz = _xyz(cube_positions[i])
+            is_valid_attempt = (
+                cmd_val is not None
+                and cmd_val <= cmd_close_thresh
+                and width_drop >= min_width_drop
+                and width <= close_width_thresh
+                and eef_xyz is not None
+                and cube_xyz is not None
+                and float(np.linalg.norm(eef_xyz - cube_xyz)) <= proximity_thresh
+            )
+            if is_valid_attempt:
+                if first_intent_idx is None:
+                    first_intent_idx = int(i)
+                future_idx = i + lookahead_frames
+                if future_idx < n:
+                    future_cube_xyz = _xyz(cube_positions[future_idx])
+                    if future_cube_xyz is not None and float(future_cube_xyz[2] - cube_xyz[2]) > min_obj_lift:
+                        return int(i)
+
+        prev_width = width
+    return first_intent_idx
+
+
 args = parse_args()
 
 def _slugify(s: str) -> str:
@@ -238,11 +430,13 @@ if args.traj_dir == "auto":
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     env_tag = _slugify(args.env_id)
     mr_type = getattr(args, "mr_type", None)
+    # 修改为固定保存到 eef_traj/PickCube
+    base_dir = os.path.join("eef_traj", "PickCube")
     if mr_type:
         mr_tag = _slugify(mr_type)
-        args.traj_dir = os.path.join("eef_traj", f"{env_tag}_{mr_tag}_{ts}")
+        args.traj_dir = os.path.join(base_dir, f"{env_tag}_{mr_tag}_{ts}")
     else:
-        args.traj_dir = os.path.join("eef_traj", f"{env_tag}_{ts}")
+        args.traj_dir = os.path.join(base_dir, f"{env_tag}_{ts}")
 
 os.makedirs(args.traj_dir, exist_ok=True)
 
@@ -376,7 +570,16 @@ for episode in tqdm.trange(total_episodes):
     global_steps = 0
     video_frames = []
     eef_traj = []
-
+    gripper_width_traj = []
+    gripper_finger_qpos_traj = []
+    cube_pos_traj = []
+    eef_yaw_traj = []
+    cube_yaw_traj = []
+    gripper_action_cmd_traj = []
+    inferred_cube_yaw_deg = _infer_cube_yaw_from_env_id(env_id)
+    initial_cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+    if initial_cube_yaw_deg is None:
+        initial_cube_yaw_deg = inferred_cube_yaw_deg
     success_time = 0
     done = False
 
@@ -420,6 +623,19 @@ for episode in tqdm.trange(total_episodes):
             proprio = obs['agent']['qpos'][:, :-1]
             eef_xyz = env.unwrapped.agent.tcp.pose.p
             eef_traj.append(np.array(eef_xyz, dtype=np.float32))
+            gripper_cmd = float(action[-1]) if action.shape[0] > 0 else None
+            gripper_action_cmd_traj.append(gripper_cmd)
+            eef_yaw = _extract_eef_yaw(env)
+            gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
+            cube_pos = _extract_cube_pos(obs, env)
+            cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+            if cube_yaw_deg is None:
+                cube_yaw_deg = inferred_cube_yaw_deg
+            gripper_width_traj.append(gripper_width)
+            gripper_finger_qpos_traj.append(gripper_finger_qpos)
+            cube_pos_traj.append(cube_pos)
+            eef_yaw_traj.append(eef_yaw)
+            cube_yaw_traj.append(cube_yaw_deg)
             if args.save_video:
                 video_frames.append(img)
             if args.show:
@@ -451,33 +667,53 @@ for episode in tqdm.trange(total_episodes):
         eef_arr = np.stack(eef_traj, axis=0)
         diffs = np.diff(eef_arr, axis=0)
         total_path_length = float(np.linalg.norm(diffs, axis=1).sum()) if len(eef_arr) > 1 else 0.0
-
-        env_success = bool(info["success"]) if isinstance(info["success"], (bool, np.bool_)) else bool(np.array(info["success"]).item())
-        if np.any(np.isnan(final_cube_pos)) or np.any(np.isnan(green_goal)):
-            real_target_distance = float("nan")
-            semantic_success = False
-        else:
-            real_target_distance = float(np.linalg.norm(final_cube_pos - green_goal))
-            semantic_success = real_target_distance < 0.025
+        eef_yaw_valid = int(sum(v is not None for v in eef_yaw_traj))
+        cube_yaw_valid = int(sum(v is not None for v in cube_yaw_traj))
+        grasp_frame_index = _detect_grasp_from_proprio(
+            gripper_action_cmd_traj,
+            gripper_width_traj,
+            eef_traj,
+            cube_pos_traj,
+        )
+        gripper_fully_closed_frame_index = _first_index_le(gripper_action_cmd_traj, -0.95)
+        gripper_fully_opened_frame_index = _first_index_ge(gripper_action_cmd_traj, 0.95)
+        eef_yaw_at_grasp = None
+        if grasp_frame_index is not None and 0 <= grasp_frame_index < len(eef_yaw_traj):
+            eef_yaw_at_grasp = eef_yaw_traj[grasp_frame_index]
 
         result = {
             "episode_id": int(episode + 1),
             "seed": int(episode + base_seed),
-            "mr_type": getattr(args, "mr_type", None),
             "metrics": {
-                "env_success": env_success,
-                "real_target_distance": real_target_distance,
-                "semantic_success": bool(semantic_success),
+                "env_success": bool(info["success"]),
             },
-            "positions": {
-                "red_cube_initial": red_cube_initial.tolist(),
-                "green_goal": green_goal.tolist(),
-                "blue_cube_initial": None,
-                "red_cube_final": final_cube_pos.tolist(),
+            "mr_eval": {
+                "mr_type": args.mr_type,
+                "pair_key": f"{episode + base_seed}",
+                "expected_delta_yaw_deg": 45.0,
+                "grasp_frame_index": grasp_frame_index,
+                "initial_cube_yaw_deg": initial_cube_yaw_deg,
+                "initial_goal_pos": None if np.any(np.isnan(green_goal)) else green_goal.tolist(),
+                "eef_yaw_at_grasp": eef_yaw_at_grasp,
+                "gripper_fully_closed_frame_index": gripper_fully_closed_frame_index,
+                "gripper_fully_opened_frame_index": gripper_fully_opened_frame_index,
+            },
+            "data_availability": {
+                "eef_yaw_deg_measured": eef_yaw_valid > 0,
+                "cube_yaw_deg_measured_or_inferred": cube_yaw_valid > 0,
+                "cube_yaw_inferred_from_env_id": inferred_cube_yaw_deg is not None,
+                "grasp_frame_index_available": grasp_frame_index is not None,
+                "initial_cube_yaw_available": initial_cube_yaw_deg is not None,
             },
             "trajectory": {
                 "total_steps": int(global_steps),
                 "eef_path": eef_arr.tolist(),
+                "gripper_width": gripper_width_traj,
+                "gripper_finger_qpos": gripper_finger_qpos_traj,
+                "gripper_action_cmd": gripper_action_cmd_traj,
+                "cube_pos": cube_pos_traj,
+                "eef_yaw_deg": eef_yaw_traj,
+                "cube_yaw_deg": cube_yaw_traj,
                 "total_path_length_meters": total_path_length,
             },
         }
