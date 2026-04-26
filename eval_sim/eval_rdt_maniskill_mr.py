@@ -18,6 +18,7 @@ import re
 
 from eval_sim.mr import get_lang, get_vision, get_proprio  # registers MRs
 from eval_sim.env_mr import get_env  # registers env MRs
+from eval_sim.grasp_event import detect_grasp_event_index
 from eval_sim.custom_envs import (
     pickcube_blue,
     pickcube_blue_cylinder,
@@ -350,70 +351,6 @@ def _first_index_le(seq, thresh: float):
     return None
 
 
-def _detect_grasp_from_proprio(
-    cmds,
-    gripper_widths,
-    eef_positions,
-    cube_positions,
-    open_width_thresh=0.075,
-    close_width_thresh=0.050,
-    min_width_drop=0.015,
-    cmd_close_thresh=-0.02,
-    proximity_thresh=0.05,
-    lookahead_frames=5,
-    min_obj_lift=0.01,
-):
-    def _xyz(point):
-        if point is None:
-            return None
-        arr = np.asarray(point, dtype=np.float64).reshape(-1)
-        if arr.size < 3:
-            return None
-        return arr[:3]
-
-    prev_width = None
-    was_open = False
-    first_intent_idx = None
-    n = min(len(cmds), len(gripper_widths), len(eef_positions), len(cube_positions))
-    for i in range(n):
-        cmd = cmds[i]
-        width = gripper_widths[i]
-        if width is None:
-            prev_width = width
-            continue
-
-        width = float(width)
-        cmd_val = None if cmd is None else float(cmd)
-
-        if width >= open_width_thresh:
-            was_open = True
-
-        if was_open and prev_width is not None:
-            width_drop = float(prev_width) - width
-            eef_xyz = _xyz(eef_positions[i])
-            cube_xyz = _xyz(cube_positions[i])
-            is_valid_attempt = (
-                cmd_val is not None
-                and cmd_val <= cmd_close_thresh
-                and width_drop >= min_width_drop
-                and width <= close_width_thresh
-                and eef_xyz is not None
-                and cube_xyz is not None
-                and float(np.linalg.norm(eef_xyz - cube_xyz)) <= proximity_thresh
-            )
-            if is_valid_attempt:
-                if first_intent_idx is None:
-                    first_intent_idx = int(i)
-                future_idx = i + lookahead_frames
-                if future_idx < n:
-                    future_cube_xyz = _xyz(cube_positions[future_idx])
-                    if future_cube_xyz is not None and float(future_cube_xyz[2] - cube_xyz[2]) > min_obj_lift:
-                        return int(i)
-
-        prev_width = width
-    return first_intent_idx
-
-
 args = parse_args()
 
 def _slugify(s: str) -> str:
@@ -669,7 +606,7 @@ for episode in tqdm.trange(total_episodes):
         total_path_length = float(np.linalg.norm(diffs, axis=1).sum()) if len(eef_arr) > 1 else 0.0
         eef_yaw_valid = int(sum(v is not None for v in eef_yaw_traj))
         cube_yaw_valid = int(sum(v is not None for v in cube_yaw_traj))
-        grasp_frame_index = _detect_grasp_from_proprio(
+        grasp_frame_index = detect_grasp_event_index(
             gripper_action_cmd_traj,
             gripper_width_traj,
             eef_traj,

@@ -14,6 +14,11 @@ def _load_builtin_rules():
     # 导入即注册
     from . import default_rule  # noqa: F401
     from . import mr_drp_1  # noqa: F401
+    from . import mr_drp_2  # noqa: F401
+    from . import mr_semp_1  # noqa: F401
+    from . import mr_semp_2  # noqa: F401
+    from . import mr_sadp_1  # noqa: F401
+    from . import mr_sadp_2  # noqa: F401
 
 
 _load_builtin_rules()

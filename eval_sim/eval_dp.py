@@ -15,9 +15,10 @@ import copy
 import re
 
 from diffusion_policy.workspace.robotworkspace import RobotWorkspace
-from eval_sim.mr import get_lang, get_vision, get_proprio  # registers MRs
-from eval_sim.env_mr import get_env  # registers env MRs
+from eval_sim.mr_dp import get_lang, get_vision, get_proprio  # registers DP MRs
+from eval_sim.env_mr_dp import get_env  # registers DP env MRs
 from eval_sim.custom_envs import *  # noqa: F401,F403  # registers custom envs
+from eval_sim.grasp_event import detect_grasp_event_index
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
@@ -153,6 +154,144 @@ def _extract_cube_pos(obs, env):
                         return [float(arr[0]), float(arr[1]), float(arr[2])]
     return None
 
+
+def _pose_to_xyz(obj):
+    if obj is None:
+        return None
+    if hasattr(obj, "pose"):
+        return np.array(obj.pose.p, dtype=np.float32)
+    if hasattr(obj, "get_pose"):
+        return np.array(obj.get_pose().p, dtype=np.float32)
+    return None
+
+
+def _find_actor_by_keywords(scene, keywords):
+    if scene is None:
+        return None, None
+    for actor in scene.get_all_actors():
+        try:
+            name = actor.get_name()
+        except Exception:
+            name = ""
+        if any(keyword in str(name).lower() for keyword in keywords):
+            return actor, name
+    return None, None
+
+
+def _find_articulation_by_keywords(scene, keywords):
+    if scene is None:
+        return None, None
+    try:
+        articulations = scene.get_all_articulations()
+    except Exception:
+        return None, None
+    for articulation in articulations:
+        try:
+            name = articulation.get_name()
+        except Exception:
+            name = ""
+        if any(keyword in str(name).lower() for keyword in keywords):
+            return articulation, name
+    return None, None
+
+
+def _get_cube_goal_xyz(env):
+    cube_pos = None
+    goal_pos = None
+
+    for key in ["obj", "object", "_obj", "cube"]:
+        if hasattr(env.unwrapped, key):
+            cube_pos = _pose_to_xyz(getattr(env.unwrapped, key))
+            if cube_pos is not None:
+                break
+
+    for key in ["goal", "_goal", "target", "_target", "goal_site", "target_site", "goal_region"]:
+        if hasattr(env.unwrapped, key):
+            goal_pos = _pose_to_xyz(getattr(env.unwrapped, key))
+            if goal_pos is not None:
+                break
+
+    scene = getattr(env.unwrapped, "scene", None)
+    if cube_pos is None:
+        actor, _ = _find_actor_by_keywords(scene, ["cube", "block", "obj"])
+        cube_pos = _pose_to_xyz(actor)
+    if goal_pos is None:
+        actor, _ = _find_actor_by_keywords(scene, ["goal", "target", "region"])
+        goal_pos = _pose_to_xyz(actor)
+
+    if cube_pos is None:
+        articulation, _ = _find_articulation_by_keywords(scene, ["cube", "block", "obj"])
+        cube_pos = _pose_to_xyz(articulation)
+    if goal_pos is None:
+        articulation, _ = _find_articulation_by_keywords(scene, ["goal", "target", "region"])
+        goal_pos = _pose_to_xyz(articulation)
+
+    return cube_pos, goal_pos
+
+
+def _refresh_obs(env):
+    return env.get_obs()
+
+
+def _to_bool_scalar(value):
+    if isinstance(value, (bool, np.bool_)):
+        return bool(value)
+    arr = np.array(value)
+    if arr.size == 0:
+        return False
+    return bool(arr.reshape(-1)[0].item())
+
+
+def _current_is_grasped(env):
+    cube = None
+    for key in ["cube", "obj", "object", "_obj"]:
+        candidate = getattr(env.unwrapped, key, None)
+        if candidate is not None:
+            cube = candidate
+            break
+    if cube is None:
+        return False
+    agent = getattr(env.unwrapped, "agent", None)
+    if agent is None or not hasattr(agent, "is_grasping"):
+        return False
+    try:
+        return _to_bool_scalar(agent.is_grasping(cube))
+    except Exception:
+        return False
+
+
+def _build_policy_obs(env, obs, mr_cfg):
+    curr_cube_pos, curr_goal_pos = _get_cube_goal_xyz(env)
+    if curr_cube_pos is None or curr_goal_pos is None:
+        cube_goal_distance = float("nan")
+    else:
+        cube_goal_distance = float(np.linalg.norm(curr_cube_pos - curr_goal_pos))
+
+    img = _to_uint8_rgb(env.render())
+    mr_cfg["vision"]["runtime"] = {
+        "cube_goal_distance": cube_goal_distance,
+    }
+    images = vis_mut([Image.fromarray(img)], mr_cfg["vision"])
+    vision_image = images[0] if images else Image.fromarray(img)
+    if vision_image is None:
+        vision_image = Image.fromarray(img)
+    img_mut = np.array(vision_image, dtype=np.uint8)
+    img_tensor = torch.as_tensor(img_mut, device="cuda").float()
+
+    proprio = obs["agent"]["qpos"][:].cuda()
+    mr_cfg["proprio"]["runtime"] = {
+        "is_grasped": _current_is_grasped(env),
+        "cube_goal_distance": cube_goal_distance,
+    }
+    proprio = prop_mut(proprio, mr_cfg["proprio"])
+    proprio = (proprio - state_min) / (state_max - state_min) * 2 - 1
+
+    policy_obs = {
+        "agent_pos": proprio,
+        "head_cam": img_tensor.permute(2, 0, 1).unsqueeze(0),
+    }
+    return policy_obs, img_mut, cube_goal_distance
+
 def _extract_eef_yaw(env):
     """从环境获取末端执行器 yaw 角（单位：度），失败返回 None。"""
     try:
@@ -208,6 +347,21 @@ if args.traj_dir == default_pickcube_traj_root:
 
 os.makedirs(args.traj_dir, exist_ok=True)
 
+with open(args.mr_config, "r", encoding="utf-8") as fp:
+    mr_config_data = yaml.safe_load(fp) or {}
+
+mr_cfg = copy.deepcopy(mr_config_data.get("mr", {}))
+mr_cfg.setdefault("language", {"type": "identity"})
+mr_cfg.setdefault("vision", {"type": "identity"})
+mr_cfg.setdefault("proprio", {"type": "identity"})
+mr_cfg.setdefault("env", {"type": "identity"})
+
+lang_mut = get_lang(mr_cfg["language"]["type"])
+vis_mut = get_vision(mr_cfg["vision"]["type"])
+prop_mut = get_proprio(mr_cfg["proprio"]["type"])
+env_cfg = mr_cfg["env"]
+env_mut = get_env(env_cfg["type"])
+
 seed = args.random_seed
 random.seed(seed)
 os.environ['PYTHONHASHSEED'] = str(seed)
@@ -230,7 +384,6 @@ env = gym.make(
     sim_backend=args.sim_backend
 )
 
-from diffusion_policy.workspace.robotworkspace import RobotWorkspace
 import hydra
 import dill
 
@@ -240,6 +393,11 @@ print(f"Loading policy from {checkpoint_path}. Task is {task2lang[env_id]}")
 run_config_path = os.path.join(args.traj_dir, "run_config.json")
 run_config = {
     "args": vars(args),
+    "mr_config": {
+        "path": args.mr_config,
+        "abs_path": os.path.abspath(args.mr_config),
+        "content": mr_config_data,
+    },
 }
 
 def get_policy(output_dir, device):
@@ -314,34 +472,16 @@ def _first_index_le(seq, thresh: float):
             return int(i)
     return None
 
-def _detect_open_to_close_transition(cmds, open_thresh=0.1, close_thresh=-0.1):
-    prev = None
-    for i, c in enumerate(cmds):
-        if c is None:
-            continue
-        c = float(c)
-        if prev is not None and prev >= open_thresh and c <= close_thresh:
-            return int(i)
-        prev = c
-    return None
-
 for episode in tqdm.trange(total_episodes):
     
     obs_window = deque(maxlen=2)
     obs, _ = env.reset(seed = episode + base_seed)
-   
-    img = _to_uint8_rgb(env.render())
-    img_tensor = torch.as_tensor(img, device="cuda").float()
-    proprio = obs['agent']['qpos'][:].cuda()
-    proprio = (proprio - state_min) / (state_max - state_min) * 2 - 1
-    obs_window.append({
-        'agent_pos': proprio,
-        "head_cam": img_tensor.permute(2, 0, 1).unsqueeze(0),
-    })
-    obs_window.append({
-        'agent_pos': proprio,
-        "head_cam": img_tensor.permute(2, 0, 1).unsqueeze(0),
-    })
+    env_mut(env, env_cfg)
+    obs = _refresh_obs(env)
+
+    policy_obs, _, _ = _build_policy_obs(env, obs, mr_cfg)
+    obs_window.append(policy_obs)
+    obs_window.append(policy_obs)
 
     global_steps = 0
     video_frames = []
@@ -363,9 +503,6 @@ for episode in tqdm.trange(total_episodes):
         initial_cube_yaw_deg = inferred_cube_yaw_deg
 
     gripper_action_cmd_traj = []   # 每步夹爪控制指令（原始）
-    open_thresh = 0.1
-    close_thresh = -0.1
-
     while global_steps < MAX_EPISODE_STEPS and not done:
         obs = obs_window[-1]
         actions = policy.predict_action(obs)
@@ -380,17 +517,10 @@ for episode in tqdm.trange(total_episodes):
             obs, reward, terminated, truncated, info = env.step(action)
             global_steps += 1  # 改为每步都计数，避免仅 --show 时计数
 
-            img = _to_uint8_rgb(env.render())
-            img_tensor = torch.as_tensor(img, device="cuda").float()
-            proprio = obs['agent']['qpos'][:].cuda()
-            proprio = (proprio - state_min) / (state_max - state_min) * 2 - 1
-            obs_window.append({
-                'agent_pos': proprio,
-                "head_cam": img_tensor.permute(2, 0, 1).unsqueeze(0),
-            }) 
+            policy_obs, img, _ = _build_policy_obs(env, obs, mr_cfg)
+            obs_window.append(policy_obs)
             eef_xyz = env.unwrapped.agent.tcp.pose.p
             eef_traj.append(np.array(eef_xyz, dtype=np.float32))
-            step_index = len(eef_traj) - 1
 
             # 新增：每步获取末端执行器yaw
             eef_yaw = _extract_eef_yaw(env)
@@ -404,12 +534,9 @@ for episode in tqdm.trange(total_episodes):
             if cube_yaw_deg is None:
                 cube_yaw_deg = inferred_cube_yaw_deg  # 兜底推断（可能仍为 None）
 
-            if gripper_width is not None:
-                gripper_width_traj.append(gripper_width)
-            if gripper_finger_qpos is not None:
-                gripper_finger_qpos_traj.append(gripper_finger_qpos)
-            if cube_pos is not None:
-                cube_pos_traj.append(cube_pos)
+            gripper_width_traj.append(gripper_width)
+            gripper_finger_qpos_traj.append(gripper_finger_qpos)
+            cube_pos_traj.append(cube_pos)
             cube_yaw_traj.append(cube_yaw_deg)
             eef_yaw_traj.append(eef_yaw)  # 保留：每步实时 yaw
             if args.save_video:
@@ -441,8 +568,11 @@ for episode in tqdm.trange(total_episodes):
         cube_yaw_valid = int(sum(v is not None for v in cube_yaw_traj))
         
         # 从原始序列统一推导（后处理）
-        grasp_frame_index = _detect_open_to_close_transition(
-            gripper_action_cmd_traj, open_thresh=open_thresh, close_thresh=close_thresh
+        grasp_frame_index = detect_grasp_event_index(
+            gripper_action_cmd_traj,
+            gripper_width_traj,
+            eef_traj,
+            cube_pos_traj,
         )
         gripper_fully_closed_frame_index = _first_index_le(gripper_action_cmd_traj, -0.95)
         gripper_fully_opened_frame_index = _first_index_ge(gripper_action_cmd_traj, 0.95)

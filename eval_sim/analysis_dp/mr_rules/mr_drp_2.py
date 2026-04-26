@@ -1,7 +1,4 @@
-try:
-    from eval_sim.analysis.mr_rules import register_mr_rule
-except ImportError:
-    from . import register_mr_rule
+from .registry import register_mr_rule
 
 import numpy as np
 from typing import List, Dict, Any

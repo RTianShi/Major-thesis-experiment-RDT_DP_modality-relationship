@@ -11,6 +11,7 @@ from statistics import mean
 from typing import Dict, List, Optional
 
 import numpy as np
+from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
 
 
 @dataclass
@@ -21,7 +22,7 @@ class EpisodeRecord:
     success: Optional[bool]
     total_steps: Optional[int]
     path_len: Optional[float]
-    gripper_width: List[float]
+    gripper_width: List[Optional[float]]
     cube_pos: List[List[float]]
     eef_path: List[List[float]]
     gripper_action_cmd: List[Optional[float]]
@@ -76,28 +77,6 @@ def _net_disp(points: List[List[float]]) -> Optional[float]:
     return float(np.linalg.norm(arr[-1, :3] - arr[0, :3]))
 
 
-def _derive_grasp_from_raw(
-    gripper_cmd: List[Optional[float]],
-    eef_yaw_deg: List[Optional[float]],
-    open_thresh: float = 0.1,
-    close_thresh: float = -0.1,
-):
-    prev = None
-    idx = None
-    for i, c in enumerate(gripper_cmd):
-        if c is None:
-            continue
-        c = float(c)
-        if prev is not None and prev >= open_thresh and c <= close_thresh:
-            idx = int(i)
-            break
-        prev = c
-    yaw = None
-    if idx is not None and 0 <= idx < len(eef_yaw_deg):
-        yaw = eef_yaw_deg[idx]
-    return idx, yaw
-
-
 def load_records(traj_dir: str) -> List[EpisodeRecord]:
     files = sorted(glob.glob(os.path.join(traj_dir, "*.json")))
     # 过滤掉 run_config.json
@@ -128,7 +107,7 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             success=bool(metrics.get("env_success")) if "env_success" in metrics else None,
             total_steps=_safe_int(traj.get("total_steps")),
             path_len=_safe_float(traj.get("total_path_length_meters")),
-            gripper_width=[float(x) for x in gripper_width if x is not None],
+            gripper_width=[None if x is None else float(x) for x in gripper_width],
             cube_pos=cube_pos,
             eef_path=eef_path,
             gripper_action_cmd=[None if x is None else float(x) for x in gripper_action_cmd],
@@ -144,16 +123,21 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             derived_eef_yaw_at_grasp=None,
         )
 
-        rec.derived_grasp_frame_index, rec.derived_eef_yaw_at_grasp = _derive_grasp_from_raw(
-            rec.gripper_action_cmd, rec.eef_yaw_deg
+        rec.derived_grasp_frame_index, rec.derived_eef_yaw_at_grasp = derive_grasp_and_yaw_from_raw(
+            rec.gripper_action_cmd,
+            rec.gripper_width,
+            rec.eef_path,
+            rec.cube_pos,
+            rec.eef_yaw_deg,
         )
 
         rec.cube_path_len = _dist_path(rec.cube_pos)
         rec.cube_net_disp = _net_disp(rec.cube_pos)
-        if len(rec.gripper_width) > 0:
-            rec.gripper_mean = float(mean(rec.gripper_width))
-            rec.gripper_max = float(max(rec.gripper_width))
-            rec.gripper_min = float(min(rec.gripper_width))
+        valid_gripper_width = [float(x) for x in rec.gripper_width if x is not None]
+        if len(valid_gripper_width) > 0:
+            rec.gripper_mean = float(mean(valid_gripper_width))
+            rec.gripper_max = float(max(valid_gripper_width))
+            rec.gripper_min = float(min(valid_gripper_width))
 
         records.append(rec)
     return records
@@ -206,9 +190,9 @@ def summarize(records: List[EpisodeRecord]) -> Dict:
 
 
 try:
-    from eval_sim.analysis.mr_rules import MR_RULE_REGISTRY
+    from eval_sim.analysis_dp.mr_rules import MR_RULE_REGISTRY
 except Exception:
-    # 兼容直接运行该脚本（python eval_sim/analysis/mr_eval_analyzer.py）
+    # 兼容直接运行该脚本（python eval_sim/analysis_dp/mr_eval_analyzer_dp.py）
     from mr_rules import MR_RULE_REGISTRY
 
 
@@ -239,6 +223,8 @@ def main():
     parser.add_argument("--translation-dy", type=float, default=-0.04, help="Expected translation delta y for translation-equivariance MRs")
     parser.add_argument("--translation-dz", type=float, default=0.0, help="Expected translation delta z for translation-equivariance MRs")
     parser.add_argument("--position-tol", type=float, default=0.025, help="Position tolerance for translation-equivariance MRs")
+    parser.add_argument("--sadp-grasp-tol", type=float, default=0.02, help="Position tolerance at grasp point for SADP invariance MRs")
+    parser.add_argument("--sadp-final-tol", type=float, default=0.02, help="Position tolerance at final point for SADP invariance MRs")
 
     parser.add_argument("--out", type=str, default=None, help="output json path")
     args = parser.parse_args()
@@ -283,6 +269,8 @@ def main():
             low_release_max=args.low_release_max,
             translation_delta=[args.translation_dx, args.translation_dy, args.translation_dz],
             position_tol=args.position_tol,
+            sadp_grasp_tol=args.sadp_grasp_tol,
+            sadp_final_tol=args.sadp_final_tol,
         )
         mr_compare = result["mr_compare"]
         analyzable_count = int(mr_compare.get("analyzable_episodes", 0))

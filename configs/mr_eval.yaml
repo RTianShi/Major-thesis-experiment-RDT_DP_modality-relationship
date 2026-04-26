@@ -1,9 +1,10 @@
 mr:
   language:
-    type: MR-JDCP-3
+    type: identity
   vision:
     type: identity
   proprio:
     type: identity
   env:
     type: identity
+    

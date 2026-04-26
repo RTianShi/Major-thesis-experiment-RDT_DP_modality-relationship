@@ -136,4 +136,3 @@ def vis_noise(images, cfg):
         arr = np.clip(arr, 0, 255).astype(np.uint8)
         out.append(im.fromarray(arr))
     return out
-

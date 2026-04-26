@@ -11,6 +11,7 @@ from statistics import mean
 from typing import Dict, List, Optional
 
 import numpy as np
+from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
 
 
 @dataclass
@@ -89,74 +90,6 @@ def _net_disp(points: List[List[float]]) -> Optional[float]:
     return float(np.linalg.norm(arr[-1, :3] - arr[0, :3]))
 
 
-def _derive_grasp_from_raw(
-    gripper_cmd: List[Optional[float]],
-    gripper_width: List[Optional[float]],
-    eef_path: List[List[float]],
-    cube_pos: List[List[float]],
-    eef_yaw_deg: List[Optional[float]],
-    open_width_thresh: float = 0.075,
-    close_width_thresh: float = 0.050,
-    min_width_drop: float = 0.015,
-    cmd_close_thresh: float = -0.02,
-    proximity_thresh: float = 0.05,
-    lookahead_frames: int = 5,
-    min_obj_lift: float = 0.01,
-):
-    def _xyz(point):
-        if point is None:
-            return None
-        arr = np.asarray(point, dtype=np.float64).reshape(-1)
-        if arr.size < 3:
-            return None
-        return arr[:3]
-
-    prev_width = None
-    was_open = False
-    idx = None
-    first_intent_idx = None
-    n = min(len(gripper_cmd), len(gripper_width), len(eef_path), len(cube_pos))
-    for i in range(n):
-        c = gripper_cmd[i]
-        width = gripper_width[i]
-        if width is None:
-            prev_width = width
-            continue
-        width = float(width)
-        c = None if c is None else float(c)
-        if width >= open_width_thresh:
-            was_open = True
-        eef_xyz = _xyz(eef_path[i])
-        cube_xyz = _xyz(cube_pos[i])
-        is_valid_attempt = (
-            was_open
-            and prev_width is not None
-            and c is not None
-            and c <= cmd_close_thresh
-            and (float(prev_width) - width) >= min_width_drop
-            and width <= close_width_thresh
-            and eef_xyz is not None
-            and cube_xyz is not None
-            and float(np.linalg.norm(eef_xyz - cube_xyz)) <= proximity_thresh
-        )
-        if is_valid_attempt:
-            if first_intent_idx is None:
-                first_intent_idx = int(i)
-            future_idx = i + lookahead_frames
-            if future_idx < n:
-                future_cube_xyz = _xyz(cube_pos[future_idx])
-                if future_cube_xyz is not None and float(future_cube_xyz[2] - cube_xyz[2]) > min_obj_lift:
-                    idx = int(i)
-                    break
-        prev_width = width
-    if idx is None:
-        idx = first_intent_idx
-    yaw = None
-    if idx is not None and 0 <= idx < len(eef_yaw_deg):
-        yaw = eef_yaw_deg[idx]
-    return idx, yaw
-
-
 def load_records(traj_dir: str) -> List[EpisodeRecord]:
     files = sorted(glob.glob(os.path.join(traj_dir, "*.json")))
     # 过滤掉 run_config.json
@@ -204,7 +137,7 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             derived_eef_yaw_at_grasp=None,
         )
 
-        rec.derived_grasp_frame_index, rec.derived_eef_yaw_at_grasp = _derive_grasp_from_raw(
+        rec.derived_grasp_frame_index, rec.derived_eef_yaw_at_grasp = derive_grasp_and_yaw_from_raw(
             rec.gripper_action_cmd, rec.gripper_width, rec.eef_path, rec.cube_pos, rec.eef_yaw_deg
         )
 
