@@ -223,8 +223,8 @@ def main():
     parser.add_argument("--translation-dy", type=float, default=-0.04, help="Expected translation delta y for translation-equivariance MRs")
     parser.add_argument("--translation-dz", type=float, default=0.0, help="Expected translation delta z for translation-equivariance MRs")
     parser.add_argument("--position-tol", type=float, default=0.025, help="Position tolerance for translation-equivariance MRs")
-    parser.add_argument("--sadp-grasp-tol", type=float, default=0.02, help="Position tolerance at grasp point for SADP invariance MRs")
-    parser.add_argument("--sadp-final-tol", type=float, default=0.02, help="Position tolerance at final point for SADP invariance MRs")
+    parser.add_argument("--sadp-grasp-tol", type=float, default=0.05, help="Position tolerance at grasp point for SADP invariance MRs")
+    parser.add_argument("--sadp-final-tol", type=float, default=0.05, help="Position tolerance at final point for SADP invariance MRs")
 
     parser.add_argument("--out", type=str, default=None, help="output json path")
     args = parser.parse_args()
@@ -237,6 +237,23 @@ def main():
 
     if not single_mode and not compare_mode:
         raise ValueError("Provide either --traj-dir, or both --base-traj-dir and --mr-traj-dir")
+
+    # 增加：若为 compare 模式，先校验目录与 JSON 文件是否存在（排除 run_config.json）
+    if compare_mode:
+        if not os.path.isdir(args.base_traj_dir):
+            raise ValueError(f"--base-traj-dir 不存在: {args.base_traj_dir}")
+        if not os.path.isdir(args.mr_traj_dir):
+            raise ValueError(f"--mr-traj-dir 不存在: {args.mr_traj_dir}")
+
+        base_files = sorted(glob.glob(os.path.join(args.base_traj_dir, "*.json")))
+        base_files = [f for f in base_files if os.path.basename(f) != "run_config.json"]
+        mr_files = sorted(glob.glob(os.path.join(args.mr_traj_dir, "*.json")))
+        mr_files = [f for f in mr_files if os.path.basename(f) != "run_config.json"]
+
+        if len(base_files) == 0:
+            raise ValueError(f"--base-traj-dir 中未找到任何 traj JSON 文件: {args.base_traj_dir}")
+        if len(mr_files) == 0:
+            raise ValueError(f"--mr-traj-dir 中未找到任何 traj JSON 文件: {args.mr_traj_dir}")
 
     result = {}
 

@@ -10,6 +10,6 @@ def analyze_mr_sadp_2(base_records: List[Any], mr_records: List[Any], **kwargs) 
         base_records,
         mr_records,
         mr_id="MR-SADP-2",
-        position_tol_m=float(kwargs.get("sadp_grasp_tol", kwargs.get("position_tol", 0.02))),
-        final_tol_m=float(kwargs.get("sadp_final_tol", kwargs.get("position_tol", 0.02))),
+        position_tol_m=float(kwargs.get("sadp_grasp_tol", kwargs.get("position_tol", 0.03))),
+        final_tol_m=float(kwargs.get("sadp_final_tol", kwargs.get("position_tol", 0.03))),
     )

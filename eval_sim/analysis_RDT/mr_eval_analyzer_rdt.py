@@ -11,6 +11,9 @@ from statistics import mean
 from typing import Dict, List, Optional
 
 import numpy as np
+
+# 将项目根目录添加到由于直接运行导致的路径问题
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
 
 

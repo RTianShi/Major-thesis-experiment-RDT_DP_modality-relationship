@@ -12,23 +12,28 @@ def _xyz(point: Any) -> Optional[np.ndarray]:
     return arr[:3]
 
 
-def detect_grasp_event_index(
+def detect_grasp_event_index_with_reason(
     gripper_cmd: Sequence[Optional[float]],
     gripper_width: Sequence[Optional[float]],
     eef_path: Sequence[Any],
     cube_pos: Sequence[Any],
     *,
     open_width_thresh: float = 0.075,
-    close_width_thresh: float = 0.050,
+    close_width_thresh: float = 0.055,
     min_width_drop: float = 0.015,
     cmd_close_thresh: float = -0.02,
     proximity_thresh: float = 0.05,
     lookahead_frames: int = 5,
     min_obj_lift: float = 0.01,
-) -> Optional[int]:
+    grasp_match_window: int = 3,
+) -> Tuple[Optional[int], Optional[str]]:
+    if not gripper_cmd or not gripper_width or not eef_path or not cube_pos:
+        return None, "insufficient_trajectory_data"
+
     prev_width = None
     was_open = False
     first_intent_idx = None
+    saw_valid_attempt = False
     n = min(len(gripper_cmd), len(gripper_width), len(eef_path), len(cube_pos))
 
     for i in range(n):
@@ -44,30 +49,67 @@ def detect_grasp_event_index(
         if width >= open_width_thresh:
             was_open = True
 
-        if was_open and prev_width is not None:
+        # 在短窗口内寻找“有效近距离闭合”
+        if was_open:
+            window_start = max(0, i - max(1, int(grasp_match_window)) + 1)
+            window_prev_widths = [float(w) for w in gripper_width[window_start:i] if w is not None]
+            window_best_prev_width = max(window_prev_widths) if window_prev_widths else None
+
             eef_xyz = _xyz(eef_path[i])
             cube_xyz = _xyz(cube_pos[i])
-            is_valid_attempt = (
-                cmd_val is not None
-                and cmd_val <= cmd_close_thresh
-                and (float(prev_width) - width) >= min_width_drop
-                and width <= close_width_thresh
-                and eef_xyz is not None
+            close_enough = (
+                eef_xyz is not None
                 and cube_xyz is not None
                 and float(np.linalg.norm(eef_xyz - cube_xyz)) <= proximity_thresh
             )
+
+            accumulated_drop = (window_best_prev_width - width) if window_best_prev_width is not None else None
+            is_valid_attempt = (
+                cmd_val is not None
+                and cmd_val <= cmd_close_thresh
+                and width <= close_width_thresh
+                and close_enough
+                and accumulated_drop is not None
+                and accumulated_drop >= min_width_drop
+            )
+
             if is_valid_attempt:
+                saw_valid_attempt = True
                 if first_intent_idx is None:
                     first_intent_idx = int(i)
+
                 future_idx = i + lookahead_frames
                 if future_idx < n:
                     future_cube_xyz = _xyz(cube_pos[future_idx])
                     if future_cube_xyz is not None and float(future_cube_xyz[2] - cube_xyz[2]) > min_obj_lift:
-                        return int(i)
+                        return int(i), None
 
         prev_width = width
 
-    return first_intent_idx
+    if first_intent_idx is not None:
+        return first_intent_idx, None
+    if not was_open:
+        return None, "never_opened_enough"
+    if not saw_valid_attempt:
+        return None, "no_valid_close_attempt"
+    return None, "no_grasp_confirmed"
+
+
+def detect_grasp_event_index(
+    gripper_cmd: Sequence[Optional[float]],
+    gripper_width: Sequence[Optional[float]],
+    eef_path: Sequence[Any],
+    cube_pos: Sequence[Any],
+    **kwargs,
+) -> Optional[int]:
+    idx, _ = detect_grasp_event_index_with_reason(
+        gripper_cmd,
+        gripper_width,
+        eef_path,
+        cube_pos,
+        **kwargs,
+    )
+    return idx
 
 
 def derive_grasp_and_yaw_from_raw(

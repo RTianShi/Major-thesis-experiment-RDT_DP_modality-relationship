@@ -202,27 +202,38 @@ def env_sadp2(env, cfg):
     return env_checkerboard_table(env, cfg)
 
 
-@register_env("MR-BG-1-darken")
-def env_darken_scene(env, cfg):
+def _apply_darken_scene(env, cfg, *, darken_table: bool):
     ambient = float(cfg.get("ambient", 0.08))
     ambient = max(0.0, min(ambient, 1.0))
     env.unwrapped.scene.set_ambient_light([ambient, ambient, ambient])
 
-    table = _get_table_actor(env)
-    if table is not None:
-        dark_scale = float(cfg.get("table_dark_scale", 0.45))
-        dark_scale = max(0.0, min(dark_scale, 1.0))
-        for material in _iter_render_materials(table):
-            try:
-                base_color = np.array(material.base_color, dtype=np.float32)
-            except Exception:
-                base_color = np.array([0.5, 0.5, 0.5, 1.0], dtype=np.float32)
-            base_color[:3] *= dark_scale
-            material.set_base_color(base_color)
-            material.set_base_color_texture(None)
+    if darken_table:
+        table = _get_table_actor(env)
+        if table is not None:
+            dark_scale = float(cfg.get("table_dark_scale", 0.45))
+            dark_scale = max(0.0, min(dark_scale, 1.0))
+            for material in _iter_render_materials(table):
+                try:
+                    base_color = np.array(material.base_color, dtype=np.float32)
+                except Exception:
+                    base_color = np.array([0.5, 0.5, 0.5, 1.0], dtype=np.float32)
+                base_color[:3] *= dark_scale
+                material.set_base_color(base_color)
+                material.set_base_color_texture(None)
 
     env.unwrapped.scene.update_render(
         update_sensors=True,
         update_human_render_cameras=True,
     )
     return env
+
+
+@register_env("MR-BG-1-darken")
+def env_darken_scene(env, cfg):
+    return _apply_darken_scene(env, cfg, darken_table=True)
+
+
+@register_env("MR-SADP-3")
+def env_sadp3(env, cfg):
+    # DP 兼容版：只调暗环境光，不改桌面材质
+    return _apply_darken_scene(env, cfg, darken_table=False)
