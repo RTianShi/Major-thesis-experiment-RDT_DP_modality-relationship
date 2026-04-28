@@ -14,6 +14,13 @@ import numpy as np
 from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
 
 
+def _first_not_none(*vals):
+    for v in vals:
+        if v is not None:
+            return v
+    return None
+
+
 @dataclass
 class EpisodeRecord:
     file: str
@@ -24,6 +31,7 @@ class EpisodeRecord:
     path_len: Optional[float]
     gripper_width: List[Optional[float]]
     cube_pos: List[List[float]]
+    goal_point: Optional[List[float]]
     eef_path: List[List[float]]
     gripper_action_cmd: List[Optional[float]]
     eef_yaw_deg: List[Optional[float]]
@@ -77,6 +85,18 @@ def _net_disp(points: List[List[float]]) -> Optional[float]:
     return float(np.linalg.norm(arr[-1, :3] - arr[0, :3]))
 
 
+def _safe_xyz_list(x):
+    if x is None:
+        return None
+    try:
+        arr = np.asarray(x, dtype=np.float64).reshape(-1)
+    except Exception:
+        return None
+    if arr.size < 3:
+        return None
+    return [float(arr[0]), float(arr[1]), float(arr[2])]
+
+
 def load_records(traj_dir: str) -> List[EpisodeRecord]:
     files = sorted(glob.glob(os.path.join(traj_dir, "*.json")))
     # 过滤掉 run_config.json
@@ -96,6 +116,7 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
 
         gripper_width = traj.get("gripper_width", []) or []
         cube_pos = traj.get("cube_pos", []) or []
+        goal_point = _first_not_none(traj.get("goal_point"), mr_eval.get("goal_point"))
         eef_path = traj.get("eef_path", []) or []
         gripper_action_cmd = traj.get("gripper_action_cmd", []) or []
         eef_yaw_deg = traj.get("eef_yaw_deg", []) or []
@@ -109,6 +130,7 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             path_len=_safe_float(traj.get("total_path_length_meters")),
             gripper_width=[None if x is None else float(x) for x in gripper_width],
             cube_pos=cube_pos,
+            goal_point=_safe_xyz_list(goal_point),
             eef_path=eef_path,
             gripper_action_cmd=[None if x is None else float(x) for x in gripper_action_cmd],
             eef_yaw_deg=[None if x is None else float(x) for x in eef_yaw_deg],
@@ -191,6 +213,8 @@ def summarize(records: List[EpisodeRecord]) -> Dict:
 
 try:
     from eval_sim.analysis_dp.mr_rules import MR_RULE_REGISTRY
+    from eval_sim.analysis_dp.mr_rules import mr_ltsep_1  # noqa: F401
+    from eval_sim.analysis_dp.mr_rules import mr_sesp_1  # noqa: F401
 except Exception:
     # 兼容直接运行该脚本（python eval_sim/analysis_dp/mr_eval_analyzer_dp.py）
     from mr_rules import MR_RULE_REGISTRY
@@ -223,8 +247,8 @@ def main():
     parser.add_argument("--translation-dy", type=float, default=-0.04, help="Expected translation delta y for translation-equivariance MRs")
     parser.add_argument("--translation-dz", type=float, default=0.0, help="Expected translation delta z for translation-equivariance MRs")
     parser.add_argument("--position-tol", type=float, default=0.025, help="Position tolerance for translation-equivariance MRs")
-    parser.add_argument("--sadp-grasp-tol", type=float, default=0.05, help="Position tolerance at grasp point for SADP invariance MRs")
-    parser.add_argument("--sadp-final-tol", type=float, default=0.05, help="Position tolerance at final point for SADP invariance MRs")
+    parser.add_argument("--sadp-grasp-tol", type=float, default=0.03, help="Position tolerance at grasp point for SADP invariance MRs")
+    parser.add_argument("--sadp-final-tol", type=float, default=0.03, help="Position tolerance at final point for SADP invariance MRs")
 
     parser.add_argument("--out", type=str, default=None, help="output json path")
     args = parser.parse_args()

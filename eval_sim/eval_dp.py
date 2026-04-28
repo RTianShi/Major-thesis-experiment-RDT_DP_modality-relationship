@@ -497,6 +497,10 @@ for episode in tqdm.trange(total_episodes):
     # 兜底推断（可能仍为 None）
     inferred_cube_yaw_deg = _infer_cube_yaw_from_env_id(env_id)
 
+    # 新增：记录目标位置（绿球/goal）并写入结果
+    _, initial_goal_point = _get_cube_goal_xyz(env)
+    goal_point = initial_goal_point.tolist() if initial_goal_point is not None else None
+
     # 新增：记录 reset 后（第一步动作前）的物体初始偏航角
     initial_cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
     if initial_cube_yaw_deg is None:
@@ -592,8 +596,9 @@ for episode in tqdm.trange(total_episodes):
                 "pair_key": f"{episode + base_seed}",
                 "expected_delta_yaw_deg": 45.0,
                 "grasp_frame_index": grasp_frame_index,
-                "initial_cube_yaw_deg": initial_cube_yaw_deg,  # 补回该字段
+                "initial_cube_yaw_deg": initial_cube_yaw_deg,
                 "eef_yaw_at_grasp": eef_yaw_at_grasp,
+                "goal_point": goal_point,
                 "gripper_fully_closed_frame_index": gripper_fully_closed_frame_index,
                 "gripper_fully_opened_frame_index": gripper_fully_opened_frame_index,
             },
@@ -602,15 +607,17 @@ for episode in tqdm.trange(total_episodes):
                 "cube_yaw_deg_measured_or_inferred": cube_yaw_valid > 0,
                 "cube_yaw_inferred_from_env_id": inferred_cube_yaw_deg is not None,
                 "grasp_frame_index_available": grasp_frame_index is not None,
-                "initial_cube_yaw_available": initial_cube_yaw_deg is not None,  # 新增
+                "initial_cube_yaw_available": initial_cube_yaw_deg is not None,
+                "goal_point_available": goal_point is not None,
             },
             "trajectory": {
                 "total_steps": int(global_steps),
                 "eef_path": eef_arr.tolist(),
                 "gripper_width": gripper_width_traj,
                 "gripper_finger_qpos": gripper_finger_qpos_traj,
-                "gripper_action_cmd": gripper_action_cmd_traj,  # 新增
+                "gripper_action_cmd": gripper_action_cmd_traj,
                 "cube_pos": cube_pos_traj,
+                "goal_point": goal_point,
                 "eef_yaw_deg": eef_yaw_traj,
                 "cube_yaw_deg": cube_yaw_traj,
                 "total_path_length_meters": total_path_length,
