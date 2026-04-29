@@ -15,6 +15,12 @@ def _resolve_target_indices(proprio, target_indices):
     return sorted(set(resolved))
 
 
+def _coerce_closed_value_like(proprio, closed_value):
+    if torch.is_tensor(proprio):
+        return torch.as_tensor(closed_value, dtype=proprio.dtype, device=proprio.device)
+    return np.asarray(closed_value, dtype=np.asarray(proprio).dtype)
+
+
 @register_proprio("identity")
 def prop_identity(proprio, cfg):
     return proprio
@@ -50,32 +56,34 @@ def prop_spoof_gripper_closed(proprio, cfg):
         return proprio
 
     num_dims = int(cfg.get("num_gripper_dims", 2))
-    closed_value = float(cfg.get("closed_value", 0.0))
-    debug = bool(cfg.get("debug", False))
-    if num_dims <= 0:
+    target_indices = cfg.get("target_indices", list(range(-num_dims, 0)))
+    resolved_indices = _resolve_target_indices(proprio, target_indices)
+    if not resolved_indices:
         return proprio
+
+    closed_value = cfg.get("closed_values", runtime.get("gripper_closed_value", cfg.get("closed_value", 0.0)))
+    debug = bool(cfg.get("debug", False))
+    closed_value = _coerce_closed_value_like(proprio, closed_value)
 
     if torch.is_tensor(proprio):
         out = proprio.clone()
-        width = min(num_dims, out.shape[-1])
-        before = out[..., -width:].detach().cpu().numpy().copy() if debug else None
-        out[..., -width:] = closed_value
+        before = out[..., resolved_indices].detach().cpu().numpy().copy() if debug else None
+        out[..., resolved_indices] = closed_value
         if debug:
-            after = out[..., -width:].detach().cpu().numpy().copy()
+            after = out[..., resolved_indices].detach().cpu().numpy().copy()
             print(
-                f"[MR-LTSEP2] is_grasped={is_grasped} width={width} "
+                f"[MR-LTSEP2] is_grasped={is_grasped} indices={resolved_indices} "
                 f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
             )
         return out
 
     out = proprio.copy()
-    width = min(num_dims, out.shape[-1])
-    before = out[..., -width:].copy() if debug else None
-    out[..., -width:] = closed_value
+    before = out[..., resolved_indices].copy() if debug else None
+    out[..., resolved_indices] = closed_value
     if debug:
-        after = out[..., -width:].copy()
+        after = out[..., resolved_indices].copy()
         print(
-            f"[MR-LTSEP2] is_grasped={is_grasped} width={width} "
+            f"[MR-LTSEP2] is_grasped={is_grasped} indices={resolved_indices} "
             f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
         )
     return out

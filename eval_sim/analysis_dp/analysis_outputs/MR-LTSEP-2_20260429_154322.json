@@ -1,0 +1,975 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_20260421_153203",
+  "mr_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_MR-LTSEP2_20260428_192156",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 247.68,
+      "median": 233.0,
+      "std": 148.0323532205038,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6705032801628112,
+      "median": 0.5545661449432373,
+      "std": 0.3124853579944371,
+      "min": 0.30650556087493896,
+      "max": 1.5584840774536133
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28112024226162186,
+      "median": 0.1959706660254523,
+      "std": 0.21755070449813674,
+      "min": 0.08008315310927194,
+      "max": 0.9277501005992768
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.15462773960573634,
+      "median": 0.17659622473865733,
+      "std": 0.08608699468812535,
+      "min": 0.022539561263933285,
+      "max": 0.2993244103053892
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05390115375090118,
+      "median": 0.05395223716739565,
+      "std": 0.005987932783034684,
+      "min": 0.040934974397532645,
+      "max": 0.06545244533111129
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799994084239006,
+      "median": 0.07999999821186066,
+      "std": 1.242984056570895e-06,
+      "min": 0.07999521866440773,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.043546322509646414,
+      "median": 0.043568842113018036,
+      "std": 0.005084735670505532,
+      "min": 0.03662733919918537,
+      "max": 0.05200224928557873
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 44.0,
+    "success_count": 11,
+    "success_episode_ids": [
+      1,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      19,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 272.72,
+      "median": 400.0,
+      "std": 150.95761524348484,
+      "min": 49.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.605087126493454,
+      "median": 0.5666230916976929,
+      "std": 0.23150397104053377,
+      "min": 0.26036912202835083,
+      "max": 1.2392017841339111
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.16714201551176144,
+      "median": 0.0649131853300399,
+      "std": 0.20340215219578403,
+      "min": 1.8927934196577336e-07,
+      "max": 0.686386904766169
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.10592214693971962,
+      "median": 0.057051711823111716,
+      "std": 0.11214058317007104,
+      "min": 7.679882693323606e-09,
+      "max": 0.33390355999513066
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.03097186164353916,
+      "median": 0.043924164408817884,
+      "std": 0.03015066357135675,
+      "min": 0.0001502989523578435,
+      "max": 0.06910281339170117
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.06118835158646107,
+      "median": 0.07998984679579735,
+      "std": 0.019578480917479924,
+      "min": 0.040800830349326134,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.023184701129794122,
+      "median": 0.03654773347079754,
+      "std": 0.022600033956972927,
+      "min": 0.0,
+      "max": 0.051933279260993004
+    }
+  },
+  "mr_rule": "MR-LTSEP-2",
+  "mr_compare": {
+    "mr_id": "MR-LTSEP-2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 21,
+    "violation_rate_percent": 84.0,
+    "config": {
+      "stop_ratio": 0.5,
+      "invariance_proxy": "post_hijack_stop_response"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": false,
+        "dst_success": true,
+        "hijack_frame": 46,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.04628145322203636,
+          -0.0759960263967514,
+          0.018010541796684265
+        ],
+        "goal_point": [
+          -0.05239424854516983,
+          0.0035987645387649536,
+          0.07847815006971359
+        ],
+        "final_point": [
+          -0.0671083927154541,
+          -0.011647493578493595,
+          0.07116135954856873
+        ],
+        "dist_rem_m": 0.14045838000482455,
+        "dist_actual_m": 0.14079417695801294,
+        "response_ratio": 1.0023907220998622,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.0024 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          -0.004485685378313065,
+          -0.015675973147153854,
+          0.15671274065971375
+        ],
+        "goal_point": [
+          -0.017152369022369385,
+          -0.04564018175005913,
+          0.1922023743391037
+        ],
+        "final_point": [
+          0.04099775850772858,
+          0.01539696380496025,
+          0.010086320340633392
+        ],
+        "dist_rem_m": 0.04814366802014899,
+        "dist_actual_m": 0.15663198336914583,
+        "response_ratio": 3.253428536097261,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(3.2534 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 41,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          -0.005870328284800053,
+          -0.014063199050724506,
+          0.021122239530086517
+        ],
+        "goal_point": [
+          0.0966324582695961,
+          0.023454882204532623,
+          0.1852535754442215
+        ],
+        "final_point": [
+          0.09385662525892258,
+          -0.005770578049123287,
+          0.21309828758239746
+        ],
+        "dist_rem_m": 0.19711297040390516,
+        "dist_actual_m": 0.2164925768980803,
+        "response_ratio": 1.0983172566192083,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.0983 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": false,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.004478270187973976,
+          -0.024502113461494446,
+          0.16496655344963074
+        ],
+        "goal_point": [
+          -0.023258566856384277,
+          0.09296587854623795,
+          0.1859484314918518
+        ],
+        "final_point": [
+          -0.019802281633019447,
+          0.06034707650542259,
+          0.06417763978242874
+        ],
+        "dist_rem_m": 0.12250836902731423,
+        "dist_actual_m": 0.13396766532633395,
+        "response_ratio": 1.0935388854655699,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.0935 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": true,
+        "hijack_frame": 33,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          -0.018291272222995758,
+          -0.04178173094987869,
+          0.019843511283397675
+        ],
+        "goal_point": [
+          -0.021875128149986267,
+          0.025947205722332,
+          0.030186224728822708
+        ],
+        "final_point": [
+          -0.03511625528335571,
+          0.008093198761343956,
+          0.01943444460630417
+        ],
+        "dist_rem_m": 0.06860775909084867,
+        "dist_actual_m": 0.05263797112567227,
+        "response_ratio": 0.7672305847501941,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.7672 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          -0.004893289878964424,
+          -0.012506135739386082,
+          0.1576918661594391
+        ],
+        "goal_point": [
+          -0.07572983205318451,
+          0.01901797205209732,
+          0.14714036881923676
+        ],
+        "final_point": [
+          0.0476248525083065,
+          0.05997227504849434,
+          0.12688636779785156
+        ],
+        "dist_rem_m": 0.07824908418230479,
+        "dist_actual_m": 0.09465861841085668,
+        "response_ratio": 1.2097089620923989,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.2097 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": false,
+        "dst_success": true,
+        "hijack_frame": 43,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.04185444861650467,
+          0.005506772547960281,
+          0.017995908856391907
+        ],
+        "goal_point": [
+          0.005669735372066498,
+          -0.07478807866573334,
+          0.02451871708035469
+        ],
+        "final_point": [
+          -0.0017651952803134918,
+          -0.050892267376184464,
+          0.01757168024778366
+        ],
+        "dist_rem_m": 0.08831276029622226,
+        "dist_actual_m": 0.07130010524510368,
+        "response_ratio": 0.8073590385573496,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.8074 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.0031388187780976295,
+          0.013063168153166771,
+          0.15560203790664673
+        ],
+        "goal_point": [
+          -0.05173049122095108,
+          0.08990371972322464,
+          0.08035660535097122
+        ],
+        "final_point": [
+          -0.06247614324092865,
+          0.06540793180465698,
+          0.049197256565093994
+        ],
+        "dist_rem_m": 0.12073519232540751,
+        "dist_actual_m": 0.13552592008480252,
+        "response_ratio": 1.1225055219983482,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.1225 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": false,
+        "dst_success": true,
+        "hijack_frame": 46,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.0765342190861702,
+          -0.009665761142969131,
+          0.019221194088459015
+        ],
+        "goal_point": [
+          -0.08699151128530502,
+          -0.09565507620573044,
+          0.29240506887435913
+        ],
+        "final_point": [
+          -0.08147793263196945,
+          -0.08027051389217377,
+          0.30817967653274536
+        ],
+        "dist_rem_m": 0.3297942635060919,
+        "dist_actual_m": 0.3368232114594801,
+        "response_ratio": 1.0213131298242193,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.0213 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          -0.0033098608255386353,
+          0.001127263531088829,
+          0.16061650216579437
+        ],
+        "goal_point": [
+          0.008456267416477203,
+          -0.05714334174990654,
+          0.30881091952323914
+        ],
+        "final_point": [
+          0.027992382645606995,
+          0.039382513612508774,
+          0.16099366545677185
+        ],
+        "dist_rem_m": 0.15967307396531719,
+        "dist_actual_m": 0.04943113247000235,
+        "response_ratio": 0.3095771330909516,
+        "stop_ratio": 0.5,
+        "is_halted": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "halted_after_hijack"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": true,
+        "hijack_frame": 39,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          -0.10419228672981262,
+          0.0755641907453537,
+          0.015591718256473541
+        ],
+        "goal_point": [
+          0.07322252541780472,
+          0.09180855005979538,
+          0.1573648303747177
+        ],
+        "final_point": [
+          0.05030469223856926,
+          0.07851147651672363,
+          0.1533295214176178
+        ],
+        "dist_rem_m": 0.227682915693302,
+        "dist_actual_m": 0.20700170391432257,
+        "response_ratio": 0.909166606919081,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.9092 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": false,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.0010672062635421753,
+          -0.002507244236767292,
+          0.1772846281528473
+        ],
+        "goal_point": [
+          0.015177294611930847,
+          -0.06066220998764038,
+          0.17357118427753448
+        ],
+        "final_point": [
+          -0.0544731467962265,
+          0.050324536859989166,
+          0.009620949625968933
+        ],
+        "dist_rem_m": 0.05995735401182789,
+        "dist_actual_m": 0.18435573495018742,
+        "response_ratio": 3.074781033763085,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(3.0748 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": true,
+        "hijack_frame": 38,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          -0.016294874250888824,
+          -0.021901773288846016,
+          0.021754354238510132
+        ],
+        "goal_point": [
+          -0.09418362379074097,
+          0.0059773921966552734,
+          0.18590377271175385
+        ],
+        "final_point": [
+          -0.11090406775474548,
+          0.006142732221633196,
+          0.17183592915534973
+        ],
+        "dist_rem_m": 0.1838176725947586,
+        "dist_actual_m": 0.17961590384566847,
+        "response_ratio": 0.9771416497131195,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.9771 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.00514557771384716,
+          0.027225688099861145,
+          0.16783621907234192
+        ],
+        "goal_point": [
+          -0.09314455091953278,
+          -0.021994397044181824,
+          0.15714335441589355
+        ],
+        "final_point": [
+          0.04418997839093208,
+          0.03961861878633499,
+          0.16956356167793274
+        ],
+        "dist_rem_m": 0.1104441194582778,
+        "dist_actual_m": 0.041000410579768394,
+        "response_ratio": 0.37123217407022757,
+        "stop_ratio": 0.5,
+        "is_halted": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "halted_after_hijack"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": true,
+        "hijack_frame": 45,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.015254788100719452,
+          -0.08685392141342163,
+          0.021546505391597748
+        ],
+        "goal_point": [
+          -0.09643149375915527,
+          0.0882243886590004,
+          0.2212628275156021
+        ],
+        "final_point": [
+          -0.096049964427948,
+          0.07540494948625565,
+          0.21650537848472595
+        ],
+        "dist_rem_m": 0.28811950565041167,
+        "dist_actual_m": 0.27699395538323307,
+        "response_ratio": 0.9613856401632255,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.9614 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          -0.006156165152788162,
+          0.007775873877108097,
+          0.15391981601715088
+        ],
+        "goal_point": [
+          0.0627836063504219,
+          -0.07301868498325348,
+          0.22075459361076355
+        ],
+        "final_point": [
+          0.0443582609295845,
+          0.03794369101524353,
+          0.17213091254234314
+        ],
+        "dist_rem_m": 0.12548840716314363,
+        "dist_actual_m": 0.061590977179789404,
+        "response_ratio": 0.4908100961048686,
+        "stop_ratio": 0.5,
+        "is_halted": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "halted_after_hijack"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": false,
+        "dst_success": false,
+        "hijack_frame": 46,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          -0.021054869517683983,
+          0.05941877141594887,
+          0.016593456268310547
+        ],
+        "goal_point": [
+          -0.03161062300205231,
+          -0.0700971856713295,
+          0.11148519814014435
+        ],
+        "final_point": [
+          -0.0077606504783034325,
+          -0.027091514319181442,
+          0.179611936211586
+        ],
+        "dist_rem_m": 0.1609044739816989,
+        "dist_actual_m": 0.1850291614877423,
+        "response_ratio": 1.1499317384349879,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.1499 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": false,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.008172708563506603,
+          0.03519972041249275,
+          0.17833009362220764
+        ],
+        "goal_point": [
+          0.03860337287187576,
+          -0.04839259386062622,
+          0.09442463517189026
+        ],
+        "final_point": [
+          -0.014301612973213196,
+          0.03396547585725784,
+          0.01001197099685669
+        ],
+        "dist_rem_m": 0.12228583848321309,
+        "dist_actual_m": 0.169816397595405,
+        "response_ratio": 1.3886840839605212,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.3887 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": true,
+        "hijack_frame": 33,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          -0.061977844685316086,
+          -0.07168293744325638,
+          0.022474415600299835
+        ],
+        "goal_point": [
+          -0.08844082802534103,
+          -0.023827575147151947,
+          0.2169950306415558
+        ],
+        "final_point": [
+          -0.09667196869850159,
+          -0.018416769802570343,
+          0.21211369335651398
+        ],
+        "dist_rem_m": 0.2020611166547744,
+        "dist_actual_m": 0.20001005605735553,
+        "response_ratio": 0.9898493058368912,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.9898 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": false,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.006200549192726612,
+          0.012442875653505325,
+          0.16919678449630737
+        ],
+        "goal_point": [
+          0.07992666214704514,
+          -0.02496989816427231,
+          0.04089989885687828
+        ],
+        "final_point": [
+          0.051075953990221024,
+          0.019306426867842674,
+          0.14722099900245667
+        ],
+        "dist_rem_m": 0.15262813056861393,
+        "dist_actual_m": 0.05043654864364289,
+        "response_ratio": 0.3304538190682297,
+        "stop_ratio": 0.5,
+        "is_halted": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "halted_after_hijack"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": false,
+        "dst_success": true,
+        "hijack_frame": 40,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.04619276896119118,
+          -0.06934597343206406,
+          0.01789255440235138
+        ],
+        "goal_point": [
+          -0.03928384929895401,
+          -0.07840043306350708,
+          0.2756739556789398
+        ],
+        "final_point": [
+          -0.03615842014551163,
+          -0.05917727202177048,
+          0.28802478313446045
+        ],
+        "dist_rem_m": 0.27173422006167997,
+        "dist_actual_m": 0.28258899807925314,
+        "response_ratio": 1.039946304941311,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.0399 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": true,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.0032442035153508186,
+          -0.04440568387508392,
+          0.19443859159946442
+        ],
+        "goal_point": [
+          -0.03509046882390976,
+          0.014031469821929932,
+          0.11600862443447113
+        ],
+        "final_point": [
+          -0.12249769270420074,
+          0.06726688891649246,
+          0.010426342487335205
+        ],
+        "dist_rem_m": 0.10505097707812533,
+        "dist_actual_m": 0.249283565046079,
+        "response_ratio": 2.372977120057526,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(2.3730 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": true,
+        "dst_success": true,
+        "hijack_frame": 47,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.08516857773065567,
+          -0.023457050323486328,
+          0.014753758907318115
+        ],
+        "goal_point": [
+          0.08503969758749008,
+          -0.03247777372598648,
+          0.2790752947330475
+        ],
+        "final_point": [
+          0.0693618506193161,
+          -0.024589935317635536,
+          0.2584468424320221
+        ],
+        "dist_rem_m": 0.26447545134108014,
+        "dist_actual_m": 0.244207811112095,
+        "response_ratio": 0.923366648487738,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(0.9234 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": false,
+        "dst_success": false,
+        "hijack_frame": 0,
+        "hijack_frame_source": "fallback_inferred_from_gripper_signal",
+        "hijack_point": [
+          0.0023107845336198807,
+          0.010709301568567753,
+          0.17264820635318756
+        ],
+        "goal_point": [
+          0.07016486674547195,
+          -0.002519175410270691,
+          0.12193125486373901
+        ],
+        "final_point": [
+          0.055993176996707916,
+          -0.010031428188085556,
+          0.00994030386209488
+        ],
+        "dist_rem_m": 0.08574017870505937,
+        "dist_actual_m": 0.17258574293507115,
+        "response_ratio": 2.012892269897814,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(2.0129 >= 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": false,
+        "dst_success": true,
+        "hijack_frame": 47,
+        "hijack_frame_source": "fallback_annotated",
+        "hijack_point": [
+          0.030045384541153908,
+          0.009308159351348877,
+          0.023406587541103363
+        ],
+        "goal_point": [
+          -0.07070840895175934,
+          0.09788217395544052,
+          0.13533887267112732
+        ],
+        "final_point": [
+          -0.08975733816623688,
+          0.08989082276821136,
+          0.12813685834407806
+        ],
+        "dist_rem_m": 0.17471553857836294,
+        "dist_actual_m": 0.1783667223276913,
+        "response_ratio": 1.0208978765085095,
+        "stop_ratio": 0.5,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "not_halted(1.0209 >= 0.5000)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 21,
+  "followup_mr_violation_rate_percent": 84.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

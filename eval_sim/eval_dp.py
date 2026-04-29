@@ -278,10 +278,13 @@ def _build_policy_obs(env, obs, mr_cfg):
     img_mut = np.array(vision_image, dtype=np.uint8)
     img_tensor = torch.as_tensor(img_mut, device="cuda").float()
 
+    gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
     proprio = obs["agent"]["qpos"][:].cuda()
     mr_cfg["proprio"]["runtime"] = {
         "is_grasped": _current_is_grasped(env),
         "cube_goal_distance": cube_goal_distance,
+        "gripper_width": gripper_width,
+        "gripper_finger_qpos": gripper_finger_qpos,
     }
     proprio = prop_mut(proprio, mr_cfg["proprio"])
     proprio = (proprio - state_min) / (state_max - state_min) * 2 - 1

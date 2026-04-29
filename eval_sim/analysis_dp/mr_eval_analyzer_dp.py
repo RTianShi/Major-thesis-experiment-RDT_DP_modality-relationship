@@ -214,6 +214,9 @@ def summarize(records: List[EpisodeRecord]) -> Dict:
 try:
     from eval_sim.analysis_dp.mr_rules import MR_RULE_REGISTRY
     from eval_sim.analysis_dp.mr_rules import mr_ltsep_1  # noqa: F401
+    from eval_sim.analysis_dp.mr_rules import mr_ltsep_2
+    from eval_sim.analysis_dp.mr_rules import mr_ltsep_3
+    from eval_sim.analysis_dp.mr_rules import mr_ltsep_4
     from eval_sim.analysis_dp.mr_rules import mr_sesp_1  # noqa: F401
 except Exception:
     # 兼容直接运行该脚本（python eval_sim/analysis_dp/mr_eval_analyzer_dp.py）
@@ -224,7 +227,7 @@ def _default_output_path(mr_id: str) -> str:
     base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "analysis_outputs")
     safe_mr_id = "".join(ch if (ch.isalnum() or ch in ("-", "_")) else "_" for ch in (mr_id or "single"))
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    return os.path.join(base_dir, f"{safe_mr_id}_{ts}.json")
+    return os.path.join(base_dir, f"PickCube_{safe_mr_id}_{ts}.json")
 
 
 def main():
@@ -358,3 +361,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
