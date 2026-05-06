@@ -1,0 +1,880 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_20260421_153203",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCube-v1_MR-LTSEP5_20260429_182006",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 247.68,
+      "median": 233.0,
+      "std": 148.0323532205038,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6705032801628112,
+      "median": 0.5545661449432373,
+      "std": 0.3124853579944371,
+      "min": 0.30650556087493896,
+      "max": 1.5584840774536133
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28112024226162186,
+      "median": 0.1959706660254523,
+      "std": 0.21755070449813674,
+      "min": 0.08008315310927194,
+      "max": 0.9277501005992768
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.15462773960573634,
+      "median": 0.17659622473865733,
+      "std": 0.08608699468812535,
+      "min": 0.022539561263933285,
+      "max": 0.2993244103053892
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05390115375090118,
+      "median": 0.05395223716739565,
+      "std": 0.005987932783034684,
+      "min": 0.040934974397532645,
+      "max": 0.06545244533111129
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799994084239006,
+      "median": 0.07999999821186066,
+      "std": 1.242984056570895e-06,
+      "min": 0.07999521866440773,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.043546322509646414,
+      "median": 0.043568842113018036,
+      "std": 0.005084735670505532,
+      "min": 0.03662733919918537,
+      "max": 0.05200224928557873
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 44.0,
+    "success_count": 11,
+    "success_episode_ids": [
+      3,
+      4,
+      5,
+      10,
+      11,
+      14,
+      15,
+      17,
+      19,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 271.4,
+      "median": 400.0,
+      "std": 148.74084845798077,
+      "min": 60.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6292594861984253,
+      "median": 0.5532981157302856,
+      "std": 0.24669433636347565,
+      "min": 0.28107279539108276,
+      "max": 1.216679573059082
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.25060452825113605,
+      "median": 0.1874620480131613,
+      "std": 0.16939954745297392,
+      "min": 0.07104139190530445,
+      "max": 0.6644204821272738
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.13394377663179668,
+      "median": 0.13577810566501192,
+      "std": 0.09317069714023817,
+      "min": 0.01240777298365101,
+      "max": 0.2924465050310106
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05339268430164667,
+      "median": 0.054119047629646956,
+      "std": 0.005397976879375543,
+      "min": 0.04132886861916631,
+      "max": 0.06568290706103047
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999972701072693,
+      "median": 0.07999999821186066,
+      "std": 7.199767085583807e-07,
+      "min": 0.07999690622091293,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.044238137602806094,
+      "median": 0.043812235817313194,
+      "std": 0.005793773580521726,
+      "min": 0.0365249365568161,
+      "max": 0.052196674048900604
+    }
+  },
+  "mr_rule": "MR-LTSEP-5",
+  "mr_compare": {
+    "mr_id": "MR-LTSEP-5",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 7,
+    "violation_rate_percent": 28.000000000000004,
+    "config": {
+      "delay_ms": 200.0,
+      "control_freq_hz": 20.0,
+      "max_path_len_ratio": 1.5,
+      "max_final_goal_delta_m": 0.05,
+      "invariance_proxy": "temporal_misalignment_conservative_degradation"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.05239424854516983,
+          0.0035987645387649536,
+          0.07847815006971359
+        ],
+        "base_path_len_m": 0.28863015188446317,
+        "mr_path_len_m": 0.28740397666783474,
+        "base_final_goal_dist_m": 0.12949539935983115,
+        "mr_final_goal_dist_m": 0.1365124495446957,
+        "path_len_ratio": 0.9957517424682669,
+        "final_goal_delta_m": 0.007017050184864565,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.017152369022369385,
+          -0.04564018175005913,
+          0.1922023743391037
+        ],
+        "base_path_len_m": 0.45883467254578353,
+        "mr_path_len_m": 0.7482372396809935,
+        "base_final_goal_dist_m": 0.019073235338410693,
+        "mr_final_goal_dist_m": 0.14835002624242216,
+        "path_len_ratio": 1.6307338665787792,
+        "final_goal_delta_m": 0.12927679090401148,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "excessive_degradation(path_len_ratio=1.6307 > 1.5000)",
+          "goal_regression(final_goal_delta_m=0.1293 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.0966324582695961,
+          0.023454882204532623,
+          0.1852535754442215
+        ],
+        "base_path_len_m": 0.3836457559419859,
+        "mr_path_len_m": 0.38572487020358737,
+        "base_final_goal_dist_m": 0.01413468314709144,
+        "mr_final_goal_dist_m": 0.008291279568877003,
+        "path_len_ratio": 1.0054193594726377,
+        "final_goal_delta_m": -0.005843403578214437,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": false,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.023258566856384277,
+          0.09296587854623795,
+          0.1859484314918518
+        ],
+        "base_path_len_m": 0.3226335332276574,
+        "mr_path_len_m": 0.3532046919085441,
+        "base_final_goal_dist_m": 0.1685840525043372,
+        "mr_final_goal_dist_m": 0.01957260820022033,
+        "path_len_ratio": 1.094755056534421,
+        "final_goal_delta_m": -0.14901144430411686,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.021875128149986267,
+          0.025947205722332,
+          0.030186224728822708
+        ],
+        "base_path_len_m": 0.22383959013597782,
+        "mr_path_len_m": 0.2150325008709188,
+        "base_final_goal_dist_m": 0.020737630221829475,
+        "mr_final_goal_dist_m": 0.022194537585563587,
+        "path_len_ratio": 0.9606544612608122,
+        "final_goal_delta_m": 0.0014569073637341126,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.07572983205318451,
+          0.01901797205209732,
+          0.14714036881923676
+        ],
+        "base_path_len_m": 0.3033826271463723,
+        "mr_path_len_m": 0.3170403539489287,
+        "base_final_goal_dist_m": 0.013797663085530968,
+        "mr_final_goal_dist_m": 0.128779729625746,
+        "path_len_ratio": 1.0450181572063681,
+        "final_goal_delta_m": 0.11498206654021502,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "goal_regression(final_goal_delta_m=0.1150 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.005669735372066498,
+          -0.07478807866573334,
+          0.02451871708035469
+        ],
+        "base_path_len_m": 0.8399630824191495,
+        "mr_path_len_m": 0.8222829450932242,
+        "base_final_goal_dist_m": 0.2770546022032111,
+        "mr_final_goal_dist_m": 0.2706111177711927,
+        "path_len_ratio": 0.9789512923889401,
+        "final_goal_delta_m": -0.00644348443201842,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.05173049122095108,
+          0.08990371972322464,
+          0.08035660535097122
+        ],
+        "base_path_len_m": 0.2608970779755446,
+        "mr_path_len_m": 0.2583052363847711,
+        "base_final_goal_dist_m": 0.02171805002082441,
+        "mr_final_goal_dist_m": 0.07138549447707503,
+        "path_len_ratio": 0.9900656549667587,
+        "final_goal_delta_m": 0.04966744445625061,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.08699151128530502,
+          -0.09565507620573044,
+          0.29240506887435913
+        ],
+        "base_path_len_m": 0.32943180476045386,
+        "mr_path_len_m": 0.3196195924834112,
+        "base_final_goal_dist_m": 0.3544551657548291,
+        "mr_final_goal_dist_m": 0.3396646827991131,
+        "path_len_ratio": 0.9702147390286813,
+        "final_goal_delta_m": -0.014790482955716,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.008456267416477203,
+          -0.05714334174990654,
+          0.30881091952323914
+        ],
+        "base_path_len_m": 0.6376987354719671,
+        "mr_path_len_m": 0.4941440072299551,
+        "base_final_goal_dist_m": 0.022589213447556003,
+        "mr_final_goal_dist_m": 0.013495164501522388,
+        "path_len_ratio": 0.774886289941024,
+        "final_goal_delta_m": -0.009094048946033615,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.07322252541780472,
+          0.09180855005979538,
+          0.1573648303747177
+        ],
+        "base_path_len_m": 0.43714880980477533,
+        "mr_path_len_m": 0.46461852612520793,
+        "base_final_goal_dist_m": 0.03272385250866706,
+        "mr_final_goal_dist_m": 0.0239714526144291,
+        "path_len_ratio": 1.0628383646582504,
+        "final_goal_delta_m": -0.008752399894237959,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.015177294611930847,
+          -0.06066220998764038,
+          0.17357118427753448
+        ],
+        "base_path_len_m": 0.3647744597856949,
+        "mr_path_len_m": 0.28766505295128586,
+        "base_final_goal_dist_m": 0.17234830590228536,
+        "mr_final_goal_dist_m": 0.2106857846931754,
+        "path_len_ratio": 0.7886107298199801,
+        "final_goal_delta_m": 0.03833747879089003,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.09418362379074097,
+          0.0059773921966552734,
+          0.18590377271175385
+        ],
+        "base_path_len_m": 0.3277067401518776,
+        "mr_path_len_m": 0.7821624489861055,
+        "base_final_goal_dist_m": 0.013903244475688864,
+        "mr_final_goal_dist_m": 0.10474365808256872,
+        "path_len_ratio": 2.3867755927864276,
+        "final_goal_delta_m": 0.09084041360687986,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "excessive_degradation(path_len_ratio=2.3868 > 1.5000)",
+          "goal_regression(final_goal_delta_m=0.0908 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.09314455091953278,
+          -0.021994397044181824,
+          0.15714335441589355
+        ],
+        "base_path_len_m": 0.3642352330312457,
+        "mr_path_len_m": 0.3672120123532667,
+        "base_final_goal_dist_m": 0.006552149884814551,
+        "mr_final_goal_dist_m": 0.008626973265543172,
+        "path_len_ratio": 1.0081726836178027,
+        "final_goal_delta_m": 0.0020748233807286213,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.09643149375915527,
+          0.0882243886590004,
+          0.2212628275156021
+        ],
+        "base_path_len_m": 0.49319886454241585,
+        "mr_path_len_m": 0.5009960138955892,
+        "base_final_goal_dist_m": 0.023212064578871986,
+        "mr_final_goal_dist_m": 0.026263839667140635,
+        "path_len_ratio": 1.015809341654522,
+        "final_goal_delta_m": 0.003051775088268649,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.0627836063504219,
+          -0.07301868498325348,
+          0.22075459361076355
+        ],
+        "base_path_len_m": 0.4994162216193889,
+        "mr_path_len_m": 0.3654442674453201,
+        "base_final_goal_dist_m": 0.026611703737775348,
+        "mr_final_goal_dist_m": 0.23335999627367424,
+        "path_len_ratio": 0.7317428862449518,
+        "final_goal_delta_m": 0.20674829253589888,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "goal_regression(final_goal_delta_m=0.2067 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": false,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.03161062300205231,
+          -0.0700971856713295,
+          0.11148519814014435
+        ],
+        "base_path_len_m": 0.6466265038691577,
+        "mr_path_len_m": 0.3097285437712334,
+        "base_final_goal_dist_m": 0.09891816355441,
+        "mr_final_goal_dist_m": 0.01665824759434435,
+        "path_len_ratio": 0.478991414546017,
+        "final_goal_delta_m": -0.08225991596006564,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.03860337287187576,
+          -0.04839259386062622,
+          0.09442463517189026
+        ],
+        "base_path_len_m": 0.9486079037922929,
+        "mr_path_len_m": 0.7307458055959832,
+        "base_final_goal_dist_m": 0.17870175327246327,
+        "mr_final_goal_dist_m": 0.15909752528811089,
+        "path_len_ratio": 0.770334932562387,
+        "final_goal_delta_m": -0.01960422798435238,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.08844082802534103,
+          -0.023827575147151947,
+          0.2169950306415558
+        ],
+        "base_path_len_m": 0.3861470674394097,
+        "mr_path_len_m": 0.5222425135838107,
+        "base_final_goal_dist_m": 0.025818816375520585,
+        "mr_final_goal_dist_m": 0.023192189355999586,
+        "path_len_ratio": 1.35244459331743,
+        "final_goal_delta_m": -0.002626627019520999,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.07992666214704514,
+          -0.02496989816427231,
+          0.04089989885687828
+        ],
+        "base_path_len_m": 0.34425494943516455,
+        "mr_path_len_m": 0.33433177766734673,
+        "base_final_goal_dist_m": 0.10346744289729405,
+        "mr_final_goal_dist_m": 0.12603459967730105,
+        "path_len_ratio": 0.9711749336237598,
+        "final_goal_delta_m": 0.022567156780006994,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": false,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.03928384929895401,
+          -0.07840043306350708,
+          0.2756739556789398
+        ],
+        "base_path_len_m": 1.1225090479383668,
+        "mr_path_len_m": 0.39341152594346035,
+        "base_final_goal_dist_m": 0.05194175661942956,
+        "mr_final_goal_dist_m": 0.2830172685576346,
+        "path_len_ratio": 0.35047514910103533,
+        "final_goal_delta_m": 0.23107551193820502,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "goal_regression(final_goal_delta_m=0.2311 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.03509046882390976,
+          0.014031469821929932,
+          0.11600862443447113
+        ],
+        "base_path_len_m": 0.5084951915693879,
+        "mr_path_len_m": 0.43023148607670714,
+        "base_final_goal_dist_m": 0.024589915055886202,
+        "mr_final_goal_dist_m": 0.14785480356274167,
+        "path_len_ratio": 0.8460876193319891,
+        "final_goal_delta_m": 0.12326488850685546,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "goal_regression(final_goal_delta_m=0.1233 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": true,
+        "dst_success": false,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.08503969758749008,
+          -0.03247777372598648,
+          0.2790752947330475
+        ],
+        "base_path_len_m": 0.4455901427844131,
+        "mr_path_len_m": 0.3451404142691574,
+        "base_final_goal_dist_m": 0.024568320988003666,
+        "mr_final_goal_dist_m": 0.2674804771193209,
+        "path_len_ratio": 0.7745692310705904,
+        "final_goal_delta_m": 0.24291215613131723,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "goal_regression(final_goal_delta_m=0.2429 > 0.0500)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": false,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          0.07016486674547195,
+          -0.002519175410270691,
+          0.12193125486373901
+        ],
+        "base_path_len_m": 0.3238360072349237,
+        "mr_path_len_m": 0.41841692038967565,
+        "base_final_goal_dist_m": 0.10898330618845326,
+        "mr_final_goal_dist_m": 0.014270477868864307,
+        "path_len_ratio": 1.292064227083121,
+        "final_goal_delta_m": -0.09471282831958895,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": false,
+        "dst_success": true,
+        "delay_steps": 4,
+        "delay_ms": 200.0,
+        "control_freq_hz": 20.0,
+        "delay_source": "derived_from_delay_ms_and_control_freq",
+        "goal_point": [
+          -0.07070840895175934,
+          0.09788217395544052,
+          0.13533887267112732
+        ],
+        "base_path_len_m": 0.3020134674749642,
+        "mr_path_len_m": 0.35467535049130383,
+        "base_final_goal_dist_m": 0.13832359295833913,
+        "mr_final_goal_dist_m": 0.016019594663167117,
+        "path_len_ratio": 1.174369320204918,
+        "final_goal_delta_m": -0.12230399829517201,
+        "max_path_len_ratio": 1.5,
+        "max_final_goal_delta_m": 0.05,
+        "is_conservative": true,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "conservative_degradation"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 7,
+  "followup_mr_violation_rate_percent": 28.000000000000004,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

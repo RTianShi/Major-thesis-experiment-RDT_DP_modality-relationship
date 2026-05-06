@@ -1,0 +1,999 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_20260421_153203",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCube-v1_MR-CPTMP1_20260506_201814",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 247.68,
+      "median": 233.0,
+      "std": 148.0323532205038,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6705032801628112,
+      "median": 0.5545661449432373,
+      "std": 0.3124853579944371,
+      "min": 0.30650556087493896,
+      "max": 1.5584840774536133
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28112024226162186,
+      "median": 0.1959706660254523,
+      "std": 0.21755070449813674,
+      "min": 0.08008315310927194,
+      "max": 0.9277501005992768
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.15462773960573634,
+      "median": 0.17659622473865733,
+      "std": 0.08608699468812535,
+      "min": 0.022539561263933285,
+      "max": 0.2993244103053892
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05390115375090118,
+      "median": 0.05395223716739565,
+      "std": 0.005987932783034684,
+      "min": 0.040934974397532645,
+      "max": 0.06545244533111129
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799994084239006,
+      "median": 0.07999999821186066,
+      "std": 1.242984056570895e-06,
+      "min": 0.07999521866440773,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.043546322509646414,
+      "median": 0.043568842113018036,
+      "std": 0.005084735670505532,
+      "min": 0.03662733919918537,
+      "max": 0.05200224928557873
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 16.0,
+    "success_count": 4,
+    "success_episode_ids": [
+      3,
+      8,
+      12,
+      22
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 349.32,
+      "median": 400.0,
+      "std": 116.33631247379299,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.6562021112442016,
+      "median": 1.2796096801757812,
+      "std": 1.1593184295703076,
+      "min": 0.38317811489105225,
+      "max": 3.3450684547424316
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.9747892375446681,
+      "median": 0.7180472504354779,
+      "std": 0.8193114443252529,
+      "min": 0.08424198493477858,
+      "max": 2.1894002465489053
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.116709883495042,
+      "median": 0.09648110814184421,
+      "std": 0.0769144684651049,
+      "min": 0.022539561263933285,
+      "max": 0.35091221073017814
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04943363582826753,
+      "median": 0.04947102093137801,
+      "std": 0.006538153569372348,
+      "min": 0.04037381345406175,
+      "max": 0.06441119826937977
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999917805194855,
+      "median": 0.07999999821186066,
+      "std": 2.6307702949056416e-06,
+      "min": 0.07998686656355858,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.04328617163002491,
+      "median": 0.04288634471595287,
+      "std": 0.004972564764908643,
+      "min": 0.03666280210018158,
+      "max": 0.05216078273952007
+    }
+  },
+  "mr_rule": "MR-CPTMP-1",
+  "mr_compare": {
+    "mr_id": "MR-CPTMP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 20,
+    "unavailable_count": 5,
+    "violations": 4,
+    "violation_rate_percent": 20.0,
+    "config": {
+      "trigger_distance_m": 0.05,
+      "success_goal_thresh_m": 0.025,
+      "expected_followup_success_rate_percent": 0.0,
+      "invariance_proxy": "terminal_visual_cutoff_should_break_fine_alignment"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.05239424854516983,
+          0.0035987645387649536,
+          0.07847815006971359
+        ],
+        "trigger_frame": null,
+        "trigger_distance_at_frame_m": null,
+        "trigger_source": "not_triggered",
+        "base_final_cube": [
+          0.025179779157042503,
+          -0.06431198120117188,
+          0.02005530148744583
+        ],
+        "mr_final_cube": [
+          0.025179779157042503,
+          -0.06431198120117188,
+          0.02005530148744583
+        ],
+        "base_final_goal_dist_m": 0.11850244047007867,
+        "mr_final_goal_dist_m": 0.11850244047007867,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "terminal_alignment_phase_not_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.017152369022369385,
+          -0.04564018175005913,
+          0.1922023743391037
+        ],
+        "trigger_frame": 162,
+        "trigger_distance_at_frame_m": 0.04523625397751099,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.037078533321619034,
+          -0.04933780059218407,
+          0.18918883800506592
+        ],
+        "mr_final_cube": [
+          -0.058255016803741455,
+          0.010869958437979221,
+          0.06886736303567886
+        ],
+        "base_final_goal_dist_m": 0.020489163233741257,
+        "mr_final_goal_dist_m": 0.1417545364774165,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": true,
+        "goal_point": [
+          0.0966324582695961,
+          0.023454882204532623,
+          0.1852535754442215
+        ],
+        "trigger_frame": 127,
+        "trigger_distance_at_frame_m": 0.0443073312052388,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.08785645663738251,
+          0.03401199355721474,
+          0.18620789051055908
+        ],
+        "mr_final_cube": [
+          0.08293347805738449,
+          0.007476983591914177,
+          0.17478156089782715
+        ],
+        "base_final_goal_dist_m": 0.01376159591062694,
+        "mr_final_goal_dist_m": 0.023507836812211677,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": true,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "vision_cutoff_during_terminal_alignment_should_not_succeed",
+          "terminal_precision_preserved(mr_final_goal_dist=0.0235m <= 0.0250m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.023258566856384277,
+          0.09296587854623795,
+          0.1859484314918518
+        ],
+        "trigger_frame": 65,
+        "trigger_distance_at_frame_m": 0.04839908435584718,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.022456400096416473,
+          0.059433463960886,
+          0.02105143666267395
+        ],
+        "mr_final_cube": [
+          -0.06828562915325165,
+          -0.025545844808220863,
+          0.0631207525730133
+        ],
+        "base_final_goal_dist_m": 0.16827383992507164,
+        "mr_final_goal_dist_m": 0.17651941428669832,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.021875128149986267,
+          0.025947205722332,
+          0.030186224728822708
+        ],
+        "trigger_frame": 53,
+        "trigger_distance_at_frame_m": 0.04825435936386555,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.011108530685305595,
+          0.006687129382044077,
+          0.03639450669288635
+        ],
+        "mr_final_cube": [
+          -0.04047166556119919,
+          0.005343921482563019,
+          0.06470047682523727
+        ],
+        "base_final_goal_dist_m": 0.022921887499625874,
+        "mr_final_goal_dist_m": 0.044289503529913406,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.07572983205318451,
+          0.01901797205209732,
+          0.14714036881923676
+        ],
+        "trigger_frame": 65,
+        "trigger_distance_at_frame_m": 0.04374419214318712,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.08174362033605576,
+          0.019008412957191467,
+          0.13760453462600708
+        ],
+        "mr_final_cube": [
+          -0.04029271751642227,
+          -0.005878412164747715,
+          0.08226875215768814
+        ],
+        "base_final_goal_dist_m": 0.011273769318567023,
+        "mr_final_goal_dist_m": 0.07799965180721827,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.005669735372066498,
+          -0.07478807866573334,
+          0.02451871708035469
+        ],
+        "trigger_frame": null,
+        "trigger_distance_at_frame_m": null,
+        "trigger_source": "not_triggered",
+        "base_final_cube": [
+          0.1597616970539093,
+          0.08180825412273407,
+          0.1933055818080902
+        ],
+        "mr_final_cube": [
+          0.14162097871303558,
+          0.12037861347198486,
+          0.18320050835609436
+        ],
+        "base_final_goal_dist_m": 0.27704828063421333,
+        "mr_final_goal_dist_m": 0.28592427173713614,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "terminal_alignment_phase_not_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": true,
+        "goal_point": [
+          -0.05173049122095108,
+          0.08990371972322464,
+          0.08035660535097122
+        ],
+        "trigger_frame": 80,
+        "trigger_distance_at_frame_m": 0.045719486267054285,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.06454605609178543,
+          0.07402864843606949,
+          0.07310257852077484
+        ],
+        "mr_final_cube": [
+          -0.053526103496551514,
+          0.10041806846857071,
+          0.08970970660448074
+        ],
+        "base_final_goal_dist_m": 0.021653579301908272,
+        "mr_final_goal_dist_m": 0.014186481453885907,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": true,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "vision_cutoff_during_terminal_alignment_should_not_succeed",
+          "terminal_precision_preserved(mr_final_goal_dist=0.0142m <= 0.0250m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.08699151128530502,
+          -0.09565507620573044,
+          0.29240506887435913
+        ],
+        "trigger_frame": null,
+        "trigger_distance_at_frame_m": null,
+        "trigger_source": "not_triggered",
+        "base_final_cube": [
+          0.08392441272735596,
+          0.05013533681631088,
+          0.020121313631534576
+        ],
+        "mr_final_cube": [
+          0.05132075771689415,
+          0.02848728746175766,
+          0.019994327798485756
+        ],
+        "base_final_goal_dist_m": 0.3529951005033547,
+        "mr_final_goal_dist_m": 0.329771469455734,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "terminal_alignment_phase_not_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.008456267416477203,
+          -0.05714334174990654,
+          0.30881091952323914
+        ],
+        "trigger_frame": 350,
+        "trigger_distance_at_frame_m": 0.044486098170540195,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.0033632791601121426,
+          -0.04396441578865051,
+          0.29104068875312805
+        ],
+        "mr_final_cube": [
+          -0.05932103469967842,
+          -0.028483333066105843,
+          0.06046481430530548
+        ],
+        "base_final_goal_dist_m": 0.022702504718527056,
+        "mr_final_goal_dist_m": 0.2590192015214647,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.07322252541780472,
+          0.09180855005979538,
+          0.1573648303747177
+        ],
+        "trigger_frame": 114,
+        "trigger_distance_at_frame_m": 0.045849683916250925,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.060288865119218826,
+          0.07423076033592224,
+          0.1490325629711151
+        ],
+        "mr_final_cube": [
+          -0.017095334827899933,
+          0.055846165865659714,
+          0.07263391464948654
+        ],
+        "base_final_goal_dist_m": 0.02335990026479256,
+        "mr_final_goal_dist_m": 0.12895711316529027,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": false,
+        "dst_success": true,
+        "goal_point": [
+          0.015177294611930847,
+          -0.06066220998764038,
+          0.17357118427753448
+        ],
+        "trigger_frame": 72,
+        "trigger_distance_at_frame_m": 0.043380816409224615,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.025919491425156593,
+          -0.0007281651487573981,
+          0.020284153521060944
+        ],
+        "mr_final_cube": [
+          0.012253588996827602,
+          -0.05111878737807274,
+          0.1896258145570755
+        ],
+        "base_final_goal_dist_m": 0.16964064769819598,
+        "mr_final_goal_dist_m": 0.018904394278615445,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": true,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "vision_cutoff_during_terminal_alignment_should_not_succeed",
+          "terminal_precision_preserved(mr_final_goal_dist=0.0189m <= 0.0250m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.09418362379074097,
+          0.0059773921966552734,
+          0.18590377271175385
+        ],
+        "trigger_frame": 61,
+        "trigger_distance_at_frame_m": 0.04570734723483745,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.09280429780483246,
+          0.014654221944510937,
+          0.1721036732196808
+        ],
+        "mr_final_cube": [
+          0.04978616535663605,
+          0.18913349509239197,
+          0.2858348786830902
+        ],
+        "base_final_goal_dist_m": 0.01635948228520055,
+        "mr_final_goal_dist_m": 0.25349493911269383,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.09314455091953278,
+          -0.021994397044181824,
+          0.15714335441589355
+        ],
+        "trigger_frame": 55,
+        "trigger_distance_at_frame_m": 0.04675565802179176,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.09664298593997955,
+          -0.022385701537132263,
+          0.1486654430627823
+        ],
+        "mr_final_cube": [
+          -0.06848368793725967,
+          -0.04270510748028755,
+          0.023996002972126007
+        ],
+        "base_final_goal_dist_m": 0.009179713923086304,
+        "mr_final_goal_dist_m": 0.13698652811969803,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.09643149375915527,
+          0.0882243886590004,
+          0.2212628275156021
+        ],
+        "trigger_frame": 56,
+        "trigger_distance_at_frame_m": 0.04672476014623329,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.09983893483877182,
+          0.06934686005115509,
+          0.20613151788711548
+        ],
+        "mr_final_cube": [
+          -0.015051924623548985,
+          -0.0074378023855388165,
+          0.020763443782925606
+        ],
+        "base_final_goal_dist_m": 0.024432115588385067,
+        "mr_final_goal_dist_m": 0.2365880215592537,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.0627836063504219,
+          -0.07301868498325348,
+          0.22075459361076355
+        ],
+        "trigger_frame": 148,
+        "trigger_distance_at_frame_m": 0.04810497543834813,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.05741875246167183,
+          -0.08579566329717636,
+          0.24148152768611908
+        ],
+        "mr_final_cube": [
+          -0.021698245778679848,
+          0.05090362951159477,
+          0.09239379316568375
+        ],
+        "base_final_goal_dist_m": 0.02493268193047484,
+        "mr_final_goal_dist_m": 0.19740926639807233,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.03161062300205231,
+          -0.0700971856713295,
+          0.11148519814014435
+        ],
+        "trigger_frame": 71,
+        "trigger_distance_at_frame_m": 0.049934447829792665,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.0049788812175393105,
+          -0.016787447035312653,
+          0.19110989570617676
+        ],
+        "mr_final_cube": [
+          -0.031321778893470764,
+          0.08137314021587372,
+          0.020081015303730965
+        ],
+        "base_final_goal_dist_m": 0.10257101205973385,
+        "mr_final_goal_dist_m": 0.1769125990292582,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.03860337287187576,
+          -0.04839259386062622,
+          0.09442463517189026
+        ],
+        "trigger_frame": 57,
+        "trigger_distance_at_frame_m": 0.04736030121392856,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.12947727739810944,
+          0.055765386670827866,
+          0.2053384929895401
+        ],
+        "mr_final_cube": [
+          0.13451261818408966,
+          0.0648241862654686,
+          0.21236416697502136
+        ],
+        "base_final_goal_dist_m": 0.1772253799212394,
+        "mr_final_goal_dist_m": 0.18954249075186463,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.08844082802534103,
+          -0.023827575147151947,
+          0.2169950306415558
+        ],
+        "trigger_frame": 56,
+        "trigger_distance_at_frame_m": 0.045430251189839364,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.08986929059028625,
+          -0.029925690963864326,
+          0.19319023191928864
+        ],
+        "mr_final_cube": [
+          -0.0485001765191555,
+          0.02404414676129818,
+          0.06593812257051468
+        ],
+        "base_final_goal_dist_m": 0.02461495407310644,
+        "mr_final_goal_dist_m": 0.16341709481324623,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.07992666214704514,
+          -0.02496989816427231,
+          0.04089989885687828
+        ],
+        "trigger_frame": 70,
+        "trigger_distance_at_frame_m": 0.04898803939351491,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.0006991441478021443,
+          -0.08213893324136734,
+          0.02001284249126911
+        ],
+        "mr_final_cube": [
+          -0.06900138407945633,
+          0.022987768054008484,
+          0.059785373508930206
+        ],
+        "base_final_goal_dist_m": 0.09990779400820853,
+        "mr_final_goal_dist_m": 0.15759492966076125,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.03928384929895401,
+          -0.07840043306350708,
+          0.2756739556789398
+        ],
+        "trigger_frame": 115,
+        "trigger_distance_at_frame_m": 0.048098771569016804,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.022362885996699333,
+          -0.03864205628633499,
+          0.30821388959884644
+        ],
+        "mr_final_cube": [
+          -0.0779324471950531,
+          0.016629712656140327,
+          0.06359043717384338
+        ],
+        "base_final_goal_dist_m": 0.054091541136703766,
+        "mr_final_goal_dist_m": 0.23559257529967567,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": true,
+        "dst_success": true,
+        "goal_point": [
+          -0.03509046882390976,
+          0.014031469821929932,
+          0.11600862443447113
+        ],
+        "trigger_frame": 228,
+        "trigger_distance_at_frame_m": 0.04436909796549901,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          -0.051194798201322556,
+          -0.0014760864432901144,
+          0.10814346373081207
+        ],
+        "mr_final_cube": [
+          -0.03632112592458725,
+          0.027788713574409485,
+          0.12012327462434769
+        ],
+        "base_final_goal_dist_m": 0.023700094491574265,
+        "mr_final_goal_dist_m": 0.014412030347929358,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": true,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "vision_cutoff_during_terminal_alignment_should_not_succeed",
+          "terminal_precision_preserved(mr_final_goal_dist=0.0144m <= 0.0250m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.08503969758749008,
+          -0.03247777372598648,
+          0.2790752947330475
+        ],
+        "trigger_frame": 91,
+        "trigger_distance_at_frame_m": 0.04245784831584043,
+        "trigger_source": "derived_from_cube_goal_distance",
+        "base_final_cube": [
+          0.08899030834436417,
+          -0.03924228623509407,
+          0.2564958930015564
+        ],
+        "mr_final_cube": [
+          0.08949892222881317,
+          0.015382117591798306,
+          0.02074735052883625
+        ],
+        "base_final_goal_dist_m": 0.023899693248873824,
+        "mr_final_goal_dist_m": 0.2627618325368546,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_precision_loss_after_terminal_visual_cutoff"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.07016486674547195,
+          -0.002519175410270691,
+          0.12193125486373901
+        ],
+        "trigger_frame": null,
+        "trigger_distance_at_frame_m": null,
+        "trigger_source": "not_triggered",
+        "base_final_cube": [
+          0.06876340508460999,
+          0.03622107580304146,
+          0.020194372162222862
+        ],
+        "mr_final_cube": [
+          0.09854232519865036,
+          0.03706918656826019,
+          0.02031267061829567
+        ],
+        "base_final_goal_dist_m": 0.10887223916444198,
+        "mr_final_goal_dist_m": 0.11268919742572188,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "terminal_alignment_phase_not_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.07070840895175934,
+          0.09788217395544052,
+          0.13533887267112732
+        ],
+        "trigger_frame": null,
+        "trigger_distance_at_frame_m": null,
+        "trigger_source": "not_triggered",
+        "base_final_cube": [
+          -0.037374697625637054,
+          0.03515911474823952,
+          0.02008059248328209
+        ],
+        "mr_final_cube": [
+          -0.01912371814250946,
+          0.03262929618358612,
+          0.020088402554392815
+        ],
+        "base_final_goal_dist_m": 0.13538755341220673,
+        "mr_final_goal_dist_m": 0.14213229487179468,
+        "trigger_distance_m": 0.05,
+        "success_goal_thresh_m": 0.025,
+        "precise_placement_preserved": false,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "terminal_alignment_phase_not_triggered"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 20.0,
+  "followup_unavailable_count": 5,
+  "followup_analyzable_count": 20
+}

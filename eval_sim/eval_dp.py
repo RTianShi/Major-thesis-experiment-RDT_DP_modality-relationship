@@ -260,32 +260,55 @@ def _current_is_grasped(env):
         return False
 
 
-def _build_policy_obs(env, obs, mr_cfg):
+def _resolve_visual_delay_steps(env, vision_cfg, fallback_fps):
+    if vision_cfg.get("type") != "MR-LTSEP5":
+        return 0
+    if "delay_steps" in vision_cfg:
+        return max(0, int(vision_cfg.get("delay_steps", 0)))
+    delay_ms = float(vision_cfg.get("delay_ms", 200.0))
+    control_freq = getattr(env.unwrapped, "control_freq", None)
+    if control_freq is None:
+        control_freq = fallback_fps
+    return max(0, int(round(float(control_freq) * delay_ms / 1000.0)))
+
+
+def _get_history_frame(obs_window, delay_steps):
+    if obs_window is None or len(obs_window) == 0:
+        return None
+    src_idx = len(obs_window) - 1 - int(delay_steps)
+    if src_idx < 0 or src_idx >= len(obs_window):
+        return None
+    return obs_window[src_idx]
+
+
+def _build_policy_obs(env, obs, mr_cfg, obs_window=None, vision_delay_steps=0):
     curr_cube_pos, curr_goal_pos = _get_cube_goal_xyz(env)
     if curr_cube_pos is None or curr_goal_pos is None:
         cube_goal_distance = float("nan")
     else:
         cube_goal_distance = float(np.linalg.norm(curr_cube_pos - curr_goal_pos))
 
-    img = _to_uint8_rgb(env.render())
-    mr_cfg["vision"]["runtime"] = {
-        "cube_goal_distance": cube_goal_distance,
-    }
-    images = vis_mut([Image.fromarray(img)], mr_cfg["vision"])
-    vision_image = images[0] if images else Image.fromarray(img)
+    delayed_img = _get_history_frame(obs_window, vision_delay_steps) if obs_window is not None else None
+    if delayed_img is None:
+        delayed_img = _to_uint8_rgb(env.render())
+
+    vision_runtime = mr_cfg["vision"].setdefault("runtime", {})
+    vision_runtime["cube_goal_distance"] = cube_goal_distance
+    vision_runtime["delay_steps"] = int(vision_delay_steps)
+    images = vis_mut([Image.fromarray(delayed_img)], mr_cfg["vision"])
+    vision_image = images[0] if images else Image.fromarray(delayed_img)
     if vision_image is None:
-        vision_image = Image.fromarray(img)
+        vision_image = Image.fromarray(delayed_img)
     img_mut = np.array(vision_image, dtype=np.uint8)
     img_tensor = torch.as_tensor(img_mut, device="cuda").float()
 
     gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
     proprio = obs["agent"]["qpos"][:].cuda()
-    mr_cfg["proprio"]["runtime"] = {
-        "is_grasped": _current_is_grasped(env),
-        "cube_goal_distance": cube_goal_distance,
-        "gripper_width": gripper_width,
-        "gripper_finger_qpos": gripper_finger_qpos,
-    }
+    proprio_runtime = mr_cfg["proprio"].setdefault("runtime", {})
+    proprio_runtime["is_grasped"] = _current_is_grasped(env)
+    proprio_runtime["cube_goal_distance"] = cube_goal_distance
+    proprio_runtime["gripper_width"] = gripper_width
+    proprio_runtime["gripper_finger_qpos"] = gripper_finger_qpos
     proprio = prop_mut(proprio, mr_cfg["proprio"])
     proprio = (proprio - state_min) / (state_max - state_min) * 2 - 1
 
@@ -475,15 +498,28 @@ def _first_index_le(seq, thresh: float):
             return int(i)
     return None
 
+vision_history_len = 1
+vision_delay_steps = _resolve_visual_delay_steps(env, mr_cfg["vision"], args.video_fps)
+obs_window_len = max(1, vision_delay_steps + 1)
+
 for episode in tqdm.trange(total_episodes):
-    
-    obs_window = deque(maxlen=2)
+    obs_window = deque(maxlen=obs_window_len)
     obs, _ = env.reset(seed = episode + base_seed)
     env_mut(env, env_cfg)
     obs = _refresh_obs(env)
+    policy.reset()
+    mr_cfg["vision"]["runtime"] = {}
+    mr_cfg["proprio"]["runtime"] = {}
 
-    policy_obs, _, _ = _build_policy_obs(env, obs, mr_cfg)
-    obs_window.append(policy_obs)
+    initial_img = _to_uint8_rgb(env.render())
+    obs_window.append(initial_img)
+    policy_obs, _, _ = _build_policy_obs(
+        env,
+        obs,
+        mr_cfg,
+        obs_window=obs_window,
+        vision_delay_steps=vision_delay_steps,
+    )
     obs_window.append(policy_obs)
 
     global_steps = 0
@@ -519,18 +555,25 @@ for episode in tqdm.trange(total_episodes):
         actions = actions[:8]
         for idx in range(actions.shape[0]):
             action = actions[idx]
-            gripper_cmd = float(action[-1]) if action.shape[0] > 0 else None
-
             obs, reward, terminated, truncated, info = env.step(action)
-            global_steps += 1  # 改为每步都计数，避免仅 --show 时计数
+            global_steps += 1
 
-            policy_obs, img, _ = _build_policy_obs(env, obs, mr_cfg)
+            current_img = _to_uint8_rgb(env.render())
+            obs_window.append(current_img)
+            policy_obs, img, _ = _build_policy_obs(
+                env,
+                obs,
+                mr_cfg,
+                obs_window=obs_window,
+                vision_delay_steps=vision_delay_steps,
+            )
             obs_window.append(policy_obs)
             eef_xyz = env.unwrapped.agent.tcp.pose.p
             eef_traj.append(np.array(eef_xyz, dtype=np.float32))
 
             # 新增：每步获取末端执行器yaw
             eef_yaw = _extract_eef_yaw(env)
+            gripper_cmd = float(action[-1]) if action.shape[0] > 0 else None
 
             # 仅记录原始序列，不在循环中判定抓取时刻
             gripper_action_cmd_traj.append(gripper_cmd)

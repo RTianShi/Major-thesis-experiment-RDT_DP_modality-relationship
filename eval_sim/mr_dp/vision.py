@@ -35,6 +35,16 @@ def _target_camera_index_set(camera_group_size, target_camera_indices):
     }
 
 
+def _blackout_all_images(images, fill_value):
+    out = []
+    for im in images:
+        if im is None:
+            out.append(None)
+            continue
+        out.append(Image.new(im.mode, im.size, color=_black_color_for_image(im, fill_value)))
+    return out
+
+
 @register_vision("identity")
 def vis_identity(images, cfg):
     return images
@@ -42,36 +52,24 @@ def vis_identity(images, cfg):
 
 @register_vision("MR-LTSEP5")
 def vis_delay_passthrough(images, cfg):
+    # 延迟由 eval 脚本里的历史帧缓存实现，这里保持透传。
     return images
 
 
 @register_vision("MR-GDIP1")
 def vis_global_visual_deprivation(images, cfg):
-    camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
-    target_camera_indices = cfg.get("target_camera_indices", [0])
     fill_value = int(np.clip(cfg.get("fill_value", 0), 0, 255))
-    return _blackout_target_cameras(
-        images,
-        camera_group_size=camera_group_size,
-        target_camera_indices=target_camera_indices,
-        fill_value=fill_value,
-    )
+    # DP 当前仅向 policy 提供单路视觉输入 head_cam。
+    # MR-GDIP1 在该链路下等价于将本次传入的全部有效图像直接置黑。
+    return _blackout_all_images(images, fill_value=fill_value)
 
 
 @register_vision("MR-FPDP1")
 def vis_high_frequency_feature_degradation(images, cfg):
-    camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
-    target_camera_indices = cfg.get("target_camera_indices", [0])
     mode = str(cfg.get("mode", "gaussian_blur")).strip().lower()
-    if not target_camera_indices:
-        return images
-
-    target_camera_indices = _target_camera_index_set(
-        camera_group_size, target_camera_indices
-    )
     out = []
     for idx, im in enumerate(images):
-        if im is None or idx % camera_group_size not in target_camera_indices:
+        if im is None:
             out.append(im)
             continue
 
@@ -94,21 +92,22 @@ def vis_terminal_alignment_deprivation(images, cfg):
     runtime = cfg.get("runtime", {})
     cube_goal_distance = runtime.get("cube_goal_distance", None)
     trigger_distance = float(cfg.get("trigger_distance", 0.05))
-
-    if cube_goal_distance is None or not np.isfinite(cube_goal_distance):
-        return images
-    if float(cube_goal_distance) >= trigger_distance:
-        return images
-
-    camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
-    target_camera_indices = cfg.get("target_camera_indices", [0])
     fill_value = int(np.clip(cfg.get("fill_value", 0), 0, 255))
-    return _blackout_target_cameras(
-        images,
-        camera_group_size=camera_group_size,
-        target_camera_indices=target_camera_indices,
-        fill_value=fill_value,
-    )
+    is_triggered = bool(runtime.get("terminal_alignment_cutoff_triggered", False))
+
+    if not is_triggered:
+        if cube_goal_distance is None or not np.isfinite(cube_goal_distance):
+            return images
+        if float(cube_goal_distance) < trigger_distance:
+            runtime["terminal_alignment_cutoff_triggered"] = True
+            runtime["terminal_alignment_trigger_distance"] = float(cube_goal_distance)
+            is_triggered = True
+        else:
+            return images
+
+    # DP 当前仅向 policy 提供单路视觉输入 head_cam。
+    # 这里使用锁存触发：首次进入末端精调区后，本 episode 后续对全部有效图像保持黑屏。
+    return _blackout_all_images(images, fill_value=fill_value)
 
 
 @register_vision("blur")

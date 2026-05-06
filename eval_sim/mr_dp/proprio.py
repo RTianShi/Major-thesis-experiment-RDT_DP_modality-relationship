@@ -96,35 +96,39 @@ def prop_gripper_width_noise_before_grasp(proprio, cfg):
     if is_grasped:
         return proprio
 
-    num_dims = int(cfg.get("num_gripper_dims", 2))
     sigma = float(cfg.get("sigma", 0.08))
     debug = bool(cfg.get("debug", False))
-    if num_dims <= 0 or sigma <= 0:
+    if sigma <= 0:
+        return proprio
+
+    # DP 当前使用的 low-dim 输入是 agent_pos[8]，最后两个维度对应夹爪开合状态。
+    # 因此 MR-CPTMP2 在该链路下明确只扰动最后两个夹爪维度，
+    # 并且仅在抓取建立前生效；一旦 is_grasped=True，立刻恢复正常输入。
+    target_indices = _resolve_target_indices(proprio, cfg.get("target_indices", [-2, -1]))
+    if not target_indices:
         return proprio
 
     if torch.is_tensor(proprio):
         out = proprio.clone()
-        width = min(num_dims, out.shape[-1])
-        before = out[..., -width:].detach().cpu().numpy().copy() if debug else None
-        noise = torch.randn_like(out[..., -width:]) * sigma
-        out[..., -width:] = out[..., -width:] + noise
+        before = out[..., target_indices].detach().cpu().numpy().copy() if debug else None
+        noise = torch.randn_like(out[..., target_indices]) * sigma
+        out[..., target_indices] = out[..., target_indices] + noise
         if debug:
-            after = out[..., -width:].detach().cpu().numpy().copy()
+            after = out[..., target_indices].detach().cpu().numpy().copy()
             print(
-                f"[MR-CPTMP2] is_grasped={is_grasped} sigma={sigma} width={width} "
+                f"[MR-CPTMP2] is_grasped={is_grasped} sigma={sigma} indices={target_indices} "
                 f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
             )
         return out
 
     out = proprio.copy()
-    width = min(num_dims, out.shape[-1])
-    before = out[..., -width:].copy() if debug else None
-    noise = np.random.randn(*out[..., -width:].shape) * sigma
-    out[..., -width:] = out[..., -width:] + noise
+    before = out[..., target_indices].copy() if debug else None
+    noise = np.random.randn(*out[..., target_indices].shape) * sigma
+    out[..., target_indices] = out[..., target_indices] + noise
     if debug:
-        after = out[..., -width:].copy()
+        after = out[..., target_indices].copy()
         print(
-            f"[MR-CPTMP2] is_grasped={is_grasped} sigma={sigma} width={width} "
+            f"[MR-CPTMP2] is_grasped={is_grasped} sigma={sigma} indices={target_indices} "
             f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
         )
     return out
@@ -140,39 +144,39 @@ def prop_terminal_region_state_bias_noise(proprio, cfg):
     if float(cube_goal_distance) >= trigger_distance:
         return proprio
 
-    mean = float(cfg.get("mean", -0.15))
+    mean = float(cfg.get("mean", 0.15))
     variance = float(cfg.get("variance", 0.05))
     sigma = float(cfg.get("sigma", np.sqrt(max(variance, 0.0))))
     debug = bool(cfg.get("debug", False))
-    target_indices = cfg.get("target_indices", [-4, -3, -2, -1])
-
-    resolved_indices = _resolve_target_indices(proprio, target_indices)
-    if not resolved_indices:
+    # DP 当前使用的 low-dim 输入是 agent_pos[8]。
+    # MR-FPDP2 在该链路下明确只扰动末尾 4 个维度，并且只在方块进入终段区域后生效。
+    target_indices = _resolve_target_indices(proprio, [-4, -3, -2, -1])
+    if not target_indices:
         return proprio
 
     if torch.is_tensor(proprio):
         out = proprio.clone()
-        before = out[..., resolved_indices].detach().cpu().numpy().copy() if debug else None
-        noise = torch.randn_like(out[..., resolved_indices]) * sigma + mean
-        out[..., resolved_indices] = out[..., resolved_indices] + noise
+        before = out[..., target_indices].detach().cpu().numpy().copy() if debug else None
+        noise = torch.randn_like(out[..., target_indices]) * sigma + mean
+        out[..., target_indices] = out[..., target_indices] + noise
         if debug:
-            after = out[..., resolved_indices].detach().cpu().numpy().copy()
+            after = out[..., target_indices].detach().cpu().numpy().copy()
             print(
                 f"[MR-FPDP2] cube_goal_distance={float(cube_goal_distance):.4f} "
-                f"indices={resolved_indices} mean={mean} sigma={sigma} "
+                f"indices={target_indices} mean={mean} sigma={sigma} "
                 f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
             )
         return out
 
     out = proprio.copy()
-    before = out[..., resolved_indices].copy() if debug else None
-    noise = np.random.randn(*out[..., resolved_indices].shape) * sigma + mean
-    out[..., resolved_indices] = out[..., resolved_indices] + noise
+    before = out[..., target_indices].copy() if debug else None
+    noise = np.random.randn(*out[..., target_indices].shape) * sigma + mean
+    out[..., target_indices] = out[..., target_indices] + noise
     if debug:
-        after = out[..., resolved_indices].copy()
+        after = out[..., target_indices].copy()
         print(
             f"[MR-FPDP2] cube_goal_distance={float(cube_goal_distance):.4f} "
-            f"indices={resolved_indices} mean={mean} sigma={sigma} "
+            f"indices={target_indices} mean={mean} sigma={sigma} "
             f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
         )
     return out

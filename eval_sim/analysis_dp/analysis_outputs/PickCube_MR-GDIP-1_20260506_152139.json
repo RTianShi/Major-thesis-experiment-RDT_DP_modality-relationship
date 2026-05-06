@@ -1,0 +1,1115 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_20260421_153203",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCube-v1_MR-GDIP1_20260506_150620",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 247.68,
+      "median": 233.0,
+      "std": 148.0323532205038,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6705032801628112,
+      "median": 0.5545661449432373,
+      "std": 0.3124853579944371,
+      "min": 0.30650556087493896,
+      "max": 1.5584840774536133
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28112024226162186,
+      "median": 0.1959706660254523,
+      "std": 0.21755070449813674,
+      "min": 0.08008315310927194,
+      "max": 0.9277501005992768
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.15462773960573634,
+      "median": 0.17659622473865733,
+      "std": 0.08608699468812535,
+      "min": 0.022539561263933285,
+      "max": 0.2993244103053892
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05390115375090118,
+      "median": 0.05395223716739565,
+      "std": 0.005987932783034684,
+      "min": 0.040934974397532645,
+      "max": 0.06545244533111129
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799994084239006,
+      "median": 0.07999999821186066,
+      "std": 1.242984056570895e-06,
+      "min": 0.07999521866440773,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.043546322509646414,
+      "median": 0.043568842113018036,
+      "std": 0.005084735670505532,
+      "min": 0.03662733919918537,
+      "max": 0.05200224928557873
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 3.269904365539551,
+      "median": 3.2541327476501465,
+      "std": 0.1161362998629077,
+      "min": 3.0214791297912598,
+      "max": 3.4930779933929443
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.00916400287922568,
+      "median": 7.0206272095571724e-06,
+      "std": 0.0223238474196785,
+      "min": 1.6450904233058005e-07,
+      "max": 0.08787092209591223
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.004853332705851981,
+      "median": 2.1337582400231277e-06,
+      "std": 0.011599479472400975,
+      "min": 8.535712389193177e-09,
+      "max": 0.04079262880400272
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0074924188544872325,
+      "median": 0.00845177621813491,
+      "std": 0.0027871355545825587,
+      "min": 0.0011331179770058951,
+      "max": 0.010948831634959789
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07905922308564187,
+      "median": 0.07905749976634979,
+      "std": 0.00012653011555290294,
+      "min": 0.07877390086650848,
+      "max": 0.07931564375758171
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-GDIP-1",
+  "mr_compare": {
+    "mr_id": "MR-GDIP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "near_goal_tol_m": 0.05,
+      "cube_move_min_m": 0.02,
+      "expected_followup_success_rate_percent": 0.0,
+      "invariance_proxy": "global_vision_deprivation_should_block_object_localization"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.05239424854516983,
+          0.0035987645387649536,
+          0.07847815006971359
+        ],
+        "mr_cube_start": [
+          0.047478727996349335,
+          -0.06759613007307053,
+          0.019999904558062553
+        ],
+        "mr_cube_final": [
+          0.047477301210165024,
+          -0.06759758293628693,
+          0.01999988779425621
+        ],
+        "mr_eef_final": [
+          -0.03559268265962601,
+          0.021756134927272797,
+          0.11298461258411407
+        ],
+        "mr_cube_goal_dist_m": 0.13587845120944614,
+        "mr_eef_goal_dist_m": 0.04245796357445158,
+        "mr_cube_net_disp_m": 2.0363721090488798e-06,
+        "mr_eef_path_len_m": 2.2031709803824993,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.017152369022369385,
+          -0.04564018175005913,
+          0.1922023743391037
+        ],
+        "mr_cube_start": [
+          0.08134503662586212,
+          0.03557612746953964,
+          0.019999910145998
+        ],
+        "mr_cube_final": [
+          0.08134504407644272,
+          0.035576123744249344,
+          0.019999906420707703
+        ],
+        "mr_eef_final": [
+          -0.05260816588997841,
+          -0.005553190130740404,
+          0.09615205228328705
+        ],
+        "mr_cube_goal_dist_m": 0.2143630533055757,
+        "mr_eef_goal_dist_m": 0.10995337555359809,
+        "mr_cube_net_disp_m": 9.125060374972142e-09,
+        "mr_eef_path_len_m": 2.3545293399464344,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.0966324582695961,
+          0.023454882204532623,
+          0.1852535754442215
+        ],
+        "mr_cube_start": [
+          -0.017280209809541702,
+          -0.017893217504024506,
+          0.019999910145998
+        ],
+        "mr_cube_final": [
+          -0.017277320846915245,
+          -0.017894696444272995,
+          0.019999943673610687
+        ],
+        "mr_eef_final": [
+          -0.06712310761213303,
+          -0.02352168783545494,
+          0.0927547886967659
+        ],
+        "mr_cube_goal_dist_m": 0.20492434761682857,
+        "mr_eef_goal_dist_m": 0.19385228665073428,
+        "mr_cube_net_disp_m": 3.245688434905733e-06,
+        "mr_eef_path_len_m": 2.182653736022877,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.023258566856384277,
+          0.09296587854623795,
+          0.1859484314918518
+        ],
+        "mr_cube_start": [
+          -0.025812936946749687,
+          0.032260455191135406,
+          0.019999897107481956
+        ],
+        "mr_cube_final": [
+          -0.028467921540141106,
+          0.03317621722817421,
+          0.019999954849481583
+        ],
+        "mr_eef_final": [
+          -0.01955929398536682,
+          0.020445942878723145,
+          0.11336319148540497
+        ],
+        "mr_cube_goal_dist_m": 0.17646766807739384,
+        "mr_eef_goal_dist_m": 0.10267152845744638,
+        "mr_cube_net_disp_m": 0.0028084806039852567,
+        "mr_eef_path_len_m": 2.2204220453048995,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.021875128149986267,
+          0.025947205722332,
+          0.030186224728822708
+        ],
+        "mr_cube_start": [
+          -0.01732572913169861,
+          -0.046727776527404785,
+          0.019999921321868896
+        ],
+        "mr_cube_final": [
+          -0.02984410710632801,
+          -0.042801737785339355,
+          0.019999908283352852
+        ],
+        "mr_eef_final": [
+          -0.012097246944904327,
+          0.005325751379132271,
+          0.09310200810432434
+        ],
+        "mr_cube_goal_dist_m": 0.06995486331739098,
+        "mr_eef_goal_dist_m": 0.06692717787149263,
+        "mr_cube_net_disp_m": 0.0131195871627142,
+        "mr_eef_path_len_m": 2.24580013250592,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.07572983205318451,
+          0.01901797205209732,
+          0.14714036881923676
+        ],
+        "mr_cube_start": [
+          -0.01723513938486576,
+          -0.02174948900938034,
+          0.01999998278915882
+        ],
+        "mr_cube_final": [
+          -0.017235348001122475,
+          -0.021748550236225128,
+          0.020000020042061806
+        ],
+        "mr_eef_final": [
+          -0.04781147092580795,
+          -0.02884415164589882,
+          0.07426442950963974
+        ],
+        "mr_cube_goal_dist_m": 0.14576756254799256,
+        "mr_eef_goal_dist_m": 0.09154845877007958,
+        "mr_cube_net_disp_m": 9.623946998469686e-07,
+        "mr_eef_path_len_m": 2.272577373066389,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.005669735372066498,
+          -0.07478807866573334,
+          0.02451871708035469
+        ],
+        "mr_cube_start": [
+          0.0425272136926651,
+          0.006091709714382887,
+          0.019999910145998
+        ],
+        "mr_cube_final": [
+          0.04252687841653824,
+          0.006088032387197018,
+          0.019999908283352852
+        ],
+        "mr_eef_final": [
+          -0.0764545127749443,
+          -0.04735701158642769,
+          0.08405932784080505
+        ],
+        "mr_cube_goal_dist_m": 0.08899333663477528,
+        "mr_eef_goal_dist_m": 0.10508063525002422,
+        "mr_cube_net_disp_m": 3.6925802337421273e-06,
+        "mr_eef_path_len_m": 2.2445335959518724,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.05173049122095108,
+          0.08990371972322464,
+          0.08035660535097122
+        ],
+        "mr_cube_start": [
+          -0.002387251006439328,
+          0.057593196630477905,
+          0.01999993436038494
+        ],
+        "mr_cube_final": [
+          -0.0023909590672701597,
+          0.05759211257100105,
+          0.01999993808567524
+        ],
+        "mr_eef_final": [
+          -0.0684085339307785,
+          -0.014231371693313122,
+          0.07752589881420135
+        ],
+        "mr_cube_goal_dist_m": 0.08438813111615513,
+        "mr_eef_goal_dist_m": 0.10550017664657635,
+        "mr_cube_net_disp_m": 3.863277617812153e-06,
+        "mr_eef_path_len_m": 2.2457305256503037,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.08699151128530502,
+          -0.09565507620573044,
+          0.29240506887435913
+        ],
+        "mr_cube_start": [
+          0.07404693961143494,
+          -0.019010543823242188,
+          0.019999951124191284
+        ],
+        "mr_cube_final": [
+          0.07404670864343643,
+          -0.01901020109653473,
+          0.019999906420707703
+        ],
+        "mr_eef_final": [
+          -0.044601600617170334,
+          -0.026766620576381683,
+          0.06872081756591797
+        ],
+        "mr_cube_goal_dist_m": 0.3255953281140903,
+        "mr_eef_goal_dist_m": 0.2378595554710112,
+        "mr_cube_net_disp_m": 4.156996677685774e-07,
+        "mr_eef_path_len_m": 2.255272717394619,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.008456267416477203,
+          -0.05714334174990654,
+          0.30881091952323914
+        ],
+        "mr_cube_start": [
+          -0.0698586106300354,
+          -0.0756729394197464,
+          0.020000020042061806
+        ],
+        "mr_cube_final": [
+          -0.0698569118976593,
+          -0.07567261904478073,
+          0.020000023767352104
+        ],
+        "mr_eef_final": [
+          0.004391397349536419,
+          0.07394494116306305,
+          0.12874916195869446
+        ],
+        "mr_cube_goal_dist_m": 0.2998133113767237,
+        "mr_eef_goal_dist_m": 0.222761975262756,
+        "mr_cube_net_disp_m": 1.7286832219987879e-06,
+        "mr_eef_path_len_m": 2.1961558195999253,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.07322252541780472,
+          0.09180855005979538,
+          0.1573648303747177
+        ],
+        "mr_cube_start": [
+          -0.09938006103038788,
+          0.08065097033977509,
+          0.019999930635094643
+        ],
+        "mr_cube_final": [
+          -0.09938006103038788,
+          0.08065097033977509,
+          0.019999917596578598
+        ],
+        "mr_eef_final": [
+          -0.08728581666946411,
+          -0.054786719381809235,
+          0.07701372355222702
+        ],
+        "mr_cube_goal_dist_m": 0.22087386376925672,
+        "mr_eef_goal_dist_m": 0.2317528883743624,
+        "mr_cube_net_disp_m": 1.30385160446167e-08,
+        "mr_eef_path_len_m": 2.2853375290738334,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.015177294611930847,
+          -0.06066220998764038,
+          0.17357118427753448
+        ],
+        "mr_cube_start": [
+          -0.006592304911464453,
+          0.07196827977895737,
+          0.019999932497739792
+        ],
+        "mr_cube_final": [
+          -0.006590975448489189,
+          0.07196994870901108,
+          0.019999921321868896
+        ],
+        "mr_eef_final": [
+          -0.048863332718610764,
+          -0.017496667802333832,
+          0.08050298690795898
+        ],
+        "mr_cube_goal_dist_m": 0.2040815521005152,
+        "mr_eef_goal_dist_m": 0.12093864288416277,
+        "mr_cube_net_disp_m": 2.1337582400231277e-06,
+        "mr_eef_path_len_m": 2.2657017190458286,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.09418362379074097,
+          0.0059773921966552734,
+          0.18590377271175385
+        ],
+        "mr_cube_start": [
+          -0.015268760733306408,
+          -0.030500421300530434,
+          0.02000000700354576
+        ],
+        "mr_cube_final": [
+          -0.015269375406205654,
+          -0.03050057217478752,
+          0.02000000700354576
+        ],
+        "mr_eef_final": [
+          -0.05015469342470169,
+          0.03838023915886879,
+          0.10346783697605133
+        ],
+        "mr_cube_goal_dist_m": 0.187302322353313,
+        "mr_eef_goal_dist_m": 0.09891498724184844,
+        "mr_cube_net_disp_m": 6.329184896331567e-07,
+        "mr_eef_path_len_m": 2.116870027148097,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.09314455091953278,
+          -0.021994397044181824,
+          0.15714335441589355
+        ],
+        "mr_cube_start": [
+          -0.06768827885389328,
+          -0.09833584725856781,
+          0.019999951124191284
+        ],
+        "mr_cube_final": [
+          -0.09399182349443436,
+          -0.08650640398263931,
+          0.01999991573393345
+        ],
+        "mr_eef_final": [
+          -0.06552106142044067,
+          -0.03025483712553978,
+          0.08379931002855301
+        ],
+        "mr_cube_goal_dist_m": 0.15156133967326998,
+        "mr_eef_goal_dist_m": 0.07880761948908453,
+        "mr_cube_net_disp_m": 0.028841154430372575,
+        "mr_eef_path_len_m": 2.283544737844452,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": true,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.09643149375915527,
+          0.0882243886590004,
+          0.2212628275156021
+        ],
+        "mr_cube_start": [
+          0.016686363145709038,
+          -0.09305588901042938,
+          0.019999904558062553
+        ],
+        "mr_cube_final": [
+          0.016690529882907867,
+          -0.09305776655673981,
+          0.0199999138712883
+        ],
+        "mr_eef_final": [
+          -0.07247413694858551,
+          -0.014772902242839336,
+          0.08579687774181366
+        ],
+        "mr_cube_goal_dist_m": 0.293541432239365,
+        "mr_eef_goal_dist_m": 0.17185290345694404,
+        "mr_cube_net_disp_m": 4.570226008423911e-06,
+        "mr_eef_path_len_m": 2.3272912185442785,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.0627836063504219,
+          -0.07301868498325348,
+          0.22075459361076355
+        ],
+        "mr_cube_start": [
+          -0.07219362258911133,
+          -0.0950286015868187,
+          0.019999928772449493
+        ],
+        "mr_cube_final": [
+          -0.08896298706531525,
+          -0.06347712874412537,
+          0.01999991573393345
+        ],
+        "mr_eef_final": [
+          -0.03250272572040558,
+          -0.00784787442535162,
+          0.09893881529569626
+        ],
+        "mr_cube_goal_dist_m": 0.25183429194249,
+        "mr_eef_goal_dist_m": 0.16782670667921587,
+        "mr_cube_net_disp_m": 0.03573103725725234,
+        "mr_eef_path_len_m": 2.1636987604042752,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": true,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.03161062300205231,
+          -0.0700971856713295,
+          0.11148519814014435
+        ],
+        "mr_cube_start": [
+          -0.01574535481631756,
+          0.05180240795016289,
+          0.019999878481030464
+        ],
+        "mr_cube_final": [
+          -0.015748878940939903,
+          0.051808372139930725,
+          0.01999991573393345
+        ],
+        "mr_eef_final": [
+          -0.030435018241405487,
+          -0.047928646206855774,
+          0.08616369217634201
+        ],
+        "mr_cube_goal_dist_m": 0.15323875765249112,
+        "mr_eef_goal_dist_m": 0.033674988534757685,
+        "mr_cube_net_disp_m": 6.927654849902432e-06,
+        "mr_eef_path_len_m": 2.257466166971695,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.03860337287187576,
+          -0.04839259386062622,
+          0.09442463517189026
+        ],
+        "mr_cube_start": [
+          0.035484038293361664,
+          0.06050935387611389,
+          0.019999980926513672
+        ],
+        "mr_cube_final": [
+          0.03548181429505348,
+          0.06050950661301613,
+          0.01999996416270733
+        ],
+        "mr_eef_final": [
+          -0.02226204052567482,
+          0.011646658182144165,
+          0.11123866587877274
+        ],
+        "mr_cube_goal_dist_m": 0.13194105983485557,
+        "mr_eef_goal_dist_m": 0.08713220967312849,
+        "mr_cube_net_disp_m": 2.2292999038494992e-06,
+        "mr_eef_path_len_m": 2.2104908876520644,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.08844082802534103,
+          -0.023827575147151947,
+          0.2169950306415558
+        ],
+        "mr_cube_start": [
+          -0.07040303200483322,
+          -0.0878792405128479,
+          0.01999991573393345
+        ],
+        "mr_cube_final": [
+          -0.10852592438459396,
+          -0.07336429506540298,
+          0.019999910145998
+        ],
+        "mr_eef_final": [
+          -0.04327482730150223,
+          -0.008210161700844765,
+          0.07645774632692337
+        ],
+        "mr_cube_goal_dist_m": 0.2041185322675995,
+        "mr_eef_goal_dist_m": 0.14844055883305793,
+        "mr_cube_net_disp_m": 0.04079262880400272,
+        "mr_eef_path_len_m": 2.3454722544401205,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": true,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.07992666214704514,
+          -0.02496989816427231,
+          0.04089989885687828
+        ],
+        "mr_cube_start": [
+          -0.035229384899139404,
+          -0.09928620606660843,
+          0.019999951124191284
+        ],
+        "mr_cube_final": [
+          -0.03522911295294762,
+          -0.09928708523511887,
+          0.019999952986836433
+        ],
+        "mr_eef_final": [
+          -0.027034442871809006,
+          0.016746055334806442,
+          0.11070513725280762
+        ],
+        "mr_cube_goal_dist_m": 0.13863875565791114,
+        "mr_eef_goal_dist_m": 0.13436394632007564,
+        "mr_cube_net_disp_m": 9.202692380052857e-07,
+        "mr_eef_path_len_m": 2.0906168725868945,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.03928384929895401,
+          -0.07840043306350708,
+          0.2756739556789398
+        ],
+        "mr_cube_start": [
+          0.04838329181075096,
+          -0.0776650458574295,
+          0.019999928772449493
+        ],
+        "mr_cube_final": [
+          0.04838396981358528,
+          -0.07766418159008026,
+          0.019999908283352852
+        ],
+        "mr_eef_final": [
+          -0.036203593015670776,
+          -0.02505108341574669,
+          0.08915528655052185
+        ],
+        "mr_cube_goal_dist_m": 0.2702876376858954,
+        "mr_eef_goal_dist_m": 0.19402282087436507,
+        "mr_cube_net_disp_m": 1.0986654164917715e-06,
+        "mr_eef_path_len_m": 2.365621971562585,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          -0.03509046882390976,
+          0.014031469821929932,
+          0.11600862443447113
+        ],
+        "mr_cube_start": [
+          -0.08829207718372345,
+          0.09703276306390762,
+          0.019999926909804344
+        ],
+        "mr_cube_final": [
+          -0.088292695581913,
+          0.09703301638364792,
+          0.019999893382191658
+        ],
+        "mr_eef_final": [
+          -0.07421558350324631,
+          -0.04251652956008911,
+          0.08369163423776627
+        ],
+        "mr_cube_goal_dist_m": 0.13761326281255004,
+        "mr_eef_goal_dist_m": 0.07597919904917386,
+        "mr_cube_net_disp_m": 6.691123317260729e-07,
+        "mr_eef_path_len_m": 2.344250747326204,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": true,
+        "dst_success": false,
+        "goal_point": [
+          0.08503969758749008,
+          -0.03247777372598648,
+          0.2790752947330475
+        ],
+        "mr_cube_start": [
+          0.08766382187604904,
+          -0.024287492036819458,
+          0.01999991573393345
+        ],
+        "mr_cube_final": [
+          0.08766382932662964,
+          -0.02428749017417431,
+          0.019999919459223747
+        ],
+        "mr_eef_final": [
+          -0.04939860478043556,
+          -0.0325508713722229,
+          0.08335728943347931
+        ],
+        "mr_cube_goal_dist_m": 0.25921808749644776,
+        "mr_eef_goal_dist_m": 0.23744304598214175,
+        "mr_cube_net_disp_m": 8.535712389193177e-09,
+        "mr_eef_path_len_m": 2.4200512476091127,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          0.07016486674547195,
+          -0.002519175410270691,
+          0.12193125486373901
+        ],
+        "mr_cube_start": [
+          0.09237068146467209,
+          0.014184117317199707,
+          0.01999993808567524
+        ],
+        "mr_cube_final": [
+          0.09237107634544373,
+          0.014184373430907726,
+          0.01999989151954651
+        ],
+        "mr_eef_final": [
+          -0.004194986075162888,
+          -0.001050012419000268,
+          0.09599217772483826
+        ],
+        "mr_cube_goal_dist_m": 0.1056509683907029,
+        "mr_eef_goal_dist_m": 0.07876789875462743,
+        "mr_cube_net_disp_m": 4.729624293629963e-07,
+        "mr_eef_path_len_m": 2.342611711597735,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": false,
+        "dst_success": false,
+        "goal_point": [
+          -0.07070840895175934,
+          0.09788217395544052,
+          0.13533887267112732
+        ],
+        "mr_cube_start": [
+          0.027164941653609276,
+          0.002530748024582863,
+          0.019999874755740166
+        ],
+        "mr_cube_final": [
+          0.02716701105237007,
+          0.002526418538764119,
+          0.019999943673610687
+        ],
+        "mr_eef_final": [
+          -0.04840407893061638,
+          -0.045874472707509995,
+          0.07956547290086746
+        ],
+        "mr_cube_goal_dist_m": 0.17881662807010967,
+        "mr_eef_goal_dist_m": 0.15580156841123802,
+        "mr_cube_net_disp_m": 4.799125791095959e-06,
+        "mr_eef_path_len_m": 2.3733341574820055,
+        "near_goal_tol_m": 0.05,
+        "cube_move_min_m": 0.02,
+        "cube_moved": false,
+        "suspicious_goal_reached": false,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_under_global_visual_deprivation"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

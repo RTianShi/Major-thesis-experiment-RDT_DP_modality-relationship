@@ -1,0 +1,213 @@
+from typing import Any, Dict, List, Optional, Tuple
+
+import numpy as np
+
+from .mr_sadp_1 import _first_not_none, _nested_get
+from .registry import register_mr_rule
+
+
+CPTMP1_TRIGGER_DISTANCE_M = 0.05
+CPTMP1_SUCCESS_GOAL_THRESH_M = 0.025
+
+
+def _paired_key(record: Any) -> Any:
+    return record.seed if getattr(record, "seed", None) is not None else getattr(record, "episode_id", None)
+
+
+def _to_xyz(point: Any) -> Optional[List[float]]:
+    if point is None:
+        return None
+    try:
+        arr = np.asarray(point, dtype=np.float64).reshape(-1)
+    except Exception:
+        return None
+    if arr.size < 3:
+        return None
+    return [float(arr[0]), float(arr[1]), float(arr[2])]
+
+
+def _goal_point(record: Any) -> Optional[List[float]]:
+    return _to_xyz(
+        _first_not_none(
+            _nested_get(record, "goal_point"),
+            _nested_get(record, "mr_eval", "goal_point"),
+            _nested_get(record, "trajectory", "goal_point"),
+        )
+    )
+
+
+def _cube_positions(record: Any) -> List[List[float]]:
+    traj = _first_not_none(
+        _nested_get(record, "cube_pos"),
+        _nested_get(record, "trajectory", "cube_pos"),
+        _nested_get(record, "mr_eval", "cube_pos"),
+        getattr(record, "cube_pos", None),
+    ) or []
+    points: List[List[float]] = []
+    for p in traj:
+        xyz = _to_xyz(p)
+        if xyz is not None:
+            points.append(xyz)
+    return points
+
+
+def _point_l2(a: Any, b: Any) -> Optional[float]:
+    pa = _to_xyz(a)
+    pb = _to_xyz(b)
+    if pa is None or pb is None:
+        return None
+    return float(np.linalg.norm(np.asarray(pa, dtype=np.float64) - np.asarray(pb, dtype=np.float64)))
+
+
+def _first_trigger_frame(
+    cube_positions: List[List[float]],
+    goal_point: Optional[List[float]],
+    trigger_distance_m: float,
+) -> Tuple[Optional[int], Optional[float], str]:
+    if goal_point is None:
+        return None, None, "missing_goal_point"
+    for idx, p in enumerate(cube_positions):
+        dist = _point_l2(p, goal_point)
+        if dist is not None and dist < trigger_distance_m:
+            return idx, float(dist), "derived_from_cube_goal_distance"
+    return None, None, "not_triggered"
+
+
+def _analyze_cptmp1(
+    base_records: List[Any],
+    mr_records: List[Any],
+    *,
+    mr_id: str,
+    trigger_distance_m: float,
+    success_goal_thresh_m: float,
+) -> Dict[str, Any]:
+    bmap = {_paired_key(r): r for r in base_records}
+    mmap = {_paired_key(r): r for r in mr_records}
+    keys = sorted(set(bmap.keys()) & set(mmap.keys()))
+
+    details = []
+    violations = 0
+    unavailable_count = 0
+
+    for k in keys:
+        base = bmap[k]
+        mr = mmap[k]
+
+        src_success = getattr(base, "success", None)
+        dst_success = getattr(mr, "success", None)
+
+        goal_point = _first_not_none(_goal_point(base), _goal_point(mr))
+        base_cube_pos = _cube_positions(base)
+        mr_cube_pos = _cube_positions(mr)
+
+        trigger_frame, trigger_distance_at_frame, trigger_source = _first_trigger_frame(
+            base_cube_pos,
+            goal_point,
+            trigger_distance_m,
+        )
+        if trigger_frame is None:
+            trigger_frame, trigger_distance_at_frame, trigger_source = _first_trigger_frame(
+                mr_cube_pos,
+                goal_point,
+                trigger_distance_m,
+            )
+
+        base_final_cube = base_cube_pos[-1] if base_cube_pos else None
+        mr_final_cube = mr_cube_pos[-1] if mr_cube_pos else None
+        base_final_goal_dist_m = _point_l2(base_final_cube, goal_point)
+        mr_final_goal_dist_m = _point_l2(mr_final_cube, goal_point)
+
+        analyzable = True
+        violated = False
+        reasons = []
+
+        if goal_point is None:
+            analyzable = False
+            reasons.append("missing_goal_point")
+        if not mr_cube_pos:
+            analyzable = False
+            reasons.append("missing_mr_cube_trajectory")
+        if trigger_frame is None:
+            analyzable = False
+            reasons.append("terminal_alignment_phase_not_triggered")
+
+        precise_placement_preserved = False
+        if analyzable:
+            precise_placement_preserved = (
+                dst_success is True
+                or (mr_final_goal_dist_m is not None and mr_final_goal_dist_m <= success_goal_thresh_m)
+            )
+
+            if precise_placement_preserved:
+                violated = True
+                if dst_success is True:
+                    reasons.append("vision_cutoff_during_terminal_alignment_should_not_succeed")
+                if mr_final_goal_dist_m is not None and mr_final_goal_dist_m <= success_goal_thresh_m:
+                    reasons.append(
+                        "terminal_precision_preserved"
+                        f"(mr_final_goal_dist={mr_final_goal_dist_m:.4f}m <= {success_goal_thresh_m:.4f}m)"
+                    )
+            else:
+                reasons.append("expected_precision_loss_after_terminal_visual_cutoff")
+
+        if not analyzable:
+            unavailable_count += 1
+            violated = False
+
+        if violated:
+            violations += 1
+
+        details.append(
+            {
+                "key(seed_or_episode)": k,
+                "src_success": src_success,
+                "dst_success": dst_success,
+                "goal_point": goal_point,
+                "trigger_frame": trigger_frame,
+                "trigger_distance_at_frame_m": trigger_distance_at_frame,
+                "trigger_source": trigger_source,
+                "base_final_cube": base_final_cube,
+                "mr_final_cube": mr_final_cube,
+                "base_final_goal_dist_m": base_final_goal_dist_m,
+                "mr_final_goal_dist_m": mr_final_goal_dist_m,
+                "trigger_distance_m": trigger_distance_m,
+                "success_goal_thresh_m": success_goal_thresh_m,
+                "precise_placement_preserved": precise_placement_preserved,
+                "analyzable": analyzable,
+                "violated": violated,
+                "reasons": reasons,
+            }
+        )
+
+    analyzable_episodes = len(keys) - unavailable_count
+    violation_rate = (violations / analyzable_episodes * 100.0) if analyzable_episodes > 0 else None
+
+    return {
+        "mr_id": mr_id,
+        "paired_episodes": len(keys),
+        "analyzable_episodes": analyzable_episodes,
+        "unavailable_count": unavailable_count,
+        "violations": violations,
+        "violation_rate_percent": violation_rate,
+        "config": {
+            "trigger_distance_m": trigger_distance_m,
+            "success_goal_thresh_m": success_goal_thresh_m,
+            "expected_followup_success_rate_percent": 0.0,
+            "invariance_proxy": "terminal_visual_cutoff_should_break_fine_alignment",
+        },
+        "details": details,
+    }
+
+
+@register_mr_rule("MR-CPTMP-1")
+@register_mr_rule("MR-CPTMP1")
+def analyze_mr_cptmp_1(base_records: List[Any], mr_records: List[Any], **kwargs) -> Dict[str, Any]:
+    return _analyze_cptmp1(
+        base_records,
+        mr_records,
+        mr_id=kwargs.get("mr_id", "MR-CPTMP-1"),
+        trigger_distance_m=float(kwargs.get("trigger_distance_m", CPTMP1_TRIGGER_DISTANCE_M)),
+        success_goal_thresh_m=float(
+            kwargs.get("success_goal_thresh_m", CPTMP1_SUCCESS_GOAL_THRESH_M)
+        ),
+    )

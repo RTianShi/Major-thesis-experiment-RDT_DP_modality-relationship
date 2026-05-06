@@ -213,10 +213,16 @@ def summarize(records: List[EpisodeRecord]) -> Dict:
 
 try:
     from eval_sim.analysis_dp.mr_rules import MR_RULE_REGISTRY
+    from eval_sim.analysis_dp.mr_rules import mr_cptmp_1
+    from eval_sim.analysis_dp.mr_rules import mr_cptmp_2
+    from eval_sim.analysis_dp.mr_rules import mr_fpdp_1
+    from eval_sim.analysis_dp.mr_rules import mr_fpdp_2
     from eval_sim.analysis_dp.mr_rules import mr_ltsep_1  # noqa: F401
     from eval_sim.analysis_dp.mr_rules import mr_ltsep_2
     from eval_sim.analysis_dp.mr_rules import mr_ltsep_3
     from eval_sim.analysis_dp.mr_rules import mr_ltsep_4
+    from eval_sim.analysis_dp.mr_rules import mr_ltsep_5
+    from eval_sim.analysis_dp.mr_rules import mr_gdip_1
     from eval_sim.analysis_dp.mr_rules import mr_sesp_1  # noqa: F401
 except Exception:
     # 兼容直接运行该脚本（python eval_sim/analysis_dp/mr_eval_analyzer_dp.py）
@@ -361,4 +367,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
