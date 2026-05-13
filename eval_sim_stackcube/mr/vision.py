@@ -40,6 +40,17 @@ def _target_camera_index_set(camera_group_size, target_camera_indices):
     }
 
 
+def _resolve_camera_group_size(images, cfg):
+    camera_group_size_cfg = cfg.get("camera_group_size", None)
+    if camera_group_size_cfg is None:
+        camera_group_size = 1 if len(images) == 1 else 3
+    else:
+        camera_group_size = max(1, int(camera_group_size_cfg))
+    if len(images) < camera_group_size:
+        camera_group_size = max(1, len(images))
+    return camera_group_size
+
+
 @register_vision("MR-GDIP1")
 @register_vision("Full-Episode Visual Blindness")
 def vis_mr_gdip1_full_episode_visual_blindness(images, cfg):
@@ -129,16 +140,16 @@ def vis_mr_cptmp1_early_phase_approaching_blindness(images, cfg):
     step_index = int(runtime.get("step_index", 0))
     is_grasped = bool(runtime.get("is_grasped", False))
 
-    observed_grasp_step = runtime.get("observed_grasp_step", None)
-    if observed_grasp_step is None:
-        tgrasp_steps = max(1, int(cfg.get("estimated_tgrasp_steps", 80)))
-    else:
-        tgrasp_steps = max(1, int(observed_grasp_step))
-
     visible_ratio = float(cfg.get("target_encoding_ratio", 0.1))
     blind_ratio = float(cfg.get("midflight_blink_end_ratio", 0.4))
-    visible_until_step = max(0, int(round(tgrasp_steps * visible_ratio)))
-    blind_until_step = max(visible_until_step, int(round(tgrasp_steps * blind_ratio)))
+    estimated_tgrasp_steps = max(1, int(cfg.get("estimated_tgrasp_steps", 120)))
+    tgrasp_steps = int(cfg.get("_cptmp1_tgrasp_steps", estimated_tgrasp_steps))
+    cfg["_cptmp1_tgrasp_steps"] = tgrasp_steps
+
+    visible_until_step = max(1, int(round(tgrasp_steps * visible_ratio)))
+    blind_until_step = max(visible_until_step + 1, int(round(tgrasp_steps * blind_ratio)))
+    cfg["_cptmp1_visible_until_step"] = visible_until_step
+    cfg["_cptmp1_blind_until_step"] = blind_until_step
 
     if is_grasped:
         return images
@@ -147,7 +158,7 @@ def vis_mr_cptmp1_early_phase_approaching_blindness(images, cfg):
     if step_index >= blind_until_step:
         return images
 
-    camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
+    camera_group_size = _resolve_camera_group_size(images, cfg)
     target_camera_indices = cfg.get("target_camera_indices", [0])
     fill_value = int(np.clip(cfg.get("fill_value", 0), 0, 255))
     return _blackout_target_cameras(
@@ -163,24 +174,49 @@ def vis_mr_cptmp1_early_phase_approaching_blindness(images, cfg):
 def vis_mr_cptmp2_critical_stacking_blindness(images, cfg):
     runtime = cfg.get("runtime", {})
     is_grasped = bool(runtime.get("is_grasped", False))
+    cube_lifted = bool(runtime.get("cube_lifted", False))
     cube_goal_distance = runtime.get("cube_goal_distance", None)
+    previous_cube_goal_distance = runtime.get("previous_cube_goal_distance", None)
 
     active = bool(cfg.get("_stacking_blindness_active", False))
     align_trigger_distance = float(cfg.get("align_trigger_distance", 0.06))
+    progress_epsilon = float(cfg.get("progress_epsilon", 1e-4))
+    sustain_steps = max(1, int(cfg.get("sustain_steps", 2)))
+    approach_counter = int(cfg.get("_stacking_blindness_approach_counter", 0))
 
     if active and not is_grasped:
         cfg["_stacking_blindness_active"] = False
+        cfg["_stacking_blindness_approach_counter"] = 0
         return images
 
-    if (not active) and is_grasped and cube_goal_distance is not None and np.isfinite(cube_goal_distance):
-        if float(cube_goal_distance) <= align_trigger_distance:
+    moving_toward_goal = (
+        cube_goal_distance is not None
+        and previous_cube_goal_distance is not None
+        and np.isfinite(cube_goal_distance)
+        and np.isfinite(previous_cube_goal_distance)
+        and float(cube_goal_distance) < float(previous_cube_goal_distance) - progress_epsilon
+    )
+
+    near_goal = (
+        cube_goal_distance is not None
+        and np.isfinite(cube_goal_distance)
+        and float(cube_goal_distance) <= align_trigger_distance
+    )
+
+    if not active:
+        if is_grasped and cube_lifted and near_goal and moving_toward_goal:
+            approach_counter += 1
+        else:
+            approach_counter = 0
+        cfg["_stacking_blindness_approach_counter"] = approach_counter
+        if approach_counter >= sustain_steps:
             active = True
             cfg["_stacking_blindness_active"] = True
 
     if not active:
         return images
 
-    camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
+    camera_group_size = _resolve_camera_group_size(images, cfg)
     target_camera_indices = cfg.get("target_camera_indices", [0])
     fill_value = int(np.clip(cfg.get("fill_value", 0), 0, 255))
     return _blackout_target_cameras(

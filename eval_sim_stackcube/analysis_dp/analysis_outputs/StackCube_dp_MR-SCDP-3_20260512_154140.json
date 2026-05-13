@@ -1,0 +1,1088 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/StackCube/StackCube-v1_20260507_171901",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube/StackCube-v1_MR-SCDP3_20260512_153058",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 189.96,
+      "median": 121.0,
+      "std": 126.23960709698046,
+      "min": 67.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.9554282879829407,
+      "median": 0.8255857825279236,
+      "std": 0.3113681941976068,
+      "min": 0.5455149412155151,
+      "max": 1.6140120029449463
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3285438548592207,
+      "median": 0.3256007888765554,
+      "std": 0.16047203615436637,
+      "min": 0.04006177482355852,
+      "max": 0.7164470457140841
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18379271522224336,
+      "median": 0.18639727003848494,
+      "std": 0.09385685583374975,
+      "min": 0.024260986949110882,
+      "max": 0.38594732553650163
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.048356503779442166,
+      "median": 0.05604305545635083,
+      "std": 0.017263997487146375,
+      "min": 0.009790962088009109,
+      "max": 0.06091412759676416
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999763503670693,
+      "median": 0.07999983802437782,
+      "std": 4.427526671778822e-06,
+      "min": 0.07998516038060188,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032582375556230544,
+      "median": 0.037314651533961296,
+      "std": 0.0167200674899488,
+      "min": 0.0,
+      "max": 0.05167234502732754
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 60.0,
+    "success_count": 15,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      12,
+      17,
+      18,
+      19,
+      20,
+      22,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 236.56,
+      "median": 159.0,
+      "std": 138.18743213476398,
+      "min": 78.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.1490171146392822,
+      "median": 1.1044691801071167,
+      "std": 0.42588675014414895,
+      "min": 0.5810961127281189,
+      "max": 2.0206282138824463
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.27669781241502744,
+      "median": 0.2971294214237981,
+      "std": 0.16376257139220576,
+      "min": 0.00808276361160264,
+      "max": 0.5312091940195357
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.15975574108117885,
+      "median": 0.14371000352135127,
+      "std": 0.10997095529555288,
+      "min": 0.008065765223315882,
+      "max": 0.3419235455302762
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04090048327552362,
+      "median": 0.052920310338959095,
+      "std": 0.020667412223159327,
+      "min": 0.009025793891341892,
+      "max": 0.0621282630940763
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999940574169159,
+      "median": 0.07999997958540916,
+      "std": 1.971063307043633e-06,
+      "min": 0.07998989149928093,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.026900460496544838,
+      "median": 0.037092300131917,
+      "std": 0.02056918151723502,
+      "min": 0.0,
+      "max": 0.05194695293903351
+    }
+  },
+  "mr_rule": "MR-SCDP-3",
+  "mr_compare": {
+    "mr_id": "MR-SCDP3-CAMERA-VIEWPOINT-JITTER",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 6,
+    "violation_rate_percent": 24.0,
+    "config": {
+      "jitter_ratio_threshold": 3.0,
+      "path_length_ratio_threshold": 1.3,
+      "grasp_drift_tol_m": 0.03,
+      "metric": "eef_jitter_path_and_grasp_stability",
+      "violation_rule": "jitter_ratio > threshold OR path_len_ratio > threshold OR grasp_drift > tol",
+      "invariance_expectation": "camera_view_jitter_should_be_filtered_by_multimodal_stability"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 53,
+        "mr_grasp_frame_index": 52,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0013456842920806754,
+        "mr_jitter_amplitude": 0.0014445706653476397,
+        "jitter_ratio": 1.0734840808122,
+        "base_path_len_m": 1.0566317176562448,
+        "mr_path_len_m": 1.1148533374307805,
+        "path_len_ratio": 1.055101147165712,
+        "base_grasp_point": [
+          0.0865212082862854,
+          -0.2541961967945099,
+          0.048992618918418884
+        ],
+        "mr_grasp_point": [
+          0.08282677084207535,
+          -0.25536152720451355,
+          0.04907086491584778
+        ],
+        "grasp_point_drift_m": 0.00387465939532422,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 122,
+        "mr_point_count": 108,
+        "base_jitter_amplitude": 0.0010386862774496828,
+        "mr_jitter_amplitude": 0.0010459033632764288,
+        "jitter_ratio": 1.0069482826368577,
+        "base_path_len_m": 0.615462566056938,
+        "mr_path_len_m": 0.5952140613988881,
+        "path_len_ratio": 0.9671003473244923,
+        "base_grasp_point": [
+          0.04945554584264755,
+          0.19923754036426544,
+          0.017141781747341156
+        ],
+        "mr_grasp_point": [
+          0.0450526662170887,
+          0.20109914243221283,
+          0.017072953283786774
+        ],
+        "grasp_point_drift_m": 0.004780758163089043,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 33,
+        "mr_grasp_frame_index": 40,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 85,
+        "mr_point_count": 104,
+        "base_jitter_amplitude": 0.001175062241159206,
+        "mr_jitter_amplitude": 0.0011679129831584753,
+        "jitter_ratio": 0.9939158473906217,
+        "base_path_len_m": 0.5592343097446792,
+        "mr_path_len_m": 0.6012295464561973,
+        "path_len_ratio": 1.0750941706897261,
+        "base_grasp_point": [
+          0.022998735308647156,
+          -0.08930858224630356,
+          0.019406341016292572
+        ],
+        "mr_grasp_point": [
+          0.028119757771492004,
+          -0.09791547805070877,
+          0.01993604749441147
+        ],
+        "grasp_point_drift_m": 0.010029163245545996,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 96,
+        "mr_point_count": 101,
+        "base_jitter_amplitude": 0.0008597677205008327,
+        "mr_jitter_amplitude": 0.0008319545484590682,
+        "jitter_ratio": 0.9676503648851078,
+        "base_path_len_m": 0.42713237094854234,
+        "mr_path_len_m": 0.43332612456514796,
+        "path_len_ratio": 1.0145007825158534,
+        "base_grasp_point": [
+          -0.06579223275184631,
+          0.039611563086509705,
+          0.020094111561775208
+        ],
+        "mr_grasp_point": [
+          -0.06756733357906342,
+          0.042054712772369385,
+          0.020069807767868042
+        ],
+        "grasp_point_drift_m": 0.0030200254980217263,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 50,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 106,
+        "mr_point_count": 265,
+        "base_jitter_amplitude": 0.0011262566467732246,
+        "mr_jitter_amplitude": 0.0005785496149396911,
+        "jitter_ratio": 0.5136925199041102,
+        "base_path_len_m": 0.4776162198446951,
+        "mr_path_len_m": 0.5662141402892142,
+        "path_len_ratio": 1.1855002337929985,
+        "base_grasp_point": [
+          -0.08532746136188507,
+          0.06472313404083252,
+          0.019409842789173126
+        ],
+        "mr_grasp_point": [
+          -0.08966861665248871,
+          0.06760280579328537,
+          0.02231545001268387
+        ],
+        "grasp_point_drift_m": 0.005964955322240782,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 31,
+        "mr_grasp_frame_index": 29,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 95,
+        "mr_point_count": 80,
+        "base_jitter_amplitude": 0.0011339003517444493,
+        "mr_jitter_amplitude": 0.0012776281336943788,
+        "jitter_ratio": 1.1267552141851014,
+        "base_path_len_m": 0.5927363247840697,
+        "mr_path_len_m": 0.5752477081813053,
+        "path_len_ratio": 0.9704951158356367,
+        "base_grasp_point": [
+          -0.022850416600704193,
+          0.10147973895072937,
+          0.019338242709636688
+        ],
+        "mr_grasp_point": [
+          -0.03410819172859192,
+          0.09682874381542206,
+          0.019805818796157837
+        ],
+        "grasp_point_drift_m": 0.012189662996794711,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 47,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 121,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0009458772762504341,
+        "mr_jitter_amplitude": 0.0013935768368085275,
+        "jitter_ratio": 1.473316752393953,
+        "base_path_len_m": 0.5741291269668563,
+        "mr_path_len_m": 1.2805411464177872,
+        "path_len_ratio": 2.230406168700985,
+        "base_grasp_point": [
+          0.03342779353260994,
+          0.16314317286014557,
+          0.02172025293111801
+        ],
+        "mr_grasp_point": [
+          0.0302121601998806,
+          0.160293310880661,
+          0.018195055425167084
+        ],
+        "grasp_point_drift_m": 0.005557789892451341,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length (ratio > 1.3) due to jittery commands"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 40,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 214,
+        "mr_point_count": 162,
+        "base_jitter_amplitude": 0.0010900962662848967,
+        "mr_jitter_amplitude": 0.001134595924248347,
+        "jitter_ratio": 1.0408217689939507,
+        "base_path_len_m": 0.9999658104469351,
+        "mr_path_len_m": 0.7611214795550423,
+        "path_len_ratio": 0.7611475028479812,
+        "base_grasp_point": [
+          0.07330925017595291,
+          0.21503610908985138,
+          0.017981357872486115
+        ],
+        "mr_grasp_point": [
+          0.07025793939828873,
+          0.2319106161594391,
+          0.02123256027698517
+        ],
+        "grasp_point_drift_m": 0.017453647280109553,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 54,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 400,
+        "mr_point_count": 144,
+        "base_jitter_amplitude": 0.0009451390656787683,
+        "mr_jitter_amplitude": 0.0012367926480074713,
+        "jitter_ratio": 1.3085827185857002,
+        "base_path_len_m": 0.8743125632080047,
+        "mr_path_len_m": 0.8153107354062494,
+        "path_len_ratio": 0.9325163216398639,
+        "base_grasp_point": [
+          0.08354447782039642,
+          -0.15492744743824005,
+          0.017774462699890137
+        ],
+        "mr_grasp_point": [
+          0.07581087946891785,
+          -0.16960196197032928,
+          0.019777826964855194
+        ],
+        "grasp_point_drift_m": 0.016708183282231174,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 36,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 89,
+        "mr_point_count": 82,
+        "base_jitter_amplitude": 0.0011878083878713946,
+        "mr_jitter_amplitude": 0.0014998891368773154,
+        "jitter_ratio": 1.2627366098712127,
+        "base_path_len_m": 0.4672135380400133,
+        "mr_path_len_m": 0.5118064545580022,
+        "path_len_ratio": 1.095444401515116,
+        "base_grasp_point": [
+          -0.07110953330993652,
+          -0.14260344207286835,
+          0.023542560636997223
+        ],
+        "mr_grasp_point": [
+          -0.08304837346076965,
+          -0.15263991057872772,
+          0.02255818247795105
+        ],
+        "grasp_point_drift_m": 0.015628039050893733,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 59,
+        "mr_grasp_frame_index": 75,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 109,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0010707447325327855,
+        "mr_jitter_amplitude": 0.0013392045630934715,
+        "jitter_ratio": 1.2507225320881659,
+        "base_path_len_m": 0.5792241112194266,
+        "mr_path_len_m": 1.1258453643568407,
+        "path_len_ratio": 1.9437128782270914,
+        "base_grasp_point": [
+          -0.128968745470047,
+          0.2634923756122589,
+          0.022602006793022156
+        ],
+        "mr_grasp_point": [
+          -0.13432013988494873,
+          0.28439024090766907,
+          0.018478557467460632
+        ],
+        "grasp_point_drift_m": 0.021962719103731747,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length (ratio > 1.3) due to jittery commands"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 55,
+        "mr_grasp_frame_index": 50,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 178,
+        "mr_point_count": 125,
+        "base_jitter_amplitude": 0.0007338178964924408,
+        "mr_jitter_amplitude": 0.0009963063452559076,
+        "jitter_ratio": 1.3577024354654326,
+        "base_path_len_m": 0.5022192199291718,
+        "mr_path_len_m": 0.49913888599618256,
+        "path_len_ratio": 0.9938665550605098,
+        "base_grasp_point": [
+          -0.039699576795101166,
+          0.18685558438301086,
+          0.019566841423511505
+        ],
+        "mr_grasp_point": [
+          -0.044133640825748444,
+          0.1916676163673401,
+          0.016240738332271576
+        ],
+        "grasp_point_drift_m": 0.007340268211696576,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 34,
+        "mr_grasp_frame_index": 45,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 128,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.001640807094626093,
+        "mr_jitter_amplitude": 0.0012775861434769387,
+        "jitter_ratio": 0.7786327519311921,
+        "base_path_len_m": 0.8109291529138736,
+        "mr_path_len_m": 1.4257673001356757,
+        "path_len_ratio": 1.7581897197955372,
+        "base_grasp_point": [
+          -0.0024409862235188484,
+          0.1648937165737152,
+          0.021642431616783142
+        ],
+        "mr_grasp_point": [
+          -0.0054509202018380165,
+          0.18034964799880981,
+          0.024965554475784302
+        ],
+        "grasp_point_drift_m": 0.01609312475273473,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length (ratio > 1.3) due to jittery commands"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 46,
+        "mr_grasp_frame_index": 47,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.00075862394286691,
+        "mr_jitter_amplitude": 0.0007628088393497913,
+        "jitter_ratio": 1.0055164307984614,
+        "base_path_len_m": 0.9787118076749113,
+        "mr_path_len_m": 0.8144001357538142,
+        "path_len_ratio": 0.832114345987665,
+        "base_grasp_point": [
+          -0.11607059091329575,
+          0.014652381651103497,
+          0.0173734650015831
+        ],
+        "mr_grasp_point": [
+          -0.12287020683288574,
+          0.021545089781284332,
+          0.01867455244064331
+        ],
+        "grasp_point_drift_m": 0.009769187814034642,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 46,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0007257255823181156,
+        "mr_jitter_amplitude": 0.0009956946452240661,
+        "jitter_ratio": 1.3719988236374612,
+        "base_path_len_m": 0.5773331756897515,
+        "mr_path_len_m": 1.1037388150264502,
+        "path_len_ratio": 1.9117883078653697,
+        "base_grasp_point": [
+          -0.038625072687864304,
+          -0.01608821004629135,
+          0.02048078179359436
+        ],
+        "mr_grasp_point": [
+          -0.059224437922239304,
+          -0.011383797973394394,
+          0.018815577030181885
+        ],
+        "grasp_point_drift_m": 0.02119524116198935,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length (ratio > 1.3) due to jittery commands"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 40,
+        "mr_grasp_frame_index": 45,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0007466098458412104,
+        "mr_jitter_amplitude": 0.001073354987307517,
+        "jitter_ratio": 1.4376384041629677,
+        "base_path_len_m": 1.0952525092422016,
+        "mr_path_len_m": 0.9319370821078875,
+        "path_len_ratio": 0.850887876762491,
+        "base_grasp_point": [
+          -0.0037667090073227882,
+          -0.2554778754711151,
+          0.020094171166419983
+        ],
+        "mr_grasp_point": [
+          0.0026970701292157173,
+          -0.2519160211086273,
+          0.021700456738471985
+        ],
+        "grasp_point_drift_m": 0.00755297296198697,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 53,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 105,
+        "mr_point_count": 142,
+        "base_jitter_amplitude": 0.000919085957324647,
+        "mr_jitter_amplitude": 0.0010006199510680471,
+        "jitter_ratio": 1.0887120438448827,
+        "base_path_len_m": 0.46434247232269543,
+        "mr_path_len_m": 0.5188598294581793,
+        "path_len_ratio": 1.1174076471247216,
+        "base_grasp_point": [
+          -0.12126997113227844,
+          0.028442882001399994,
+          0.019179485738277435
+        ],
+        "mr_grasp_point": [
+          -0.1260489821434021,
+          0.02901667356491089,
+          0.02064894139766693
+        ],
+        "grasp_point_drift_m": 0.005032641745416542,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 39,
+        "mr_grasp_frame_index": 24,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 291,
+        "mr_point_count": 87,
+        "base_jitter_amplitude": 0.0006611034060975613,
+        "mr_jitter_amplitude": 0.0014154517653327257,
+        "jitter_ratio": 2.1410444300809464,
+        "base_path_len_m": 0.6466905423890443,
+        "mr_path_len_m": 0.4845703121077707,
+        "path_len_ratio": 0.7493078688264729,
+        "base_grasp_point": [
+          -0.04836539551615715,
+          0.19071604311466217,
+          0.02162826806306839
+        ],
+        "mr_grasp_point": [
+          -0.04453952610492706,
+          0.19228015840053558,
+          0.024898886680603027
+        ],
+        "grasp_point_drift_m": 0.005270738043258563,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 29,
+        "mr_grasp_frame_index": 34,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 67,
+        "mr_point_count": 78,
+        "base_jitter_amplitude": 0.0015121566124320833,
+        "mr_jitter_amplitude": 0.0013557191651431546,
+        "jitter_ratio": 0.8965467954821678,
+        "base_path_len_m": 0.42051451977844334,
+        "mr_path_len_m": 0.4497094307140949,
+        "path_len_ratio": 1.0694266417983225,
+        "base_grasp_point": [
+          -0.004337624181061983,
+          -0.06410025805234909,
+          0.0208803191781044
+        ],
+        "mr_grasp_point": [
+          0.0005895299836993217,
+          -0.06520754843950272,
+          0.018901772797107697
+        ],
+        "grasp_point_drift_m": 0.005423798110785712,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 43,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 112,
+        "mr_point_count": 159,
+        "base_jitter_amplitude": 0.001394280416607116,
+        "mr_jitter_amplitude": 0.001251323319621654,
+        "jitter_ratio": 0.8974689056213397,
+        "base_path_len_m": 0.7938578843704074,
+        "mr_path_len_m": 0.8310491956662578,
+        "path_len_ratio": 1.0468488277663779,
+        "base_grasp_point": [
+          -0.04379437118768692,
+          -0.2434695065021515,
+          0.021753117442131042
+        ],
+        "mr_grasp_point": [
+          -0.05219345912337303,
+          -0.2512345612049103,
+          0.02330387383699417
+        ],
+        "grasp_point_drift_m": 0.01154320571091208,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 56,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0012325397655320815,
+        "mr_jitter_amplitude": 0.0007612076525064875,
+        "jitter_ratio": 0.6175927737129664,
+        "base_path_len_m": 1.1289616183883822,
+        "mr_path_len_m": 0.8046902452923046,
+        "path_len_ratio": 0.7127702414197374,
+        "base_grasp_point": [
+          -0.003924212418496609,
+          -0.26634088158607483,
+          0.015227191150188446
+        ],
+        "mr_grasp_point": [
+          -0.00463520921766758,
+          -0.257479190826416,
+          0.018736332654953003
+        ],
+        "grasp_point_drift_m": 0.009557675118391241,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 63,
+        "mr_grasp_frame_index": 60,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 135,
+        "mr_point_count": 151,
+        "base_jitter_amplitude": 0.0012542157836921573,
+        "mr_jitter_amplitude": 0.0011569451413985152,
+        "jitter_ratio": 0.9224450500795828,
+        "base_path_len_m": 0.7688691324857884,
+        "mr_path_len_m": 0.8289101923342765,
+        "path_len_ratio": 1.078090090122844,
+        "base_grasp_point": [
+          -0.0730985477566719,
+          0.2508211135864258,
+          0.019195005297660828
+        ],
+        "mr_grasp_point": [
+          -0.0747399777173996,
+          0.2645222544670105,
+          0.01807168871164322
+        ],
+        "grasp_point_drift_m": 0.013844760521512336,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 51,
+        "mr_grasp_frame_index": 52,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 93,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0011821607834527157,
+        "mr_jitter_amplitude": 0.0016099146142826166,
+        "jitter_ratio": 1.3618406538411534,
+        "base_path_len_m": 0.39844195547929134,
+        "mr_path_len_m": 1.290220028285438,
+        "path_len_ratio": 3.238163076309106,
+        "base_grasp_point": [
+          0.1063557043671608,
+          0.09154333174228668,
+          0.016968660056591034
+        ],
+        "mr_grasp_point": [
+          0.11616697162389755,
+          0.09076981246471405,
+          0.018145941197872162
+        ],
+        "grasp_point_drift_m": 0.009911876116129956,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length (ratio > 1.3) due to jittery commands"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 50,
+        "mr_grasp_frame_index": 42,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 116,
+        "mr_point_count": 126,
+        "base_jitter_amplitude": 0.001352535534707488,
+        "mr_jitter_amplitude": 0.0012154517948222635,
+        "jitter_ratio": 0.8986468478147073,
+        "base_path_len_m": 0.6799295037044123,
+        "mr_path_len_m": 0.7057428755387908,
+        "path_len_ratio": 1.0379647767801534,
+        "base_grasp_point": [
+          0.10360969603061676,
+          -0.11245919018983841,
+          0.023293547332286835
+        ],
+        "mr_grasp_point": [
+          0.10571110248565674,
+          -0.10031913220882416,
+          0.016498900949954987
+        ],
+        "grasp_point_drift_m": 0.01406997286182908,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "robust_invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 44,
+        "mr_grasp_frame_index": 56,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_point_count": 87,
+        "mr_point_count": 400,
+        "base_jitter_amplitude": 0.0012555689912754305,
+        "mr_jitter_amplitude": 0.0010285556219519847,
+        "jitter_ratio": 0.8191948264883148,
+        "base_path_len_m": 0.5229130607497527,
+        "mr_path_len_m": 1.1259229963044104,
+        "path_len_ratio": 2.153174362656121,
+        "base_grasp_point": [
+          0.042901311069726944,
+          0.0916205644607544,
+          0.017805472016334534
+        ],
+        "mr_grasp_point": [
+          0.03613197058439255,
+          0.09286914765834808,
+          0.02087359130382538
+        ],
+        "grasp_point_drift_m": 0.007536331108037513,
+        "jitter_ratio_threshold": 3.0,
+        "path_length_ratio_threshold": 1.3,
+        "grasp_drift_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length (ratio > 1.3) due to jittery commands"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 6,
+  "followup_mr_violation_rate_percent": 24.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

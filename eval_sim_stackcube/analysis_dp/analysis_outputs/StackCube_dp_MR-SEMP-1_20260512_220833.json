@@ -1,0 +1,1239 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/StackCube/StackCube-v1_20260507_171901",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube/StackCube-v1_MR-SEMP1_20260512_220007",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 189.96,
+      "median": 121.0,
+      "std": 126.23960709698046,
+      "min": 67.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.9554282879829407,
+      "median": 0.8255857825279236,
+      "std": 0.3113681941976068,
+      "min": 0.5455149412155151,
+      "max": 1.6140120029449463
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3285438548592207,
+      "median": 0.3256007888765554,
+      "std": 0.16047203615436637,
+      "min": 0.04006177482355852,
+      "max": 0.7164470457140841
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18379271522224336,
+      "median": 0.18639727003848494,
+      "std": 0.09385685583374975,
+      "min": 0.024260986949110882,
+      "max": 0.38594732553650163
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.048356503779442166,
+      "median": 0.05604305545635083,
+      "std": 0.017263997487146375,
+      "min": 0.009790962088009109,
+      "max": 0.06091412759676416
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999763503670693,
+      "median": 0.07999983802437782,
+      "std": 4.427526671778822e-06,
+      "min": 0.07998516038060188,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032582375556230544,
+      "median": 0.037314651533961296,
+      "std": 0.0167200674899488,
+      "min": 0.0,
+      "max": 0.05167234502732754
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 72.0,
+    "success_count": 18,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      16,
+      17,
+      18,
+      19,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 206.04,
+      "median": 119.0,
+      "std": 136.29834335016696,
+      "min": 65.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.9472011065483094,
+      "median": 0.8353438973426819,
+      "std": 0.3829853401773956,
+      "min": 0.5457585453987122,
+      "max": 2.160388946533203
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.315698965547627,
+      "median": 0.24626270470920728,
+      "std": 0.25589170534633643,
+      "min": 0.03993023882333645,
+      "max": 1.2663947636069293
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1584089829603755,
+      "median": 0.13527474241729642,
+      "std": 0.11021153445967792,
+      "min": 0.0208170348795342,
+      "max": 0.38493453278902384
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04701825308767389,
+      "median": 0.05571109600365162,
+      "std": 0.019277089162931253,
+      "min": 0.00760845713710296,
+      "max": 0.06543705714639367
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999869868159294,
+      "median": 0.07999998331069946,
+      "std": 3.0219554313306027e-06,
+      "min": 0.07998641207814217,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0338715922832489,
+      "median": 0.03960506059229374,
+      "std": 0.017538880665288126,
+      "min": 0.0,
+      "max": 0.05182548798620701
+    }
+  },
+  "mr_rule": "MR-SEMP-1",
+  "mr_compare": {
+    "mr_id": "MR-SEMP1-GLOBAL-TRANSLATION-EQUIVARIANCE",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 11,
+    "violation_rate_percent": 44.0,
+    "config": {
+      "position_tol_m": 0.025,
+      "metric": "grasp_and_final_translation_equivariance_error",
+      "violation_rule": "translation_error(grasp) > tol OR translation_error(final) > tol",
+      "invariance_expectation": "global_scene_translation_should_equivariantly_shift_action_anchors"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 53,
+        "mr_grasp_frame_index": 53,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.0865212082862854,
+          -0.2541961967945099,
+          0.048992618918418884
+        ],
+        "mr_grasp_point": [
+          0.12356963753700256,
+          -0.2266082614660263,
+          0.04879121482372284
+        ],
+        "base_final_point": [
+          0.10066437721252441,
+          -0.2880379855632782,
+          0.15359869599342346
+        ],
+        "mr_final_point": [
+          0.12380869686603546,
+          -0.28137916326522827,
+          0.14593122899532318
+        ],
+        "translation_vector": [
+          0.03905698284506798,
+          0.026512399315834045,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.0022872754240025345,
+        "final_translation_error_m": 0.02657381079965712,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.04945554584264755,
+          0.19923754036426544,
+          0.017141781747341156
+        ],
+        "mr_grasp_point": [
+          0.08979208767414093,
+          0.1943686157464981,
+          0.019268296658992767
+        ],
+        "base_final_point": [
+          0.04268992692232132,
+          0.016170989722013474,
+          0.06329835951328278
+        ],
+        "mr_final_point": [
+          0.07781853526830673,
+          0.013757126405835152,
+          0.06656509637832642
+        ],
+        "translation_vector": [
+          0.040000006556510925,
+          5.960464477539063e-08,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.005323751404684692,
+        "final_translation_error_m": 0.006342642520166294,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 33,
+        "mr_grasp_frame_index": 40,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.022998735308647156,
+          -0.08930858224630356,
+          0.019406341016292572
+        ],
+        "mr_grasp_point": [
+          0.06999357044696808,
+          -0.1025075912475586,
+          0.020371541380882263
+        ],
+        "base_final_point": [
+          0.00027563702315092087,
+          0.1772594153881073,
+          0.06370746344327927
+        ],
+        "mr_final_point": [
+          0.035124219954013824,
+          0.1843234747648239,
+          0.061009421944618225
+        ],
+        "translation_vector": [
+          0.04000001214444637,
+          -3.725290298461914e-08,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.014969035228538805,
+        "final_translation_error_m": 0.009149760218916192,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.06579223275184631,
+          0.039611563086509705,
+          0.020094111561775208
+        ],
+        "mr_grasp_point": [
+          -0.0250225979834795,
+          0.03720685839653015,
+          0.01976357400417328
+        ],
+        "base_final_point": [
+          0.06462478637695312,
+          0.06351076066493988,
+          0.0633092075586319
+        ],
+        "mr_final_point": [
+          0.09675091505050659,
+          0.05902715399861336,
+          0.06307706236839294
+        ],
+        "translation_vector": [
+          0.03284714184701443,
+          0.0,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.00828599745425219,
+        "final_translation_error_m": 0.004547139773965933,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 29,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.08532746136188507,
+          0.06472313404083252,
+          0.019409842789173126
+        ],
+        "mr_grasp_point": [
+          -0.047293130308389664,
+          0.06750985980033875,
+          0.019266024231910706
+        ],
+        "base_final_point": [
+          -0.03902865946292877,
+          -0.08988085389137268,
+          0.0639941543340683
+        ],
+        "mr_final_point": [
+          0.000716925598680973,
+          -0.075787253677845,
+          0.06411419808864594
+        ],
+        "translation_vector": [
+          0.03999999910593033,
+          0.0,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.003413264585184086,
+        "final_translation_error_m": 0.014096407485161179,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 31,
+        "mr_grasp_frame_index": 38,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.022850416600704193,
+          0.10147973895072937,
+          0.019338242709636688
+        ],
+        "mr_grasp_point": [
+          0.008242014795541763,
+          0.083181232213974,
+          0.020505964756011963
+        ],
+        "base_final_point": [
+          -0.0912155881524086,
+          -0.16990195214748383,
+          0.06283552199602127
+        ],
+        "mr_final_point": [
+          -0.011979566887021065,
+          0.1429896205663681,
+          0.06747028231620789
+        ],
+        "translation_vector": [
+          0.0400000112131238,
+          -7.450580596923828e-09,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.02038488727213813,
+        "final_translation_error_m": 0.31537610313059933,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 39,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.03342779353260994,
+          0.16314317286014557,
+          0.02172025293111801
+        ],
+        "mr_grasp_point": [
+          -0.009814338758587837,
+          0.16885118186473846,
+          0.022458091378211975
+        ],
+        "base_final_point": [
+          0.12001581490039825,
+          0.01074150763452053,
+          0.0626673698425293
+        ],
+        "mr_final_point": [
+          0.08867394924163818,
+          0.005514671094715595,
+          0.06165500730276108
+        ],
+        "translation_vector": [
+          -0.033851833883090876,
+          0.0,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.011013785750767925,
+        "final_translation_error_m": 0.005885969640842223,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 44,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.07330925017595291,
+          0.21503610908985138,
+          0.017981357872486115
+        ],
+        "mr_grasp_point": [
+          0.0947350412607193,
+          0.20794542133808136,
+          0.019045405089855194
+        ],
+        "base_final_point": [
+          -0.08955254405736923,
+          -0.04800236225128174,
+          0.06552352756261826
+        ],
+        "mr_final_point": [
+          -0.05553059279918671,
+          -0.07563429325819016,
+          0.06663312762975693
+        ],
+        "translation_vector": [
+          0.022057421505451202,
+          -0.02421446144580841,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.01716842389369993,
+        "final_translation_error_m": 0.012492409003632257,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 65,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.08354447782039642,
+          -0.15492744743824005,
+          0.017774462699890137
+        ],
+        "mr_grasp_point": [
+          0.1083887368440628,
+          -0.16518139839172363,
+          0.02205439656972885
+        ],
+        "base_final_point": [
+          0.012365263886749744,
+          -0.016134656965732574,
+          0.16745251417160034
+        ],
+        "mr_final_point": [
+          -0.004722358658909798,
+          0.1515037715435028,
+          0.06153196096420288
+        ],
+        "translation_vector": [
+          0.018579788506031036,
+          -1.4901161193847656e-08,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.012755572482708562,
+        "final_translation_error_m": 0.20147946672540135,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 36,
+        "mr_grasp_frame_index": 35,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.07110953330993652,
+          -0.14260344207286835,
+          0.023542560636997223
+        ],
+        "mr_grasp_point": [
+          -0.02387978881597519,
+          -0.13986805081367493,
+          0.02056702971458435
+        ],
+        "base_final_point": [
+          0.015648510307073593,
+          -0.057506855577230453,
+          0.06286977976560593
+        ],
+        "mr_final_point": [
+          0.058583814650774,
+          -0.05160015448927879,
+          0.0640532597899437
+        ],
+        "translation_vector": [
+          0.03999999165534973,
+          3.2782554626464844e-07,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.00828273399088257,
+        "final_translation_error_m": 0.006700890288704656,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 59,
+        "mr_grasp_frame_index": 52,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.128968745470047,
+          0.2634923756122589,
+          0.022602006793022156
+        ],
+        "mr_grasp_point": [
+          -0.0928143560886383,
+          0.2124519646167755,
+          0.02167365700006485
+        ],
+        "base_final_point": [
+          -0.05664203315973282,
+          0.23133066296577454,
+          0.06255392730236053
+        ],
+        "mr_final_point": [
+          -0.014104582369327545,
+          0.16484040021896362,
+          0.061763063073158264
+        ],
+        "translation_vector": [
+          0.040000006556510925,
+          -0.060278043150901794,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.010049102080999331,
+        "final_translation_error_m": 0.0067569047482521636,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 55,
+        "mr_grasp_frame_index": 55,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.039699576795101166,
+          0.18685558438301086,
+          0.019566841423511505
+        ],
+        "mr_grasp_point": [
+          0.0016666892915964127,
+          0.1843046396970749,
+          0.01620914787054062
+        ],
+        "base_final_point": [
+          -0.005586086772382259,
+          0.10807856917381287,
+          0.06694091111421585
+        ],
+        "mr_final_point": [
+          0.019462693482637405,
+          0.2263336032629013,
+          0.02057478576898575
+        ],
+        "translation_vector": [
+          0.04000000236555934,
+          0.0,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.004432617888118233,
+        "final_translation_error_m": 0.12789687138292222,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 34,
+        "mr_grasp_frame_index": 50,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0024409862235188484,
+          0.1648937165737152,
+          0.021642431616783142
+        ],
+        "mr_grasp_point": [
+          0.03616325184702873,
+          0.18659555912017822,
+          0.016417600214481354
+        ],
+        "base_final_point": [
+          -0.03511342033743858,
+          -0.21919341385364532,
+          0.06230660527944565
+        ],
+        "mr_final_point": [
+          0.005610250867903233,
+          -0.19331124424934387,
+          0.06298951804637909
+        ],
+        "translation_vector": [
+          0.04000003798864782,
+          0.018867656588554382,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.006105712950823512,
+        "final_translation_error_m": 0.0070847306037441285,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 46,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.11607059091329575,
+          0.014652381651103497,
+          0.0173734650015831
+        ],
+        "mr_grasp_point": [
+          -0.06840742379426956,
+          0.10220281779766083,
+          0.019939616322517395
+        ],
+        "base_final_point": [
+          -0.02654150500893593,
+          -0.14419591426849365,
+          0.13348785042762756
+        ],
+        "mr_final_point": [
+          -0.020575977861881256,
+          -0.1987355798482895,
+          0.06840295344591141
+        ],
+        "translation_vector": [
+          0.03999999910593033,
+          0.08462525811046362,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.008594529838316543,
+        "final_translation_error_m": 0.1573571259344674,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 50,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.038625072687864304,
+          -0.01608821004629135,
+          0.02048078179359436
+        ],
+        "mr_grasp_point": [
+          0.0003985874354839325,
+          0.06863324344158173,
+          0.01987520605325699
+        ],
+        "base_final_point": [
+          -0.03648033365607262,
+          0.005979026667773724,
+          0.11690022796392441
+        ],
+        "mr_final_point": [
+          -0.032355185598134995,
+          0.05667221546173096,
+          0.1094871386885643
+        ],
+        "translation_vector": [
+          0.040000255139602814,
+          0.08591821417212486,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.001659125052076918,
+        "final_translation_error_m": 0.05082105482590809,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 40,
+        "mr_grasp_frame_index": 34,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0037667090073227882,
+          -0.2554778754711151,
+          0.020094171166419983
+        ],
+        "mr_grasp_point": [
+          0.03287216275930405,
+          -0.18063612282276154,
+          0.018098600208759308
+        ],
+        "base_final_point": [
+          -0.08584697544574738,
+          -0.01894168183207512,
+          0.039583489298820496
+        ],
+        "mr_final_point": [
+          0.0174616277217865,
+          0.11592524498701096,
+          0.0643128901720047
+        ],
+        "translation_vector": [
+          0.040000011678785086,
+          0.08058212697505951,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.006944887498503234,
+        "final_translation_error_m": 0.08698482924017237,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 36,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.12126997113227844,
+          0.028442882001399994,
+          0.019179485738277435
+        ],
+        "mr_grasp_point": [
+          -0.0738735944032669,
+          0.027311723679304123,
+          0.021930955350399017
+        ],
+        "base_final_point": [
+          0.02394583262503147,
+          0.0003923075273633003,
+          0.06356371939182281
+        ],
+        "mr_final_point": [
+          0.0665191113948822,
+          -0.007848145440220833,
+          0.06284608691930771
+        ],
+        "translation_vector": [
+          0.040000006556510925,
+          -1.1175870895385742e-08,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.007972224947999028,
+        "final_translation_error_m": 0.008662655895980687,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 39,
+        "mr_grasp_frame_index": 34,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.04836539551615715,
+          0.19071604311466217,
+          0.02162826806306839
+        ],
+        "mr_grasp_point": [
+          -0.015600412152707577,
+          0.17885954678058624,
+          0.023386485874652863
+        ],
+        "base_final_point": [
+          0.05152425915002823,
+          0.1404038518667221,
+          0.07106629759073257
+        ],
+        "mr_final_point": [
+          0.08887165784835815,
+          0.13872264325618744,
+          0.06269457936286926
+        ],
+        "translation_vector": [
+          0.02967175655066967,
+          -2.9802322387695312e-08,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.012378819839017985,
+        "final_translation_error_m": 0.011481616203778083,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 29,
+        "mr_grasp_frame_index": 40,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.004337624181061983,
+          -0.06410025805234909,
+          0.0208803191781044
+        ],
+        "mr_grasp_point": [
+          0.044525157660245895,
+          -0.0008721658959984779,
+          0.018558457493782043
+        ],
+        "base_final_point": [
+          -0.015168004669249058,
+          -0.24578507244586945,
+          0.061435312032699585
+        ],
+        "mr_final_point": [
+          0.01203638594597578,
+          -0.20155219733715057,
+          0.058765873312950134
+        ],
+        "translation_vector": [
+          0.0400000037625432,
+          0.06476124812616035,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.009289264996883187,
+        "final_translation_error_m": 0.024336551062908312,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 43,
+        "mr_grasp_frame_index": 37,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.04379437118768692,
+          -0.2434695065021515,
+          0.021753117442131042
+        ],
+        "mr_grasp_point": [
+          0.009387853555381298,
+          -0.17800186574459076,
+          0.01911155879497528
+        ],
+        "base_final_point": [
+          -0.07560239732265472,
+          0.06595826894044876,
+          0.061742380261421204
+        ],
+        "mr_final_point": [
+          0.02134893275797367,
+          -0.06999806314706802,
+          0.15753962099552155
+        ],
+        "translation_vector": [
+          0.04000000888481736,
+          0.05772501230239868,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.015514410798176281,
+        "final_translation_error_m": 0.22345699246812717,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 56,
+        "mr_grasp_frame_index": 44,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.003924212418496609,
+          -0.26634088158607483,
+          0.015227191150188446
+        ],
+        "mr_grasp_point": [
+          0.030271930620074272,
+          -0.20580044388771057,
+          0.021975979208946228
+        ],
+        "base_final_point": [
+          0.05627535283565521,
+          -0.12118653953075409,
+          0.11074772477149963
+        ],
+        "mr_final_point": [
+          0.07745014131069183,
+          -0.11228711158037186,
+          0.06695505976676941
+        ],
+        "translation_vector": [
+          0.04000001307576895,
+          0.05103200674057007,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.013024642296426265,
+        "final_translation_error_m": 0.06361871410989008,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 63,
+        "mr_grasp_frame_index": 48,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0730985477566719,
+          0.2508211135864258,
+          0.019195005297660828
+        ],
+        "mr_grasp_point": [
+          0.006684144493192434,
+          0.20167407393455505,
+          0.02208145707845688
+        ],
+        "base_final_point": [
+          -0.16035470366477966,
+          0.037624508142471313,
+          0.06368069350719452
+        ],
+        "mr_final_point": [
+          -0.019101090729236603,
+          0.2252788543701172,
+          0.023661069571971893
+        ],
+        "translation_vector": [
+          0.06755817809607834,
+          -0.05098499357700348,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.01269442494994893,
+        "final_translation_error_m": 0.25294529431972707,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 51,
+        "mr_grasp_frame_index": 37,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.1063557043671608,
+          0.09154333174228668,
+          0.016968660056591034
+        ],
+        "mr_grasp_point": [
+          0.05400525778532028,
+          0.09066574275493622,
+          0.025502033531665802
+        ],
+        "base_final_point": [
+          0.13845911622047424,
+          0.1400292068719864,
+          0.05712137371301651
+        ],
+        "mr_final_point": [
+          0.08782564103603363,
+          0.13727615773677826,
+          0.060712166130542755
+        ],
+        "translation_vector": [
+          -0.056954529136419296,
+          7.450580596923828e-09,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.00973582120534039,
+        "final_translation_error_m": 0.0077735985112523005,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 50,
+        "mr_grasp_frame_index": 45,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.10360969603061676,
+          -0.11245919018983841,
+          0.023293547332286835
+        ],
+        "mr_grasp_point": [
+          0.09780305624008179,
+          -0.0981469601392746,
+          0.019247107207775116
+        ],
+        "base_final_point": [
+          0.008701619692146778,
+          0.1522241085767746,
+          0.06277112662792206
+        ],
+        "mr_final_point": [
+          0.0554148331284523,
+          -0.10850714147090912,
+          0.14401547610759735
+        ],
+        "translation_vector": [
+          -0.013316139578819275,
+          -7.450580596923828e-09,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.01666152475137449,
+        "final_translation_error_m": 0.27961571560271703,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Final placement spatial drift (Equivalence failure)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 44,
+        "mr_grasp_frame_index": 44,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.042901311069726944,
+          0.0916205644607544,
+          0.017805472016334534
+        ],
+        "mr_grasp_point": [
+          0.08596806973218918,
+          0.08271776139736176,
+          0.020102106034755707
+        ],
+        "base_final_point": [
+          -0.011150559410452843,
+          -0.13329966366291046,
+          0.06105417013168335
+        ],
+        "mr_final_point": [
+          0.01607711985707283,
+          -0.13886594772338867,
+          0.06145934760570526
+        ],
+        "translation_vector": [
+          0.040000010281801224,
+          0.0,
+          0.0
+        ],
+        "grasp_translation_error_m": 0.009692232757750387,
+        "final_translation_error_m": 0.013938440607385522,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "global_translation_equivariance_pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 11,
+  "followup_mr_violation_rate_percent": 44.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

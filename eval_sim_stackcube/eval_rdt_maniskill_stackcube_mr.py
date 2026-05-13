@@ -372,6 +372,10 @@ for episode in tqdm.trange(total_episodes):
     done = False
     mr_cfg["vision"].pop("_observed_grasp_step", None)
     mr_cfg["vision"].pop("_stacking_blindness_active", None)
+    mr_cfg["vision"].pop("_stacking_blindness_approach_counter", None)
+    mr_cfg["vision"].pop("_cptmp1_tgrasp_steps", None)
+    mr_cfg["vision"].pop("_cptmp1_visible_until_step", None)
+    mr_cfg["vision"].pop("_cptmp1_blind_until_step", None)
 
     while global_steps < MAX_EPISODE_STEPS and not done:
         curr_cube_pos, curr_goal_pos, _, _ = _get_cube_goal_xyz(env)
@@ -398,8 +402,10 @@ for episode in tqdm.trange(total_episodes):
                   for arr in image_arrs]
         mr_cfg["vision"]["runtime"] = {
             "cube_goal_distance": cube_goal_distance,
+            "previous_cube_goal_distance": previous_cube_goal_distance,
             "step_index": global_steps,
             "is_grasped": is_grasped,
+            "cube_lifted": cube_lifted,
             "observed_grasp_step": observed_grasp_step,
         }
         images = vis_mut(images, mr_cfg["vision"])

@@ -15,14 +15,14 @@ import copy
 import re
 
 from diffusion_policy.workspace.robotworkspace import RobotWorkspace
-from eval_sim.mr_dp import get_lang, get_vision, get_proprio  # registers DP MRs
-from eval_sim.env_mr_dp import get_env  # registers DP env MRs
-from eval_sim.custom_envs import *  # noqa: F401,F403  # registers custom envs
+from eval_sim_stackcube.mr_dp import get_lang, get_vision, get_proprio  # registers StackCube DP MRs
+from eval_sim_stackcube.env_mr_dp import get_env  # registers StackCube DP env MRs
+from eval_sim_stackcube.custom_envs import *  # noqa: F401,F403  # registers StackCube custom envs
 from scripts.grasp_event import detect_grasp_event_index
 
 def parse_args(args=None):
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--env-id", type=str, default="PickCube-v1", help=f"Environment to run motion planning solver on. ")
+    parser.add_argument("-e", "--env-id", type=str, default="StackCube-v1", help=f"Environment to run motion planning solver on. ")
     parser.add_argument("-o", "--obs-mode", type=str, default="rgb", help="Observation mode to use. Usually this is kept as 'none' as observations are not necesary to be stored, they can be replayed later via the mani_skill.trajectory.replay_trajectory script.")
     parser.add_argument("-n", "--num-traj", type=int, default=25, help="Number of trajectories to generate.")
     parser.add_argument("--only-count-success", action="store_true", help="If true, generates trajectories until num_traj of them are successful and only saves the successful trajectories/videos")
@@ -37,8 +37,8 @@ def parse_args(args=None):
     parser.add_argument(
         "--traj-dir",
         type=str,
-        default="/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube",
-        help="Base directory to save end-effector trajectories. The default creates a unique timestamped subfolder under /home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube.",
+        default="/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube",
+        help="Base directory to save end-effector trajectories. The default creates a unique timestamped subfolder under /home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube.",
     )
     parser.add_argument("--shader", default="default", type=str, help="Change shader used for rendering. Default is 'default' which is very fast. Can also be 'rt' for ray tracing and generating photo-realistic renders. Can also be 'rt-fast' for a faster but lower quality ray-traced renderer")
     parser.add_argument("--record-dir", type=str, default=None, help="Alias of --video-dir for backward compatibility.")
@@ -46,7 +46,7 @@ def parse_args(args=None):
     parser.add_argument("--random_seed", type=int, default=0, help="Random seed for the environment.")
     parser.add_argument("--pretrained_path", type=str, default=None, help="Random seed for the environment.")
     parser.add_argument("--mr-type", type=str, default=None, help="Mutation type label for JSON output.")
-    parser.add_argument("--mr-config", type=str, default="configs/mr_eval.yaml", help="Path to MR config YAML.")
+    parser.add_argument("--mr-config", type=str, default="configs/mr_eval_stackcube.yaml", help="Path to MR config YAML.")
 
     return parser.parse_args()
 
@@ -70,7 +70,9 @@ task2lang = {
     "PickCubeBlueTriangularPrism-v1": "Grasp a blue triangular prism and move it to a target goal position.",
     "PickCubeRedSphereBlueCube-v1": "Grasp a red cube and move it to a target goal position.",
     "PickCubeWoodTable-v1": "Grasp a red cube and move it to a target goal position.",
+    "StackCubeVisualDebunking-v1": "Pick up a red cube and stack it on top of a green cube and let go of the cube without it falling.",
     "StackCube-v1":  "Pick up a red cube and stack it on top of a green cube and let go of the cube without it falling.",
+    "StackCubeLargeRedCube-v1": "Pick up a red cube and stack it on top of a green cube and let go of the cube without it falling.",
     "PlugCharger-v1": "Pick up one of the misplaced shapes on the board/kit and insert it into the correct empty slot.",
     "PushCube-v1": "Push and move a cube to a goal region in front of it."
 }
@@ -129,7 +131,7 @@ def _extract_gripper_width(obs):
 def _extract_cube_pos(obs, env):
     # 1) 优先从环境对象读（对 PickCube 系列最稳）
     unwrapped = getattr(env, "unwrapped", env)
-    for name in ("cube", "obj", "object", "target_object", "source_object"):
+    for name in ("cubeA", "cube_a", "red_cube", "cube", "obj", "object", "target_object", "source_object"):
         actor = getattr(unwrapped, name, None)
         if actor is not None and hasattr(actor, "pose"):
             p = getattr(actor.pose, "p", None)
@@ -155,6 +157,23 @@ def _extract_cube_pos(obs, env):
     return None
 
 
+def _pose_to_quat(obj):
+    if obj is None:
+        return None
+    pose = getattr(obj, "pose", None)
+    if pose is not None and hasattr(pose, "q"):
+        q = _to_numpy_1d(pose.q)
+        if q is not None and q.size >= 4:
+            return np.asarray(q[:4], dtype=np.float64)
+    if hasattr(obj, "get_pose"):
+        pose = obj.get_pose()
+        if hasattr(pose, "q"):
+            q = _to_numpy_1d(pose.q)
+            if q is not None and q.size >= 4:
+                return np.asarray(q[:4], dtype=np.float64)
+    return None
+
+
 def _pose_to_xyz(obj):
     if obj is None:
         return None
@@ -163,6 +182,25 @@ def _pose_to_xyz(obj):
     if hasattr(obj, "get_pose"):
         return np.array(obj.get_pose().p, dtype=np.float32)
     return None
+
+
+def _quat_to_yaw_deg(quat):
+    if quat is None:
+        return None
+    try:
+        q = np.asarray(quat, dtype=np.float64).reshape(-1)
+    except Exception:
+        return None
+    if q.size < 4:
+        return None
+    w, x, y, z = q[:4]
+    n = np.linalg.norm([w, x, y, z])
+    if n < 1e-12:
+        return None
+    w, x, y, z = w / n, x / n, y / n, z / n
+    siny_cosp = 2.0 * (w * z + x * y)
+    cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
+    return float(np.degrees(np.arctan2(siny_cosp, cosy_cosp)))
 
 
 def _find_actor_by_keywords(scene, keywords):
@@ -199,13 +237,13 @@ def _get_cube_goal_xyz(env):
     cube_pos = None
     goal_pos = None
 
-    for key in ["obj", "object", "_obj", "cube"]:
+    for key in ["cubeA", "cube_a", "red_cube", "obj", "object", "_obj", "cube"]:
         if hasattr(env.unwrapped, key):
             cube_pos = _pose_to_xyz(getattr(env.unwrapped, key))
             if cube_pos is not None:
                 break
 
-    for key in ["goal", "_goal", "target", "_target", "goal_site", "target_site", "goal_region"]:
+    for key in ["cubeB", "cube_b", "green_cube", "goal_cube", "target_cube", "goal", "_goal", "target", "_target", "goal_site", "target_site", "goal_region"]:
         if hasattr(env.unwrapped, key):
             goal_pos = _pose_to_xyz(getattr(env.unwrapped, key))
             if goal_pos is not None:
@@ -213,20 +251,72 @@ def _get_cube_goal_xyz(env):
 
     scene = getattr(env.unwrapped, "scene", None)
     if cube_pos is None:
-        actor, _ = _find_actor_by_keywords(scene, ["cube", "block", "obj"])
+        actor, _ = _find_actor_by_keywords(scene, ["cubea", "red", "cube", "block", "obj"])
         cube_pos = _pose_to_xyz(actor)
     if goal_pos is None:
-        actor, _ = _find_actor_by_keywords(scene, ["goal", "target", "region"])
+        actor, _ = _find_actor_by_keywords(scene, ["cubeb", "green", "goal", "target", "region"])
         goal_pos = _pose_to_xyz(actor)
 
     if cube_pos is None:
-        articulation, _ = _find_articulation_by_keywords(scene, ["cube", "block", "obj"])
+        articulation, _ = _find_articulation_by_keywords(scene, ["cubea", "red", "cube", "block", "obj"])
         cube_pos = _pose_to_xyz(articulation)
     if goal_pos is None:
-        articulation, _ = _find_articulation_by_keywords(scene, ["goal", "target", "region"])
+        articulation, _ = _find_articulation_by_keywords(scene, ["cubeb", "green", "goal", "target", "region"])
         goal_pos = _pose_to_xyz(articulation)
 
     return cube_pos, goal_pos
+
+
+def _get_stackcube_actor(env, role: str):
+    unwrapped = getattr(env, "unwrapped", env)
+    if role == "src":
+        keys = ["cubeA", "cube_a", "red_cube", "source_object", "obj", "object", "_obj", "cube"]
+        keywords = ["cubea", "red", "source", "obj", "cube", "block"]
+    else:
+        keys = ["cubeB", "cube_b", "green_cube", "goal_cube", "target_cube", "goal", "_goal", "target", "_target"]
+        keywords = ["cubeb", "green", "goal", "target", "cube", "block", "region"]
+
+    for key in keys:
+        actor = getattr(unwrapped, key, None)
+        if actor is not None:
+            return actor
+
+    scene = getattr(unwrapped, "scene", None)
+    actor, _ = _find_actor_by_keywords(scene, keywords)
+    if actor is not None:
+        return actor
+    articulation, _ = _find_articulation_by_keywords(scene, keywords)
+    return articulation
+
+
+def _extract_stackcube_cube_state(obs, env, role: str):
+    actor = _get_stackcube_actor(env, role)
+    pos = _pose_to_xyz(actor)
+    quat = _pose_to_quat(actor)
+    yaw_deg = _quat_to_yaw_deg(quat)
+
+    if pos is None and role == "src":
+        pos = _extract_cube_pos(obs, env)
+
+    if quat is None and isinstance(obs, dict):
+        extra = obs.get("extra", {})
+        if isinstance(extra, dict):
+            quat_keys = (
+                ["red_cube_quat", "cubeA_quat", "src_cube_quat", "cube_quat"]
+                if role == "src"
+                else ["green_cube_quat", "cubeB_quat", "dst_cube_quat", "goal_cube_quat"]
+            )
+            for key in quat_keys:
+                if key in extra:
+                    quat = _to_numpy_1d(extra[key])
+                    if quat is not None and quat.size >= 4:
+                        quat = np.asarray(quat[:4], dtype=np.float64)
+                        yaw_deg = _quat_to_yaw_deg(quat)
+                        break
+
+    pos_list = pos.tolist() if pos is not None else None
+    quat_list = quat.tolist() if quat is not None else None
+    return pos_list, quat_list, yaw_deg
 
 
 def _refresh_obs(env):
@@ -244,7 +334,7 @@ def _to_bool_scalar(value):
 
 def _current_is_grasped(env):
     cube = None
-    for key in ["cube", "obj", "object", "_obj"]:
+    for key in ["cubeA", "cube_a", "red_cube", "cube", "obj", "object", "_obj"]:
         candidate = getattr(env.unwrapped, key, None)
         if candidate is not None:
             cube = candidate
@@ -281,7 +371,17 @@ def _get_history_frame(obs_window, delay_steps):
     return obs_window[src_idx]
 
 
-def _build_policy_obs(env, obs, mr_cfg, obs_window=None, vision_delay_steps=0):
+def _build_policy_obs(
+    env,
+    obs,
+    mr_cfg,
+    obs_window=None,
+    vision_delay_steps=0,
+    *,
+    step_index=0,
+    previous_cube_goal_distance=None,
+    cube_lifted=False,
+):
     curr_cube_pos, curr_goal_pos = _get_cube_goal_xyz(env)
     if curr_cube_pos is None or curr_goal_pos is None:
         cube_goal_distance = float("nan")
@@ -293,8 +393,21 @@ def _build_policy_obs(env, obs, mr_cfg, obs_window=None, vision_delay_steps=0):
         delayed_img = _to_uint8_rgb(env.render())
 
     vision_runtime = mr_cfg["vision"].setdefault("runtime", {})
+    vision_runtime["step_index"] = int(step_index)
+    vision_runtime["is_grasped"] = _current_is_grasped(env)
+    vision_runtime["src_cube_pos"] = curr_cube_pos.tolist() if curr_cube_pos is not None else None
+    vision_runtime["dst_cube_pos"] = curr_goal_pos.tolist() if curr_goal_pos is not None else None
     vision_runtime["cube_goal_distance"] = cube_goal_distance
+    vision_runtime["previous_cube_goal_distance"] = previous_cube_goal_distance
+    vision_runtime["cube_lifted"] = bool(cube_lifted)
     vision_runtime["delay_steps"] = int(vision_delay_steps)
+
+    # Optional: help CPTMP-style MRs estimate the grasp phase length.
+    observed_grasp_step = mr_cfg["vision"].get("_observed_grasp_step", None)
+    if vision_runtime["is_grasped"] and observed_grasp_step is None:
+        observed_grasp_step = int(step_index)
+        mr_cfg["vision"]["_observed_grasp_step"] = observed_grasp_step
+    vision_runtime["observed_grasp_step"] = observed_grasp_step
     images = vis_mut([Image.fromarray(delayed_img)], mr_cfg["vision"])
     vision_image = images[0] if images else Image.fromarray(delayed_img)
     if vision_image is None:
@@ -305,8 +418,11 @@ def _build_policy_obs(env, obs, mr_cfg, obs_window=None, vision_delay_steps=0):
     gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
     proprio = obs["agent"]["qpos"][:].cuda()
     proprio_runtime = mr_cfg["proprio"].setdefault("runtime", {})
+    proprio_runtime["step_index"] = int(step_index)
     proprio_runtime["is_grasped"] = _current_is_grasped(env)
+    proprio_runtime["cube_lifted"] = bool(cube_lifted)
     proprio_runtime["cube_goal_distance"] = cube_goal_distance
+    proprio_runtime["previous_cube_goal_distance"] = previous_cube_goal_distance
     proprio_runtime["gripper_width"] = gripper_width
     proprio_runtime["gripper_finger_qpos"] = gripper_finger_qpos
     proprio = prop_mut(proprio, mr_cfg["proprio"])
@@ -360,16 +476,16 @@ if args.record_dir:
     args.video_dir = args.record_dir
 
 
-default_pickcube_traj_root = "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube"
-if args.traj_dir == default_pickcube_traj_root:
+default_stackcube_traj_root = "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube"
+if args.traj_dir == default_stackcube_traj_root:
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     env_tag = _slugify(args.env_id)
     mr_type = getattr(args, "mr_type", None)
     if mr_type:
         mr_tag = _slugify(mr_type)
-        args.traj_dir = os.path.join(default_pickcube_traj_root, f"{env_tag}_{mr_tag}_{ts}")
+        args.traj_dir = os.path.join(default_stackcube_traj_root, f"{env_tag}_{mr_tag}_{ts}")
     else:
-        args.traj_dir = os.path.join(default_pickcube_traj_root, f"{env_tag}_{ts}")
+        args.traj_dir = os.path.join(default_stackcube_traj_root, f"{env_tag}_{ts}")
 
 os.makedirs(args.traj_dir, exist_ok=True)
 
@@ -464,27 +580,16 @@ action_max = torch.tensor(DATA_STAT['action_max']).cuda()
 
 def _extract_cube_yaw_deg(obs, env):
     """尽力提取 cube yaw（度），失败返回 None。"""
-    try:
-        unwrapped = getattr(env, "unwrapped", env)
-        for name in ("cube", "obj", "object", "target_object", "source_object"):
-            actor = getattr(unwrapped, name, None)
-            if actor is not None and hasattr(actor, "pose") and hasattr(actor.pose, "q"):
-                q = np.asarray(actor.pose.q, dtype=np.float64).reshape(-1)
-                if q.size >= 4:
-                    w, x, y, z = q[:4]
-                    n = np.linalg.norm([w, x, y, z])
-                    if n > 1e-12:
-                        w, x, y, z = w / n, x / n, y / n, z / n
-                        siny_cosp = 2.0 * (w * z + x * y)
-                        cosy_cosp = 1.0 - 2.0 * (y * y + z * z)
-                        return float(np.degrees(np.arctan2(siny_cosp, cosy_cosp)))
-    except Exception:
-        pass
-    return None
+    _, _, yaw_deg = _extract_stackcube_cube_state(obs, env, role="src")
+    return yaw_deg
 
 def _infer_cube_yaw_from_env_id(env_id: str):
     m = re.search(r"Yaw(\d{3})", str(env_id))
     return float(int(m.group(1))) if m else None
+
+def _use_contact_grasp_mode(mr_type: str) -> bool:
+    normalized = str(mr_type or "").strip().lower().replace("_", "-")
+    return normalized in {"mr-sesp1", "mr-sesp-1"}
 
 def _first_index_ge(seq, thresh: float):
     for i, v in enumerate(seq):
@@ -510,6 +615,12 @@ for episode in tqdm.trange(total_episodes):
     policy.reset()
     mr_cfg["vision"]["runtime"] = {}
     mr_cfg["proprio"]["runtime"] = {}
+    mr_cfg["vision"].pop("_observed_grasp_step", None)
+    mr_cfg["vision"].pop("_stacking_blindness_active", None)
+    mr_cfg["vision"].pop("_stacking_blindness_approach_counter", None)
+    mr_cfg["vision"].pop("_cptmp1_tgrasp_steps", None)
+    mr_cfg["vision"].pop("_cptmp1_visible_until_step", None)
+    mr_cfg["vision"].pop("_cptmp1_blind_until_step", None)
 
     initial_img = _to_uint8_rgb(env.render())
     obs_window.append(initial_img)
@@ -519,6 +630,9 @@ for episode in tqdm.trange(total_episodes):
         mr_cfg,
         obs_window=obs_window,
         vision_delay_steps=vision_delay_steps,
+        step_index=0,
+        previous_cube_goal_distance=None,
+        cube_lifted=False,
     )
     obs_window.append(policy_obs)
 
@@ -528,8 +642,14 @@ for episode in tqdm.trange(total_episodes):
     gripper_width_traj = []
     gripper_finger_qpos_traj = []
     cube_pos_traj = []
+    src_cube_pos_traj = []
+    dst_cube_pos_traj = []
     eef_yaw_traj = []  # 实时记录每步 yaw(度)
     cube_yaw_traj = []  # 新增：cube yaw 序列（可能含 None）
+    src_cube_yaw_traj = []
+    dst_cube_yaw_traj = []
+    src_cube_quat_traj = []
+    dst_cube_quat_traj = []
     done = False
     info = {"success": False}
 
@@ -539,9 +659,14 @@ for episode in tqdm.trange(total_episodes):
     # 新增：记录目标位置（绿球/goal）并写入结果
     _, initial_goal_point = _get_cube_goal_xyz(env)
     goal_point = initial_goal_point.tolist() if initial_goal_point is not None else None
+    initial_src_cube_pos, initial_src_cube_quat, initial_src_cube_yaw_deg = _extract_stackcube_cube_state(obs, env, role="src")
+    initial_dst_cube_pos, initial_dst_cube_quat, initial_dst_cube_yaw_deg = _extract_stackcube_cube_state(obs, env, role="dst")
+    initial_cube_pos = initial_src_cube_pos
+    initial_cube_z = float(initial_cube_pos[2]) if initial_cube_pos is not None and len(initial_cube_pos) >= 3 else None
+    prev_cube_goal_distance = None
 
     # 新增：记录 reset 后（第一步动作前）的物体初始偏航角
-    initial_cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+    initial_cube_yaw_deg = initial_src_cube_yaw_deg
     if initial_cube_yaw_deg is None:
         initial_cube_yaw_deg = inferred_cube_yaw_deg
 
@@ -560,12 +685,21 @@ for episode in tqdm.trange(total_episodes):
 
             current_img = _to_uint8_rgb(env.render())
             obs_window.append(current_img)
+            current_src_cube_pos, current_src_cube_quat, current_src_cube_yaw_deg = _extract_stackcube_cube_state(obs, env, role="src")
+            current_dst_cube_pos, current_dst_cube_quat, current_dst_cube_yaw_deg = _extract_stackcube_cube_state(obs, env, role="dst")
+            current_cube_pos = current_src_cube_pos
+            cube_lifted = False
+            if current_cube_pos is not None and len(current_cube_pos) >= 3 and initial_cube_z is not None:
+                cube_lifted = float(current_cube_pos[2]) > float(initial_cube_z) + 0.015
             policy_obs, img, _ = _build_policy_obs(
                 env,
                 obs,
                 mr_cfg,
                 obs_window=obs_window,
                 vision_delay_steps=vision_delay_steps,
+                step_index=global_steps,
+                previous_cube_goal_distance=prev_cube_goal_distance,
+                cube_lifted=cube_lifted,
             )
             obs_window.append(policy_obs)
             eef_xyz = env.unwrapped.agent.tcp.pose.p
@@ -579,16 +713,24 @@ for episode in tqdm.trange(total_episodes):
             gripper_action_cmd_traj.append(gripper_cmd)
 
             gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
-            cube_pos = _extract_cube_pos(obs, env)
-            cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+            cube_pos = current_src_cube_pos
+            cube_yaw_deg = current_src_cube_yaw_deg
             if cube_yaw_deg is None:
                 cube_yaw_deg = inferred_cube_yaw_deg  # 兜底推断（可能仍为 None）
 
             gripper_width_traj.append(gripper_width)
             gripper_finger_qpos_traj.append(gripper_finger_qpos)
             cube_pos_traj.append(cube_pos)
+            src_cube_pos_traj.append(current_src_cube_pos)
+            dst_cube_pos_traj.append(current_dst_cube_pos)
             cube_yaw_traj.append(cube_yaw_deg)
+            src_cube_yaw_traj.append(cube_yaw_deg)
+            dst_cube_yaw_traj.append(current_dst_cube_yaw_deg)
+            src_cube_quat_traj.append(current_src_cube_quat)
+            dst_cube_quat_traj.append(current_dst_cube_quat)
             eef_yaw_traj.append(eef_yaw)  # 保留：每步实时 yaw
+            curr_goal_dist = mr_cfg["proprio"].get("runtime", {}).get("cube_goal_distance")
+            prev_cube_goal_distance = curr_goal_dist
             if args.save_video:
                  video_frames.append(img)
             if args.show:
@@ -618,11 +760,14 @@ for episode in tqdm.trange(total_episodes):
         cube_yaw_valid = int(sum(v is not None for v in cube_yaw_traj))
         
         # 从原始序列统一推导（后处理）
+        # 说明：抓取判定不是单纯“夹爪宽度低于阈值”，而是结合夹爪指令、夹爪宽度、末端轨迹与物体位置综合推导
+        grasp_mode = "contact" if _use_contact_grasp_mode(args.mr_type) else "strict"
         grasp_frame_index = detect_grasp_event_index(
             gripper_action_cmd_traj,
             gripper_width_traj,
             eef_traj,
             cube_pos_traj,
+            grasp_mode=grasp_mode,
         )
         gripper_fully_closed_frame_index = _first_index_le(gripper_action_cmd_traj, -0.95)
         gripper_fully_opened_frame_index = _first_index_ge(gripper_action_cmd_traj, 0.95)
@@ -643,6 +788,10 @@ for episode in tqdm.trange(total_episodes):
                 "expected_delta_yaw_deg": 45.0,
                 "grasp_frame_index": grasp_frame_index,
                 "initial_cube_yaw_deg": initial_cube_yaw_deg,
+                "initial_src_cube_yaw_deg": initial_cube_yaw_deg,
+                "initial_dst_cube_yaw_deg": initial_dst_cube_yaw_deg,
+                "initial_src_cube_quat": initial_src_cube_quat,
+                "initial_dst_cube_quat": initial_dst_cube_quat,
                 "eef_yaw_at_grasp": eef_yaw_at_grasp,
                 "goal_point": goal_point,
                 "gripper_fully_closed_frame_index": gripper_fully_closed_frame_index,
@@ -663,9 +812,15 @@ for episode in tqdm.trange(total_episodes):
                 "gripper_finger_qpos": gripper_finger_qpos_traj,
                 "gripper_action_cmd": gripper_action_cmd_traj,
                 "cube_pos": cube_pos_traj,
+                "src_cube_pos": src_cube_pos_traj,
+                "dst_cube_pos": dst_cube_pos_traj,
                 "goal_point": goal_point,
                 "eef_yaw_deg": eef_yaw_traj,
                 "cube_yaw_deg": cube_yaw_traj,
+                "src_cube_yaw_deg": src_cube_yaw_traj,
+                "dst_cube_yaw_deg": dst_cube_yaw_traj,
+                "src_cube_quat": src_cube_quat_traj,
+                "dst_cube_quat": dst_cube_quat_traj,
                 "total_path_length_meters": total_path_length,
             },
         }

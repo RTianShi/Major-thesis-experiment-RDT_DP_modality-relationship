@@ -100,17 +100,11 @@ def _analyze_cptmp1(
         base_cube_pos = _cube_positions(base)
         mr_cube_pos = _cube_positions(mr)
 
-        trigger_frame, trigger_distance_at_frame, trigger_source = _first_trigger_frame(
+        base_trigger_frame, base_trigger_distance_at_frame, base_trigger_source = _first_trigger_frame(
             base_cube_pos,
             goal_point,
             trigger_distance_m,
         )
-        if trigger_frame is None:
-            trigger_frame, trigger_distance_at_frame, trigger_source = _first_trigger_frame(
-                mr_cube_pos,
-                goal_point,
-                trigger_distance_m,
-            )
 
         base_final_cube = base_cube_pos[-1] if base_cube_pos else None
         mr_final_cube = mr_cube_pos[-1] if mr_cube_pos else None
@@ -127,9 +121,9 @@ def _analyze_cptmp1(
         if not mr_cube_pos:
             analyzable = False
             reasons.append("missing_mr_cube_trajectory")
-        if trigger_frame is None:
+        if base_trigger_frame is None:
             analyzable = False
-            reasons.append("terminal_alignment_phase_not_triggered")
+            reasons.append("baseline_terminal_region_not_reached")
 
         precise_placement_preserved = False
         if analyzable:
@@ -163,9 +157,9 @@ def _analyze_cptmp1(
                 "src_success": src_success,
                 "dst_success": dst_success,
                 "goal_point": goal_point,
-                "trigger_frame": trigger_frame,
-                "trigger_distance_at_frame_m": trigger_distance_at_frame,
-                "trigger_source": trigger_source,
+                "base_trigger_frame": base_trigger_frame,
+                "base_trigger_distance_at_frame_m": base_trigger_distance_at_frame,
+                "base_trigger_source": base_trigger_source,
                 "base_final_cube": base_final_cube,
                 "mr_final_cube": mr_final_cube,
                 "base_final_goal_dist_m": base_final_goal_dist_m,

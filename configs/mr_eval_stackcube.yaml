@@ -6,4 +6,4 @@ mr:
   proprio:
     type: identity
   env:
-    type: MR-SADP2
+    type: identity

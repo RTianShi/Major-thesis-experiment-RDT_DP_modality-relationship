@@ -15,21 +15,20 @@ cd "$ROOT_DIR"
 
 #第一处要修改的位置，执行评估命令，修改为当前MR所需的场景，--mr-type是保存的MR文件名
 COMMANDS=(
-  #"python -m eval_sim.eval_dp --pretrained_path ./700.ckpt -e PickCube-v1 --show --mr-type MR-SADP-1-原"
-  "python -m eval_sim.eval_dp --pretrained_path ./700.ckpt -e PickCube-v1 --show  --mr-type MR-FPDP2"
-  # "python -m eval_sim.eval_dp --pretrained_path ./700.ckpt -e PickCube-v1 --show --mr-type MR-SADP-1-0.05"
+  "python -m eval_sim_stackcube.eval_dp --pretrained_path ./700.ckpt -e StackCube-v1 --show"
+  "python -m eval_sim_stackcube.eval_dp --pretrained_path ./700.ckpt -e StackCube-v1 --show  --mr-type MR-SEMP2"
 )
 
 # 直接指定基线（原用例）或衍生（MR）轨迹目录/文件路径的快捷变量。
 # 若不为空则优先使用，脚本不会为该角色强制运行命令来生成轨迹。
-BASE_TRAJ_OVERRIDE="eef_traj_dp/PickCube/PickCube-v1_20260421_153203"
-MR_TRAJ_OVERRIDE="eef_traj_dp/PickCube/PickCube-v1_MR-FPDP2_20260506_215704"
+BASE_TRAJ_OVERRIDE="eef_traj_dp/StackCube/StackCube-v1_20260507_171901"
+MR_TRAJ_OVERRIDE="eef_traj_dp/StackCube/StackCube-v1_MR-SEMP2_20260513_094754"
 
 # 可选：直接指定某条命令对应的已存在轨迹目录（或单个 json 文件路径）。
 # 若对应项非空，则脚本不会运行该命令，直接使用该路径作为 traj-dir。
 # 数量若非空，必须与 COMMANDS 等长。
 TRAJ_DIR_OVERRIDES=(
-  ""   # 可写: "eef_traj_dp/PickCube/...."
+  ""   # 可写: "eef_traj_dp/StackCube/...."
   ""   # 第二条命令的覆盖路径
   # ""
 )
@@ -48,17 +47,16 @@ MR_CONFIGS=(
 
 #第二处要修改的位置，决定了当前任务是否配置正确的MR
 MR_CONFIGS_INLINE=(
-  #$'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: identity\n  env:\n    type: MR-SADP-1-translate_cube_xy'
-  $'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: MR-FPDP2\n  env:\n    type: identity\n '
-  # ""
+  $'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: identity\n  env:\n    type: identity\n'
+  $'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: identity\n  env:\n    type: MR-SEMP2\n '
 )
 
 #第三处要修改的位置，MR_ID决定了分析文件时使用哪个MR评测指标，通常与 --mr-type 保持一致（但不强制）
-MR_ID="MR-FPDP-2"
+MR_ID="MR-SEMP-2"
 BASE_CMD_INDEX=0
 MR_CMD_INDEX=1
 ANALYSIS_OUT=""
-DEFAULT_TRAJ_ROOT="$ROOT_DIR/eef_traj_dp/PickCube"
+DEFAULT_TRAJ_ROOT="$ROOT_DIR/eef_traj_dp/StackCube"
 declare -a TMP_YAML_FILES=()
 
 cleanup() {
@@ -173,7 +171,7 @@ if [[ -n "${BASE_TRAJ_OVERRIDE:-}" && -n "${MR_TRAJ_OVERRIDE:-}" && -e "$BASE_TR
 
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID"
-  python -m eval_sim.analysis_dp.mr_eval_analyzer_dp \
+  python -m eval_sim_stackcube.analysis_dp.mr_eval_analyzer_dp \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID"
@@ -216,6 +214,26 @@ for i in "${!COMMANDS[@]}"; do
     fi
     RESOLVED_TRAJ_DIRS+=("$override_dir")
     echo "[SKIP RUN $((i + 1))/${#COMMANDS[@]}] traj-dir => $override_dir"
+    continue
+  fi
+
+  # 新增：如果该命令索引对应 base/mr 且 override 存在，则跳过运行
+  role_override=""
+  if [[ "$i" -eq "$BASE_CMD_INDEX" && -n "${BASE_TRAJ_OVERRIDE:-}" ]]; then
+    role_override="$BASE_TRAJ_OVERRIDE"
+  fi
+  if [[ "$i" -eq "$MR_CMD_INDEX" && -n "${MR_TRAJ_OVERRIDE:-}" ]]; then
+    role_override="$MR_TRAJ_OVERRIDE"
+  fi
+  if [[ -n "$role_override" ]]; then
+    echo
+    echo "[SKIP RUN $((i + 1))/${#COMMANDS[@]}] Using role override traj dir: $role_override"
+    if [[ ! -e "$role_override" ]]; then
+      echo "ROLE_TRAJ_OVERRIDE 指定的路径不存在: $role_override" >&2
+      exit 1
+    fi
+    RESOLVED_TRAJ_DIRS+=("$role_override")
+    echo "[SKIP RUN $((i + 1))/${#COMMANDS[@]}] traj-dir => $role_override"
     continue
   fi
 
@@ -266,14 +284,14 @@ MR_TRAJ_DIR="$(resolve_dir_by_role "MR" "${MR_TRAJ_OVERRIDE:-}" "${MR_CMD_INDEX}
 if [[ -z "$ANALYSIS_OUT" ]]; then
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID"
-  python -m eval_sim.analysis_dp.mr_eval_analyzer_dp \
+  python -m eval_sim_stackcube.analysis_dp.mr_eval_analyzer_dp \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID"
 else
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID out=$ANALYSIS_OUT"
-  python -m eval_sim.analysis_dp.mr_eval_analyzer_dp \
+  python -m eval_sim_stackcube.analysis_dp.mr_eval_analyzer_dp \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID" \

@@ -1,7 +1,7 @@
 {
   "mode": "compare",
   "base_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_20260421_153203",
-  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PickCube/PickCube-v1_MR-CPTMP1_20260506_201814",
+  "mr_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_MR-CPTMP1_20260506_201814",
   "base_summary": {
     "episodes": 25,
     "success_rate_percent": 56.00000000000001,
@@ -150,10 +150,10 @@
   "mr_compare": {
     "mr_id": "MR-CPTMP-1",
     "paired_episodes": 25,
-    "analyzable_episodes": 20,
-    "unavailable_count": 5,
-    "violations": 4,
-    "violation_rate_percent": 20.0,
+    "analyzable_episodes": 17,
+    "unavailable_count": 8,
+    "violations": 3,
+    "violation_rate_percent": 17.647058823529413,
     "config": {
       "trigger_distance_m": 0.05,
       "success_goal_thresh_m": 0.025,
@@ -170,9 +170,9 @@
           0.0035987645387649536,
           0.07847815006971359
         ],
-        "trigger_frame": null,
-        "trigger_distance_at_frame_m": null,
-        "trigger_source": "not_triggered",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           0.025179779157042503,
           -0.06431198120117188,
@@ -191,7 +191,7 @@
         "analyzable": false,
         "violated": false,
         "reasons": [
-          "terminal_alignment_phase_not_triggered"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -203,9 +203,9 @@
           -0.04564018175005913,
           0.1922023743391037
         ],
-        "trigger_frame": 162,
-        "trigger_distance_at_frame_m": 0.04523625397751099,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 162,
+        "base_trigger_distance_at_frame_m": 0.04523625397751099,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.037078533321619034,
           -0.04933780059218407,
@@ -236,9 +236,9 @@
           0.023454882204532623,
           0.1852535754442215
         ],
-        "trigger_frame": 127,
-        "trigger_distance_at_frame_m": 0.0443073312052388,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 127,
+        "base_trigger_distance_at_frame_m": 0.0443073312052388,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.08785645663738251,
           0.03401199355721474,
@@ -270,9 +270,9 @@
           0.09296587854623795,
           0.1859484314918518
         ],
-        "trigger_frame": 65,
-        "trigger_distance_at_frame_m": 0.04839908435584718,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           -0.022456400096416473,
           0.059433463960886,
@@ -288,10 +288,10 @@
         "trigger_distance_m": 0.05,
         "success_goal_thresh_m": 0.025,
         "precise_placement_preserved": false,
-        "analyzable": true,
+        "analyzable": false,
         "violated": false,
         "reasons": [
-          "expected_precision_loss_after_terminal_visual_cutoff"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -303,9 +303,9 @@
           0.025947205722332,
           0.030186224728822708
         ],
-        "trigger_frame": 53,
-        "trigger_distance_at_frame_m": 0.04825435936386555,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 53,
+        "base_trigger_distance_at_frame_m": 0.04825435936386555,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.011108530685305595,
           0.006687129382044077,
@@ -336,9 +336,9 @@
           0.01901797205209732,
           0.14714036881923676
         ],
-        "trigger_frame": 65,
-        "trigger_distance_at_frame_m": 0.04374419214318712,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 65,
+        "base_trigger_distance_at_frame_m": 0.04374419214318712,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.08174362033605576,
           0.019008412957191467,
@@ -369,9 +369,9 @@
           -0.07478807866573334,
           0.02451871708035469
         ],
-        "trigger_frame": null,
-        "trigger_distance_at_frame_m": null,
-        "trigger_source": "not_triggered",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           0.1597616970539093,
           0.08180825412273407,
@@ -390,7 +390,7 @@
         "analyzable": false,
         "violated": false,
         "reasons": [
-          "terminal_alignment_phase_not_triggered"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -402,9 +402,9 @@
           0.08990371972322464,
           0.08035660535097122
         ],
-        "trigger_frame": 80,
-        "trigger_distance_at_frame_m": 0.045719486267054285,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 80,
+        "base_trigger_distance_at_frame_m": 0.045719486267054285,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.06454605609178543,
           0.07402864843606949,
@@ -436,9 +436,9 @@
           -0.09565507620573044,
           0.29240506887435913
         ],
-        "trigger_frame": null,
-        "trigger_distance_at_frame_m": null,
-        "trigger_source": "not_triggered",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           0.08392441272735596,
           0.05013533681631088,
@@ -457,7 +457,7 @@
         "analyzable": false,
         "violated": false,
         "reasons": [
-          "terminal_alignment_phase_not_triggered"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -469,9 +469,9 @@
           -0.05714334174990654,
           0.30881091952323914
         ],
-        "trigger_frame": 350,
-        "trigger_distance_at_frame_m": 0.044486098170540195,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 350,
+        "base_trigger_distance_at_frame_m": 0.044486098170540195,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.0033632791601121426,
           -0.04396441578865051,
@@ -502,9 +502,9 @@
           0.09180855005979538,
           0.1573648303747177
         ],
-        "trigger_frame": 114,
-        "trigger_distance_at_frame_m": 0.045849683916250925,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 114,
+        "base_trigger_distance_at_frame_m": 0.045849683916250925,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.060288865119218826,
           0.07423076033592224,
@@ -535,9 +535,9 @@
           -0.06066220998764038,
           0.17357118427753448
         ],
-        "trigger_frame": 72,
-        "trigger_distance_at_frame_m": 0.043380816409224615,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           -0.025919491425156593,
           -0.0007281651487573981,
@@ -552,12 +552,11 @@
         "mr_final_goal_dist_m": 0.018904394278615445,
         "trigger_distance_m": 0.05,
         "success_goal_thresh_m": 0.025,
-        "precise_placement_preserved": true,
-        "analyzable": true,
-        "violated": true,
+        "precise_placement_preserved": false,
+        "analyzable": false,
+        "violated": false,
         "reasons": [
-          "vision_cutoff_during_terminal_alignment_should_not_succeed",
-          "terminal_precision_preserved(mr_final_goal_dist=0.0189m <= 0.0250m)"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -569,9 +568,9 @@
           0.0059773921966552734,
           0.18590377271175385
         ],
-        "trigger_frame": 61,
-        "trigger_distance_at_frame_m": 0.04570734723483745,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 61,
+        "base_trigger_distance_at_frame_m": 0.04570734723483745,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.09280429780483246,
           0.014654221944510937,
@@ -602,9 +601,9 @@
           -0.021994397044181824,
           0.15714335441589355
         ],
-        "trigger_frame": 55,
-        "trigger_distance_at_frame_m": 0.04675565802179176,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 55,
+        "base_trigger_distance_at_frame_m": 0.04675565802179176,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.09664298593997955,
           -0.022385701537132263,
@@ -635,9 +634,9 @@
           0.0882243886590004,
           0.2212628275156021
         ],
-        "trigger_frame": 56,
-        "trigger_distance_at_frame_m": 0.04672476014623329,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 56,
+        "base_trigger_distance_at_frame_m": 0.04672476014623329,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.09983893483877182,
           0.06934686005115509,
@@ -668,9 +667,9 @@
           -0.07301868498325348,
           0.22075459361076355
         ],
-        "trigger_frame": 148,
-        "trigger_distance_at_frame_m": 0.04810497543834813,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 148,
+        "base_trigger_distance_at_frame_m": 0.04810497543834813,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.05741875246167183,
           -0.08579566329717636,
@@ -701,9 +700,9 @@
           -0.0700971856713295,
           0.11148519814014435
         ],
-        "trigger_frame": 71,
-        "trigger_distance_at_frame_m": 0.049934447829792665,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 71,
+        "base_trigger_distance_at_frame_m": 0.049934447829792665,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.0049788812175393105,
           -0.016787447035312653,
@@ -734,9 +733,9 @@
           -0.04839259386062622,
           0.09442463517189026
         ],
-        "trigger_frame": 57,
-        "trigger_distance_at_frame_m": 0.04736030121392856,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 57,
+        "base_trigger_distance_at_frame_m": 0.04736030121392856,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.12947727739810944,
           0.055765386670827866,
@@ -767,9 +766,9 @@
           -0.023827575147151947,
           0.2169950306415558
         ],
-        "trigger_frame": 56,
-        "trigger_distance_at_frame_m": 0.045430251189839364,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 56,
+        "base_trigger_distance_at_frame_m": 0.045430251189839364,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.08986929059028625,
           -0.029925690963864326,
@@ -800,9 +799,9 @@
           -0.02496989816427231,
           0.04089989885687828
         ],
-        "trigger_frame": 70,
-        "trigger_distance_at_frame_m": 0.04898803939351491,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           0.0006991441478021443,
           -0.08213893324136734,
@@ -818,10 +817,10 @@
         "trigger_distance_m": 0.05,
         "success_goal_thresh_m": 0.025,
         "precise_placement_preserved": false,
-        "analyzable": true,
+        "analyzable": false,
         "violated": false,
         "reasons": [
-          "expected_precision_loss_after_terminal_visual_cutoff"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -833,9 +832,9 @@
           -0.07840043306350708,
           0.2756739556789398
         ],
-        "trigger_frame": 115,
-        "trigger_distance_at_frame_m": 0.048098771569016804,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 115,
+        "base_trigger_distance_at_frame_m": 0.048098771569016804,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.022362885996699333,
           -0.03864205628633499,
@@ -866,9 +865,9 @@
           0.014031469821929932,
           0.11600862443447113
         ],
-        "trigger_frame": 228,
-        "trigger_distance_at_frame_m": 0.04436909796549901,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 228,
+        "base_trigger_distance_at_frame_m": 0.04436909796549901,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           -0.051194798201322556,
           -0.0014760864432901144,
@@ -900,9 +899,9 @@
           -0.03247777372598648,
           0.2790752947330475
         ],
-        "trigger_frame": 91,
-        "trigger_distance_at_frame_m": 0.04245784831584043,
-        "trigger_source": "derived_from_cube_goal_distance",
+        "base_trigger_frame": 91,
+        "base_trigger_distance_at_frame_m": 0.04245784831584043,
+        "base_trigger_source": "derived_from_cube_goal_distance",
         "base_final_cube": [
           0.08899030834436417,
           -0.03924228623509407,
@@ -933,9 +932,9 @@
           -0.002519175410270691,
           0.12193125486373901
         ],
-        "trigger_frame": null,
-        "trigger_distance_at_frame_m": null,
-        "trigger_source": "not_triggered",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           0.06876340508460999,
           0.03622107580304146,
@@ -954,7 +953,7 @@
         "analyzable": false,
         "violated": false,
         "reasons": [
-          "terminal_alignment_phase_not_triggered"
+          "baseline_terminal_region_not_reached"
         ]
       },
       {
@@ -966,9 +965,9 @@
           0.09788217395544052,
           0.13533887267112732
         ],
-        "trigger_frame": null,
-        "trigger_distance_at_frame_m": null,
-        "trigger_source": "not_triggered",
+        "base_trigger_frame": null,
+        "base_trigger_distance_at_frame_m": null,
+        "base_trigger_source": "not_triggered",
         "base_final_cube": [
           -0.037374697625637054,
           0.03515911474823952,
@@ -987,13 +986,13 @@
         "analyzable": false,
         "violated": false,
         "reasons": [
-          "terminal_alignment_phase_not_triggered"
+          "baseline_terminal_region_not_reached"
         ]
       }
     ]
   },
-  "followup_mr_violation_count": 4,
-  "followup_mr_violation_rate_percent": 20.0,
-  "followup_unavailable_count": 5,
-  "followup_analyzable_count": 20
+  "followup_mr_violation_count": 3,
+  "followup_mr_violation_rate_percent": 17.647058823529413,
+  "followup_unavailable_count": 8,
+  "followup_analyzable_count": 17
 }

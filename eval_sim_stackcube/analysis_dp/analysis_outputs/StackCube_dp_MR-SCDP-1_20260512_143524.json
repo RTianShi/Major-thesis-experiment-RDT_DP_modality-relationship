@@ -1,0 +1,1170 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/StackCube/StackCube-v1_20260507_171901",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube/StackCubeVisualDebunking-v1_20260512_141918",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 189.96,
+      "median": 121.0,
+      "std": 126.23960709698046,
+      "min": 67.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.9554282879829407,
+      "median": 0.8255857825279236,
+      "std": 0.3113681941976068,
+      "min": 0.5455149412155151,
+      "max": 1.6140120029449463
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3285438548592207,
+      "median": 0.3256007888765554,
+      "std": 0.16047203615436637,
+      "min": 0.04006177482355852,
+      "max": 0.7164470457140841
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18379271522224336,
+      "median": 0.18639727003848494,
+      "std": 0.09385685583374975,
+      "min": 0.024260986949110882,
+      "max": 0.38594732553650163
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.048356503779442166,
+      "median": 0.05604305545635083,
+      "std": 0.017263997487146375,
+      "min": 0.009790962088009109,
+      "max": 0.06091412759676416
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999763503670693,
+      "median": 0.07999983802437782,
+      "std": 4.427526671778822e-06,
+      "min": 0.07998516038060188,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032582375556230544,
+      "median": 0.037314651533961296,
+      "std": 0.0167200674899488,
+      "min": 0.0,
+      "max": 0.05167234502732754
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.4297674226760864,
+      "median": 1.3733081817626953,
+      "std": 0.1941463235436658,
+      "min": 1.1750507354736328,
+      "max": 2.1666460037231445
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.0020162630756573197,
+      "median": 1.0816097373757087e-06,
+      "std": 0.009869174448556013,
+      "min": 1.3985230330735336e-07,
+      "max": 0.05036514525501101
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.0014445868155233141,
+      "median": 6.24404081087322e-08,
+      "std": 0.007074279395765554,
+      "min": 7.450580596923828e-09,
+      "max": 0.03610133620202948
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.015159201808515353,
+      "median": 0.014938753697497304,
+      "std": 0.003090048135774197,
+      "min": 0.010531357207219117,
+      "max": 0.021139898163382895
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999765753746033,
+      "median": 0.07999999821186066,
+      "std": 5.680092862788768e-06,
+      "min": 0.079979807138443,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-SCDP-1",
+  "mr_compare": {
+    "mr_id": "MR-SCDP1-VISUAL-DISTRACTOR-DEBUNKING",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 25,
+    "violation_rate_percent": 100.0,
+    "config": {
+      "drift_tol_m": 0.025,
+      "metric": "grasp_and_final_xyz_drift",
+      "violation_rule": "distance(grasp_point_base, grasp_point_mr) > drift_tol_m OR distance(final_point_base, final_point_mr) > drift_tol_m",
+      "invariance_expectation": "visual_only_change_should_not_move_grasp_or_place_points"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 53,
+        "mr_grasp_frame_index": 105,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 400,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.0865212082862854,
+          -0.2541961967945099,
+          0.048992618918418884
+        ],
+        "mr_grasp_point": [
+          0.12094534188508987,
+          -0.28000134229660034,
+          0.027738407254219055
+        ],
+        "base_final_point": [
+          0.10066437721252441,
+          -0.2880379855632782,
+          0.15359869599342346
+        ],
+        "mr_final_point": [
+          -0.02401181496679783,
+          -0.072246253490448,
+          0.20046651363372803
+        ],
+        "grasp_point_drift_m": 0.04798612322202124,
+        "final_point_drift_m": 0.253587887837121,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 59,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 122,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.04945554584264755,
+          0.19923754036426544,
+          0.017141781747341156
+        ],
+        "mr_grasp_point": [
+          0.16237260401248932,
+          -0.027170632034540176,
+          0.019712932407855988
+        ],
+        "base_final_point": [
+          0.04268992692232132,
+          0.016170989722013474,
+          0.06329835951328278
+        ],
+        "mr_final_point": [
+          0.04480179026722908,
+          0.16390439867973328,
+          0.16034157574176788
+        ],
+        "grasp_point_drift_m": 0.25301686380638305,
+        "final_point_drift_m": 0.17676822651433985,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 33,
+        "mr_grasp_frame_index": 68,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 85,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.022998735308647156,
+          -0.08930858224630356,
+          0.019406341016292572
+        ],
+        "mr_grasp_point": [
+          0.14960308372974396,
+          0.07733198255300522,
+          0.018831312656402588
+        ],
+        "base_final_point": [
+          0.00027563702315092087,
+          0.1772594153881073,
+          0.06370746344327927
+        ],
+        "mr_final_point": [
+          0.013853844255208969,
+          0.23625943064689636,
+          0.15444748103618622
+        ],
+        "grasp_point_drift_m": 0.2092798832505833,
+        "final_point_drift_m": 0.10908308899611854,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 54,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 96,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.06579223275184631,
+          0.039611563086509705,
+          0.020094111561775208
+        ],
+        "mr_grasp_point": [
+          0.14937841892242432,
+          -0.060666073113679886,
+          0.018244124948978424
+        ],
+        "base_final_point": [
+          0.06462478637695312,
+          0.06351076066493988,
+          0.0633092075586319
+        ],
+        "mr_final_point": [
+          0.030218245461583138,
+          0.20049841701984406,
+          0.15589991211891174
+        ],
+        "grasp_point_drift_m": 0.2373972116818043,
+        "final_point_drift_m": 0.1688859574456662,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 100,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 106,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.08532746136188507,
+          0.06472313404083252,
+          0.019409842789173126
+        ],
+        "mr_grasp_point": [
+          0.15983082354068756,
+          -0.1340782344341278,
+          0.01486174762248993
+        ],
+        "base_final_point": [
+          -0.03902865946292877,
+          -0.08988085389137268,
+          0.0639941543340683
+        ],
+        "mr_final_point": [
+          0.004317663609981537,
+          0.12079115211963654,
+          0.15133118629455566
+        ],
+        "grasp_point_drift_m": 0.3156663649068952,
+        "final_point_drift_m": 0.23214080854582853,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 31,
+        "mr_grasp_frame_index": 61,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 95,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.022850416600704193,
+          0.10147973895072937,
+          0.019338242709636688
+        ],
+        "mr_grasp_point": [
+          0.1371302604675293,
+          -0.06675831228494644,
+          0.01653429865837097
+        ],
+        "base_final_point": [
+          -0.0912155881524086,
+          -0.16990195214748383,
+          0.06283552199602127
+        ],
+        "mr_final_point": [
+          -0.005873894318938255,
+          0.15305112302303314,
+          0.14676541090011597
+        ],
+        "grasp_point_drift_m": 0.23217605608897512,
+        "final_point_drift_m": 0.3444214274982221,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 56,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 121,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.03342779353260994,
+          0.16314317286014557,
+          0.02172025293111801
+        ],
+        "mr_grasp_point": [
+          0.1511794626712799,
+          -0.009410363622009754,
+          0.01698547601699829
+        ],
+        "base_final_point": [
+          0.12001581490039825,
+          0.01074150763452053,
+          0.0626673698425293
+        ],
+        "mr_final_point": [
+          -0.0013077198527753353,
+          0.27158597111701965,
+          0.15358872711658478
+        ],
+        "grasp_point_drift_m": 0.20895596820829931,
+        "final_point_drift_m": 0.3017050338045983,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 91,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 214,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.07330925017595291,
+          0.21503610908985138,
+          0.017981357872486115
+        ],
+        "mr_grasp_point": [
+          0.158573716878891,
+          0.03719223663210869,
+          0.017933867871761322
+        ],
+        "base_final_point": [
+          -0.08955254405736923,
+          -0.04800236225128174,
+          0.06552352756261826
+        ],
+        "mr_final_point": [
+          -0.04828327149152756,
+          0.3853130638599396,
+          0.15258777141571045
+        ],
+        "grasp_point_drift_m": 0.19722696192002365,
+        "final_point_drift_m": 0.4438981796783737,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 85,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_traj_len": 400,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.08354447782039642,
+          -0.15492744743824005,
+          0.017774462699890137
+        ],
+        "mr_grasp_point": [
+          0.10533902049064636,
+          -0.1884392648935318,
+          0.014863155782222748
+        ],
+        "base_final_point": [
+          0.012365263886749744,
+          -0.016134656965732574,
+          0.16745251417160034
+        ],
+        "mr_final_point": [
+          -0.005996479652822018,
+          0.07407573610544205,
+          0.1623736321926117
+        ],
+        "grasp_point_drift_m": 0.04008141348968372,
+        "final_point_drift_m": 0.09220012844907176,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 36,
+        "mr_grasp_frame_index": 68,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 89,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.07110953330993652,
+          -0.14260344207286835,
+          0.023542560636997223
+        ],
+        "mr_grasp_point": [
+          0.14928525686264038,
+          -0.02625243552029133,
+          0.016201376914978027
+        ],
+        "base_final_point": [
+          0.015648510307073593,
+          -0.057506855577230453,
+          0.06286977976560593
+        ],
+        "mr_final_point": [
+          0.029652366414666176,
+          0.21015140414237976,
+          0.1620774269104004
+        ],
+        "grasp_point_drift_m": 0.249329727949662,
+        "final_point_drift_m": 0.2857957474036633,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 59,
+        "mr_grasp_frame_index": 67,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 109,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.128968745470047,
+          0.2634923756122589,
+          0.022602006793022156
+        ],
+        "mr_grasp_point": [
+          0.05813104286789894,
+          0.182988241314888,
+          0.013200201094150543
+        ],
+        "base_final_point": [
+          -0.05664203315973282,
+          0.23133066296577454,
+          0.06255392730236053
+        ],
+        "mr_final_point": [
+          -0.0571746900677681,
+          0.30957093834877014,
+          0.1353149116039276
+        ],
+        "grasp_point_drift_m": 0.20390105538096814,
+        "final_point_drift_m": 0.10684561409773242,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 55,
+        "mr_grasp_frame_index": 52,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 178,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.039699576795101166,
+          0.18685558438301086,
+          0.019566841423511505
+        ],
+        "mr_grasp_point": [
+          0.1366114467382431,
+          -0.0014774883165955544,
+          0.018260076642036438
+        ],
+        "base_final_point": [
+          -0.005586086772382259,
+          0.10807856917381287,
+          0.06694091111421585
+        ],
+        "mr_final_point": [
+          0.04224443435668945,
+          0.17358995974063873,
+          0.1534087061882019
+        ],
+        "grasp_point_drift_m": 0.25798571845364776,
+        "final_point_drift_m": 0.11855876446064467,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 34,
+        "mr_grasp_frame_index": 55,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 128,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.0024409862235188484,
+          0.1648937165737152,
+          0.021642431616783142
+        ],
+        "mr_grasp_point": [
+          0.129564106464386,
+          -0.014297304674983025,
+          0.017980024218559265
+        ],
+        "base_final_point": [
+          -0.03511342033743858,
+          -0.21919341385364532,
+          0.06230660527944565
+        ],
+        "mr_final_point": [
+          0.001329975202679634,
+          0.2496635764837265,
+          0.14981210231781006
+        ],
+        "grasp_point_drift_m": 0.22259420437119276,
+        "final_point_drift_m": 0.47834319319777413,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 46,
+        "mr_grasp_frame_index": 79,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 400,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.11607059091329575,
+          0.014652381651103497,
+          0.0173734650015831
+        ],
+        "mr_grasp_point": [
+          0.13881316781044006,
+          -0.029239168390631676,
+          0.01002465933561325
+        ],
+        "base_final_point": [
+          -0.02654150500893593,
+          -0.14419591426849365,
+          0.13348785042762756
+        ],
+        "mr_final_point": [
+          -0.010912974365055561,
+          0.2212958037853241,
+          0.15153422951698303
+        ],
+        "grasp_point_drift_m": 0.2587396443742665,
+        "final_point_drift_m": 0.3662705540092663,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 63,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 400,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.038625072687864304,
+          -0.01608821004629135,
+          0.02048078179359436
+        ],
+        "mr_grasp_point": [
+          0.13936525583267212,
+          0.0037680831737816334,
+          0.011752799153327942
+        ],
+        "base_final_point": [
+          -0.03648033365607262,
+          0.005979026667773724,
+          0.11690022796392441
+        ],
+        "mr_final_point": [
+          -0.01621302403509617,
+          0.24451003968715668,
+          0.15309879183769226
+        ],
+        "grasp_point_drift_m": 0.1793070191271351,
+        "final_point_drift_m": 0.24211184200251093,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 40,
+        "mr_grasp_frame_index": 97,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 400,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.0037667090073227882,
+          -0.2554778754711151,
+          0.020094171166419983
+        ],
+        "mr_grasp_point": [
+          0.10142043977975845,
+          -0.18841969966888428,
+          0.013956166803836823
+        ],
+        "base_final_point": [
+          -0.08584697544574738,
+          -0.01894168183207512,
+          0.039583489298820496
+        ],
+        "mr_final_point": [
+          -0.042512740939855576,
+          0.042799316346645355,
+          0.1861465722322464
+        ],
+        "grasp_point_drift_m": 0.12489519730331328,
+        "final_point_drift_m": 0.16483489926367736,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 92,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 105,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.12126997113227844,
+          0.028442882001399994,
+          0.019179485738277435
+        ],
+        "mr_grasp_point": [
+          0.1635930985212326,
+          -0.08457332849502563,
+          0.02716701477766037
+        ],
+        "base_final_point": [
+          0.02394583262503147,
+          0.0003923075273633003,
+          0.06356371939182281
+        ],
+        "mr_final_point": [
+          0.021171245723962784,
+          0.21943148970603943,
+          0.15050487220287323
+        ],
+        "grasp_point_drift_m": 0.3065671751958263,
+        "final_point_drift_m": 0.23567907355997747,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 39,
+        "mr_grasp_frame_index": 84,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 291,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.04836539551615715,
+          0.19071604311466217,
+          0.02162826806306839
+        ],
+        "mr_grasp_point": [
+          0.13857902586460114,
+          0.06228230893611908,
+          0.015895158052444458
+        ],
+        "base_final_point": [
+          0.05152425915002823,
+          0.1404038518667221,
+          0.07106629759073257
+        ],
+        "mr_final_point": [
+          0.006345698609948158,
+          0.2805134952068329,
+          0.14710409939289093
+        ],
+        "grasp_point_drift_m": 0.22688391152927767,
+        "final_point_drift_m": 0.16569116389316313,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 29,
+        "mr_grasp_frame_index": 62,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 67,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.004337624181061983,
+          -0.06410025805234909,
+          0.0208803191781044
+        ],
+        "mr_grasp_point": [
+          0.13496389985084534,
+          -0.06656036525964737,
+          0.01848367601633072
+        ],
+        "base_final_point": [
+          -0.015168004669249058,
+          -0.24578507244586945,
+          0.061435312032699585
+        ],
+        "mr_final_point": [
+          -0.004812668077647686,
+          0.16040532290935516,
+          0.14586332440376282
+        ],
+        "grasp_point_drift_m": 0.13934385750196646,
+        "final_point_drift_m": 0.41500115607994087,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 43,
+        "mr_grasp_frame_index": 93,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 112,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.04379437118768692,
+          -0.2434695065021515,
+          0.021753117442131042
+        ],
+        "mr_grasp_point": [
+          0.04972446709871292,
+          -0.18204599618911743,
+          0.014995336532592773
+        ],
+        "base_final_point": [
+          -0.07560239732265472,
+          0.06595826894044876,
+          0.061742380261421204
+        ],
+        "mr_final_point": [
+          -0.049333035945892334,
+          0.002093731891363859,
+          0.1860504299402237
+        ],
+        "grasp_point_drift_m": 0.11209053633752729,
+        "final_point_drift_m": 0.1422014404096685,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 56,
+        "mr_grasp_frame_index": 90,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 400,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.003924212418496609,
+          -0.26634088158607483,
+          0.015227191150188446
+        ],
+        "mr_grasp_point": [
+          0.10636347532272339,
+          -0.2189256250858307,
+          0.017580963671207428
+        ],
+        "base_final_point": [
+          0.05627535283565521,
+          -0.12118653953075409,
+          0.11074772477149963
+        ],
+        "mr_final_point": [
+          -0.009418630041182041,
+          0.1491539180278778,
+          0.19200532138347626
+        ],
+        "grasp_point_drift_m": 0.12007131573098337,
+        "final_point_drift_m": 0.28983177773734087,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 63,
+        "mr_grasp_frame_index": 76,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 135,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          -0.0730985477566719,
+          0.2508211135864258,
+          0.019195005297660828
+        ],
+        "mr_grasp_point": [
+          0.044015463441610336,
+          0.14164096117019653,
+          0.022036470472812653
+        ],
+        "base_final_point": [
+          -0.16035470366477966,
+          0.037624508142471313,
+          0.06368069350719452
+        ],
+        "mr_final_point": [
+          -0.4315991997718811,
+          0.517474889755249,
+          0.09092312306165695
+        ],
+        "grasp_point_drift_m": 0.1601376633553894,
+        "final_point_drift_m": 0.5518805263554365,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 51,
+        "mr_grasp_frame_index": 74,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 93,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.1063557043671608,
+          0.09154333174228668,
+          0.016968660056591034
+        ],
+        "mr_grasp_point": [
+          0.17946097254753113,
+          -0.05381607636809349,
+          0.022492460906505585
+        ],
+        "base_final_point": [
+          0.13845911622047424,
+          0.1400292068719864,
+          0.05712137371301651
+        ],
+        "mr_final_point": [
+          0.10470852255821228,
+          0.1102018803358078,
+          0.14836876094341278
+        ],
+        "grasp_point_drift_m": 0.16280125963196182,
+        "final_point_drift_m": 0.10175882102906277,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 50,
+        "mr_grasp_frame_index": 71,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 116,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.10360969603061676,
+          -0.11245919018983841,
+          0.023293547332286835
+        ],
+        "mr_grasp_point": [
+          0.1380133479833603,
+          0.02270466461777687,
+          0.020214363932609558
+        ],
+        "base_final_point": [
+          0.008701619692146778,
+          0.1522241085767746,
+          0.06277112662792206
+        ],
+        "mr_final_point": [
+          0.007514623925089836,
+          0.31003430485725403,
+          0.13895656168460846
+        ],
+        "grasp_point_drift_m": 0.13950756353885788,
+        "final_point_drift_m": 0.17524179730820794,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 44,
+        "mr_grasp_frame_index": 76,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_traj_len": 87,
+        "mr_traj_len": 400,
+        "base_grasp_point": [
+          0.042901311069726944,
+          0.0916205644607544,
+          0.017805472016334534
+        ],
+        "mr_grasp_point": [
+          0.13116243481636047,
+          -0.05802866816520691,
+          0.01343490183353424
+        ],
+        "base_final_point": [
+          -0.011150559410452843,
+          -0.13329966366291046,
+          0.06105417013168335
+        ],
+        "mr_final_point": [
+          -0.0064702145755290985,
+          0.143528014421463,
+          0.14895910024642944
+        ],
+        "grasp_point_drift_m": 0.17379303977513144,
+        "final_point_drift_m": 0.29048708356799224,
+        "drift_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Grasp point spatial drift > 2.5cm",
+          "VIOLATION: Final placement drift > 2.5cm"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 25,
+  "followup_mr_violation_rate_percent": 100.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

@@ -142,14 +142,17 @@ def _analyze_fpdp2(
             analyzable = False
             reasons.append("baseline_terminal_region_not_reached")
 
+        early_sensitive_failure = False
+        large_error_sensitive_failure = False
+        lack_of_closed_loop_reaction = False
         if analyzable:
             if mr_trigger_frame is None:
-                violated = True
-                reasons.append("followup_never_reaches_terminal_region")
+                early_sensitive_failure = True
+                reasons.append("sensitive_early_failure_followup_never_reaches_terminal_region")
             else:
                 if dst_success is True:
                     violated = True
-                    reasons.append("terminal_state_bias_should_reduce_success_rate")
+                    reasons.append("insensitive_to_proprioception_error_success")
 
                 if mr_final_goal_dist_m is not None and mr_final_goal_dist_m <= success_goal_thresh_m:
                     violated = True
@@ -157,26 +160,19 @@ def _analyze_fpdp2(
                         f"still_stabilizes_within_success_threshold({mr_final_goal_dist_m:.4f}m <= {success_goal_thresh_m:.4f}m)"
                     )
 
-                if mr_final_goal_dist_m is not None and mr_final_goal_dist_m > max_final_goal_dist_m:
-                    violated = True
-                    reasons.append(
-                        f"failure_mode_not_near_goal_oscillation({mr_final_goal_dist_m:.4f}m > {max_final_goal_dist_m:.4f}m)"
-                    )
-
                 if post_trigger_std_m is None or post_trigger_std_m < min_post_trigger_std_m:
+                    lack_of_closed_loop_reaction = True
                     violated = True
                     reasons.append(
-                        f"post_trigger_distance_std_too_small({post_trigger_std_m if post_trigger_std_m is not None else 'None'} < {min_post_trigger_std_m:.4f}m)"
+                        f"lack_of_closed_loop_reaction_low_std({post_trigger_std_m if post_trigger_std_m is not None else 'None'} < {min_post_trigger_std_m:.4f}m)"
                     )
-
-                if post_trigger_range_m is None or post_trigger_range_m < min_post_trigger_range_m:
-                    violated = True
+                elif post_trigger_range_m is not None and post_trigger_range_m < min_post_trigger_range_m:
                     reasons.append(
-                        f"post_trigger_distance_range_too_small({post_trigger_range_m if post_trigger_range_m is not None else 'None'} < {min_post_trigger_range_m:.4f}m)"
+                        f"low_post_trigger_range_aux({post_trigger_range_m:.4f}m < {min_post_trigger_range_m:.4f}m)"
                     )
 
                 if not violated:
-                    reasons.append("near_goal_overcorrection_and_failure_to_settle")
+                    reasons.append("proprioceptive_feedback_is_active_terminal_behavior_degrades")
 
         if not analyzable:
             unavailable_count += 1
@@ -201,6 +197,9 @@ def _analyze_fpdp2(
                 "mr_final_goal_dist_m": mr_final_goal_dist_m,
                 "post_trigger_std_m": post_trigger_std_m,
                 "post_trigger_range_m": post_trigger_range_m,
+                "early_sensitive_failure": early_sensitive_failure,
+                "large_error_sensitive_failure": large_error_sensitive_failure,
+                "lack_of_closed_loop_reaction": lack_of_closed_loop_reaction,
                 "trigger_distance_m": trigger_distance_m,
                 "success_goal_thresh_m": success_goal_thresh_m,
                 "min_post_trigger_std_m": min_post_trigger_std_m,

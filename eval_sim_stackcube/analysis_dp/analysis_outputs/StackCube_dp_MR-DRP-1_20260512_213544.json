@@ -1,0 +1,1044 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/StackCube/StackCube-v1_20260507_171901",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube/StackCube-v1_MR-DRP1_20260512_212914",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 189.96,
+      "median": 121.0,
+      "std": 126.23960709698046,
+      "min": 67.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.9554282879829407,
+      "median": 0.8255857825279236,
+      "std": 0.3113681941976068,
+      "min": 0.5455149412155151,
+      "max": 1.6140120029449463
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3285438548592207,
+      "median": 0.3256007888765554,
+      "std": 0.16047203615436637,
+      "min": 0.04006177482355852,
+      "max": 0.7164470457140841
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18379271522224336,
+      "median": 0.18639727003848494,
+      "std": 0.09385685583374975,
+      "min": 0.024260986949110882,
+      "max": 0.38594732553650163
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.048356503779442166,
+      "median": 0.05604305545635083,
+      "std": 0.017263997487146375,
+      "min": 0.009790962088009109,
+      "max": 0.06091412759676416
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999763503670693,
+      "median": 0.07999983802437782,
+      "std": 4.427526671778822e-06,
+      "min": 0.07998516038060188,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032582375556230544,
+      "median": 0.037314651533961296,
+      "std": 0.0167200674899488,
+      "min": 0.0,
+      "max": 0.05167234502732754
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 84.0,
+    "success_count": 21,
+    "success_episode_ids": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 154.64,
+      "median": 113.0,
+      "std": 109.70209843024881,
+      "min": 73.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.8529113388061523,
+      "median": 0.7018104791641235,
+      "std": 0.40192768510969534,
+      "min": 0.4906100630760193,
+      "max": 2.042781352996826
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3605087785522943,
+      "median": 0.29732473395827075,
+      "std": 0.210210185325017,
+      "min": 0.18139498562146764,
+      "max": 1.1895847097112524
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.19070021313823943,
+      "median": 0.16285827614518059,
+      "std": 0.10392769975248588,
+      "min": 0.0547571311268885,
+      "max": 0.47730351180406394
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05255813295105434,
+      "median": 0.05630826705483475,
+      "std": 0.011000148216962536,
+      "min": 0.01664328972954536,
+      "max": 0.06347545016218316
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999968767166138,
+      "median": 0.0799998827278614,
+      "std": 4.5327936264787857e-07,
+      "min": 0.07999828830361366,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.03823167540133,
+      "median": 0.0399310365319252,
+      "std": 0.01220039436530163,
+      "min": 0.0,
+      "max": 0.05187387578189373
+    }
+  },
+  "mr_rule": "MR-DRP-1",
+  "mr_compare": {
+    "mr_id": "MR-DRP1-SOURCE-POSITION-PERTURBATION",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 4,
+    "violation_rate_percent": 16.0,
+    "config": {
+      "sample_points": 24,
+      "similarity_threshold": 0.9,
+      "target_misalignment_tol_m": 0.04,
+      "metric": "trajectory_mimicry_and_target_reaching_error",
+      "violation_rule": "trajectory_similarity > similarity_threshold OR grasp_to_red_distance > tol",
+      "invariance_expectation": "large_source_perturbation_should_force_visual_retargeting"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": true,
+        "mr_grasp_frame_index": 49,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.03661125898361206,
+          0.031208716332912445,
+          0.019753530621528625
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.040972668677568436,
+          0.036869991570711136,
+          0.020001789554953575
+        ],
+        "grasp_to_red_distance_m": 0.00715077368783788,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 400,
+        "mr_point_count": 100,
+        "mean_pointwise_deviation_m": 0.23536833976098936,
+        "followup_path_len_m": 0.5250884132133837,
+        "source_path_len_m": 1.0566317176562448,
+        "relative_deviation": 0.2227534303844947,
+        "trajectory_similarity": 0.8178263705099973,
+        "endpoint_deviation_m": 0.21561530791008313,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 30,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.0909326896071434,
+          -0.17875686287879944,
+          0.023325935006141663
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.0915401428937912,
+          -0.18037961423397064,
+          0.019999461248517036
+        ],
+        "grasp_to_red_distance_m": 0.0037506998168787766,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 122,
+        "mr_point_count": 76,
+        "mean_pointwise_deviation_m": 0.24322596389639636,
+        "followup_path_len_m": 0.5777905174634235,
+        "source_path_len_m": 0.615462566056938,
+        "relative_deviation": 0.3951921324064653,
+        "trajectory_similarity": 0.716747161034497,
+        "endpoint_deviation_m": 0.017733690199675745,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "mr_grasp_frame_index": 41,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.05116579309105873,
+          0.11447209119796753,
+          0.015761643648147583
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.04700559005141258,
+          0.10763327777385712,
+          0.02006314881145954
+        ],
+        "grasp_to_red_distance_m": 0.009087332119542747,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 85,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.15982795913297906,
+        "followup_path_len_m": 1.3551219043239078,
+        "source_path_len_m": 0.5592343097446792,
+        "relative_deviation": 0.2857978424212727,
+        "trajectory_similarity": 0.777727234412612,
+        "endpoint_deviation_m": 0.05610728862442672,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 30,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.015500931069254875,
+          -0.12174539268016815,
+          0.01970411092042923
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.014097513630986214,
+          -0.12475111335515976,
+          0.02025945484638214
+        ],
+        "grasp_to_red_distance_m": 0.0033633828444293063,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 96,
+        "mr_point_count": 84,
+        "mean_pointwise_deviation_m": 0.1125101662293682,
+        "followup_path_len_m": 0.4831043283062423,
+        "source_path_len_m": 0.42713237094854234,
+        "relative_deviation": 0.2634081935291263,
+        "trajectory_similarity": 0.7915098264533664,
+        "endpoint_deviation_m": 0.00470728282016491,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 36,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.06488914787769318,
+          -0.027122139930725098,
+          0.017870992422103882
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.06437906622886658,
+          -0.032877806574106216,
+          0.02014082856476307
+        ],
+        "grasp_to_red_distance_m": 0.006208062331575101,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 106,
+        "mr_point_count": 122,
+        "mean_pointwise_deviation_m": 0.1166160164330987,
+        "followup_path_len_m": 0.39976124300115495,
+        "source_path_len_m": 0.4776162198446951,
+        "relative_deviation": 0.24416259663672718,
+        "trajectory_similarity": 0.8037534665511101,
+        "endpoint_deviation_m": 0.010914013191751839,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 30,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.029900044202804565,
+          -0.0813751295208931,
+          0.021276451647281647
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.028572911396622658,
+          -0.07299920916557312,
+          0.020072245970368385
+        ],
+        "grasp_to_red_distance_m": 0.008565479239144644,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 95,
+        "mr_point_count": 153,
+        "mean_pointwise_deviation_m": 0.10089181046031918,
+        "followup_path_len_m": 0.44186950092162314,
+        "source_path_len_m": 0.5927363247840697,
+        "relative_deviation": 0.1702136451601367,
+        "trajectory_similarity": 0.854544812509989,
+        "endpoint_deviation_m": 0.01159365074137186,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "mr_grasp_frame_index": 49,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.08425908535718918,
+          -0.1747668981552124,
+          0.01957503706216812
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.07538138329982758,
+          -0.15356607735157013,
+          0.020037706941366196
+        ],
+        "grasp_to_red_distance_m": 0.022989181368299104,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 121,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.23315230732429057,
+        "followup_path_len_m": 1.4419477027647183,
+        "source_path_len_m": 0.5741291269668563,
+        "relative_deviation": 0.4060973331139672,
+        "trajectory_similarity": 0.7111883199332886,
+        "endpoint_deviation_m": 0.16004359038203161,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 33,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.04067445173859596,
+          0.07635323703289032,
+          0.02244161069393158
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.03841982036828995,
+          0.08207311481237411,
+          0.02002405934035778
+        ],
+        "grasp_to_red_distance_m": 0.006606430123400001,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 214,
+        "mr_point_count": 73,
+        "mean_pointwise_deviation_m": 0.08578313412162357,
+        "followup_path_len_m": 0.40818497976963963,
+        "source_path_len_m": 0.9999658104469351,
+        "relative_deviation": 0.08578606710891722,
+        "trajectory_similarity": 0.9209917407235325,
+        "endpoint_deviation_m": 0.007999619464114323,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory Mimicry (Model ignored visual input and executed memorized path)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "mr_grasp_frame_index": 39,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.05690712481737137,
+          0.025009334087371826,
+          0.0180245041847229
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.05735529959201813,
+          0.022027457132935524,
+          0.020048119127750397
+        ],
+        "grasp_to_red_distance_m": 0.0036314553883632066,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 400,
+        "mr_point_count": 113,
+        "mean_pointwise_deviation_m": 0.1441226949465587,
+        "followup_path_len_m": 0.44320098449738676,
+        "source_path_len_m": 0.8743125632080047,
+        "relative_deviation": 0.16484115751207726,
+        "trajectory_similarity": 0.8584861494213059,
+        "endpoint_deviation_m": 0.19429855344322616,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 39,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.05276557058095932,
+          0.04812592267990112,
+          0.0197252556681633
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.054469652473926544,
+          0.044373687356710434,
+          0.02002902142703533
+        ],
+        "grasp_to_red_distance_m": 0.004132243779691827,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 89,
+        "mr_point_count": 99,
+        "mean_pointwise_deviation_m": 0.1509415190034965,
+        "followup_path_len_m": 0.3709360635919279,
+        "source_path_len_m": 0.4672135380400133,
+        "relative_deviation": 0.32306751991114074,
+        "trajectory_similarity": 0.7558193251295002,
+        "endpoint_deviation_m": 0.022148130153789584,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 47,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.08520988374948502,
+          0.07632081210613251,
+          0.020837344229221344
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.08501178026199341,
+          0.0798942968249321,
+          0.02001645602285862
+        ],
+        "grasp_to_red_distance_m": 0.0036719062453439547,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 109,
+        "mr_point_count": 97,
+        "mean_pointwise_deviation_m": 0.10405789353552082,
+        "followup_path_len_m": 0.4728963645587597,
+        "source_path_len_m": 0.5792241112194266,
+        "relative_deviation": 0.17965048678041085,
+        "trajectory_similarity": 0.8477087164430152,
+        "endpoint_deviation_m": 0.01712593908783799,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 37,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.03028131276369095,
+          0.014391978271305561,
+          0.016915924847126007
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.03269733116030693,
+          0.020266540348529816,
+          0.020087789744138718
+        ],
+        "grasp_to_red_distance_m": 0.007099883901645833,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 178,
+        "mr_point_count": 87,
+        "mean_pointwise_deviation_m": 0.12244183632557332,
+        "followup_path_len_m": 0.35947566986027024,
+        "source_path_len_m": 0.5022192199291718,
+        "relative_deviation": 0.24380157402745625,
+        "trajectory_similarity": 0.8039867619414394,
+        "endpoint_deviation_m": 0.012412812257543121,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 40,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.031637147068977356,
+          0.038604486733675,
+          0.019936606287956238
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.02838943712413311,
+          0.03312429040670395,
+          0.02032657340168953
+        ],
+        "grasp_to_red_distance_m": 0.006382181916694377,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 128,
+        "mr_point_count": 88,
+        "mean_pointwise_deviation_m": 0.07628513758154667,
+        "followup_path_len_m": 0.5224710962420482,
+        "source_path_len_m": 0.8109291529138736,
+        "relative_deviation": 0.09407127282011614,
+        "trajectory_similarity": 0.9140172352961662,
+        "endpoint_deviation_m": 0.0097362470557427,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory Mimicry (Model ignored visual input and executed memorized path)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": true,
+        "mr_grasp_frame_index": 36,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.020109873265028,
+          0.2002796083688736,
+          0.021744921803474426
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.004996460862457752,
+          0.18602748215198517,
+          0.0200011245906353
+        ],
+        "grasp_to_red_distance_m": 0.02084656242337782,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 400,
+        "mr_point_count": 144,
+        "mean_pointwise_deviation_m": 0.17275624139770507,
+        "followup_path_len_m": 0.9211406226576546,
+        "source_path_len_m": 0.9787118076749113,
+        "relative_deviation": 0.17651390331962538,
+        "trajectory_similarity": 0.8499687060037474,
+        "endpoint_deviation_m": 0.15532100309889435,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": true,
+        "mr_grasp_frame_index": 36,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.07272586226463318,
+          0.19931793212890625,
+          0.02109493315219879
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.07542390376329422,
+          0.19292490184307098,
+          0.019998200237751007
+        ],
+        "grasp_to_red_distance_m": 0.007025175246905745,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 400,
+        "mr_point_count": 129,
+        "mean_pointwise_deviation_m": 0.15508334909036256,
+        "followup_path_len_m": 0.8763842627088797,
+        "source_path_len_m": 0.5773331756897515,
+        "relative_deviation": 0.2686201930195357,
+        "trajectory_similarity": 0.7882579873017997,
+        "endpoint_deviation_m": 0.27358967487089597,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": true,
+        "mr_grasp_frame_index": 38,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.07301308214664459,
+          -0.10787197202444077,
+          0.022964805364608765
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.07428968697786331,
+          -0.11483466625213623,
+          0.020037900656461716
+        ],
+        "grasp_to_red_distance_m": 0.007660000128854313,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 400,
+        "mr_point_count": 121,
+        "mean_pointwise_deviation_m": 0.10933639673355638,
+        "followup_path_len_m": 0.4952335081563686,
+        "source_path_len_m": 1.0952525092422016,
+        "relative_deviation": 0.09982757018215421,
+        "trajectory_similarity": 0.9092334354142252,
+        "endpoint_deviation_m": 0.07384798591597976,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory Mimicry (Model ignored visual input and executed memorized path)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 41,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.04132290184497833,
+          0.17994438111782074,
+          0.021664172410964966
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.04179008677601814,
+          0.18127954006195068,
+          0.02001255750656128
+        ],
+        "grasp_to_red_distance_m": 0.0021745673037018784,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 105,
+        "mr_point_count": 129,
+        "mean_pointwise_deviation_m": 0.140532160992436,
+        "followup_path_len_m": 0.5668266985560201,
+        "source_path_len_m": 0.46434247232269543,
+        "relative_deviation": 0.3026476563504469,
+        "trajectory_similarity": 0.7676672929360213,
+        "endpoint_deviation_m": 0.014987039791530795,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 43,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.08930768072605133,
+          0.022353924810886383,
+          0.021272629499435425
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.09414399415254593,
+          0.017787238582968712,
+          0.0200723335146904
+        ],
+        "grasp_to_red_distance_m": 0.006759087298928745,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 291,
+        "mr_point_count": 121,
+        "mean_pointwise_deviation_m": 0.11513372233535224,
+        "followup_path_len_m": 0.5103963154762519,
+        "source_path_len_m": 0.6466905423890443,
+        "relative_deviation": 0.17803526538368428,
+        "trajectory_similarity": 0.8488710222730909,
+        "endpoint_deviation_m": 0.01670842624249837,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "mr_grasp_frame_index": 29,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.0274292454123497,
+          0.11572481691837311,
+          0.021606996655464172
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.02886383794248104,
+          0.1201624870300293,
+          0.019996361806988716
+        ],
+        "grasp_to_red_distance_m": 0.004934077052754532,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 67,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.11088545966445602,
+        "followup_path_len_m": 1.1212992973592768,
+        "source_path_len_m": 0.42051451977844334,
+        "relative_deviation": 0.26368996657446764,
+        "trajectory_similarity": 0.7913333384380173,
+        "endpoint_deviation_m": 0.15874415362069927,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 40,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.07784899324178696,
+          -0.0840706154704094,
+          0.02543506771326065
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.07795233279466629,
+          -0.08546959608793259,
+          0.020000368356704712
+        ],
+        "grasp_to_red_distance_m": 0.005612823080014585,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 112,
+        "mr_point_count": 83,
+        "mean_pointwise_deviation_m": 0.08272745458516147,
+        "followup_path_len_m": 0.4614094702359764,
+        "source_path_len_m": 0.7938578843704074,
+        "relative_deviation": 0.10420940096950847,
+        "trajectory_similarity": 0.9056253271544225,
+        "endpoint_deviation_m": 0.014803252990450036,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory Mimicry (Model ignored visual input and executed memorized path)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": true,
+        "mr_grasp_frame_index": 42,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.01471095159649849,
+          0.007357821799814701,
+          0.021677695214748383
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.02120196260511875,
+          0.00023363989021163434,
+          0.01999768055975437
+        ],
+        "grasp_to_red_distance_m": 0.009783130431315923,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 400,
+        "mr_point_count": 94,
+        "mean_pointwise_deviation_m": 0.14095427914301142,
+        "followup_path_len_m": 0.46736212720893006,
+        "source_path_len_m": 1.1289616183883822,
+        "relative_deviation": 0.12485303029542032,
+        "trajectory_similarity": 0.8890050282723334,
+        "endpoint_deviation_m": 0.06300632558257316,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "mr_grasp_frame_index": 44,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.04546792805194855,
+          0.04414808750152588,
+          0.01670483499765396
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.045195236802101135,
+          0.044910017400979996,
+          0.020102785900235176
+        ],
+        "grasp_to_red_distance_m": 0.0034929884090529125,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 135,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.17296171636597812,
+        "followup_path_len_m": 0.39990374830661357,
+        "source_path_len_m": 0.7688691324857884,
+        "relative_deviation": 0.2249559893330418,
+        "trajectory_similarity": 0.8163558598905054,
+        "endpoint_deviation_m": 0.22962330365085598,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 42,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.07741561532020569,
+          0.08053270727396011,
+          0.021279603242874146
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.07641276717185974,
+          0.08255813270807266,
+          0.020143715664744377
+        ],
+        "grasp_to_red_distance_m": 0.0025294847672876807,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 93,
+        "mr_point_count": 171,
+        "mean_pointwise_deviation_m": 0.10811994482856006,
+        "followup_path_len_m": 0.6159472001108994,
+        "source_path_len_m": 0.39844195547929134,
+        "relative_deviation": 0.2713568271155107,
+        "trajectory_similarity": 0.7865612380977475,
+        "endpoint_deviation_m": 0.015998032156775744,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 38,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          -0.06467826664447784,
+          -0.06361620873212814,
+          0.02382294088602066
+        ],
+        "mr_red_cube_position_at_grasp": [
+          -0.06506241112947464,
+          -0.06384772062301636,
+          0.02000027894973755
+        ],
+        "grasp_to_red_distance_m": 0.0038488841266117427,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 116,
+        "mr_point_count": 83,
+        "mean_pointwise_deviation_m": 0.1010881566503898,
+        "followup_path_len_m": 0.528256598243662,
+        "source_path_len_m": 0.6799295037044123,
+        "relative_deviation": 0.14867446713172214,
+        "trajectory_similarity": 0.870568667289204,
+        "endpoint_deviation_m": 0.016541203071995938,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "mr_grasp_frame_index": 44,
+        "mr_grasp_frame_index_source": "annotated",
+        "mr_grasp_point": [
+          0.06388772279024124,
+          -0.14411650598049164,
+          0.02486443519592285
+        ],
+        "mr_red_cube_position_at_grasp": [
+          0.06346488744020462,
+          -0.13146598637104034,
+          0.019998185336589813
+        ],
+        "grasp_to_red_distance_m": 0.01356078256649708,
+        "target_misalignment_tol_m": 0.04,
+        "base_point_count": 87,
+        "mr_point_count": 99,
+        "mean_pointwise_deviation_m": 0.13790908182260428,
+        "followup_path_len_m": 0.4771561436486865,
+        "source_path_len_m": 0.5229130607497527,
+        "relative_deviation": 0.2637323336787003,
+        "trajectory_similarity": 0.7913068086886876,
+        "endpoint_deviation_m": 0.03397080696690799,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_visual_retargeting_response"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 16.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}
