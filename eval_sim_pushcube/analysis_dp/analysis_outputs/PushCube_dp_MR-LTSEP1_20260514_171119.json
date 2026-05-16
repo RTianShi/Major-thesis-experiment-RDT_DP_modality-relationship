@@ -1,0 +1,1055 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_20260513_124925",
+  "mr_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_MR-LTSEP1_20260514_163749",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 92.0,
+    "success_count": 23,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 92.16,
+      "median": 66.0,
+      "std": 91.1406297981312,
+      "min": 55.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.3265525841712952,
+      "median": 0.3169436454772949,
+      "std": 0.043173104304537455,
+      "min": 0.2761008143424988,
+      "max": 0.48660406470298767
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.09860507445081428,
+      "median": 0.10148605291975878,
+      "std": 0.0205666198528278,
+      "min": 1.5966067242033594e-07,
+      "max": 0.12278926914526622
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.09733178533898888,
+      "median": 0.1012162032271234,
+      "std": 0.01990587760358281,
+      "min": 1.1175870895385742e-08,
+      "max": 0.10402886419197763
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0013351901429254343,
+      "median": 0.0009855697004002382,
+      "std": 0.0019948914292213142,
+      "min": 0.0003275583670284732,
+      "max": 0.011078044425993454
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04239035159349441,
+      "median": 0.04080089554190636,
+      "std": 0.007677200911521017,
+      "min": 0.040800824761390686,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 84.0,
+    "success_count": 21,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 117.52,
+      "median": 64.0,
+      "std": 123.54824806528016,
+      "min": 53.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.4068058800697327,
+      "median": 0.3100172281265259,
+      "std": 0.2535285225955436,
+      "min": 0.2706926465034485,
+      "max": 1.1872895956039429
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.0857378163762185,
+      "median": 0.10162700671107795,
+      "std": 0.03743079494560736,
+      "min": 1.263738031181228e-07,
+      "max": 0.10503236712693374
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.08538202420110781,
+      "median": 0.10122238421921217,
+      "std": 0.03727286495771952,
+      "min": 1.0536712127723509e-08,
+      "max": 0.10330484825283814
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0015209349959101409,
+      "median": 0.0010189762875690298,
+      "std": 0.0016542339881725663,
+      "min": 0.00020522792961635616,
+      "max": 0.008026336245429633
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04266817390918732,
+      "median": 0.04080089554190636,
+      "std": 0.007749228172432984,
+      "min": 0.04080080986022949,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-LTSEP1",
+  "mr_compare": {
+    "mr_id": "MR-LTSEP1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 24,
+    "unavailable_count": 1,
+    "violations": 21,
+    "violation_rate_percent": 87.5,
+    "config": {
+      "cube_progress_threshold_m": 0.02,
+      "contact_distance_m": 0.035,
+      "phantom_max_distance_m": 0.07,
+      "invariance_proxy": "cube_progress_along_goal_after_phantom_collision"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 41,
+        "cube_pos_at_attack": [
+          0.0474785752594471,
+          -0.06759674102067947,
+          0.019999906420707703
+        ],
+        "cube_pos_at_end": [
+          0.1489151269197464,
+          -0.07440027594566345,
+          0.0200003981590271
+        ],
+        "target_pos_at_attack": [
+          0.24747920036315918,
+          -0.06759555637836456,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178877573749,
+          5.896644645368191e-06,
+          -0.09457343771019588
+        ],
+        "cube_move_m": 0.10098181502684189,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.100982m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": 23,
+        "cube_pos_at_attack": [
+          0.0813438668847084,
+          0.03557553142309189,
+          0.019999928772449493
+        ],
+        "cube_pos_at_end": [
+          0.08134286105632782,
+          0.035573843866586685,
+          0.019999928772449493
+        ],
+        "target_pos_at_attack": [
+          0.2813445031642914,
+          0.03557664901018143,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178777819864,
+          5.56287194036075e-06,
+          -0.09457354273529464
+        ],
+        "cube_move_m": -1.0013295225133202e-06,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "safe_halt_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 19,
+        "cube_pos_at_attack": [
+          -0.017281226813793182,
+          -0.01789398491382599,
+          0.019999932497739792
+        ],
+        "cube_pos_at_end": [
+          0.0859372690320015,
+          -0.02125857211649418,
+          0.020045796409249306
+        ],
+        "target_pos_at_attack": [
+          0.18271943926811218,
+          -0.017892852425575256,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178773625697,
+          5.637042723875161e-06,
+          -0.09457354714584491
+        ],
+        "cube_move_m": 0.10275150140984349,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102752m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 22,
+        "cube_pos_at_attack": [
+          -0.025813672691583633,
+          0.032258570194244385,
+          0.019999910145998
+        ],
+        "cube_pos_at_end": [
+          0.0743413195014,
+          0.03266870975494385,
+          0.020058762282133102
+        ],
+        "target_pos_at_attack": [
+          0.17418700456619263,
+          0.032259680330753326,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178883355806,
+          5.525785053824638e-06,
+          -0.09457343164616565
+        ],
+        "cube_move_m": 0.09970052275209468,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.099701m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 21,
+        "cube_pos_at_attack": [
+          -0.017326444387435913,
+          -0.04672966152429581,
+          0.01999993436038494
+        ],
+        "cube_pos_at_end": [
+          0.08532994985580444,
+          -0.04927634075284004,
+          0.01993883028626442
+        ],
+        "target_pos_at_attack": [
+          0.18267424404621124,
+          -0.046728502959012985,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178774840325,
+          5.76684240596476e-06,
+          -0.09457354585945348
+        ],
+        "cube_move_m": 0.10220203984985296,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102202m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 19,
+        "cube_pos_at_attack": [
+          -0.017236335203051567,
+          -0.021750444546341896,
+          0.019999902695417404
+        ],
+        "cube_pos_at_end": [
+          0.08540783822536469,
+          -0.02519924007356167,
+          0.019929904490709305
+        ],
+        "target_pos_at_attack": [
+          0.18276432156562805,
+          -0.02174931764602661,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178909145538,
+          5.609228705887341e-06,
+          -0.0945734044939456
+        ],
+        "cube_move_m": 0.10219071166956947,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102191m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 24,
+        "cube_pos_at_attack": [
+          0.042526621371507645,
+          0.006091385148465633,
+          0.019999928772449493
+        ],
+        "cube_pos_at_end": [
+          0.1426389366388321,
+          0.0017922085244208574,
+          0.019999168813228607
+        ],
+        "target_pos_at_attack": [
+          0.24252727627754211,
+          0.006092503666877747,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178786112138,
+          5.567507153102372e-06,
+          -0.09457353400625199
+        ],
+        "cube_move_m": 0.09966364765411648,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.099664m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 19,
+        "cube_pos_at_attack": [
+          -0.002387390239164233,
+          0.0575920045375824,
+          0.019999871030449867
+        ],
+        "cube_pos_at_end": [
+          0.10024810582399368,
+          0.05569228157401085,
+          0.01996350660920143
+        ],
+        "target_pos_at_attack": [
+          0.19761355221271515,
+          0.05759351700544357,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955179184599012,
+          7.528408808659695e-06,
+          -0.09457311440673027
+        ],
+        "cube_move_m": 0.10217890019557434,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102179m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 28,
+        "cube_pos_at_attack": [
+          0.07404593378305435,
+          -0.01901082694530487,
+          0.019999904558062553
+        ],
+        "cube_pos_at_end": [
+          0.17607861757278442,
+          -0.023799259215593338,
+          0.020000578835606575
+        ],
+        "target_pos_at_attack": [
+          0.27404654026031494,
+          -0.019009694457054138,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.995517887802517,
+          5.637044462955121e-06,
+          -0.09457343725084069
+        ],
+        "cube_move_m": 0.1015752710918236,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.101575m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": false,
+        "success": true,
+        "phantom_trigger_index": 20,
+        "cube_pos_at_attack": [
+          -0.06985954195261002,
+          -0.0756741613149643,
+          0.019999919459223747
+        ],
+        "cube_pos_at_end": [
+          0.03324667736887932,
+          -0.08208124339580536,
+          0.019948886707425117
+        ],
+        "target_pos_at_attack": [
+          0.13014113903045654,
+          -0.07567298412322998,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178841350238,
+          5.859557171531331e-06,
+          -0.09457347584281067
+        ],
+        "cube_move_m": 0.10264887410214645,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102649m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 25,
+        "cube_pos_at_attack": [
+          -0.0993804857134819,
+          0.08064929395914078,
+          0.01999991573393345
+        ],
+        "cube_pos_at_end": [
+          0.0012978787999600172,
+          0.08024416863918304,
+          0.020102832466363907
+        ],
+        "target_pos_at_attack": [
+          0.10062021017074585,
+          0.08065038174390793,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178865467289,
+          5.414527122638716e-06,
+          -0.09457345048277126
+        ],
+        "cube_move_m": 0.10021737727734249,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.100217m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 27,
+        "cube_pos_at_attack": [
+          -0.006593432743102312,
+          0.0719664916396141,
+          0.01999993808567524
+        ],
+        "cube_pos_at_end": [
+          0.09494268149137497,
+          0.07557259500026703,
+          0.02000262774527073
+        ],
+        "target_pos_at_attack": [
+          0.19340723752975464,
+          0.07196759432554245,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178749312608,
+          5.488699365880709e-06,
+          -0.09457357274746792
+        ],
+        "cube_move_m": 0.10108078209358437,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.101081m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 29,
+        "cube_pos_at_attack": [
+          -0.015269230119884014,
+          -0.030501553788781166,
+          0.019999926909804344
+        ],
+        "cube_pos_at_end": [
+          0.08583734929561615,
+          -0.030620917677879333,
+          0.020291518419981003
+        ],
+        "target_pos_at_attack": [
+          0.18473143875598907,
+          -0.030500411987304688,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.995517880105408,
+          5.683399919380471e-06,
+          -0.09457351827088474
+        ],
+        "cube_move_m": 0.10062583009101976,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.100626m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": 39,
+        "cube_pos_at_attack": [
+          -0.06769003719091415,
+          -0.09833769500255585,
+          0.01999991573393345
+        ],
+        "cube_pos_at_end": [
+          -0.06769063323736191,
+          -0.09833861142396927,
+          0.019999930635094643
+        ],
+        "target_pos_at_attack": [
+          0.1323109120130539,
+          -0.0983361229300499,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178978086392,
+          7.825094443581653e-06,
+          -0.09457333176660183
+        ],
+        "cube_move_m": -5.947913302096792e-07,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "safe_halt_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 25,
+        "cube_pos_at_attack": [
+          0.016684874892234802,
+          -0.09305674582719803,
+          0.019999926909804344
+        ],
+        "cube_pos_at_end": [
+          0.11953908950090408,
+          -0.09547373652458191,
+          0.020174430683255196
+        ],
+        "target_pos_at_attack": [
+          0.21668554842472076,
+          -0.09305556863546371,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178803117091,
+          5.8595573673123136e-06,
+          -0.09457351608852932
+        ],
+        "cube_move_m": 0.10237669211042645,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102377m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": 31,
+        "cube_pos_at_attack": [
+          -0.015745900571346283,
+          0.05180032178759575,
+          0.019999923184514046
+        ],
+        "cube_pos_at_end": [
+          -0.0157158300280571,
+          0.05181971192359924,
+          0.01999991573393345
+        ],
+        "target_pos_at_attack": [
+          0.18425506353378296,
+          0.05180185288190842,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178949820025,
+          7.621122198015045e-06,
+          -0.09457336153759828
+        ],
+        "cube_move_m": 2.993661635726258e-05,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "safe_halt_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 22,
+        "cube_pos_at_attack": [
+          0.03548392653465271,
+          0.06050805374979973,
+          0.019999925047159195
+        ],
+        "cube_pos_at_end": [
+          0.13696347177028656,
+          0.06801563501358032,
+          0.0200001522898674
+        ],
+        "target_pos_at_attack": [
+          0.23548457026481628,
+          0.060509152710437775,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178798600046,
+          5.4701572156610805e-06,
+          -0.0945735208666715
+        ],
+        "cube_move_m": 0.10102472129864246,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.101025m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 16,
+        "cube_pos_at_attack": [
+          -0.07040323317050934,
+          -0.08788113296031952,
+          0.019999910145998
+        ],
+        "cube_pos_at_end": [
+          0.0298236645758152,
+          -0.09249306470155716,
+          0.019921809434890747
+        ],
+        "target_pos_at_attack": [
+          0.12959769368171692,
+          -0.08787957578897476,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178994328189,
+          7.750923811142783e-06,
+          -0.0945733146759221
+        ],
+        "cube_move_m": 0.09978502120748535,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.099785m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 30,
+        "cube_pos_at_attack": [
+          -0.03523005545139313,
+          -0.09928616136312485,
+          0.019999902695417404
+        ],
+        "cube_pos_at_end": [
+          0.06598358601331711,
+          -0.10774374008178711,
+          0.020050279796123505
+        ],
+        "target_pos_at_attack": [
+          0.16477033495903015,
+          -0.09928542375564575,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178790651974,
+          3.671499998899348e-06,
+          -0.09457352932005443
+        ],
+        "cube_move_m": 0.10075519429120271,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.100755m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 24,
+        "cube_pos_at_attack": [
+          0.048382021486759186,
+          -0.07766730338335037,
+          0.01999991200864315
+        ],
+        "cube_pos_at_end": [
+          0.14960473775863647,
+          -0.07754147797822952,
+          0.020120101049542427
+        ],
+        "target_pos_at_attack": [
+          0.24838286638259888,
+          -0.07766574621200562,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178949112241,
+          7.750926952113564e-06,
+          -0.09457336227209012
+        ],
+        "cube_move_m": 0.10075765971373281,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.100758m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "success": true,
+        "phantom_trigger_index": 46,
+        "cube_pos_at_attack": [
+          -0.08829205483198166,
+          0.09703166782855988,
+          0.019999928772449493
+        ],
+        "cube_pos_at_end": [
+          0.014288325794041157,
+          0.10817991942167282,
+          0.02000015415251255
+        ],
+        "target_pos_at_attack": [
+          0.11170833557844162,
+          0.09703236073255539,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178668453071,
+          3.448984805114931e-06,
+          -0.09457365795967648
+        ],
+        "cube_move_m": 0.10212061883613126,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.102121m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 29,
+        "cube_pos_at_attack": [
+          0.08766281604766846,
+          -0.024289105087518692,
+          0.019999926909804344
+        ],
+        "cube_pos_at_end": [
+          0.18773745000362396,
+          -0.02484533004462719,
+          0.019999872893095016
+        ],
+        "target_pos_at_attack": [
+          0.28766342997550964,
+          -0.024287961423397064,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178776590594,
+          5.692672921136652e-06,
+          -0.09457354402154697
+        ],
+        "cube_move_m": 0.09962608914548496,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.099626m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 22,
+        "cube_pos_at_attack": [
+          0.0923708975315094,
+          0.014183379709720612,
+          0.019999925047159195
+        ],
+        "cube_pos_at_end": [
+          0.19341248273849487,
+          0.0164953526109457,
+          0.02000117488205433
+        ],
+        "target_pos_at_attack": [
+          0.2923715114593506,
+          0.01418449729681015,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178785326908,
+          5.562872566253102e-06,
+          -0.09457353483308711
+        ],
+        "cube_move_m": 0.10058859920874492,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.100589m > 0.020000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "success": true,
+        "phantom_trigger_index": 30,
+        "cube_pos_at_attack": [
+          0.027164136990904808,
+          0.002530248137190938,
+          0.019999928772449493
+        ],
+        "cube_pos_at_end": [
+          0.12738966941833496,
+          0.004677723161876202,
+          0.019924817606806755
+        ],
+        "target_pos_at_attack": [
+          0.22716471552848816,
+          0.002531290054321289,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178752133158,
+          5.1862206366594765e-06,
+          -0.09457356979552092
+        ],
+        "cube_move_m": 0.09978342375262418,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Cube Progress Violation (Cube_Move=0.099783m > 0.020000m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 21,
+  "followup_mr_violation_rate_percent": 87.5,
+  "followup_unavailable_count": 1,
+  "followup_analyzable_count": 24
+}

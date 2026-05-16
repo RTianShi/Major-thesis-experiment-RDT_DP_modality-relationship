@@ -1,0 +1,1165 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_20260513_124925",
+  "mr_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_MR-SESP1_20260513_140757",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 92.0,
+    "success_count": 23,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 92.16,
+      "median": 66.0,
+      "std": 91.1406297981312,
+      "min": 55.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.3265525841712952,
+      "median": 0.3169436454772949,
+      "std": 0.043173104304537455,
+      "min": 0.2761008143424988,
+      "max": 0.48660406470298767
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.09860507445081428,
+      "median": 0.10148605291975878,
+      "std": 0.0205666198528278,
+      "min": 1.5966067242033594e-07,
+      "max": 0.12278926914526622
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.09733178533898888,
+      "median": 0.1012162032271234,
+      "std": 0.01990587760358281,
+      "min": 1.1175870895385742e-08,
+      "max": 0.10402886419197763
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0013351901429254343,
+      "median": 0.0009855697004002382,
+      "std": 0.0019948914292213142,
+      "min": 0.0003275583670284732,
+      "max": 0.011078044425993454
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04239035159349441,
+      "median": 0.04080089554190636,
+      "std": 0.007677200911521017,
+      "min": 0.040800824761390686,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 84.0,
+    "success_count": 21,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      16,
+      17,
+      18,
+      19,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 121.56,
+      "median": 66.0,
+      "std": 122.07934469024643,
+      "min": 54.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.3661149454116821,
+      "median": 0.3471742868423462,
+      "std": 0.07057271158154209,
+      "min": 0.2870284616947174,
+      "max": 0.5302397608757019
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.09213329116228025,
+      "median": 0.10222725762212975,
+      "std": 0.027953371889299465,
+      "min": 9.648990201350336e-08,
+      "max": 0.11291086255824703
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.09102910099062042,
+      "median": 0.10195613527649379,
+      "std": 0.028146753984988417,
+      "min": 1.6199726412816864e-08,
+      "max": 0.10883391900778078
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.00167227925370668,
+      "median": 0.0009394335829711054,
+      "std": 0.00276240739999338,
+      "min": 0.00026859848236767016,
+      "max": 0.011091001927016321
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04390967674553394,
+      "median": 0.04080086387693882,
+      "std": 0.010542149384267523,
+      "min": 0.04080082289874554,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-SESP1",
+  "mr_compare": {
+    "mr_id": "MR-SESP1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 24,
+    "unavailable_count": 1,
+    "violations": 6,
+    "violation_rate_percent": 25.0,
+    "config": {
+      "position_tol_m": 0.025,
+      "contact_move_thresh_m": 0.002,
+      "similarity_threshold": 0.85,
+      "sample_points": 24,
+      "metric": "contact_anchor_drift_and_shift_compensated_trajectory_similarity",
+      "violation_rule": "anchor_drift(contact) > tol OR similarity(Tf - expected_shift, Ts) < similarity_threshold"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 63,
+        "mr_contact_frame_index": 82,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.019781945273280144,
+          -0.07209037244319916,
+          0.014908671379089355
+        ],
+        "mr_contact_point": [
+          0.02282937988638878,
+          -0.16321083903312683,
+          0.017912492156028748
+        ],
+        "expected_shift": [
+          -3.725290298461914e-09,
+          -0.10000000149011612,
+          3.725290298461914e-09
+        ],
+        "contact_drift_error_m": 0.00985677114220403,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04493189813018814,
+        "shifted_followup_path_len_m": 0.4173087989758024,
+        "source_path_len_m": 0.32746360095911936,
+        "relative_deviation": 0.1372118855304393,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": 38,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.054070860147476196,
+          0.04220009222626686,
+          0.015319474041461945
+        ],
+        "mr_contact_point": [
+          0.056943073868751526,
+          -0.06800355762243271,
+          0.015999019145965576
+        ],
+        "expected_shift": [
+          1.4901161193847656e-08,
+          -0.10000002756714821,
+          1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.010621921330173367,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03384484929633997,
+        "shifted_followup_path_len_m": 0.29141236542384225,
+        "source_path_len_m": 0.2943439842979266,
+        "relative_deviation": 0.11498400205822851,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": 38,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04343802481889725,
+          -0.014665728434920311,
+          0.018515802919864655
+        ],
+        "mr_contact_point": [
+          -0.04311908408999443,
+          -0.11009840667247772,
+          0.019443906843662262
+        ],
+        "expected_shift": [
+          -9.313225746154785e-09,
+          -0.1000000350177288,
+          -3.725290298461914e-09
+        ],
+        "contact_drift_error_m": 0.004671601534275681,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03780628064881885,
+        "shifted_followup_path_len_m": 0.3401160696673106,
+        "source_path_len_m": 0.30422346806832,
+        "relative_deviation": 0.12427141432865602,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": 40,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.05049394443631172,
+          0.028254440054297447,
+          0.019657060503959656
+        ],
+        "mr_contact_point": [
+          -0.051351919770240784,
+          -0.06473470479249954,
+          0.02226576954126358
+        ],
+        "expected_shift": [
+          -3.725290298461914e-09,
+          -0.10000003129243851,
+          1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.007529541630008184,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03530738755944177,
+        "shifted_followup_path_len_m": 0.29330125137252033,
+        "source_path_len_m": 0.30215248459464505,
+        "relative_deviation": 0.11685287846237195,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": 42,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04000668600201607,
+          -0.04333016648888588,
+          0.020520322024822235
+        ],
+        "mr_contact_point": [
+          -0.04071582481265068,
+          -0.12906847894191742,
+          0.020735464990139008
+        ],
+        "expected_shift": [
+          1.30385160446167e-08,
+          -0.10000001266598701,
+          5.587935447692871e-09
+        ],
+        "contact_drift_error_m": 0.014280940914397572,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04370585422457457,
+        "shifted_followup_path_len_m": 0.31130429070596854,
+        "source_path_len_m": 0.27989851246938297,
+        "relative_deviation": 0.15614893355088977,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": 40,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04010018706321716,
+          -0.018017351627349854,
+          0.017491348087787628
+        ],
+        "mr_contact_point": [
+          -0.04144694656133652,
+          -0.11015062034130096,
+          0.021189697086811066
+        ],
+        "expected_shift": [
+          -1.862645149230957e-09,
+          -0.10000003315508366,
+          -1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.008796450306628253,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03712984208394493,
+        "shifted_followup_path_len_m": 0.3134503198477158,
+        "source_path_len_m": 0.27610084422781406,
+        "relative_deviation": 0.13447927762694076,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.016002457588911057,
+          0.004190060310065746,
+          0.015779361128807068
+        ],
+        "mr_contact_point": [
+          0.019828910008072853,
+          -0.09815403819084167,
+          0.015876494348049164
+        ],
+        "expected_shift": [
+          3.3527612686157227e-08,
+          -0.10000003781169653,
+          1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.004488377941834013,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03615240472591858,
+        "shifted_followup_path_len_m": 0.31843919518912195,
+        "source_path_len_m": 0.29649847804090174,
+        "relative_deviation": 0.12193116458739928,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 46,
+        "mr_contact_frame_index": 46,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.028369389474391937,
+          0.05954940617084503,
+          0.016796045005321503
+        ],
+        "mr_contact_point": [
+          -0.027736544609069824,
+          -0.04180664196610451,
+          0.016928978264331818
+        ],
+        "expected_shift": [
+          2.0954757928848267e-09,
+          -0.10000002756714821,
+          3.725290298461914e-09
+        ],
+        "contact_drift_error_m": 0.001502315552074899,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03275655573927305,
+        "shifted_followup_path_len_m": 0.2870284431291279,
+        "source_path_len_m": 0.2990728899806498,
+        "relative_deviation": 0.10952699772083127,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 69,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.04761253669857979,
+          -0.018851876258850098,
+          0.015651002526283264
+        ],
+        "mr_contact_point": [
+          0.04899739474058151,
+          -0.11297997832298279,
+          0.013927489519119263
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000002942979336,
+          1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.006274381745681779,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04235283391489917,
+        "shifted_followup_path_len_m": 0.3719429844838429,
+        "source_path_len_m": 0.30372466433440437,
+        "relative_deviation": 0.1394448291109747,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 49,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.09326042234897614,
+          -0.15306541323661804,
+          0.023848816752433777
+        ],
+        "expected_shift": [
+          7.450580596923828e-09,
+          -0.10000001639127731,
+          5.587935447692871e-09
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_base_contact_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 69,
+        "mr_contact_frame_index": 40,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.12549762427806854,
+          0.07269563525915146,
+          0.021670900285243988
+        ],
+        "mr_contact_point": [
+          -0.13069862127304077,
+          -0.015205815434455872,
+          0.04832206666469574
+        ],
+        "expected_shift": [
+          -7.450580596923828e-09,
+          -0.10000002570450306,
+          -1.30385160446167e-08
+        ],
+        "contact_drift_error_m": 0.029727279961406693,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03914018918651765,
+        "shifted_followup_path_len_m": 0.3629370934215722,
+        "source_path_len_m": 0.3860597091284129,
+        "relative_deviation": 0.10138377111375448,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Drift error: 0.029727279961406693m > 0.025m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 54,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.02914516068994999,
+          0.06699123233556747,
+          0.017837733030319214
+        ],
+        "mr_contact_point": [
+          -0.030499320477247238,
+          -0.031183447688817978,
+          0.018702059984207153
+        ],
+        "expected_shift": [
+          -1.3969838619232178e-09,
+          -0.10000001825392246,
+          -3.725290298461914e-09
+        ],
+        "contact_drift_error_m": 0.002431598676022457,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03710435594214415,
+        "shifted_followup_path_len_m": 0.3051561084970629,
+        "source_path_len_m": 0.33395550495019505,
+        "relative_deviation": 0.11110568741089555,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04238438606262207,
+          -0.027772458270192146,
+          0.018626011908054352
+        ],
+        "mr_contact_point": [
+          -0.03822658956050873,
+          -0.11563112586736679,
+          0.021423138678073883
+        ],
+        "expected_shift": [
+          1.210719347000122e-08,
+          -0.10000001825392246,
+          0.0
+        ],
+        "contact_drift_error_m": 0.013134819565274194,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04762961309016048,
+        "shifted_followup_path_len_m": 0.3518087912469425,
+        "source_path_len_m": 0.3067555684361118,
+        "relative_deviation": 0.15526894371627464,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": 46,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09229602664709091,
+          -0.09719270467758179,
+          0.019716911017894745
+        ],
+        "mr_contact_point": [
+          -0.07983452826738358,
+          -0.16151459515094757,
+          0.026861898601055145
+        ],
+        "expected_shift": [
+          -7.450580596923828e-09,
+          -0.10000003129243851,
+          3.725290298461914e-09
+        ],
+        "contact_drift_error_m": 0.03846127473437545,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.07737872980257277,
+        "shifted_followup_path_len_m": 0.5242901093314976,
+        "source_path_len_m": 0.3786636643994493,
+        "relative_deviation": 0.20434685732335425,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Drift error: 0.03846127473437545m > 0.025m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": 53,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.008471145294606686,
+          -0.08523699641227722,
+          0.01711714267730713
+        ],
+        "mr_contact_point": [
+          -0.012114496901631355,
+          -0.15857426822185516,
+          0.020927779376506805
+        ],
+        "expected_shift": [
+          5.587935447692871e-09,
+          -0.10000002384185791,
+          1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.027178987020168358,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.06882527929456261,
+        "shifted_followup_path_len_m": 0.5302397801456014,
+        "source_path_len_m": 0.32310786775223443,
+        "relative_deviation": 0.21301022402629705,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Drift error: 0.027178987020168358m > 0.025m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 61,
+        "mr_contact_frame_index": 61,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09482340514659882,
+          -0.09726466983556747,
+          0.01979626715183258
+        ],
+        "mr_contact_point": [
+          -0.09841777384281158,
+          -0.171523779630661,
+          0.025857090950012207
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000003129243851,
+          7.450580596923828e-09
+        ],
+        "contact_drift_error_m": 0.02668797520712492,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.05414324895319841,
+        "shifted_followup_path_len_m": 0.41827802347196114,
+        "source_path_len_m": 0.3829713648642442,
+        "relative_deviation": 0.141376755341463,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Drift error: 0.02668797520712492m > 0.025m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 59,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.03957487642765045,
+          0.05447649210691452,
+          0.01737266033887863
+        ],
+        "mr_contact_point": [
+          -0.03708671033382416,
+          -0.05425043776631355,
+          0.01760006695985794
+        ],
+        "expected_shift": [
+          -1.862645149230957e-09,
+          -0.10000001639127731,
+          -7.450580596923828e-09
+        ],
+        "contact_drift_error_m": 0.009077539086173557,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03803789556558492,
+        "shifted_followup_path_len_m": 0.3471743121633769,
+        "source_path_len_m": 0.3295074342682243,
+        "relative_deviation": 0.11543865664233076,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 43,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.010747436434030533,
+          0.06749411672353745,
+          0.015642397105693817
+        ],
+        "mr_contact_point": [
+          0.012858224101364613,
+          -0.03721432387828827,
+          0.016375288367271423
+        ],
+        "expected_shift": [
+          1.4901161193847656e-08,
+          -0.1000000350177288,
+          1.1175870895385742e-08
+        ],
+        "contact_drift_error_m": 0.0052116751658941255,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03333379635623558,
+        "shifted_followup_path_len_m": 0.3105961447426425,
+        "source_path_len_m": 0.2992188449471643,
+        "relative_deviation": 0.11140273054032283,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 41,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09532627463340759,
+          -0.08516614884138107,
+          0.020098954439163208
+        ],
+        "mr_contact_point": [
+          -0.0938585102558136,
+          -0.1620628386735916,
+          0.023117922246456146
+        ],
+        "expected_shift": [
+          -7.450580596923828e-09,
+          -0.1000000387430191,
+          5.587935447692871e-09
+        ],
+        "contact_drift_error_m": 0.02334594649861192,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.050208868478929726,
+        "shifted_followup_path_len_m": 0.39174110381258637,
+        "source_path_len_m": 0.33923327311269946,
+        "relative_deviation": 0.14800690987127735,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 63,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.05742011219263077,
+          -0.09717823565006256,
+          0.01975848525762558
+        ],
+        "mr_contact_point": [
+          -0.060896702110767365,
+          -0.16591478884220123,
+          0.025532811880111694
+        ],
+        "expected_shift": [
+          -1.1175870895385742e-08,
+          -0.10000002384185791,
+          5.587935447692871e-09
+        ],
+        "contact_drift_error_m": 0.03198177575162274,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.072559599349083,
+        "shifted_followup_path_len_m": 0.5215279958556132,
+        "source_path_len_m": 0.3368222586837265,
+        "relative_deviation": 0.21542400324919114,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Drift error: 0.03198177575162274m > 0.025m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 75,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.024884968996047974,
+          -0.07278414815664291,
+          0.01740342378616333
+        ],
+        "mr_contact_point": [
+          0.02325761318206787,
+          -0.16176259517669678,
+          0.01688460260629654
+        ],
+        "expected_shift": [
+          -7.450580596923828e-09,
+          -0.10000001639127731,
+          7.450580596923828e-09
+        ],
+        "contact_drift_error_m": 0.011153135758535437,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.054679881188303615,
+        "shifted_followup_path_len_m": 0.43445879325203446,
+        "source_path_len_m": 0.3279966095811536,
+        "relative_deviation": 0.16670867805044978,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 39,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.12171408534049988,
+          0.0679553672671318,
+          0.04046303778886795
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          -7.450580596923828e-09,
+          -0.10000002011656761,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": 52,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.061782173812389374,
+          -0.027754701673984528,
+          0.016623295843601227
+        ],
+        "mr_contact_point": [
+          0.061174176633358,
+          -0.11922542005777359,
+          0.014553248882293701
+        ],
+        "expected_shift": [
+          1.4901161193847656e-08,
+          -0.10000005178153515,
+          0.0
+        ],
+        "contact_drift_error_m": 0.008797971432187388,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04003253008802388,
+        "shifted_followup_path_len_m": 0.3558027767363747,
+        "source_path_len_m": 0.3169436309518977,
+        "relative_deviation": 0.12630804401335197,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 45,
+        "mr_contact_frame_index": 55,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.06683140248060226,
+          0.023962300270795822,
+          0.015534505248069763
+        ],
+        "mr_contact_point": [
+          0.06593842804431915,
+          -0.07958105206489563,
+          0.014302588999271393
+        ],
+        "expected_shift": [
+          -2.9802322387695312e-08,
+          -0.10000002942979336,
+          -1.862645149230957e-09
+        ],
+        "contact_drift_error_m": 0.003856176913679225,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.037824187904581384,
+        "shifted_followup_path_len_m": 0.3403580721989064,
+        "source_path_len_m": 0.3159055386165806,
+        "relative_deviation": 0.11973258864096455,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.0032384460791945457,
+          0.004314732272177935,
+          0.01717192679643631
+        ],
+        "mr_contact_point": [
+          4.3322332203388214e-05,
+          -0.09949205815792084,
+          0.01757235825061798
+        ],
+        "expected_shift": [
+          -1.862645149230957e-09,
+          -0.10000002826564014,
+          5.587935447692871e-09
+        ],
+        "contact_drift_error_m": 0.004986038799181129,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03448296750124771,
+        "shifted_followup_path_len_m": 0.31088670908653676,
+        "source_path_len_m": 0.3170382846214416,
+        "relative_deviation": 0.10876594144591077,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 6,
+  "followup_mr_violation_rate_percent": 25.0,
+  "followup_unavailable_count": 1,
+  "followup_analyzable_count": 24
+}

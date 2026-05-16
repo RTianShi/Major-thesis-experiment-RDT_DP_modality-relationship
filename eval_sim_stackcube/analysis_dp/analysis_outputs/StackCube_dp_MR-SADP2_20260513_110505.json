@@ -1,0 +1,1358 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/StackCube/StackCube-v1_20260507_171901",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/StackCube/StackCube-v1_MR-SADP2_20260513_104856",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 189.96,
+      "median": 121.0,
+      "std": 126.23960709698046,
+      "min": 67.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.9554282879829407,
+      "median": 0.8255857825279236,
+      "std": 0.3113681941976068,
+      "min": 0.5455149412155151,
+      "max": 1.6140120029449463
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3285438548592207,
+      "median": 0.3256007888765554,
+      "std": 0.16047203615436637,
+      "min": 0.04006177482355852,
+      "max": 0.7164470457140841
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18379271522224336,
+      "median": 0.18639727003848494,
+      "std": 0.09385685583374975,
+      "min": 0.024260986949110882,
+      "max": 0.38594732553650163
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.048356503779442166,
+      "median": 0.05604305545635083,
+      "std": 0.017263997487146375,
+      "min": 0.009790962088009109,
+      "max": 0.06091412759676416
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999763503670693,
+      "median": 0.07999983802437782,
+      "std": 4.427526671778822e-06,
+      "min": 0.07998516038060188,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032582375556230544,
+      "median": 0.037314651533961296,
+      "std": 0.0167200674899488,
+      "min": 0.0,
+      "max": 0.05167234502732754
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.3542855262756348,
+      "median": 1.294203281402588,
+      "std": 0.3400244696551776,
+      "min": 0.8759744167327881,
+      "max": 2.143949508666992
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.19273233563789546,
+      "median": 0.03389767151903787,
+      "std": 0.31744952497388396,
+      "min": 2.478204600330989e-06,
+      "max": 1.2071530060935922
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.08558198483451218,
+      "median": 0.02517041676150823,
+      "std": 0.13790633539265415,
+      "min": 1.0801430879517368e-06,
+      "max": 0.4450484102586748
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.014830495543584822,
+      "median": 0.009954063469776883,
+      "std": 0.010737908936034398,
+      "min": 0.006039104323135689,
+      "max": 0.047104042707942426
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999989539384841,
+      "median": 0.07999999821186066,
+      "std": 3.002389852457788e-07,
+      "min": 0.07999854162335396,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0016418859362602235,
+      "median": 0.0,
+      "std": 0.008043565519378744,
+      "min": 0.0,
+      "max": 0.041047148406505585
+    }
+  },
+  "mr_rule": "MR-SADP2",
+  "mr_compare": {
+    "mr_id": "MR-SADP2-VISUAL-REDUNDANCY-IMMUNITY",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 25,
+    "violation_rate_percent": 100.0,
+    "config": {
+      "position_tol_m": 0.025,
+      "metric": "red_and_green_anchor_spatial_drift",
+      "violation_rule": "grasp_anchor_drift > tol OR end_anchor_drift > tol",
+      "invariance_expectation": "core_red_green_anchors_should_dominate_over_visual_redundancy"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 53,
+        "mr_grasp_frame_index": 63,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.0865212082862854,
+          -0.2541961967945099,
+          0.048992618918418884
+        ],
+        "mr_grasp_point": [
+          0.0319930724799633,
+          -0.26044780015945435,
+          0.049175143241882324
+        ],
+        "base_final_point": [
+          0.10066437721252441,
+          -0.2880379855632782,
+          0.15359869599342346
+        ],
+        "mr_final_point": [
+          -0.03495937958359718,
+          -0.07767245173454285,
+          0.1835826337337494
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.4901161193847656e-08,
+          0.35238415002822876,
+          3.725290298461914e-09
+        ],
+        "grasp_anchor_drift_m": 0.05488563978194977,
+        "end_anchor_drift_m": 0.1986507767305069,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.05488563978194977m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.1986507767305069m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.04945554584264755,
+          0.19923754036426544,
+          0.017141781747341156
+        ],
+        "mr_grasp_point": [
+          0.035036250948905945,
+          0.2163143903017044,
+          0.01824738085269928
+        ],
+        "base_final_point": [
+          0.04268992692232132,
+          0.016170989722013474,
+          0.06329835951328278
+        ],
+        "mr_final_point": [
+          0.0018486669287085533,
+          0.2589581310749054,
+          0.12279442697763443
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          7.450580596923828e-09,
+          -0.18127196317072958,
+          1.30385160446167e-08
+        ],
+        "grasp_anchor_drift_m": 0.022377605287435487,
+        "end_anchor_drift_m": 0.43015568547685834,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.43015568547685834m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 33,
+        "mr_grasp_frame_index": 39,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.022998735308647156,
+          -0.08930858224630356,
+          0.019406341016292572
+        ],
+        "mr_grasp_point": [
+          -0.0003207731060683727,
+          -0.0953875482082367,
+          0.04769904911518097
+        ],
+        "base_final_point": [
+          0.00027563702315092087,
+          0.1772594153881073,
+          0.06370746344327927
+        ],
+        "mr_final_point": [
+          -0.02812492474913597,
+          -0.04918121546506882,
+          0.13993187248706818
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          6.51925802230835e-09,
+          -0.3553721606731415,
+          -9.313225746154785e-09
+        ],
+        "grasp_anchor_drift_m": 0.03716491129330508,
+        "end_anchor_drift_m": 0.15244701904223815,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.03716491129330508m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.15244701904223815m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 48,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.06579223275184631,
+          0.039611563086509705,
+          0.020094111561775208
+        ],
+        "mr_grasp_point": [
+          -0.08222922682762146,
+          0.033462028950452805,
+          0.0479176864027977
+        ],
+        "base_final_point": [
+          0.06462478637695312,
+          0.06351076066493988,
+          0.0633092075586319
+        ],
+        "mr_final_point": [
+          -0.10617953538894653,
+          0.076115682721138,
+          0.11712325364351273
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          7.450580596923828e-09,
+          -0.23352429643273354,
+          7.450580596923828e-09
+        ],
+        "grasp_anchor_drift_m": 0.03289593989038125,
+        "end_anchor_drift_m": 0.3043840696015447,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.03289593989038125m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.3043840696015447m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 44,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.08532746136188507,
+          0.06472313404083252,
+          0.019409842789173126
+        ],
+        "mr_grasp_point": [
+          -0.10081486403942108,
+          0.07652436196804047,
+          0.0188034325838089
+        ],
+        "base_final_point": [
+          -0.03902865946292877,
+          -0.08988085389137268,
+          0.0639941543340683
+        ],
+        "mr_final_point": [
+          -0.07639282941818237,
+          0.152052640914917,
+          0.10511636734008789
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          0.0,
+          0.27047886699438095,
+          -3.91155481338501e-08
+        ],
+        "grasp_anchor_drift_m": 0.019480666200703513,
+        "end_anchor_drift_m": 0.06246566328273088,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.06246566328273088m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 31,
+        "mr_grasp_frame_index": 48,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.022850416600704193,
+          0.10147973895072937,
+          0.019338242709636688
+        ],
+        "mr_grasp_point": [
+          -0.04802882298827171,
+          0.11235014349222183,
+          0.02109655737876892
+        ],
+        "base_final_point": [
+          -0.0912155881524086,
+          -0.16990195214748383,
+          0.06283552199602127
+        ],
+        "mr_final_point": [
+          -0.0751536563038826,
+          0.1098754033446312,
+          0.10189711302518845
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -2.2351741790771484e-08,
+          0.35320909321308136,
+          3.725290298461914e-09
+        ],
+        "grasp_anchor_drift_m": 0.027481075553713076,
+        "end_anchor_drift_m": 0.08471135744485911,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.027481075553713076m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.08471135744485911m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 34,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.03342779353260994,
+          0.16314317286014557,
+          0.02172025293111801
+        ],
+        "mr_grasp_point": [
+          0.02164052426815033,
+          0.1761293113231659,
+          0.020954221487045288
+        ],
+        "base_final_point": [
+          0.12001581490039825,
+          0.01074150763452053,
+          0.0626673698425293
+        ],
+        "mr_final_point": [
+          0.0049882554449141026,
+          -0.16980405151844025,
+          0.1250678300857544
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -0.03385186195373535,
+          -0.19743208959698677,
+          -9.313225746154785e-09
+        ],
+        "grasp_anchor_drift_m": 0.017554666418560003,
+        "end_anchor_drift_m": 0.10377122614770432,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.10377122614770432m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 35,
+        "mr_grasp_frame_index": 38,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.07330925017595291,
+          0.21503610908985138,
+          0.017981357872486115
+        ],
+        "mr_grasp_point": [
+          0.06215987354516983,
+          0.23983611166477203,
+          0.021306559443473816
+        ],
+        "base_final_point": [
+          -0.08955254405736923,
+          -0.04800236225128174,
+          0.06552352756261826
+        ],
+        "mr_final_point": [
+          0.0009460072033107281,
+          0.3465569317340851,
+          0.12020145356655121
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.4901161193847656e-08,
+          0.22586753219366074,
+          -1.30385160446167e-08
+        ],
+        "grasp_anchor_drift_m": 0.02739353377092525,
+        "end_anchor_drift_m": 0.19908935832317762,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.02739353377092525m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.19908935832317762m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 54,
+        "mr_grasp_frame_index": 65,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.08354447782039642,
+          -0.15492744743824005,
+          0.017774462699890137
+        ],
+        "mr_grasp_point": [
+          0.03440440446138382,
+          -0.1595715433359146,
+          0.019976727664470673
+        ],
+        "base_final_point": [
+          0.012365263886749744,
+          -0.016134656965732574,
+          0.16745251417160034
+        ],
+        "mr_final_point": [
+          0.010385295376181602,
+          -0.07025590538978577,
+          0.1578172892332077
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -1.862645149230957e-09,
+          -0.32419709861278534,
+          -7.450580596923828e-09
+        ],
+        "grasp_anchor_drift_m": 0.0494081411045807,
+        "end_anchor_drift_m": 0.2702549213966895,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.0494081411045807m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.2702549213966895m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 36,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.07110953330993652,
+          -0.14260344207286835,
+          0.023542560636997223
+        ],
+        "mr_grasp_point": [
+          -0.08925549685955048,
+          -0.13779601454734802,
+          0.028642773628234863
+        ],
+        "base_final_point": [
+          0.015648510307073593,
+          -0.057506855577230453,
+          0.06286977976560593
+        ],
+        "mr_final_point": [
+          -0.021089643239974976,
+          0.21840104460716248,
+          0.1254594922065735
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -9.313225746154785e-09,
+          0.23876049369573593,
+          5.587935447692871e-09
+        ],
+        "grasp_anchor_drift_m": 0.019452494058938508,
+        "end_anchor_drift_m": 0.08152970289733172,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.08152970289733172m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 59,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.128968745470047,
+          0.2634923756122589,
+          0.022602006793022156
+        ],
+        "mr_grasp_point": [
+          -0.11834807693958282,
+          0.2619967758655548,
+          0.018857933580875397
+        ],
+        "base_final_point": [
+          -0.05664203315973282,
+          0.23133066296577454,
+          0.06255392730236053
+        ],
+        "mr_final_point": [
+          -0.1659727394580841,
+          -0.1310664862394333,
+          0.11812029033899307
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.4901161193847656e-08,
+          -0.4070955365896225,
+          7.450580596923828e-09
+        ],
+        "grasp_anchor_drift_m": 0.011360171779257931,
+        "end_anchor_drift_m": 0.13053264842899762,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.13053264842899762m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 55,
+        "mr_grasp_frame_index": 46,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.039699576795101166,
+          0.18685558438301086,
+          0.019566841423511505
+        ],
+        "mr_grasp_point": [
+          -0.04230296611785889,
+          0.1986003965139389,
+          0.021468475461006165
+        ],
+        "base_final_point": [
+          -0.005586086772382259,
+          0.10807856917381287,
+          0.06694091111421585
+        ],
+        "mr_final_point": [
+          -0.08940527588129044,
+          -0.17435042560100555,
+          0.11629615724086761
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -5.122274160385132e-09,
+          -0.2823222726583481,
+          0.0
+        ],
+        "grasp_anchor_drift_m": 0.0121792635232678,
+        "end_anchor_drift_m": 0.0972707937359294,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.0972707937359294m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 34,
+        "mr_grasp_frame_index": 45,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0024409862235188484,
+          0.1648937165737152,
+          0.021642431616783142
+        ],
+        "mr_grasp_point": [
+          -0.003910469822585583,
+          0.19150522351264954,
+          0.02126462012529373
+        ],
+        "base_final_point": [
+          -0.03511342033743858,
+          -0.21919341385364532,
+          0.06230660527944565
+        ],
+        "mr_final_point": [
+          -0.1767428070306778,
+          0.36344921588897705,
+          0.11747368425130844
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -0.04820187762379646,
+          0.39886777102947235,
+          -1.1175870895385742e-08
+        ],
+        "grasp_anchor_drift_m": 0.02665472613125067,
+        "end_anchor_drift_m": 0.21341346251192128,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.02665472613125067m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.21341346251192128m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 46,
+        "mr_grasp_frame_index": 49,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.11607059091329575,
+          0.014652381651103497,
+          0.0173734650015831
+        ],
+        "mr_grasp_point": [
+          -0.13423077762126923,
+          0.018443148583173752,
+          0.022296063601970673
+        ],
+        "base_final_point": [
+          -0.02654150500893593,
+          -0.14419591426849365,
+          0.13348785042762756
+        ],
+        "mr_final_point": [
+          -0.1565374732017517,
+          0.06163507699966431,
+          0.0913710817694664
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.862645149230957e-08,
+          0.46462540328502655,
+          4.842877388000488e-08
+        ],
+        "grasp_anchor_drift_m": 0.019193599771337104,
+        "end_anchor_drift_m": 0.2926556518535157,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.2926556518535157m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 49,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.038625072687864304,
+          -0.01608821004629135,
+          0.02048078179359436
+        ],
+        "mr_grasp_point": [
+          -0.07357276976108551,
+          -0.000196751207113266,
+          0.01838739961385727
+        ],
+        "base_final_point": [
+          -0.03648033365607262,
+          0.005979026667773724,
+          0.11690022796392441
+        ],
+        "mr_final_point": [
+          -0.09000852704048157,
+          0.09191179275512695,
+          0.13122403621673584
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.4901161193847656e-08,
+          0.4659186452627182,
+          -3.725290298461914e-09
+        ],
+        "grasp_anchor_drift_m": 0.0384481760777981,
+        "end_anchor_drift_m": 0.38400482945468595,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.0384481760777981m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.38400482945468595m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 40,
+        "mr_grasp_frame_index": 63,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0037667090073227882,
+          -0.2554778754711151,
+          0.020094171166419983
+        ],
+        "mr_grasp_point": [
+          -0.0501466728746891,
+          -0.2694784104824066,
+          0.023274734616279602
+        ],
+        "base_final_point": [
+          -0.08584697544574738,
+          -0.01894168183207512,
+          0.039583489298820496
+        ],
+        "mr_final_point": [
+          -0.034310512244701385,
+          -0.1458951234817505,
+          0.17029431462287903
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          5.4016709327697754e-08,
+          -0.21053842268884182,
+          1.4901161193847656e-08
+        ],
+        "grasp_anchor_drift_m": 0.04855133379011525,
+        "end_anchor_drift_m": 0.16348628838023024,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.04855133379011525m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.16348628838023024m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 47,
+        "mr_grasp_frame_index": 52,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.12126997113227844,
+          0.028442882001399994,
+          0.019179485738277435
+        ],
+        "mr_grasp_point": [
+          -0.13748051226139069,
+          0.022937119007110596,
+          0.023498982191085815
+        ],
+        "base_final_point": [
+          0.02394583262503147,
+          0.0003923075273633003,
+          0.06356371939182281
+        ],
+        "mr_final_point": [
+          -0.13769304752349854,
+          0.09194529801607132,
+          0.09984986484050751
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          0.0,
+          0.1914194617420435,
+          3.725290298461914e-09
+        ],
+        "grasp_anchor_drift_m": 0.017656531920333347,
+        "end_anchor_drift_m": 0.19343506336089739,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.19343506336089739m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 39,
+        "mr_grasp_frame_index": 31,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.04836539551615715,
+          0.19071604311466217,
+          0.02162826806306839
+        ],
+        "mr_grasp_point": [
+          -0.06938225030899048,
+          0.20060445368289948,
+          0.02100013941526413
+        ],
+        "base_final_point": [
+          0.05152425915002823,
+          0.1404038518667221,
+          0.07106629759073257
+        ],
+        "mr_final_point": [
+          -0.10519801825284958,
+          0.17721709609031677,
+          0.10857796669006348
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          7.450580596923828e-09,
+          -0.31771595776081085,
+          1.1175870895385742e-08
+        ],
+        "grasp_anchor_drift_m": 0.023235390991917067,
+        "end_anchor_drift_m": 0.389435429961829,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.389435429961829m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 29,
+        "mr_grasp_frame_index": 29,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.004337624181061983,
+          -0.06410025805234909,
+          0.0208803191781044
+        ],
+        "mr_grasp_point": [
+          0.001379435881972313,
+          -0.051489830017089844,
+          0.04732169210910797
+        ],
+        "base_final_point": [
+          -0.015168004669249058,
+          -0.24578507244586945,
+          0.061435312032699585
+        ],
+        "mr_final_point": [
+          -0.020019909366965294,
+          -0.01980973780155182,
+          0.12874901294708252
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -7.450580596923828e-09,
+          0.44476136565208435,
+          -1.862645149230957e-08
+        ],
+        "grasp_anchor_drift_m": 0.029847175301411732,
+        "end_anchor_drift_m": 0.22895852268358638,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.029847175301411732m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.22895852268358638m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 43,
+        "mr_grasp_frame_index": 54,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.04379437118768692,
+          -0.2434695065021515,
+          0.021753117442131042
+        ],
+        "mr_grasp_point": [
+          -0.09040390700101852,
+          -0.24332034587860107,
+          0.020510315895080566
+        ],
+        "base_final_point": [
+          -0.07560239732265472,
+          0.06595826894044876,
+          0.061742380261421204
+        ],
+        "mr_final_point": [
+          -0.0309902373701334,
+          -0.12125366181135178,
+          0.16412858664989471
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -7.450580596923828e-09,
+          -0.24056799337267876,
+          3.725290298461914e-08
+        ],
+        "grasp_anchor_drift_m": 0.04662634055243035,
+        "end_anchor_drift_m": 0.12377415937530387,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.04662634055243035m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.12377415937530387m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 56,
+        "mr_grasp_frame_index": 62,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.003924212418496609,
+          -0.26634088158607483,
+          0.015227191150188446
+        ],
+        "mr_grasp_point": [
+          -0.047793734818696976,
+          -0.27307307720184326,
+          0.04027959704399109
+        ],
+        "base_final_point": [
+          0.05627535283565521,
+          -0.12118653953075409,
+          0.11074772477149963
+        ],
+        "mr_final_point": [
+          -0.05632926523685455,
+          -0.06492343544960022,
+          0.17831860482692719
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.862645149230957e-08,
+          0.3362335115671158,
+          1.862645149230957e-08
+        ],
+        "grasp_anchor_drift_m": 0.050965483363728546,
+        "end_anchor_drift_m": 0.3092394777324113,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.050965483363728546m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.3092394777324113m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 63,
+        "mr_grasp_frame_index": 62,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0730985477566719,
+          0.2508211135864258,
+          0.019195005297660828
+        ],
+        "mr_grasp_point": [
+          -0.08203232288360596,
+          0.25421854853630066,
+          0.017411969602108
+        ],
+        "base_final_point": [
+          -0.16035470366477966,
+          0.037624508142471313,
+          0.06368069350719452
+        ],
+        "mr_final_point": [
+          -0.00037353113293647766,
+          0.2964961528778076,
+          0.266951322555542
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          0.0675581619143486,
+          -0.20685147866606712,
+          0.0
+        ],
+        "grasp_anchor_drift_m": 0.009722865758040291,
+        "end_anchor_drift_m": 0.5164871626633823,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.5164871626633823m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 51,
+        "mr_grasp_frame_index": 46,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.1063557043671608,
+          0.09154333174228668,
+          0.016968660056591034
+        ],
+        "mr_grasp_point": [
+          0.08985594660043716,
+          0.10574358701705933,
+          0.018734842538833618
+        ],
+        "base_final_point": [
+          0.13845911622047424,
+          0.1400292068719864,
+          0.05712137371301651
+        ],
+        "mr_final_point": [
+          0.049242354929447174,
+          0.1607690304517746,
+          0.12358567118644714
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          -0.05695447325706482,
+          -0.32579144835472107,
+          1.1175870895385742e-08
+        ],
+        "grasp_anchor_drift_m": 0.02184052785053158,
+        "end_anchor_drift_m": 0.35431945897844663,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.35431945897844663m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 50,
+        "mr_grasp_frame_index": 39,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.10360969603061676,
+          -0.11245919018983841,
+          0.023293547332286835
+        ],
+        "mr_grasp_point": [
+          0.08550223708152771,
+          -0.10283003002405167,
+          0.047523900866508484
+        ],
+        "base_final_point": [
+          0.008701619692146778,
+          0.1522241085767746,
+          0.06277112662792206
+        ],
+        "mr_final_point": [
+          0.042716920375823975,
+          -0.07346516847610474,
+          0.14332228899002075
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          2.3283064365386963e-10,
+          -0.334514319896698,
+          -1.862645149230957e-09
+        ],
+        "grasp_anchor_drift_m": 0.031744461367058774,
+        "end_anchor_drift_m": 0.13960093363828904,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Grasp point slipped by 0.031744461367058774m)",
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.13960093363828904m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 44,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.042901311069726944,
+          0.0916205644607544,
+          0.017805472016334534
+        ],
+        "mr_grasp_point": [
+          0.02304995246231556,
+          0.10391098260879517,
+          0.02024473249912262
+        ],
+        "base_final_point": [
+          -0.011150559410452843,
+          -0.13329966366291046,
+          0.06105417013168335
+        ],
+        "mr_final_point": [
+          -0.0010462068021297455,
+          0.12573187053203583,
+          0.09590049088001251
+        ],
+        "delta_d_red": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "delta_d_green": [
+          1.862645149230957e-09,
+          0.31888560950756073,
+          1.862645149230957e-09
+        ],
+        "grasp_anchor_drift_m": 0.02347511040478037,
+        "end_anchor_drift_m": 0.06999195793376967,
+        "position_tol_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (End point slipped by 0.06999195793376967m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 25,
+  "followup_mr_violation_rate_percent": 100.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

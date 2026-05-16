@@ -162,7 +162,6 @@ def prop_spatial_dislocation_tear(proprio, cfg):
         out[..., width:] = -out[..., width:]
     return out
 
-
 @register_proprio("MR-SADP2")
 @register_proprio("MR-SADP-2")
 @register_proprio("SADP-Intra-Modal-Background-Noise")

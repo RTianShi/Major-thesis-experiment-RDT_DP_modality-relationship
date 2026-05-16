@@ -303,13 +303,13 @@ def _build_visual_box(scene, half_size, rgba, name):
 
 
 def _ensure_sadp2_visual_assets(env, cfg):
-    runtime = getattr(env.unwrapped, "_mr_sadp2_runtime", None)
-    if runtime is not None:
-        return runtime
-
     scene = getattr(env.unwrapped, "scene", None)
     if scene is None:
         raise ValueError("MR-SADP2 requires env.unwrapped.scene")
+
+    runtime = getattr(env.unwrapped, "_mr_sadp2_runtime", None)
+    if runtime is not None and runtime.get("scene") is scene:
+        return runtime
 
     distractor_half_size = float(cfg.get("distractor_half_size", 0.016))
     distractor_colors = cfg.get(
@@ -336,12 +336,13 @@ def _ensure_sadp2_visual_assets(env, cfg):
         point_light = scene.add_point_light(
             position=cfg.get("shadow_light_position", [0.22, -0.22, 0.75]),
             color=cfg.get("shadow_light_color", [0.9, 0.82, 0.72]),
-            shadow=bool(cfg.get("shadow", True)),
+            shadow=bool(cfg.get("shadow", False)),
         )
     except Exception:
         point_light = None
 
     runtime = {
+        "scene": scene,
         "distractor_actors": distractor_actors,
         "point_light": point_light,
         "distractor_half_size": distractor_half_size,
@@ -353,18 +354,21 @@ def _ensure_sadp2_visual_assets(env, cfg):
 def _set_table_visual_noise(env, cfg):
     table_actor = _find_scene_actor_by_keywords(env, ("table", "desk"))
     if table_actor is not None:
-        _set_actor_base_color(table_actor, cfg.get("table_rgba", [0.76, 0.68, 0.52, 1.0]))
+        table_rgba = cfg.get("table_rgba", None)
+        if table_rgba is not None:
+            _set_actor_base_color(table_actor, table_rgba)
 
     scene = getattr(env.unwrapped, "scene", None)
     if scene is not None:
-        ambient = cfg.get("ambient_light", [0.16, 0.15, 0.14])
-        try:
-            scene.set_ambient_light(ambient)
-        except Exception:
-            pass
+        ambient = cfg.get("ambient_light", None)
+        if ambient is not None:
+            try:
+                scene.set_ambient_light(ambient)
+            except Exception:
+                pass
 
 
-def _safe_visual_distractor_positions(red_xy, green_xy, cfg):
+def _safe_visual_distractor_positions(red_xy, green_xy, cfg, *, rng=None):
     candidates = np.array(
         cfg.get(
             "candidate_distractor_xy",
@@ -390,13 +394,21 @@ def _safe_visual_distractor_positions(red_xy, green_xy, cfg):
 
     if len(legal) < 3:
         raise ValueError("MR-SADP2 could not find 3 legal distractor positions")
-    np.random.shuffle(legal)
+    rng = np.random if rng is None else rng
+    try:
+        perm = rng.permutation(len(legal))
+        legal = [legal[int(i)] for i in perm]
+    except Exception:
+        try:
+            rng.shuffle(legal)
+        except Exception:
+            np.random.shuffle(legal)
     return legal[:3]
 
 
 def _place_sadp2_visual_distractors(env, red_xy, green_xy, cfg):
     runtime = _ensure_sadp2_visual_assets(env, cfg)
-    positions = _safe_visual_distractor_positions(red_xy, green_xy, cfg)
+    positions = _safe_visual_distractor_positions(red_xy, green_xy, cfg, rng=_env_np_rng(env))
     z_height = runtime["distractor_half_size"]
 
     for actor, xy in zip(runtime["distractor_actors"], positions):
@@ -763,7 +775,10 @@ def env_mr_sadp2_visual_redundancy_immunity(env, cfg):
 
     red_xy_ref = red_pos_batch[0, :2].detach().cpu().numpy()
     green_xy_ref = green_new_batch[0, :2].detach().cpu().numpy()
-    _set_table_visual_noise(env, cfg)
+    # DP 评估里常见的“黑屏/过暗”问题通常来自激进的光照覆盖。
+    # 这里默认只添加可见干扰物；若需要改光照/桌面颜色，请在 cfg 显式传入。
+    if bool(cfg.get("enable_table_visual_noise", True)):
+        _set_table_visual_noise(env, cfg)
     _place_sadp2_visual_distractors(env, red_xy_ref, green_xy_ref, cfg)
     _apply_scene_updates(env)
     return env

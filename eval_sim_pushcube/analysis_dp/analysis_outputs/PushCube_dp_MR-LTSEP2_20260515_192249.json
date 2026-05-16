@@ -1,0 +1,666 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_20260513_124925",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj_dp/PushCube/PushCube-v1_MR-LTSEP2_20260515_190802",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 92.0,
+    "success_count": 23,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 92.16,
+      "median": 66.0,
+      "std": 91.1406297981312,
+      "min": 55.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.3265525841712952,
+      "median": 0.3169436454772949,
+      "std": 0.043173104304537455,
+      "min": 0.2761008143424988,
+      "max": 0.48660406470298767
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.09860507445081428,
+      "median": 0.10148605291975878,
+      "std": 0.0205666198528278,
+      "min": 1.5966067242033594e-07,
+      "max": 0.12278926914526622
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.09733178533898888,
+      "median": 0.1012162032271234,
+      "std": 0.01990587760358281,
+      "min": 1.1175870895385742e-08,
+      "max": 0.10402886419197763
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0013351901429254343,
+      "median": 0.0009855697004002382,
+      "std": 0.0019948914292213142,
+      "min": 0.0003275583670284732,
+      "max": 0.011078044425993454
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04239035159349441,
+      "median": 0.04080089554190636,
+      "std": 0.007677200911521017,
+      "min": 0.040800824761390686,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 6.589351558685303,
+      "median": 6.621002674102783,
+      "std": 0.345472261968121,
+      "min": 5.85230016708374,
+      "max": 7.1546735763549805
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 1.8752814596499436e-07,
+      "median": 1.3951986289774994e-07,
+      "std": 2.696913742673613e-07,
+      "min": 8.310262624366646e-08,
+      "max": 1.501820692538044e-06
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 5.789778807566544e-08,
+      "median": 1.501712528671799e-08,
+      "std": 2.078873923197011e-07,
+      "min": 5.268356063861754e-09,
+      "max": 1.075906146755106e-06
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.018359566259203246,
+      "median": 0.01868723847954847,
+      "std": 0.001836634264980151,
+      "min": 0.01370083319886362,
+      "max": 0.021431135301590985
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07886732071638107,
+      "median": 0.07923213019967079,
+      "std": 0.001749633518631619,
+      "min": 0.07184771820902824,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-LTSEP2",
+  "mr_compare": {
+    "mr_id": "MR-LTSEP2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 1,
+    "unavailable_count": 24,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "cube_progress_threshold_m": 0.02,
+      "contact_distance_m": 0.035,
+      "phantom_max_distance_m": 0.07,
+      "invariance_proxy": "cube_progress_along_goal_after_proprioception_spatial_dislocation",
+      "attack_type": "proprioceptive_coordinate_tampering_folded_state"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": 41,
+        "cube_pos_at_attack": [
+          0.0474785752594471,
+          -0.06759674102067947,
+          0.019999906420707703
+        ],
+        "cube_pos_at_end": [
+          0.047478288412094116,
+          -0.06759720295667648,
+          0.019999917596578598
+        ],
+        "target_pos_at_attack": [
+          0.24747920036315918,
+          -0.06759555637836456,
+          0.0010000000474974513
+        ],
+        "goal_direction": [
+          0.9955178877573749,
+          5.896644645368191e-06,
+          -0.09457343771019588
+        ],
+        "cube_move_m": -2.8662133535140933e-07,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "safe_halt_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": false,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "success": false,
+        "phantom_trigger_index": null,
+        "cube_pos_at_attack": null,
+        "cube_pos_at_end": null,
+        "target_pos_at_attack": null,
+        "goal_direction": null,
+        "cube_move_m": null,
+        "cube_progress_threshold_m": 0.02,
+        "contact_distance_m": 0.035,
+        "phantom_max_distance_m": 0.07,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_phantom_trigger_window"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 24,
+  "followup_analyzable_count": 1
+}
