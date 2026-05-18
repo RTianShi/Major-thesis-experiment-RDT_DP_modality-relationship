@@ -16,9 +16,18 @@ def _load_builtin_rules():
     module_names = [
         "default_rule",
         "mr_drp_1",
+        "mr_drp_2",
+        "mr_cptmp_1",
+        "mr_cptmp_2",
+        "mr_gdip_1",
+        "mr_fpdp_1",
         "mr_ltsep_1",
         "mr_ltsep_2",
         "mr_scdp_1",
+        "mr_sadp_2",
+        "mr_semp_1",
+        "mr_semp_2",
+        "mr_semp_3",
         "mr_sesp_1",
     ]
     pkg = __name__.rsplit(".", 1)[0]

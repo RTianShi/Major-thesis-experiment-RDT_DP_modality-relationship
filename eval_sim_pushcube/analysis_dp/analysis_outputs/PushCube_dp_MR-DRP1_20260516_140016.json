@@ -1,0 +1,1194 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_20260513_124925",
+  "mr_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_MR-DRP1_20260516_134548",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 92.0,
+    "success_count": 23,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 92.16,
+      "median": 66.0,
+      "std": 91.1406297981312,
+      "min": 55.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.3265525841712952,
+      "median": 0.3169436454772949,
+      "std": 0.043173104304537455,
+      "min": 0.2761008143424988,
+      "max": 0.48660406470298767
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.09860507445081428,
+      "median": 0.10148605291975878,
+      "std": 0.0205666198528278,
+      "min": 1.5966067242033594e-07,
+      "max": 0.12278926914526622
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.09733178533898888,
+      "median": 0.1012162032271234,
+      "std": 0.01990587760358281,
+      "min": 1.1175870895385742e-08,
+      "max": 0.10402886419197763
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0013351901429254343,
+      "median": 0.0009855697004002382,
+      "std": 0.0019948914292213142,
+      "min": 0.0003275583670284732,
+      "max": 0.011078044425993454
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04239035159349441,
+      "median": 0.04080089554190636,
+      "std": 0.007677200911521017,
+      "min": 0.040800824761390686,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 36.0,
+    "success_count": 9,
+    "success_episode_ids": [
+      1,
+      5,
+      10,
+      14,
+      15,
+      16,
+      19,
+      20,
+      21
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 265.44,
+      "median": 400.0,
+      "std": 180.72876472769906,
+      "min": 1.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.2933024287223816,
+      "median": 0.37144237756729126,
+      "std": 0.16731140200936276,
+      "min": 0.0,
+      "max": 0.465614378452301
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.004949703929100273,
+      "median": 2.678783457535501e-06,
+      "std": 0.01454797978722829,
+      "min": 0.0,
+      "max": 0.05496234928795102
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.004890402698851996,
+      "median": 5.3802078727717e-07,
+      "std": 0.014454974803559176,
+      "min": 0.0,
+      "max": 0.0547309859093897
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.015189657348185686,
+      "median": 0.00031047311141975344,
+      "std": 0.027194316587071977,
+      "min": 0.00016918561084661832,
+      "max": 0.07999986410140991
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.04707614831626415,
+      "median": 0.04080096818506718,
+      "std": 0.014314540487708038,
+      "min": 0.04080082103610039,
+      "max": 0.07999986410140991
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.014478866532444954,
+      "median": 0.0,
+      "std": 0.027480137700756004,
+      "min": 0.0,
+      "max": 0.07999986410140991
+    }
+  },
+  "mr_rule": "MR-DRP1",
+  "mr_compare": {
+    "mr_id": "MR-DRP1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 24,
+    "unavailable_count": 1,
+    "violations": 21,
+    "violation_rate_percent": 87.5,
+    "config": {
+      "contact_target_error_threshold_m": 0.04,
+      "contact_move_thresh_m": 0.002,
+      "invariance_proxy": "followup_contact_point_alignment_to_shifted_cube",
+      "attack_type": "extreme_diagonal_cube_relocation"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 63,
+        "mr_contact_frame_index": 77,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.019781945273280144,
+          -0.07209037244319916,
+          0.014908671379089355
+        ],
+        "mr_contact_point": [
+          0.07626595348119736,
+          -0.07639265805482864,
+          0.009519807994365692
+        ],
+        "base_cube_target": [
+          0.04747883975505829,
+          -0.06759627908468246,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.028517287791135593,
+        "mr_contact_error_m": 0.03507795259984805,
+        "mr_closest_frame_index": 82,
+        "mr_closest_point": [
+          0.10170404613018036,
+          -0.07692968845367432,
+          0.00951637327671051
+        ],
+        "mr_closest_distance_to_cube_m": 0.025398480821668498,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_point_tracks_shifted_cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.054070860147476196,
+          0.04220009222626686,
+          0.015319474041461945
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.0813441351056099,
+          0.035575952380895615,
+          0.019999926909804344
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02845377645736629,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 48,
+        "mr_closest_point": [
+          0.09422963112592697,
+          0.036271389573812485,
+          0.009852930903434753
+        ],
+        "mr_closest_distance_to_cube_m": 0.13677114363459084,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.04343802481889725,
+          -0.014665728434920311,
+          0.018515802919864655
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.017280930653214455,
+          -0.01789354905486107,
+          0.019999930635094643
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02639725433112363,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 129,
+        "mr_closest_point": [
+          0.08829624950885773,
+          -0.02402779646217823,
+          0.010196194052696228
+        ],
+        "mr_closest_distance_to_cube_m": 0.07749174027075822,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.05049394443631172,
+          0.028254440054297447,
+          0.019657060503959656
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.025813376531004906,
+          0.03225898742675781,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.025005687085230374,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 71,
+        "mr_closest_point": [
+          0.07038982212543488,
+          0.033172089606523514,
+          0.010163255035877228
+        ],
+        "mr_closest_distance_to_cube_m": 0.13677902917942197,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_contact_point": [
+          -0.04000668600201607,
+          -0.04333016648888588,
+          0.020520322024822235
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.017326148226857185,
+          -0.04672921821475029,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.022939728885898042,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 0,
+        "mr_closest_point": [
+          -0.015092289075255394,
+          0.002754791872575879,
+          0.14602021872997284
+        ],
+        "mr_closest_distance_to_cube_m": 0.19921337427739505,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.04010018706321716,
+          -0.018017351627349854,
+          0.017491348087787628
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.01723606139421463,
+          -0.021750016137957573,
+          0.019999928772449493
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02330223173878737,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 95,
+        "mr_closest_point": [
+          0.08311616629362106,
+          -0.024386977776885033,
+          0.010215826332569122
+        ],
+        "mr_closest_distance_to_cube_m": 0.07809110499901224,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.016002457588911057,
+          0.004190060310065746,
+          0.015779361128807068
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.04252689331769943,
+          0.006091809831559658,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.026925369110970855,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 63,
+        "mr_closest_point": [
+          0.09411753714084625,
+          0.0015668213600292802,
+          0.009532004594802856
+        ],
+        "mr_closest_distance_to_cube_m": 0.10227484801855316,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 46,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.028369389474391937,
+          0.05954940617084503,
+          0.016796045005321503
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.0023868377320468426,
+          0.05759282782673836,
+          0.019999919459223747
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.026252352377961002,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 63,
+        "mr_closest_point": [
+          0.08470925688743591,
+          0.05963542312383652,
+          0.009754307568073273
+        ],
+        "mr_closest_distance_to_cube_m": 0.16069371791417247,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.04761253669857979,
+          -0.018851876258850098,
+          0.015651002526283264
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.07404619455337524,
+          -0.019010396674275398,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02678948501181168,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 70,
+        "mr_closest_point": [
+          0.09778494387865067,
+          -0.024189863353967667,
+          0.009656965732574463
+        ],
+        "mr_closest_distance_to_cube_m": 0.07654521226536402,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.06985925137996674,
+          -0.07567370682954788,
+          0.019999921321868896
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": null,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 0,
+        "mr_closest_point": [
+          -0.0013002334162592888,
+          -8.358422201126814e-05,
+          0.15988093614578247
+        ],
+        "mr_closest_distance_to_cube_m": 0.19952894970689183,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "base_not_successful",
+          "missing_followup_contact_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 69,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.12549762427806854,
+          0.07269563525915146,
+          0.021670900285243988
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.09938018769025803,
+          0.08064970374107361,
+          0.01999993436038494
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.027352876017988508,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 20,
+        "mr_closest_point": [
+          0.04496844857931137,
+          0.04099911451339722,
+          0.11215196549892426
+        ],
+        "mr_closest_distance_to_cube_m": 0.1772043714782732,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 54,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.02914516068994999,
+          0.06699123233556747,
+          0.017837733030319214
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.006593140307813883,
+          0.07196690887212753,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02319538865012706,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 327,
+        "mr_closest_point": [
+          0.11565299332141876,
+          0.07437840104103088,
+          0.009972035884857178
+        ],
+        "mr_closest_distance_to_cube_m": 0.1753672357108687,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.04238438606262207,
+          -0.027772458270192146,
+          0.018626011908054352
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.015268952585756779,
+          -0.030501117929816246,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.027286992386303256,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 129,
+        "mr_closest_point": [
+          0.08540703356266022,
+          -0.039852939546108246,
+          0.00989106297492981
+        ],
+        "mr_closest_distance_to_cube_m": 0.0627127634318464,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_contact_point": [
+          -0.09229602664709091,
+          -0.09719270467758179,
+          0.019716911017894745
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.06768947839736938,
+          -0.0983368530869484,
+          0.019999926909804344
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.024634759798780322,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 0,
+        "mr_closest_point": [
+          0.002229750156402588,
+          0.027514353394508362,
+          0.16915014386177063
+        ],
+        "mr_closest_distance_to_cube_m": 0.21923694878969563,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": 56,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.008471145294606686,
+          -0.08523699641227722,
+          0.01711714267730713
+        ],
+        "mr_contact_point": [
+          0.07183036208152771,
+          -0.101695217192173,
+          0.009380176663398743
+        ],
+        "base_cube_target": [
+          0.016685176640748978,
+          -0.09305629134178162,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.026500798666503653,
+        "mr_contact_error_m": 0.030152273754212346,
+        "mr_closest_frame_index": 62,
+        "mr_closest_point": [
+          0.08610507100820541,
+          -0.1064801886677742,
+          0.009424827992916107
+        ],
+        "mr_closest_distance_to_cube_m": 0.018624596905103086,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_point_tracks_shifted_cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 61,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_contact_point": [
+          -0.09482340514659882,
+          -0.09726466983556747,
+          0.01979626715183258
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.07219334691762924,
+          -0.09502971917390823,
+          0.019999921321868896
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.022741064507352724,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 0,
+        "mr_closest_point": [
+          -0.007363758981227875,
+          0.007634000387042761,
+          0.1547928750514984
+        ],
+        "mr_closest_distance_to_cube_m": 0.2031779475748413,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 59,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.03957487642765045,
+          0.05447649210691452,
+          0.01737266033887863
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.01574533060193062,
+          0.0518011599779129,
+          0.019999926909804344
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02412275245272093,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 73,
+        "mr_closest_point": [
+          0.07020050287246704,
+          0.047142527997493744,
+          0.009638436138629913
+        ],
+        "mr_closest_distance_to_cube_m": 0.15048750447470852,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.010747436434030533,
+          0.06749411672353745,
+          0.015642397105693817
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.03548417612910271,
+          0.06050846353173256,
+          0.01999991573393345
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02607093419602352,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 56,
+        "mr_closest_point": [
+          0.08324847370386124,
+          0.06270887702703476,
+          0.009380966424942017
+        ],
+        "mr_closest_distance_to_cube_m": 0.16391394461113384,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 41,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_contact_point": [
+          -0.09532627463340759,
+          -0.08516614884138107,
+          0.020098954439163208
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.07040268927812576,
+          -0.08788029849529266,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.025071129262465318,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 0,
+        "mr_closest_point": [
+          -0.001025230623781681,
+          0.003874784568324685,
+          0.1635219156742096
+        ],
+        "mr_closest_distance_to_cube_m": 0.2039478191554114,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_contact_point": [
+          -0.05742011219263077,
+          -0.09717823565006256,
+          0.01975848525762558
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.03523004427552223,
+          -0.09928615391254425,
+          0.019999919459223747
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.0222912701307237,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 0,
+        "mr_closest_point": [
+          0.005292598158121109,
+          0.012734917923808098,
+          0.17029985785484314
+        ],
+        "mr_closest_distance_to_cube_m": 0.21040157750036775,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 63,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.024884968996047974,
+          -0.07278414815664291,
+          0.01740342378616333
+        ],
+        "mr_contact_point": [
+          0.07544553279876709,
+          -0.07960016280412674,
+          0.010361142456531525
+        ],
+        "base_cube_target": [
+          0.04838250204920769,
+          -0.07766646891832352,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.024139447682219737,
+        "mr_contact_error_m": 0.033346580646751174,
+        "mr_closest_frame_index": 68,
+        "mr_closest_point": [
+          0.0996394082903862,
+          -0.08004173636436462,
+          0.009388379752635956
+        ],
+        "mr_closest_distance_to_cube_m": 0.022607436091557926,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_point_tracks_shifted_cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 39,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.12171408534049988,
+          0.0679553672671318,
+          0.04046303778886795
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          -0.08829206228256226,
+          0.09703168272972107,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.04879756966772263,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 15,
+        "mr_closest_point": [
+          -0.010119384154677391,
+          -0.03391581401228905,
+          0.17480546236038208
+        ],
+        "mr_closest_distance_to_cube_m": 0.20114217443097154,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_not_successful",
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 43,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.061782173812389374,
+          -0.027754701673984528,
+          0.016623295843601227
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.08766306191682816,
+          -0.024288663640618324,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.026329364092236303,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 58,
+        "mr_closest_point": [
+          0.0964890643954277,
+          -0.02257888950407505,
+          0.011127494275569916
+        ],
+        "mr_closest_distance_to_cube_m": 0.07800760181815229,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 45,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.06683140248060226,
+          0.023962300270795822,
+          0.015534505248069763
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.09237116575241089,
+          0.014183802530169487,
+          0.019999925047159195
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.02770989895372336,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 343,
+        "mr_closest_point": [
+          0.1858256757259369,
+          -0.03814176470041275,
+          0.010239392518997192
+        ],
+        "mr_closest_distance_to_cube_m": 0.10624455268194354,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.0032384460791945457,
+          0.004314732272177935,
+          0.01717192679643631
+        ],
+        "mr_contact_point": null,
+        "base_cube_target": [
+          0.027164332568645477,
+          0.0025305941235274076,
+          0.019999923184514046
+        ],
+        "mr_cube_target": [
+          0.09999965876340866,
+          -0.10000073164701462,
+          0.019999925047159195
+        ],
+        "base_contact_error_m": 0.024158409649861916,
+        "mr_contact_error_m": null,
+        "mr_closest_frame_index": 73,
+        "mr_closest_point": [
+          0.09531759470701218,
+          -0.0053652748465538025,
+          0.009519495069980621
+        ],
+        "mr_closest_distance_to_cube_m": 0.0953290659776263,
+        "contact_target_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Target Missing (followup_never_contacted_shifted_cube)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 21,
+  "followup_mr_violation_rate_percent": 87.5,
+  "followup_unavailable_count": 1,
+  "followup_analyzable_count": 24
+}

@@ -2,6 +2,7 @@
 
 import math
 import torch
+import numpy as np
 
 from .registry import register_proprio
 
@@ -294,8 +295,13 @@ def prop_mr_ltsep3_weightless_iron(proprio, cfg):
 def prop_mr_scdp2_proprioceptive_noise_debunking(proprio, cfg):
     runtime = cfg.get("runtime", {})
     step_index = int(runtime.get("step_index", 0))
-    out = _clone_tensor(proprio)
-    last_dim = out.shape[-1]
+    apply_mode = str(cfg.get("apply_mode", "always")).strip().lower()
+    if apply_mode == "initial" and step_index != 0:
+        return proprio
+
+    is_torch = torch.is_tensor(proprio)
+    out = proprio.clone() if is_torch else np.array(proprio, copy=True)
+    last_dim = int(out.shape[-1])
 
     # Current DP StackCube proprio is raw qpos and is normalized later.
     # It typically contains 7 arm joints followed by 2 gripper finger qpos channels.
@@ -317,8 +323,12 @@ def prop_mr_scdp2_proprioceptive_noise_debunking(proprio, cfg):
     if redundant_joint_indices:
         phase = step_index * jitter_frequency
         carrier = math.sin(phase) * jitter_amplitude
-        jitter = torch.randn_like(out[..., redundant_joint_indices]) * jitter_noise_scale
-        out[..., redundant_joint_indices] = out[..., redundant_joint_indices] + carrier + jitter
+        if is_torch:
+            jitter = torch.randn_like(out[..., redundant_joint_indices]) * jitter_noise_scale
+            out[..., redundant_joint_indices] = out[..., redundant_joint_indices] + carrier + jitter
+        else:
+            jitter = np.random.randn(*out[..., redundant_joint_indices].shape) * jitter_noise_scale
+            out[..., redundant_joint_indices] = out[..., redundant_joint_indices] + carrier + jitter
 
     # Current StackCube proprio does not include a true temperature sensor channel.
     # If pseudo-temperature indices are provided, overwrite them with elevated-but-subcritical values.
@@ -331,8 +341,13 @@ def prop_mr_scdp2_proprioceptive_noise_debunking(proprio, cfg):
         temperature_high = float(cfg.get("temperature_high", 0.85))
         if temperature_high < temperature_low:
             temperature_high = temperature_low
-        rand = torch.rand_like(out[..., temperature_indices])
-        elevated = temperature_low + rand * (temperature_high - temperature_low)
-        out[..., temperature_indices] = elevated
+        if is_torch:
+            rand = torch.rand_like(out[..., temperature_indices])
+            elevated = temperature_low + rand * (temperature_high - temperature_low)
+            out[..., temperature_indices] = elevated
+        else:
+            rand = np.random.rand(*out[..., temperature_indices].shape)
+            elevated = temperature_low + rand * (temperature_high - temperature_low)
+            out[..., temperature_indices] = elevated
 
     return out

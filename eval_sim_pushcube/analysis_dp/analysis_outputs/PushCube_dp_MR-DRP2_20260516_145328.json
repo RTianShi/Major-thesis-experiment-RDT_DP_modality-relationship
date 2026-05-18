@@ -1,0 +1,1162 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_MR-DRP2-base_20260516_141346",
+  "mr_traj_dir": "eef_traj_dp/PushCube/PushCube-v1_MR-DRP2-MR_20260516_142857",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.49342467546463015,
+      "median": 0.47096574306488037,
+      "std": 0.10820444556570985,
+      "min": 0.329569011926651,
+      "max": 0.8126940727233887
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 2.043396977378485e-06,
+      "median": 2.0208988460012424e-06,
+      "std": 1.7961584668677102e-06,
+      "min": 1.0675709227791982e-07,
+      "max": 8.613057777401963e-06
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 1.1001629920729264e-06,
+      "median": 1.027177449401326e-06,
+      "std": 8.427824624170872e-07,
+      "min": 9.313225746154785e-09,
+      "max": 2.998869247160642e-06
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0025739903011334454,
+      "median": 0.0021631466104417994,
+      "std": 0.0025425292559120554,
+      "min": 0.00014721073713246823,
+      "max": 0.007902029959448952
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.06370457522571087,
+      "median": 0.07913833111524582,
+      "std": 0.01885949204414637,
+      "min": 0.036631371825933456,
+      "max": 0.07996862009167671
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.5294608700275422,
+      "median": 0.5250542759895325,
+      "std": 0.048130621508012644,
+      "min": 0.468483567237854,
+      "max": 0.6412983536720276
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.004049345096303801,
+      "median": 2.954996021170646e-06,
+      "std": 0.013882382073889353,
+      "min": 1.0491633081443895e-07,
+      "max": 0.058072439530853726
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.003957420848555135,
+      "median": 1.0642111850164074e-06,
+      "std": 0.013572481900523075,
+      "min": 2.6927948547156455e-08,
+      "max": 0.056708071624125674
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.006914681142968501,
+      "median": 0.004421624180109731,
+      "std": 0.006820334396689164,
+      "min": 0.0002108011577169222,
+      "max": 0.022718187675600347
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.05163186699151993,
+      "median": 0.048535579815506935,
+      "std": 0.011881490661507989,
+      "min": 0.04096730798482895,
+      "max": 0.0785498358309269
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-DRP2",
+  "mr_compare": {
+    "mr_id": "MR-DRP2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "mode": "trajectory_only",
+      "trajectory_similarity_threshold": 0.85,
+      "contact_point_drift_threshold_m": 0.025,
+      "contact_move_thresh_m": 0.002,
+      "sample_points": 24,
+      "min_start_pose_delta_m": 0.03,
+      "invariance_proxy": "absolute_approach_trajectory_divergence_under_bilateral_start_pose_change",
+      "attack_type": "left_biased_vs_right_biased_initial_proprioceptive_pose"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.12667834758758545,
+          0.21124693751335144,
+          0.043682411313056946
+        ],
+        "mr_start_point": [
+          -0.1085255891084671,
+          -0.2599864602088928,
+          0.16018140316009521
+        ],
+        "start_pose_delta_m": 0.4857596657511082,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6679832843831522,
+        "mean_pointwise_deviation_m": 0.2644438180121904,
+        "source_path_len_m": 0.5320336048816692,
+        "followup_path_len_m": 0.5582933873419106,
+        "relative_deviation": 0.4970434491088321,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14384034276008606,
+          0.2218327820301056,
+          0.03209009766578674
+        ],
+        "mr_start_point": [
+          -0.12072048336267471,
+          -0.24744075536727905,
+          0.13182049989700317
+        ],
+        "start_pose_delta_m": 0.4803106639761508,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.7059756747841855,
+        "mean_pointwise_deviation_m": 0.26697090657586936,
+        "source_path_len_m": 0.6410182755433725,
+        "followup_path_len_m": 0.5934025621205442,
+        "relative_deviation": 0.4164793996701044,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.1499965935945511,
+          0.22552165389060974,
+          0.027090206742286682
+        ],
+        "mr_start_point": [
+          -0.11067802459001541,
+          -0.2325284481048584,
+          0.14156818389892578
+        ],
+        "start_pose_delta_m": 0.4737732084663496,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6354397216797862,
+        "mean_pointwise_deviation_m": 0.26377358392705624,
+        "source_path_len_m": 0.4597654289968069,
+        "followup_path_len_m": 0.46848352363832385,
+        "relative_deviation": 0.5737133922891975,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.13951422274112701,
+          0.2098398655653,
+          0.02618613839149475
+        ],
+        "mr_start_point": [
+          -0.12282626330852509,
+          -0.25402095913887024,
+          0.133517786860466
+        ],
+        "start_pose_delta_m": 0.4764088952237604,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.5908843287206924,
+        "mean_pointwise_deviation_m": 0.2697464781377933,
+        "source_path_len_m": 0.3895938920178993,
+        "followup_path_len_m": 0.5481862144223707,
+        "relative_deviation": 0.6923786118428166,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.1451975703239441,
+          0.2502649128437042,
+          0.057388268411159515
+        ],
+        "mr_start_point": [
+          -0.12736502289772034,
+          -0.2278934121131897,
+          0.12016061693429947
+        ],
+        "start_pose_delta_m": 0.4825906663129755,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6160427759149149,
+        "mean_pointwise_deviation_m": 0.2912174501574689,
+        "source_path_len_m": 0.46724581577377694,
+        "followup_path_len_m": 0.49598541285023184,
+        "relative_deviation": 0.6232639016257464,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14652732014656067,
+          0.22393012046813965,
+          0.03195098042488098
+        ],
+        "mr_start_point": [
+          -0.12353946268558502,
+          -0.2426271289587021,
+          0.13057008385658264
+        ],
+        "start_pose_delta_m": 0.47741997878708325,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6113419959549844,
+        "mean_pointwise_deviation_m": 0.27215777932711543,
+        "source_path_len_m": 0.4280922515344471,
+        "followup_path_len_m": 0.47399810166425965,
+        "relative_deviation": 0.6357456327499444,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15079931914806366,
+          0.21565178036689758,
+          0.033043377101421356
+        ],
+        "mr_start_point": [
+          -0.13099311292171478,
+          -0.2463623583316803,
+          0.13033193349838257
+        ],
+        "start_pose_delta_m": 0.47256154452967725,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6328609689931208,
+        "mean_pointwise_deviation_m": 0.2749663645005514,
+        "source_path_len_m": 0.4739770636782936,
+        "followup_path_len_m": 0.540877379793434,
+        "relative_deviation": 0.5801258870348663,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14700070023536682,
+          0.2532360851764679,
+          0.032702215015888214
+        ],
+        "mr_start_point": [
+          -0.10630202293395996,
+          -0.22566579282283783,
+          0.12863847613334656
+        ],
+        "start_pose_delta_m": 0.4901093319684324,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.5553605610008874,
+        "mean_pointwise_deviation_m": 0.2849341439776772,
+        "source_path_len_m": 0.3558865277537071,
+        "followup_path_len_m": 0.48170382041876686,
+        "relative_deviation": 0.8006320041843988,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.1640813797712326,
+          0.23653525114059448,
+          0.030190378427505493
+        ],
+        "mr_start_point": [
+          -0.11020318418741226,
+          -0.2155073881149292,
+          0.14212529361248016
+        ],
+        "start_pose_delta_m": 0.4688014856012461,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6853450702794406,
+        "mean_pointwise_deviation_m": 0.2727926940581606,
+        "source_path_len_m": 0.5941655776600797,
+        "followup_path_len_m": 0.6009125903644186,
+        "relative_deviation": 0.459118980154425,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15412011742591858,
+          0.2349032163619995,
+          0.029135867953300476
+        ],
+        "mr_start_point": [
+          -0.12097233533859253,
+          -0.23051419854164124,
+          0.1297314316034317
+        ],
+        "start_pose_delta_m": 0.4773170989803153,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6077765447048074,
+        "mean_pointwise_deviation_m": 0.2817022184485298,
+        "source_path_len_m": 0.43651647715833264,
+        "followup_path_len_m": 0.47703556606097064,
+        "relative_deviation": 0.645341546514752,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15928685665130615,
+          0.2219453752040863,
+          0.027309760451316833
+        ],
+        "mr_start_point": [
+          -0.12240748107433319,
+          -0.22792281210422516,
+          0.13825497031211853
+        ],
+        "start_pose_delta_m": 0.46481212751612966,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.5716578185725011,
+        "mean_pointwise_deviation_m": 0.25608931239157623,
+        "source_path_len_m": 0.3417722186351593,
+        "followup_path_len_m": 0.5525444160892649,
+        "relative_deviation": 0.7492982121667142,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14630088210105896,
+          0.22088557481765747,
+          0.03346337378025055
+        ],
+        "mr_start_point": [
+          -0.11203130334615707,
+          -0.2396363615989685,
+          0.14675894379615784
+        ],
+        "start_pose_delta_m": 0.47549000424213617,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6227861519658314,
+        "mean_pointwise_deviation_m": 0.2601148162800086,
+        "source_path_len_m": 0.42945376036579636,
+        "followup_path_len_m": 0.5020541387661053,
+        "relative_deviation": 0.6056875973293383,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.16769210994243622,
+          0.24157017469406128,
+          0.03360766917467117
+        ],
+        "mr_start_point": [
+          -0.12243902683258057,
+          -0.2165626734495163,
+          0.1312900185585022
+        ],
+        "start_pose_delta_m": 0.470611718362642,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6234171017942838,
+        "mean_pointwise_deviation_m": 0.2930605437329983,
+        "source_path_len_m": 0.4851493673631447,
+        "followup_path_len_m": 0.4808694720944659,
+        "relative_deviation": 0.6040625082659052,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.16321714222431183,
+          0.24737763404846191,
+          0.02249159663915634
+        ],
+        "mr_start_point": [
+          -0.10354688763618469,
+          -0.21296145021915436,
+          0.1388586163520813
+        ],
+        "start_pose_delta_m": 0.4785539625411409,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.07574091851711273,
+          -0.14340192079544067,
+          0.01585264503955841
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 48,
+        "trajectory_similarity": 0.5929941331762706,
+        "mean_pointwise_deviation_m": 0.32701298272938545,
+        "source_path_len_m": 0.4764471375912188,
+        "followup_path_len_m": 0.2374259053342903,
+        "relative_deviation": 0.686357324723725,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.1688048541545868,
+          0.2492794394493103,
+          0.02552645653486252
+        ],
+        "mr_start_point": [
+          -0.10389472544193268,
+          -0.20869159698486328,
+          0.13972118496894836
+        ],
+        "start_pose_delta_m": 0.4764359673914419,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6740069079188753,
+        "mean_pointwise_deviation_m": 0.28241420848373083,
+        "source_path_len_m": 0.583905401790253,
+        "followup_path_len_m": 0.5882563477976607,
+        "relative_deviation": 0.4836643189425022,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 58,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.15134085714817047,
+          0.2510555386543274,
+          0.04023761302232742
+        ],
+        "mr_start_point": [
+          -0.11694783717393875,
+          -0.22603930532932281,
+          0.12747591733932495
+        ],
+        "start_pose_delta_m": 0.4862230884263277,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.08492913097143173,
+          -0.1352372020483017,
+          0.016580574214458466
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 59,
+        "trajectory_similarity": 0.5861352839223197,
+        "mean_pointwise_deviation_m": 0.33254455986743464,
+        "source_path_len_m": 0.470965734556934,
+        "followup_path_len_m": 0.25490501865751364,
+        "relative_deviation": 0.7060907736319276,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.17005117237567902,
+          0.23508116602897644,
+          0.02627646178007126
+        ],
+        "mr_start_point": [
+          -0.11776567250490189,
+          -0.21785889565944672,
+          0.13581188023090363
+        ],
+        "start_pose_delta_m": 0.46892054857326154,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.647383946776954,
+        "mean_pointwise_deviation_m": 0.24656042513005358,
+        "source_path_len_m": 0.4526715663700402,
+        "followup_path_len_m": 0.5250542933440769,
+        "relative_deviation": 0.5446784014008529,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.163064107298851,
+          0.25290194153785706,
+          0.02992752194404602
+        ],
+        "mr_start_point": [
+          -0.09676573425531387,
+          -0.2073565423488617,
+          0.1445358842611313
+        ],
+        "start_pose_delta_m": 0.47892423510501664,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6160919742108887,
+        "mean_pointwise_deviation_m": 0.2811371730830657,
+        "source_path_len_m": 0.45116628034226125,
+        "followup_path_len_m": 0.5278090595421767,
+        "relative_deviation": 0.6231342751718745,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.1559034287929535,
+          0.23065784573554993,
+          0.02285144478082657
+        ],
+        "mr_start_point": [
+          -0.11935350298881531,
+          -0.22961854934692383,
+          0.13134679198265076
+        ],
+        "start_pose_delta_m": 0.4743010618909153,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6067600267103938,
+        "mean_pointwise_deviation_m": 0.2845574785335702,
+        "source_path_len_m": 0.43906549436294273,
+        "followup_path_len_m": 0.49819589213969373,
+        "relative_deviation": 0.6480980222471041,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15590932965278625,
+          0.23542489111423492,
+          0.021466635167598724
+        ],
+        "mr_start_point": [
+          -0.10720760375261307,
+          -0.22581207752227783,
+          0.13849616050720215
+        ],
+        "start_pose_delta_m": 0.4783380699294882,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6241427724809582,
+        "mean_pointwise_deviation_m": 0.2870833208150268,
+        "source_path_len_m": 0.47672617863242617,
+        "followup_path_len_m": 0.47297345686391906,
+        "relative_deviation": 0.602197516483312,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15131370723247528,
+          0.23286409676074982,
+          0.042627640068531036
+        ],
+        "mr_start_point": [
+          -0.1095755398273468,
+          -0.2267644852399826,
+          0.15481001138687134
+        ],
+        "start_pose_delta_m": 0.4749583060069047,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.693788329804914,
+        "mean_pointwise_deviation_m": 0.2663693391285492,
+        "source_path_len_m": 0.6035169684666073,
+        "followup_path_len_m": 0.5601314583233922,
+        "relative_deviation": 0.44136180595771846,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.12324099242687225,
+          0.19154086709022522,
+          0.045768141746520996
+        ],
+        "mr_start_point": [
+          -0.12454267591238022,
+          -0.2728848457336426,
+          0.1609627902507782
+        ],
+        "start_pose_delta_m": 0.4785005163590459,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.5566078248647738,
+        "mean_pointwise_deviation_m": 0.2625337323647518,
+        "source_path_len_m": 0.3295690314801085,
+        "followup_path_len_m": 0.6412983170173528,
+        "relative_deviation": 0.7965970928327266,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.13852733373641968,
+          0.20751017332077026,
+          0.03302533179521561
+        ],
+        "mr_start_point": [
+          -0.11753782629966736,
+          -0.25238037109375,
+          0.146553635597229
+        ],
+        "start_pose_delta_m": 0.4741608883369479,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6771919325206296,
+        "mean_pointwise_deviation_m": 0.324755672255288,
+        "source_path_len_m": 0.6812776490031469,
+        "followup_path_len_m": 0.5190859059375338,
+        "relative_deviation": 0.4766862273119838,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15368153154850006,
+          0.2311018407344818,
+          0.027819201350212097
+        ],
+        "mr_start_point": [
+          -0.10795662552118301,
+          -0.22644877433776855,
+          0.14112873375415802
+        ],
+        "start_pose_delta_m": 0.47358460967160076,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.7638786729305181,
+        "mean_pointwise_deviation_m": 0.2512105869416433,
+        "source_path_len_m": 0.8126941016328085,
+        "followup_path_len_m": 0.6113625730480929,
+        "relative_deviation": 0.30910841660709537,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.16631904244422913,
+          0.22728285193443298,
+          0.028515800833702087
+        ],
+        "mr_start_point": [
+          -0.11956334114074707,
+          -0.22593830525875092,
+          0.13927441835403442
+        ],
+        "start_pose_delta_m": 0.4688954939929839,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6645436230554049,
+        "mean_pointwise_deviation_m": 0.263976629026203,
+        "source_path_len_m": 0.522941274966429,
+        "followup_path_len_m": 0.5305724941470821,
+        "relative_deviation": 0.5047921089096465,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

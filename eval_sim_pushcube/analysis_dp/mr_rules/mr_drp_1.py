@@ -75,6 +75,28 @@ def _distance(a: Optional[np.ndarray], b: Optional[np.ndarray]) -> Optional[floa
     return float(np.linalg.norm(np.asarray(a, dtype=np.float64)[:3] - np.asarray(b, dtype=np.float64)[:3]))
 
 
+def _closest_approach_to_cube_target(record: Any) -> Dict[str, Any]:
+    eef_points = _trajectory_points(record, "eef_path")
+    cube_target = _first_valid_xyz(getattr(record, "src_cube_pos", None) or getattr(record, "cube_pos", None))
+    if cube_target is None or not eef_points:
+        return {
+            "closest_frame_index": None,
+            "closest_point": None,
+            "closest_distance_m": None,
+        }
+
+    distances = [
+        float(np.linalg.norm(np.asarray(point, dtype=np.float64)[:3] - cube_target[:3]))
+        for point in eef_points
+    ]
+    closest_idx = int(np.argmin(distances))
+    return {
+        "closest_frame_index": closest_idx,
+        "closest_point": eef_points[closest_idx],
+        "closest_distance_m": float(distances[closest_idx]),
+    }
+
+
 @register_mr_rule("MR-DRP1")
 @register_mr_rule("MR-DRP-1")
 @register_mr_rule("mr_drp_1")
@@ -102,6 +124,7 @@ def analyze_mr_drp1_extreme_diagonal_perturbation(
         mr_success = getattr(mr, "success", None)
         binfo = _contact_and_cube_target(base, contact_move_thresh_m)
         minfo = _contact_and_cube_target(mr, contact_move_thresh_m)
+        mclosest = _closest_approach_to_cube_target(mr)
 
         analyzable = True
         violated = False
@@ -113,14 +136,19 @@ def analyze_mr_drp1_extreme_diagonal_perturbation(
         if minfo["cube_target"] is None:
             analyzable = False
             reasons.append("missing_followup_cube_target")
-        if minfo["contact_point"] is None:
+        if binfo["contact_point"] is not None and minfo["contact_point"] is None and minfo["cube_target"] is not None:
+            analyzable = True
+            violated = True
+            reasons.append("VIOLATION: Target Missing (followup_never_contacted_shifted_cube)")
+        elif minfo["contact_point"] is None:
             analyzable = False
             reasons.append("missing_followup_contact_point")
 
         base_contact_error_m = _distance(binfo["contact_point"], binfo["cube_target"])
         followup_contact_error_m = _distance(minfo["contact_point"], minfo["cube_target"])
+        followup_closest_distance_m = mclosest["closest_distance_m"]
 
-        if analyzable and followup_contact_error_m is not None:
+        if analyzable and not violated and followup_contact_error_m is not None:
             if followup_contact_error_m > contact_target_error_threshold_m:
                 violated = True
                 reasons.append(
@@ -152,6 +180,9 @@ def analyze_mr_drp1_extreme_diagonal_perturbation(
                 "mr_cube_target": None if minfo["cube_target"] is None else minfo["cube_target"].tolist(),
                 "base_contact_error_m": base_contact_error_m,
                 "mr_contact_error_m": followup_contact_error_m,
+                "mr_closest_frame_index": mclosest["closest_frame_index"],
+                "mr_closest_point": None if mclosest["closest_point"] is None else mclosest["closest_point"].tolist(),
+                "mr_closest_distance_to_cube_m": followup_closest_distance_m,
                 "contact_target_error_threshold_m": contact_target_error_threshold_m,
                 "analyzable": analyzable,
                 "violated": violated,

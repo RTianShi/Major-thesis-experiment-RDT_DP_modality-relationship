@@ -305,6 +305,35 @@ def _bounds_or_current_x_window(bounds, current_pos_batch, margin=1e-4):
     return [[x_min, y_min], [x_max, y_max]]
 
 
+def _mirror_y_within_bounds(pos_batch, bounds, cfg, label):
+    x_min, y_min = [float(v) for v in bounds[0]]
+    x_max, y_max = [float(v) for v in bounds[1]]
+    mirror_axis_y = float(cfg.get("mirror_axis_y", 0.0))
+
+    mirrored = pos_batch.clone()
+    mirrored[:, 1] = 2.0 * mirror_axis_y - mirrored[:, 1]
+
+    if torch.all(mirrored[:, 0] >= x_min) and torch.all(mirrored[:, 0] <= x_max):
+        if torch.all(mirrored[:, 1] >= y_min) and torch.all(mirrored[:, 1] <= y_max):
+            return mirrored
+
+    auto_adjust = bool(cfg.get("auto_adjust_mirror", True))
+    if not auto_adjust:
+        return _validate_xy_within_bounds(mirrored, bounds, label)
+
+    clipped = mirrored.clone()
+    clipped[:, 0] = torch.clamp(clipped[:, 0], min=x_min, max=x_max)
+    clipped[:, 1] = torch.clamp(clipped[:, 1], min=y_min, max=y_max)
+
+    min_mirror_displacement = float(cfg.get("min_mirror_displacement", 0.01))
+    displacement = torch.linalg.norm(clipped[:, :2] - pos_batch[:, :2], dim=-1)
+    if torch.any(displacement < min_mirror_displacement):
+        raise ValueError(
+            f"{label} mirror displacement is below min_mirror_displacement={min_mirror_displacement:.3f}"
+        )
+    return clipped
+
+
 def _feasible_translation_interval(pos_batch, bounds):
     x_min, y_min = [float(v) for v in bounds[0]]
     x_max, y_max = [float(v) for v in bounds[1]]
@@ -1102,12 +1131,8 @@ def env_extreme_diagonal_cube_position(env, cfg):
     task_anchor = _find_task_object_anchor(env)
     if task_anchor is None:
         raise ValueError("MR-DRP1 could not find a task object actor")
-    goal_anchor = _find_goal_anchor(env)
-    if goal_anchor is None:
-        raise ValueError("MR-DRP1 could not find a goal/target/region actor")
 
     task_pos, task_quat = _actor_pose_tensor(task_anchor)
-    goal_pos, goal_quat = _actor_pose_tensor(goal_anchor)
     target_xy = torch.as_tensor(
         cfg.get("target_xy", [0.1, -0.1]),
         dtype=task_pos.dtype,
@@ -1120,63 +1145,99 @@ def env_extreme_diagonal_cube_position(env, cfg):
     translated_task_pos[:, 0] = float(target_xy[0].item())
     translated_task_pos[:, 1] = float(target_xy[1].item())
 
-    goal_offset_xy_cfg = cfg.get("goal_offset_xy", None)
-    if goal_offset_xy_cfg is None:
-        goal_radius = _infer_goal_radius(env, goal_anchor, fallback=0.0)
-        goal_offset_xy_cfg = [
-            float(cfg.get("goal_forward_offset", 0.1)) + goal_radius,
-            0.0,
-        ]
-
-    goal_offset_xy = torch.as_tensor(
-        goal_offset_xy_cfg,
-        dtype=goal_pos.dtype,
-        device=goal_pos.device,
-    ).reshape(-1)
-    if goal_offset_xy.numel() < 2:
-        raise ValueError("MR-DRP1 requires goal_offset_xy to contain at least two values")
-
-    translated_goal_pos = goal_pos.clone()
-    translated_goal_pos[:, 0] = translated_task_pos[:, 0] + float(goal_offset_xy[0].item())
-    translated_goal_pos[:, 1] = translated_task_pos[:, 1] + float(goal_offset_xy[1].item())
-
     task_bounds = cfg.get(
         "task_bounds_xy",
         [[-0.10, -0.20], [0.10, 0.20]],
     )
-    goal_bounds = cfg.get(
-        "goal_bounds_xy",
-        [[0.00, -0.20], [0.25, 0.20]],
-    )
-    translated_task_pos[..., :2] = _translate_xy_within_bounds(
-        task_pos[..., :2],
-        translated_task_pos[0, 0].item() - task_pos[0, 0].item(),
-        translated_task_pos[0, 1].item() - task_pos[0, 1].item(),
-        task_bounds,
-    )
-    translated_goal_pos[..., :2] = _translate_xy_within_bounds(
-        goal_pos[..., :2],
-        translated_goal_pos[0, 0].item() - goal_pos[0, 0].item(),
-        translated_goal_pos[0, 1].item() - goal_pos[0, 1].item(),
-        goal_bounds,
+    translated_task_pos[..., :2] = _validate_xy_within_bounds(
+        translated_task_pos[..., :2], task_bounds, "MR-DRP1 task position"
     )
 
     _set_actor_pose(task_anchor, translated_task_pos, task_quat)
-    _set_actor_pose(goal_anchor, translated_goal_pos, goal_quat)
     _zero_actor_velocity(task_anchor, translated_task_pos)
-    _zero_actor_velocity(goal_anchor, translated_goal_pos)
     env.unwrapped._mr_drp1_runtime = {
         "target_xy": [float(v) for v in target_xy[:2].tolist()],
-        "goal_offset_xy": [float(v) for v in goal_offset_xy[:2].tolist()],
     }
     _apply_scene_updates(env)
     return env
 
 
-@register_env("MR-DRP2")
+@register_env("MR-DRP2-base")
 @register_env("MR-DRP-2")
 @register_env("DRP-Bilateral-Extreme-Entry")
 def env_bilateral_extreme_entry_pose(env, cfg):
+    robot = getattr(getattr(env.unwrapped, "agent", None), "robot", None)
+    if robot is None:
+        raise ValueError("MR-DRP2 requires env.unwrapped.agent.robot")
+
+    pose_variant = str(cfg.get("pose_variant", "left")).strip().lower()
+    current_qpos = robot.get_qpos().clone()
+    width = min(int(cfg.get("num_joints", 7)), current_qpos.shape[-1])
+    if width <= 0:
+        return env
+
+    left_delta = torch.as_tensor(
+        cfg.get(
+            "left_delta",
+            [0.45, 0.12, 0.0, -0.30, 0.0, 0.22, 0.55],
+        ),
+        dtype=current_qpos.dtype,
+        device=current_qpos.device,
+    ).reshape(-1)
+    right_delta = torch.as_tensor(
+        cfg.get(
+            "right_delta",
+            [-0.45, -0.12, 0.0, -0.30, 0.0, 0.22, -0.55],
+        ),
+        dtype=current_qpos.dtype,
+        device=current_qpos.device,
+    ).reshape(-1)
+
+    left_pose = cfg.get("left_pose", None)
+    right_pose = cfg.get("right_pose", None)
+
+    target_qpos = current_qpos.clone()
+    if pose_variant in {"left", "left_biased", "source"}:
+        if left_pose is not None:
+            left_pose = torch.as_tensor(left_pose, dtype=target_qpos.dtype, device=target_qpos.device).reshape(-1)
+            target_qpos[..., :width] = left_pose[:width]
+        else:
+            target_qpos[..., :width] = target_qpos[..., :width] + left_delta[:width]
+    elif pose_variant in {"right", "right_biased", "derived"}:
+        if right_pose is not None:
+            right_pose = torch.as_tensor(right_pose, dtype=target_qpos.dtype, device=target_qpos.device).reshape(-1)
+            target_qpos[..., :width] = right_pose[:width]
+        else:
+            target_qpos[..., :width] = target_qpos[..., :width] + right_delta[:width]
+    else:
+        raise ValueError(f"MR-DRP2 unknown pose_variant={pose_variant!r}")
+
+    joint_limits = cfg.get("joint_limits", None)
+    if joint_limits is not None:
+        joint_limits = torch.as_tensor(
+            joint_limits,
+            dtype=target_qpos.dtype,
+            device=target_qpos.device,
+        )
+        if joint_limits.ndim == 2 and joint_limits.shape[0] >= width and joint_limits.shape[1] >= 2:
+            lower = joint_limits[:width, 0]
+            upper = joint_limits[:width, 1]
+            target_qpos[..., :width] = torch.max(
+                torch.min(target_qpos[..., :width], upper),
+                lower,
+            )
+
+    _apply_robot_qpos(env, target_qpos)
+    env.unwrapped._mr_drp2_runtime = {
+        "pose_variant": pose_variant,
+        "num_joints": int(width),
+    }
+    _apply_scene_updates(env)
+    return env
+
+
+@register_env("MR-DRP2-MR")
+def env_bilateral_extreme_entry_pose_mr(env, cfg):
     robot = getattr(getattr(env.unwrapped, "agent", None), "robot", None)
     if robot is None:
         raise ValueError("MR-DRP2 requires env.unwrapped.agent.robot")
@@ -1204,15 +1265,24 @@ def env_bilateral_extreme_entry_pose(env, cfg):
         device=current_qpos.device,
     ).reshape(-1)
 
-    if pose_variant in {"left", "left_biased", "source"}:
-        delta = left_delta
-    elif pose_variant in {"right", "right_biased", "derived"}:
-        delta = right_delta
-    else:
-        raise ValueError(f"MR-DRP2 unknown pose_variant={pose_variant!r}")
+    left_pose = cfg.get("left_pose", None)
+    right_pose = cfg.get("right_pose", None)
 
     target_qpos = current_qpos.clone()
-    target_qpos[..., :width] = target_qpos[..., :width] + delta[:width]
+    if pose_variant in {"left", "left_biased", "source"}:
+        if left_pose is not None:
+            left_pose = torch.as_tensor(left_pose, dtype=target_qpos.dtype, device=target_qpos.device).reshape(-1)
+            target_qpos[..., :width] = left_pose[:width]
+        else:
+            target_qpos[..., :width] = target_qpos[..., :width] + left_delta[:width]
+    elif pose_variant in {"right", "right_biased", "derived"}:
+        if right_pose is not None:
+            right_pose = torch.as_tensor(right_pose, dtype=target_qpos.dtype, device=target_qpos.device).reshape(-1)
+            target_qpos[..., :width] = right_pose[:width]
+        else:
+            target_qpos[..., :width] = target_qpos[..., :width] + right_delta[:width]
+    else:
+        raise ValueError(f"MR-DRP2 unknown pose_variant={pose_variant!r}")
 
     joint_limits = cfg.get("joint_limits", None)
     if joint_limits is not None:
@@ -1230,6 +1300,10 @@ def env_bilateral_extreme_entry_pose(env, cfg):
             )
 
     _apply_robot_qpos(env, target_qpos)
+    env.unwrapped._mr_drp2_runtime = {
+        "pose_variant": pose_variant,
+        "num_joints": int(width),
+    }
     _apply_scene_updates(env)
     return env
 
@@ -1311,22 +1385,57 @@ def env_sadp2_visual_background_and_material_noise(env, cfg):
     task_anchor = _find_task_object_anchor(env)
     if task_anchor is None:
         raise ValueError("MR-SADP2 could not find a task object actor")
+
+    visual_noise_mode = str(cfg.get("visual_noise_mode", "material+background")).strip().lower()
+    apply_material_noise = visual_noise_mode in {"material", "material+background", "both", "all"}
+    apply_background_noise = visual_noise_mode in {"background", "material+background", "both", "all"}
+    apply_camera_noise = bool(cfg.get("apply_camera_noise", False))
+
     _set_actor_surface_material(
         task_anchor,
         {
-            "surface_mode": cfg.get("surface_mode", "metal"),
+            "surface_mode": cfg.get("surface_mode", "metal") if apply_material_noise else "ice",
             "metal_rgba": cfg.get("metal_rgba", [0.78, 0.78, 0.82, 1.0]),
             "metal_roughness": cfg.get("metal_roughness", 0.08),
             "metallic": cfg.get("metallic", 0.98),
             "metal_specular": cfg.get("metal_specular", 0.95),
             "metal_transmission": cfg.get("metal_transmission", 0.0),
+            "ice_rgba": cfg.get("ice_rgba", [0.88, 0.22, 0.18, 0.9]),
+            "ice_roughness": cfg.get("ice_roughness", 0.02),
+            "ice_specular": cfg.get("ice_specular", 1.0),
+            "ice_transmission": cfg.get("ice_transmission", 0.18),
         },
     )
+
+    if not apply_material_noise:
+        # Keep the block visually close to the baseline if only background perturbation is desired.
+        _set_actor_base_color(task_anchor, cfg.get("task_rgba", [0.88, 0.22, 0.18, 0.9]))
+
+    if apply_background_noise:
+        try:
+            scene.set_ambient_light(cfg.get("ambient_light", [0.18, 0.18, 0.18]))
+        except Exception:
+            pass
+
+    if apply_camera_noise:
+        camera_noise = cfg.get("camera_noise", {})
+        env.unwrapped._mr_sadp2_camera_noise = {
+            "enabled": True,
+            "mode": str(camera_noise.get("mode", "gaussian_blur")),
+            "radius": float(camera_noise.get("radius", 2.0)),
+            "fill_value": int(camera_noise.get("fill_value", 0)),
+        }
+    else:
+        env.unwrapped._mr_sadp2_camera_noise = {"enabled": False}
 
     env.unwrapped._mr_sadp2_runtime = {
         "dx": float(cfg.get("dx", 0.05)),
         "dy": float(cfg.get("dy", -0.05)),
         "table_mode": str(cfg.get("table_mode", "checkerboard")),
+        "visual_noise_mode": visual_noise_mode,
+        "apply_material_noise": bool(apply_material_noise),
+        "apply_background_noise": bool(apply_background_noise),
+        "apply_camera_noise": bool(apply_camera_noise),
     }
     _apply_scene_updates(env)
     return env
@@ -1356,17 +1465,16 @@ def env_mirror_task_and_goal_about_x_axis(env, cfg):
     )
     mirrored_task_pos = task_pos.clone()
     mirrored_goal_pos = goal_pos.clone()
-    mirrored_task_pos[:, 1] = -mirrored_task_pos[:, 1]
-    mirrored_goal_pos[:, 1] = -mirrored_goal_pos[:, 1]
-
-    _validate_xy_within_bounds(
-        mirrored_task_pos[..., :2],
+    mirrored_task_pos[..., :2] = _mirror_y_within_bounds(
+        task_pos[..., :2],
         bounds=task_bounds,
+        cfg=cfg,
         label="MR-SEMP2 mirrored task position",
     )
-    _validate_xy_within_bounds(
-        mirrored_goal_pos[..., :2],
+    mirrored_goal_pos[..., :2] = _mirror_y_within_bounds(
+        goal_pos[..., :2],
         bounds=goal_bounds,
+        cfg=cfg,
         label="MR-SEMP2 mirrored goal position",
     )
 
@@ -1374,7 +1482,16 @@ def env_mirror_task_and_goal_about_x_axis(env, cfg):
     _set_actor_pose(goal_anchor, mirrored_goal_pos, goal_quat)
     _zero_actor_velocity(task_anchor, mirrored_task_pos)
     _zero_actor_velocity(goal_anchor, mirrored_goal_pos)
-    env.unwrapped._mr_semp2_runtime = {"mirrored": True}
+    env.unwrapped._mr_semp2_runtime = {
+        "mirrored": True,
+        "mirror_axis_y": float(cfg.get("mirror_axis_y", 0.0)),
+        "task_source_xy": [float(v) for v in task_pos[0, :2].tolist()],
+        "task_mirrored_xy": [float(v) for v in mirrored_task_pos[0, :2].tolist()],
+        "goal_source_xy": [float(v) for v in goal_pos[0, :2].tolist()],
+        "goal_mirrored_xy": [float(v) for v in mirrored_goal_pos[0, :2].tolist()],
+        "task_delta_xy": [float(v) for v in (mirrored_task_pos[0, :2] - task_pos[0, :2]).tolist()],
+        "goal_delta_xy": [float(v) for v in (mirrored_goal_pos[0, :2] - goal_pos[0, :2]).tolist()],
+    }
     _apply_scene_updates(env)
     return env
 
@@ -1387,9 +1504,26 @@ def env_rotate_task_object_about_z(env, cfg):
     if task_anchor is None:
         raise ValueError("MR-SEMP3 could not find a task object actor")
 
+    goal_anchor = _find_goal_anchor(env)
+    if goal_anchor is None:
+        raise ValueError("MR-SEMP3 could not find a goal/target/region actor")
+
     task_pos, task_quat = _actor_pose_tensor(task_anchor)
+    goal_pos, goal_quat = _actor_pose_tensor(goal_anchor)
+
     yaw_deg = float(cfg.get("yaw_deg", 45.0))
     relative = bool(cfg.get("relative", True))
+    rotate_goal = bool(cfg.get("rotate_goal", False))
+    maintain_relative_xy = bool(cfg.get("maintain_relative_xy", True))
+    task_bounds = cfg.get("task_bounds_xy", [[-0.35, -0.30], [0.35, 0.30]])
+    goal_bounds = cfg.get("goal_bounds_xy", [[-0.35, -0.30], [0.35, 0.30]])
+    rotation_center_xy = torch.as_tensor(
+        cfg.get("rotation_center_xy", [0.0, 0.0]),
+        dtype=task_pos.dtype,
+        device=task_pos.device,
+    ).reshape(-1)
+    if rotation_center_xy.numel() < 2:
+        raise ValueError("MR-SEMP3 rotation_center_xy must contain at least two values")
 
     yaw_quat = _yaw_quat_batch(
         batch_size=task_quat.shape[0],
@@ -1398,11 +1532,60 @@ def env_rotate_task_object_about_z(env, cfg):
     ).to(dtype=task_quat.dtype)
     rotated_quat = _quat_multiply(yaw_quat, task_quat) if relative else yaw_quat
 
-    _set_actor_pose(task_anchor, task_pos, rotated_quat)
-    _zero_actor_velocity(task_anchor, task_pos)
+    rotated_task_pos = task_pos.clone()
+    rotated_goal_pos = goal_pos.clone()
+
+    if maintain_relative_xy:
+        center_x = float(rotation_center_xy[0].item())
+        center_y = float(rotation_center_xy[1].item())
+        theta = math.radians(float(yaw_deg))
+        cos_t = math.cos(theta)
+        sin_t = math.sin(theta)
+
+        def _rotate_xy(pos_batch):
+            rel_x = pos_batch[:, 0] - center_x
+            rel_y = pos_batch[:, 1] - center_y
+            out = pos_batch.clone()
+            out[:, 0] = center_x + cos_t * rel_x - sin_t * rel_y
+            out[:, 1] = center_y + sin_t * rel_x + cos_t * rel_y
+            return out
+
+        rotated_task_pos = _rotate_xy(task_pos)
+        if rotate_goal:
+            rotated_goal_pos = _rotate_xy(goal_pos)
+    elif rotate_goal:
+        rotated_goal_pos = goal_pos.clone()
+        rotated_goal_pos[:, :2] = task_pos[:, :2]
+
+    rotated_task_pos[..., :2] = _validate_xy_within_bounds(
+        rotated_task_pos[..., :2],
+        bounds=task_bounds,
+        label="MR-SEMP3 rotated task position",
+    )
+    if rotate_goal:
+        rotated_goal_pos[..., :2] = _validate_xy_within_bounds(
+            rotated_goal_pos[..., :2],
+            bounds=goal_bounds,
+            label="MR-SEMP3 rotated goal position",
+        )
+
+    _set_actor_pose(task_anchor, rotated_task_pos, rotated_quat)
+    _zero_actor_velocity(task_anchor, rotated_task_pos)
+
+    if rotate_goal:
+        _set_actor_pose(goal_anchor, rotated_goal_pos, goal_quat)
+        _zero_actor_velocity(goal_anchor, rotated_goal_pos)
+
     env.unwrapped._mr_semp3_runtime = {
         "yaw_deg": float(yaw_deg),
         "relative": bool(relative),
+        "rotate_goal": bool(rotate_goal),
+        "maintain_relative_xy": bool(maintain_relative_xy),
+        "rotation_center_xy": [float(v) for v in rotation_center_xy[:2].tolist()],
+        "task_source_xy": [float(v) for v in task_pos[0, :2].tolist()],
+        "task_rotated_xy": [float(v) for v in rotated_task_pos[0, :2].tolist()],
+        "goal_source_xy": [float(v) for v in goal_pos[0, :2].tolist()],
+        "goal_rotated_xy": [float(v) for v in rotated_goal_pos[0, :2].tolist()],
     }
     _apply_scene_updates(env)
     return env

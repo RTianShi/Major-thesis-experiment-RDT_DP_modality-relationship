@@ -308,12 +308,25 @@ def prop_sadp2_safe_joint_gaussian_noise(proprio, cfg):
     runtime = cfg.get("runtime", {})
     step_index = int(runtime.get("step_index", 0))
     apply_mode = str(cfg.get("apply_mode", "initial")).strip().lower()
+    visual_noise_mode = str(runtime.get("visual_noise_mode", cfg.get("visual_noise_mode", "material+background"))).strip().lower()
+    apply_material_noise = bool(runtime.get("apply_material_noise", cfg.get("apply_material_noise", True)))
+    apply_background_noise = bool(runtime.get("apply_background_noise", cfg.get("apply_background_noise", True)))
+    apply_camera_noise = bool(runtime.get("apply_camera_noise", cfg.get("apply_camera_noise", False)))
 
     if apply_mode == "initial" and step_index != 0:
         return proprio
 
+    if not (apply_material_noise or apply_background_noise or apply_camera_noise):
+        return proprio
+
     sigma_ratio = float(cfg.get("sigma_ratio", 0.01))
     min_sigma = float(cfg.get("min_sigma", 0.0025))
+    if visual_noise_mode in {"background", "camera"}:
+        sigma_ratio *= float(cfg.get("background_sigma_scale", 1.15))
+        min_sigma *= float(cfg.get("background_min_sigma_scale", 1.10))
+    if apply_camera_noise:
+        sigma_ratio *= float(cfg.get("camera_sigma_scale", 0.75))
+        min_sigma *= float(cfg.get("camera_min_sigma_scale", 0.75))
     target_indices = cfg.get("target_indices", None)
     if sigma_ratio <= 0 and min_sigma <= 0:
         return proprio
@@ -323,7 +336,8 @@ def prop_sadp2_safe_joint_gaussian_noise(proprio, cfg):
         if target_indices:
             resolved_indices = _resolve_target_indices(out, target_indices)
         else:
-            resolved_indices = list(range(out.shape[-1]))
+            last_dim = int(out.shape[-1])
+            resolved_indices = list(range(min(9, last_dim))) if last_dim <= 32 else [31]
         if not resolved_indices:
             return out
 
@@ -337,7 +351,8 @@ def prop_sadp2_safe_joint_gaussian_noise(proprio, cfg):
     if target_indices:
         resolved_indices = _resolve_target_indices(out, target_indices)
     else:
-        resolved_indices = list(range(out.shape[-1]))
+        last_dim = int(out.shape[-1])
+        resolved_indices = list(range(min(9, last_dim))) if last_dim <= 32 else [31]
     if not resolved_indices:
         return out
 
