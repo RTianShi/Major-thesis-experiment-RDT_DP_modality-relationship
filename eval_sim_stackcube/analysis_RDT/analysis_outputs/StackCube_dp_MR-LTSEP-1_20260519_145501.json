@@ -1,0 +1,988 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_115430",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR-LTSEP1_20260519_145213",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_rule": "MR-LTSEP-1",
+  "mr_compare": {
+    "mr_id": "MR-LTSEP-1-PHANTOM",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 23,
+    "violation_rate_percent": 92.0,
+    "config": {
+      "stop_ratio": 0.5,
+      "invariance_proxy": "phantom_grasp_requires_safe_halt_by_response_ratio"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 57,
+        "dst_grasp_frame_index": 57,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.04940532147884369,
+          -0.17238405346870422,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.06716343760490417,
+          -0.21288897097110748,
+          0.02004174143075943
+        ],
+        "mr_final_point": [
+          -0.050726719200611115,
+          -0.16274233162403107,
+          0.06650952994823456
+        ],
+        "response_ratio": 1.1043202940399761,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.1043 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 46,
+        "dst_grasp_frame_index": 46,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.03587295487523079,
+          0.0012719109654426575,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.024649567902088165,
+          0.19599634408950806,
+          0.017421409487724304
+        ],
+        "mr_final_point": [
+          0.033047620207071304,
+          -0.004728733561933041,
+          0.059629760682582855
+        ],
+        "response_ratio": 1.0524033829966755,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0524 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 37,
+        "dst_grasp_frame_index": 37,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.00617121160030365,
+          0.17537206411361694,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.0249038003385067,
+          -0.08796191960573196,
+          0.019270583987236023
+        ],
+        "mr_final_point": [
+          -0.007607034407556057,
+          0.1811009645462036,
+          0.05942125618457794
+        ],
+        "response_ratio": 1.0377932110755805,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0378 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 53,
+        "dst_grasp_frame_index": 53,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.06715288013219833,
+          0.053524263203144073,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.0599241629242897,
+          0.029270851984620094,
+          0.019675664603710175
+        ],
+        "mr_final_point": [
+          0.057567987591028214,
+          0.053160905838012695,
+          0.059932149946689606
+        ],
+        "response_ratio": 0.9776070976846436,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9776 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 42,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.029139377176761627,
+          -0.09047876298427582,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.08675944805145264,
+          0.07045798003673553,
+          0.018720462918281555
+        ],
+        "mr_final_point": [
+          -0.027435412630438805,
+          -0.08633266389369965,
+          0.06254136562347412
+        ],
+        "response_ratio": 1.0136054174978262,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0136 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 37,
+        "dst_grasp_frame_index": 37,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.08317869901657104,
+          -0.17320898175239563,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.02987554296851158,
+          0.10188045352697372,
+          0.02144378423690796
+        ],
+        "mr_final_point": [
+          -0.09186675399541855,
+          -0.1578458845615387,
+          0.064714714884758
+        ],
+        "response_ratio": 0.9653667516109474,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9654 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 42,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.1338518261909485,
+          0.017431974411010742,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.05952594429254532,
+          0.1952371597290039,
+          0.04859036207199097
+        ],
+        "mr_final_point": [
+          0.13940468430519104,
+          0.028247516602277756,
+          0.06159850209951401
+        ],
+        "response_ratio": 0.9524883531415727,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9525 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 53,
+        "dst_grasp_frame_index": 53,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.08958741277456284,
+          -0.04586746543645859,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.06889042258262634,
+          0.23401856422424316,
+          0.01743929088115692
+        ],
+        "mr_final_point": [
+          -0.10191188007593155,
+          -0.0439545139670372,
+          0.06502338498830795
+        ],
+        "response_ratio": 1.0250526835897305,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0251 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 50,
+        "dst_grasp_frame_index": 50,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.02160853147506714,
+          0.144197016954422,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.08507326245307922,
+          -0.14690886437892914,
+          0.02170170098543167
+        ],
+        "mr_final_point": [
+          0.0665905624628067,
+          0.06949204206466675,
+          0.100727878510952
+        ],
+        "response_ratio": 0.7454429999829392,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.7454 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 39,
+        "dst_grasp_frame_index": 39,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.012743063271045685,
+          -0.058760449290275574,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.049254968762397766,
+          -0.13271047174930573,
+          0.02139512449502945
+        ],
+        "mr_final_point": [
+          0.014518789015710354,
+          -0.051115453243255615,
+          0.06123114377260208
+        ],
+        "response_ratio": 1.1497000530324553,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.1497 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 58,
+        "dst_grasp_frame_index": 58,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.04098900407552719,
+          0.22709542512893677,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.0805659219622612,
+          0.26241207122802734,
+          0.04664428532123566
+        ],
+        "mr_final_point": [
+          -0.039942674338817596,
+          0.24668137729167938,
+          0.06185315549373627
+        ],
+        "response_ratio": 0.7773220910695481,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.7773 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 42,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.006038106977939606,
+          0.10232218354940414,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.05603673681616783,
+          0.17980320751667023,
+          0.020457670092582703
+        ],
+        "mr_final_point": [
+          -0.018545810133218765,
+          0.10730677098035812,
+          0.06404834985733032
+        ],
+        "response_ratio": 1.0034086400713913,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0034 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 50,
+        "dst_grasp_frame_index": 50,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.03179812431335449,
+          -0.21886765956878662,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.00778637919574976,
+          0.17299805581569672,
+          0.019658543169498444
+        ],
+        "mr_final_point": [
+          -0.030917830765247345,
+          -0.21905945241451263,
+          0.059477612376213074
+        ],
+        "response_ratio": 1.005358301914815,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0054 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 45,
+        "dst_grasp_frame_index": 45,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.05415969341993332,
+          -0.28462523221969604,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.08873201161623001,
+          0.018367042765021324,
+          0.019117772579193115
+        ],
+        "mr_final_point": [
+          -0.039314430207014084,
+          -0.27052071690559387,
+          0.059765659272670746
+        ],
+        "response_ratio": 0.9702574958959612,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9703 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 43,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.03666100651025772,
+          -0.28591856360435486,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.04287015646696091,
+          -0.014381161890923977,
+          0.02060946822166443
+        ],
+        "mr_final_point": [
+          -0.04481969028711319,
+          -0.25693345069885254,
+          0.06415102630853653
+        ],
+        "response_ratio": 0.9073230742561159,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9073 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 41,
+        "dst_grasp_frame_index": 41,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.021450914442539215,
+          0.03053821623325348,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.00359373539686203,
+          -0.23317186534404755,
+          0.019754573702812195
+        ],
+        "mr_final_point": [
+          -0.026233362033963203,
+          -0.15816836059093475,
+          0.08772540092468262
+        ],
+        "response_ratio": 0.3924168850421777,
+        "is_halted": true,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "safe_halt_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 49,
+        "dst_grasp_frame_index": 49,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.03985898196697235,
+          -0.011419393122196198,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.1084679588675499,
+          0.03368593007326126,
+          0.018829509615898132
+        ],
+        "mr_final_point": [
+          0.03357648104429245,
+          -0.005561854690313339,
+          0.05988466739654541
+        ],
+        "response_ratio": 0.9867194238490876,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9867 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 33,
+        "dst_grasp_frame_index": 33,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.0703282505273819,
+          0.1377159059047699,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.06305251270532608,
+          0.1992548108100891,
+          0.021680213510990143
+        ],
+        "mr_final_point": [
+          0.027683088555932045,
+          0.10100937634706497,
+          0.037737369537353516
+        ],
+        "response_ratio": 0.9169070211392967,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9169 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 30,
+        "dst_grasp_frame_index": 30,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.021485522389411926,
+          -0.2647612392902374,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.009125483222305775,
+          -0.05298704281449318,
+          0.021315529942512512
+        ],
+        "mr_final_point": [
+          -0.025355149060487747,
+          -0.2531951665878296,
+          0.06088636815547943
+        ],
+        "response_ratio": 0.9672604698421198,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9673 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 44,
+        "dst_grasp_frame_index": 44,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.0705561563372612,
+          0.06056790053844452,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.031215503811836243,
+          -0.21029911935329437,
+          0.020817987620830536
+        ],
+        "mr_final_point": [
+          -0.05149416625499725,
+          -0.11641290783882141,
+          0.09789329767227173
+        ],
+        "response_ratio": 0.44993615224398054,
+        "is_halted": true,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "safe_halt_triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 60,
+        "dst_grasp_frame_index": 60,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.047567546367645264,
+          -0.15623344480991364,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.014848905615508556,
+          -0.23149384558200836,
+          0.04806914180517197
+        ],
+        "mr_final_point": [
+          0.0418669730424881,
+          -0.2114686816930771,
+          0.10451428592205048
+        ],
+        "response_ratio": 0.7575501738499739,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.7576 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 61,
+        "dst_grasp_frame_index": 61,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.16755816340446472,
+          0.02685142308473587,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          -0.07348596304655075,
+          0.2419470250606537,
+          0.0194813534617424
+        ],
+        "mr_final_point": [
+          -0.174861878156662,
+          0.012801406905055046,
+          0.061557404696941376
+        ],
+        "response_ratio": 1.08224815060572,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0822 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 106,
+        "dst_grasp_frame_index": 106,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.15695449709892273,
+          0.1457914412021637,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.11616818606853485,
+          0.10559873282909393,
+          0.021494776010513306
+        ],
+        "mr_final_point": [
+          0.17927080392837524,
+          0.12372180819511414,
+          0.06084956228733063
+        ],
+        "response_ratio": 1.3362924682053636,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.3363 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 51,
+        "dst_grasp_frame_index": 51,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          0.00382087379693985,
+          0.15451422333717346,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.10692811012268066,
+          -0.13257259130477905,
+          0.017705149948596954
+        ],
+        "mr_final_point": [
+          0.004990878514945507,
+          0.1515127420425415,
+          0.06040818244218826
+        ],
+        "response_ratio": 0.9992690759506653,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(0.9993 > 0.5000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 39,
+        "dst_grasp_frame_index": 39,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "goal_point": [
+          -0.012506846338510513,
+          -0.1388855278491974,
+          0.019999999552965164
+        ],
+        "mr_grasp_point": [
+          0.03432657569646835,
+          0.08666343986988068,
+          0.018501020967960358
+        ],
+        "mr_final_point": [
+          -0.020818158984184265,
+          -0.13404467701911926,
+          0.06123664975166321
+        ],
+        "response_ratio": 1.0048067546965882,
+        "is_halted": false,
+        "stop_ratio": 0.5,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "phantom_grasp_not_stopped(1.0048 > 0.5000)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 23,
+  "followup_mr_violation_rate_percent": 92.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

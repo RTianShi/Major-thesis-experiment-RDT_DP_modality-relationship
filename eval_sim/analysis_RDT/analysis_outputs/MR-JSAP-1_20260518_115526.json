@@ -1,0 +1,689 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCubeBlueCylinder-v1_MR-JSAP-1_20260518_114406",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 8.0,
+    "success_count": 2,
+    "success_episode_ids": [
+      13,
+      16
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 376.44,
+      "median": 400.0,
+      "std": 80.12693929010393,
+      "min": 84.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0984401822090148,
+      "median": 1.1227662563323975,
+      "std": 0.2448117971969864,
+      "min": 0.5504766702651978,
+      "max": 1.6377450227737427
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 1.2983501064743264,
+      "median": 1.517463662534058,
+      "std": 0.8187987728748409,
+      "min": 0.05322631022311715,
+      "max": 2.8337268810009166
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.9473099409578778,
+      "median": 1.1610215045529222,
+      "std": 0.588138266395811,
+      "min": 0.011421701862742337,
+      "max": 1.79760252253704
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.013574406600096062,
+      "median": 0.00906015743385069,
+      "std": 0.012195187727792146,
+      "min": 0.008216774464817717,
+      "max": 0.05713318379241086
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999821186066,
+      "median": 0.07999999821186066,
+      "std": 0.0,
+      "min": 0.07999999821186066,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.003597310110926628,
+      "median": 0.0,
+      "std": 0.009855605189674195,
+      "min": 0.0,
+      "max": 0.03604053147137165
+    }
+  },
+  "mr_rule": "MR-JSAP-1",
+  "mr_compare": {
+    "mr_id": "MR-JSAP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 16,
+    "violation_rate_percent": 64.0,
+    "config": {
+      "grasp_error_threshold_m": 0.04
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 50,
+        "followup_grasp_point": [
+          0.013593773357570171,
+          -0.058086685836315155,
+          0.017529286444187164
+        ],
+        "followup_blue_cylinder_pos": [
+          0.04255955293774605,
+          -0.019478965550661087,
+          0.014851272106170654
+        ],
+        "grasp_error_m": 0.04833988222097009,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0483m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 40,
+        "followup_grasp_point": [
+          -0.03460264578461647,
+          -0.03748181834816933,
+          0.022033266723155975
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.04021656885743141,
+          0.0027047020848840475,
+          0.014928440563380718
+        ],
+        "grasp_error_m": 0.041194066460405764,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0412m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 50,
+        "followup_grasp_point": [
+          -0.05508549511432648,
+          0.012945274822413921,
+          0.020120523869991302
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.0366813987493515,
+          -0.020783817395567894,
+          0.014979743398725986
+        ],
+        "grasp_error_m": 0.03876583610234854,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 41,
+        "followup_grasp_point": [
+          -0.028925571590662003,
+          -0.033028494566679,
+          0.019981570541858673
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.018442051485180855,
+          -0.0539233423769474,
+          0.014990296214818954
+        ],
+        "grasp_error_m": 0.0239042188373532,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 40,
+        "followup_grasp_point": [
+          -0.0401412658393383,
+          -0.03273864835500717,
+          0.02076839655637741
+        ],
+        "followup_blue_cylinder_pos": [
+          0.030341861769557,
+          -0.047803010791540146,
+          0.014921675436198711
+        ],
+        "grasp_error_m": 0.07231175866349945,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0723m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 40,
+        "followup_grasp_point": [
+          0.01411258615553379,
+          -0.03702623024582863,
+          0.01972661167383194
+        ],
+        "followup_blue_cylinder_pos": [
+          0.029308542609214783,
+          -0.03901224210858345,
+          0.014881259761750698
+        ],
+        "grasp_error_m": 0.016072920419546697,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 41,
+        "followup_grasp_point": [
+          -0.039613477885723114,
+          0.04853364825248718,
+          0.021046437323093414
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.008773396722972393,
+          0.07258144021034241,
+          0.01497284509241581
+        ],
+        "grasp_error_m": 0.03957645040624393,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 52,
+        "followup_grasp_point": [
+          0.04493989795446396,
+          0.005441656336188316,
+          0.01748984307050705
+        ],
+        "followup_blue_cylinder_pos": [
+          0.08859797567129135,
+          -0.008562978357076645,
+          0.014943213202059269
+        ],
+        "grasp_error_m": 0.045919961525541494,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0459m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 53,
+        "followup_grasp_point": [
+          -0.07676194608211517,
+          -0.07212831825017929,
+          0.01834048330783844
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.05439178645610809,
+          -0.05177614092826843,
+          0.014924796298146248
+        ],
+        "grasp_error_m": 0.030435211206491074,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 49,
+        "followup_grasp_point": [
+          -0.10226506739854813,
+          0.03541719168424606,
+          0.021667547523975372
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.09765207767486572,
+          0.08113886415958405,
+          0.014935528859496117
+        ],
+        "grasp_error_m": 0.046444279340213425,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0464m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 45,
+        "followup_grasp_point": [
+          -0.03662756085395813,
+          -0.030566902831196785,
+          0.0197172611951828
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.020001688972115517,
+          -0.039701808243989944,
+          0.014637504704296589
+        ],
+        "grasp_error_m": 0.019638483616074415,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_grasp_point": [
+          -0.06628112494945526,
+          -0.08191436529159546,
+          0.037053048610687256
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.054300472140312195,
+          -0.10637729614973068,
+          0.01482016034424305
+        ],
+        "grasp_error_m": 0.03516066479137339,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 40,
+        "followup_grasp_point": [
+          -0.07852404564619064,
+          -0.07941713184118271,
+          0.020185865461826324
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.0855538472533226,
+          -0.08679267019033432,
+          0.015001055784523487
+        ],
+        "grasp_error_m": 0.011432363183755767,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_grasp_point": [
+          -0.04896923154592514,
+          0.041172049939632416,
+          0.02126503735780716
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.012080722488462925,
+          0.052444975823163986,
+          0.014987842179834843
+        ],
+        "grasp_error_m": 0.03907997105628952,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_locked_onto_blue_cylinder"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 41,
+        "followup_grasp_point": [
+          0.0021957186982035637,
+          0.04854312166571617,
+          0.02183021605014801
+        ],
+        "followup_blue_cylinder_pos": [
+          0.044405657798051834,
+          0.05605679750442505,
+          0.014952309429645538
+        ],
+        "grasp_error_m": 0.04342165223598072,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0434m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_grasp_point": [
+          -0.017170939594507217,
+          -0.0839865654706955,
+          0.019563540816307068
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.0856144055724144,
+          -0.1246880292892456,
+          0.014928790740668774
+        ],
+        "grasp_error_m": 0.0797658955964597,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0798m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 51,
+        "followup_grasp_point": [
+          -0.08715120702981949,
+          0.03748621046543121,
+          0.020504362881183624
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.08753083646297455,
+          0.09603346139192581,
+          0.014951628632843494
+        ],
+        "grasp_error_m": 0.05881120273544089,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0588m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_grasp_point": null,
+        "followup_blue_cylinder_pos": null,
+        "grasp_error_m": null,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "missing_followup_grasp_frame"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 49,
+        "followup_grasp_point": [
+          -0.00795357022434473,
+          0.010066409595310688,
+          0.019005820155143738
+        ],
+        "followup_blue_cylinder_pos": [
+          -0.03968872129917145,
+          -0.020279118791222572,
+          0.0147685082629323
+        ],
+        "grasp_error_m": 0.04411264806007283,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Anchor Spatial Drift (Model failed to lock onto blue cylinder, error: 0.0441m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 16,
+  "followup_mr_violation_rate_percent": 64.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

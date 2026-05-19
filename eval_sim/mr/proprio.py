@@ -132,7 +132,7 @@ def prop_terminal_region_state_bias_noise(proprio, cfg):
     if float(cube_goal_distance) >= trigger_distance:
         return proprio
 
-    mean = float(cfg.get("mean", -0.15))
+    mean = float(cfg.get("mean", 0.0))
     variance = float(cfg.get("variance", 0.05))
     sigma = float(cfg.get("sigma", np.sqrt(max(variance, 0.0))))
     debug = bool(cfg.get("debug", False))

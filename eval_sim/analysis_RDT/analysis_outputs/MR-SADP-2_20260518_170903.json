@@ -1,0 +1,1147 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCube-v1_MR-SADP-2_20260518_170443",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 28.000000000000004,
+    "success_count": 7,
+    "success_episode_ids": [
+      4,
+      5,
+      8,
+      9,
+      11,
+      19,
+      20
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 312.4,
+      "median": 400.0,
+      "std": 141.6073444422993,
+      "min": 52.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.2347511529922486,
+      "median": 1.3072749376296997,
+      "std": 0.5226315340394653,
+      "min": 0.2901882231235504,
+      "max": 2.5133309364318848
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.30608301774203406,
+      "median": 0.16897867073951608,
+      "std": 0.28667205663688045,
+      "min": 0.005778814530036464,
+      "max": 0.9438344971530195
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.14969343040274669,
+      "median": 0.15271198350119575,
+      "std": 0.10960525410232849,
+      "min": 0.005663167850512605,
+      "max": 0.3251171424451436
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.03374243070135072,
+      "median": 0.04104932589456439,
+      "std": 0.020136221210801906,
+      "min": 0.007387250033789314,
+      "max": 0.0643948521823264
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999523162842,
+      "median": 0.07999999821186066,
+      "std": 1.460009659995543e-08,
+      "min": 0.07999992370605469,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.020882559418678285,
+      "median": 0.036620039492845535,
+      "std": 0.018517252530133834,
+      "min": 0.0,
+      "max": 0.03889703005552292
+    }
+  },
+  "mr_rule": "MR-SADP-2",
+  "mr_compare": {
+    "mr_id": "MR-SADP-2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 20,
+    "violation_rate_percent": 80.0,
+    "success_drop_count": 12,
+    "config": {
+      "grasp_position_tol_m": 0.03,
+      "final_position_tol_m": 0.03,
+      "invariance_proxy": "eef_grasp_point_and_final_point_l2"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 43,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.0499768927693367,
+          -0.07378118485212326,
+          0.018521755933761597
+        ],
+        "dst_grasp_point": [
+          0.0651162788271904,
+          -0.07011730968952179,
+          0.01864112913608551
+        ],
+        "grasp_position_error_m": 0.015576881631998619,
+        "src_end_point": [
+          -0.04949731379747391,
+          0.006311836652457714,
+          0.08433493226766586
+        ],
+        "dst_end_point": [
+          0.0749131441116333,
+          0.08555109053850174,
+          0.30675452947616577
+        ],
+        "final_position_error_m": 0.2668844293246836,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.2669m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 38,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.07504184544086456,
+          0.04452281445264816,
+          0.017582356929779053
+        ],
+        "dst_grasp_point": [
+          0.07914628833532333,
+          0.051414746791124344,
+          0.019348375499248505
+        ],
+        "grasp_position_error_m": 0.008213647449198058,
+        "src_end_point": [
+          0.05715237557888031,
+          0.015599831938743591,
+          0.30439475178718567
+        ],
+        "dst_end_point": [
+          0.0905740037560463,
+          0.04065677896142006,
+          0.293560266494751
+        ],
+        "final_position_error_m": 0.04315370083390223,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "final_invariance_broken(0.0432m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 44,
+        "dst_grasp_frame_index": 45,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.013317344710230827,
+          -0.004932879004627466,
+          0.020527243614196777
+        ],
+        "dst_grasp_point": [
+          -0.013703711330890656,
+          0.007136617321521044,
+          0.021036140620708466
+        ],
+        "grasp_position_error_m": 0.012086397184260867,
+        "src_end_point": [
+          0.08960212767124176,
+          0.007379317656159401,
+          0.19949963688850403
+        ],
+        "dst_end_point": [
+          0.09519730508327484,
+          -0.08169009536504745,
+          0.27774345874786377
+        ],
+        "final_position_error_m": 0.11868766576765119,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.1187m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 37,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.02386469393968582,
+          0.03201950341463089,
+          0.019824445247650146
+        ],
+        "dst_grasp_point": [
+          -0.012407153844833374,
+          0.03443985432386398,
+          0.020551979541778564
+        ],
+        "grasp_position_error_m": 0.011732971903917176,
+        "src_end_point": [
+          -0.02997693419456482,
+          0.08509544283151627,
+          0.16971993446350098
+        ],
+        "dst_end_point": [
+          -0.03234328329563141,
+          0.08049282431602478,
+          0.1752668023109436
+        ],
+        "final_position_error_m": 0.007586267078363146,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 35,
+        "dst_grasp_frame_index": 33,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.008342803455889225,
+          -0.035240381956100464,
+          0.04858236014842987
+        ],
+        "dst_grasp_point": [
+          -0.006141225807368755,
+          -0.04324152693152428,
+          0.020638354122638702
+        ],
+        "grasp_position_error_m": 0.03247572781919008,
+        "src_end_point": [
+          0.0014451295137405396,
+          0.04600196331739426,
+          0.055234454572200775
+        ],
+        "dst_end_point": [
+          0.008977161720395088,
+          0.026367977261543274,
+          0.03831212967634201
+        ],
+        "final_position_error_m": 0.026992406292963834,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_invariance_broken(0.0325m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 35,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.0169671680778265,
+          -0.023021087050437927,
+          0.019412055611610413
+        ],
+        "dst_grasp_point": [
+          -0.009662513621151447,
+          -0.0049741449765861034,
+          0.02097151428461075
+        ],
+        "grasp_position_error_m": 0.019531564358780427,
+        "src_end_point": [
+          -0.07874274998903275,
+          0.021161938086152077,
+          0.13162574172019958
+        ],
+        "dst_end_point": [
+          -0.016068391501903534,
+          0.07811236381530762,
+          0.21664880216121674
+        ],
+        "final_position_error_m": 0.12000144586321493,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.1200m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 39,
+        "dst_grasp_frame_index": 41,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.03883829340338707,
+          -0.0010208506137132645,
+          0.01874499022960663
+        ],
+        "dst_grasp_point": [
+          0.04595720395445824,
+          0.006012101657688618,
+          0.018841125071048737
+        ],
+        "grasp_position_error_m": 0.010007524518766285,
+        "src_end_point": [
+          0.0833744928240776,
+          0.04894306883215904,
+          0.28667521476745605
+        ],
+        "dst_end_point": [
+          0.05718784034252167,
+          -0.03103126585483551,
+          0.2887350916862488
+        ],
+        "final_position_error_m": 0.08417765778244114,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "final_invariance_broken(0.0842m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 35,
+        "dst_grasp_frame_index": 34,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.004475739784538746,
+          0.056517593562603,
+          0.020710811018943787
+        ],
+        "dst_grasp_point": [
+          0.007662149146199226,
+          0.07064811140298843,
+          0.020455360412597656
+        ],
+        "grasp_position_error_m": 0.018629684300724612,
+        "src_end_point": [
+          -0.06446035951375961,
+          0.09349630773067474,
+          0.08643053472042084
+        ],
+        "dst_end_point": [
+          -0.04724878817796707,
+          0.07811103016138077,
+          0.0791187509894371
+        ],
+        "final_position_error_m": 0.024215844710849428,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 44,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.06851466745138168,
+          -0.010467667132616043,
+          0.018981091678142548
+        ],
+        "dst_grasp_point": [
+          0.07587509602308273,
+          0.004654389806091785,
+          0.020122013986110687
+        ],
+        "grasp_position_error_m": 0.016856874518411,
+        "src_end_point": [
+          -0.07173293083906174,
+          -0.07830348610877991,
+          0.2971591353416443
+        ],
+        "dst_end_point": [
+          -0.05398308485746384,
+          -0.0823495090007782,
+          0.2978987395763397
+        ],
+        "final_position_error_m": 0.018220163227507066,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 42,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.06806980073451996,
+          -0.07306687533855438,
+          0.019416004419326782
+        ],
+        "dst_grasp_point": [
+          -0.02649211511015892,
+          -0.07346946001052856,
+          0.048248663544654846
+        ],
+        "grasp_position_error_m": 0.050598302822660673,
+        "src_end_point": [
+          -0.00803491659462452,
+          -0.04946586862206459,
+          0.293072909116745
+        ],
+        "dst_end_point": [
+          -0.018056590110063553,
+          -0.06821992248296738,
+          0.20018455386161804
+        ],
+        "final_position_error_m": 0.0952911067113315,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "grasp_invariance_broken(0.0506m)",
+          "final_invariance_broken(0.0953m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 47,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.09843342751264572,
+          0.07671976834535599,
+          0.02008211612701416
+        ],
+        "dst_grasp_point": [
+          -0.08381809294223785,
+          0.07681015133857727,
+          0.019481517374515533
+        ],
+        "grasp_position_error_m": 0.014627949020690695,
+        "src_end_point": [
+          0.06478799879550934,
+          0.08079831302165985,
+          0.1527979075908661
+        ],
+        "dst_end_point": [
+          0.07078811526298523,
+          0.08589661866426468,
+          0.16592749953269958
+        ],
+        "final_position_error_m": 0.015309484073859271,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 33,
+        "dst_grasp_frame_index": 36,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.014111756347119808,
+          0.07224853336811066,
+          0.02037768065929413
+        ],
+        "dst_grasp_point": [
+          0.00929035060107708,
+          0.08315807580947876,
+          0.02012089639902115
+        ],
+        "grasp_position_error_m": 0.025821360615799874,
+        "src_end_point": [
+          0.05404789745807648,
+          -0.010750750079751015,
+          0.3112681210041046
+        ],
+        "dst_end_point": [
+          0.08260679244995117,
+          -0.016824087128043175,
+          0.27770233154296875
+        ],
+        "final_position_error_m": 0.044487730086040386,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "final_invariance_broken(0.0445m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 43,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.012931817211210728,
+          -0.026157371699810028,
+          0.01970488578081131
+        ],
+        "dst_grasp_point": [
+          0.01766667701303959,
+          -0.011126333847641945,
+          0.04919024556875229
+        ],
+        "grasp_position_error_m": 0.04507312269556123,
+        "src_end_point": [
+          -0.09992307424545288,
+          0.011841587722301483,
+          0.17111989855766296
+        ],
+        "dst_end_point": [
+          0.08000799268484116,
+          0.02340555563569069,
+          0.05054719001054764
+        ],
+        "final_position_error_m": 0.21690249479193055,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "grasp_invariance_broken(0.0451m)",
+          "final_invariance_broken(0.2169m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 44,
+        "dst_grasp_frame_index": 43,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.06288442760705948,
+          -0.07501720637083054,
+          0.02144239842891693
+        ],
+        "dst_grasp_point": [
+          -0.043957337737083435,
+          -0.06301593780517578,
+          0.02064581960439682
+        ],
+        "grasp_position_error_m": 0.022425425658274507,
+        "src_end_point": [
+          -0.1272897571325302,
+          -0.05273506045341492,
+          0.057787276804447174
+        ],
+        "dst_end_point": [
+          -0.09761951118707657,
+          -0.07957015186548233,
+          0.04928705096244812
+        ],
+        "final_position_error_m": 0.04089864869311346,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "final_invariance_broken(0.0409m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 39,
+        "dst_grasp_frame_index": 41,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.01984250731766224,
+          -0.07778536528348923,
+          0.018664613366127014
+        ],
+        "dst_grasp_point": [
+          0.05217750743031502,
+          -0.06355421245098114,
+          0.048771098256111145
+        ],
+        "grasp_position_error_m": 0.04641635892288731,
+        "src_end_point": [
+          -0.08837486803531647,
+          0.07160982489585876,
+          0.205143004655838
+        ],
+        "dst_end_point": [
+          0.03844449669122696,
+          0.04598425328731537,
+          0.20927229523658752
+        ],
+        "final_position_error_m": 0.12944833807588607,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "grasp_invariance_broken(0.0464m)",
+          "final_invariance_broken(0.1294m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 38,
+        "dst_grasp_frame_index": 36,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.06944415718317032,
+          -0.07916690409183502,
+          0.02032470703125
+        ],
+        "dst_grasp_point": [
+          -0.05016248673200607,
+          -0.059666190296411514,
+          0.023364849388599396
+        ],
+        "grasp_position_error_m": 0.02759172193740853,
+        "src_end_point": [
+          0.05960964784026146,
+          -0.06730882823467255,
+          0.2262313961982727
+        ],
+        "dst_end_point": [
+          0.08409030735492706,
+          -0.1529340296983719,
+          0.2750559449195862
+        ],
+        "final_position_error_m": 0.10156187460761051,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.1016m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 33,
+        "dst_grasp_frame_index": 38,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.018757019191980362,
+          0.053978510200977325,
+          0.018481045961380005
+        ],
+        "dst_grasp_point": [
+          -0.0062762899324297905,
+          0.052550140768289566,
+          0.020474955439567566
+        ],
+        "grasp_position_error_m": 0.01271945427656567,
+        "src_end_point": [
+          -0.04087269306182861,
+          -0.0487196259200573,
+          0.11190557479858398
+        ],
+        "dst_end_point": [
+          0.08996094763278961,
+          0.04705238342285156,
+          0.30031609535217285
+        ],
+        "final_position_error_m": 0.24857241111245837,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.2486m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 42,
+        "dst_grasp_frame_index": 44,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.03519979491829872,
+          0.0708383098244667,
+          0.020319484174251556
+        ],
+        "dst_grasp_point": [
+          0.06562092155218124,
+          0.08971891552209854,
+          0.049177877604961395
+        ],
+        "grasp_position_error_m": 0.04598618367059612,
+        "src_end_point": [
+          0.04931023716926575,
+          -0.04626054689288139,
+          0.10393838584423065
+        ],
+        "dst_end_point": [
+          0.13316182792186737,
+          0.09315898269414902,
+          0.0699990913271904
+        ],
+        "final_position_error_m": 0.1661949765014726,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "grasp_invariance_broken(0.0460m)",
+          "final_invariance_broken(0.1662m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 36,
+        "dst_grasp_frame_index": 36,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.06817509233951569,
+          -0.07555634528398514,
+          0.019482530653476715
+        ],
+        "dst_grasp_point": [
+          -0.043518297374248505,
+          -0.07892052084207535,
+          0.047223471105098724
+        ],
+        "grasp_position_error_m": 0.03726707651916521,
+        "src_end_point": [
+          -0.09636694192886353,
+          -0.0046492707915604115,
+          0.21572208404541016
+        ],
+        "dst_end_point": [
+          -0.08242355287075043,
+          -0.017121978104114532,
+          0.22242873907089233
+        ],
+        "final_position_error_m": 0.019873745187089786,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_invariance_broken(0.0373m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": true,
+        "dst_success": true,
+        "src_grasp_frame_index": 45,
+        "dst_grasp_frame_index": 44,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.02511804923415184,
+          -0.08187917619943619,
+          0.020655624568462372
+        ],
+        "dst_grasp_point": [
+          -0.03179003298282623,
+          -0.08065137267112732,
+          0.020263157784938812
+        ],
+        "grasp_position_error_m": 0.006795358623565958,
+        "src_end_point": [
+          0.08551361411809921,
+          -0.0014439537189900875,
+          0.05175104737281799
+        ],
+        "dst_end_point": [
+          0.08735738694667816,
+          -0.0015462064184248447,
+          0.05527988076210022
+        ],
+        "final_position_error_m": 0.003982790346887569,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "invariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 43,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.04052622616291046,
+          -0.08086958527565002,
+          0.019137799739837646
+        ],
+        "dst_grasp_point": [
+          0.07096068561077118,
+          -0.06214650720357895,
+          0.04841648042201996
+        ],
+        "grasp_position_error_m": 0.046195791116351095,
+        "src_end_point": [
+          -0.06763749569654465,
+          -0.0904783308506012,
+          0.2705749273300171
+        ],
+        "dst_end_point": [
+          0.08606483042240143,
+          -0.10817276686429977,
+          0.2796172499656677
+        ],
+        "final_position_error_m": 0.1549814883102654,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "grasp_invariance_broken(0.0462m)",
+          "final_invariance_broken(0.1550m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 60,
+        "dst_grasp_frame_index": 51,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          -0.07576476037502289,
+          0.07700419425964355,
+          0.019411563873291016
+        ],
+        "dst_grasp_point": [
+          -0.0405474528670311,
+          0.08317391574382782,
+          0.04959413409233093
+        ],
+        "grasp_position_error_m": 0.04679008181583075,
+        "src_end_point": [
+          -0.10335304588079453,
+          0.03125492483377457,
+          0.04231441766023636
+        ],
+        "dst_end_point": [
+          0.011828284710645676,
+          -0.0069291312247514725,
+          0.03311938792467117
+        ],
+        "final_position_error_m": 0.12169350691689851,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_invariance_broken(0.0468m)",
+          "final_invariance_broken(0.1217m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 51,
+        "dst_grasp_frame_index": 44,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.08779895305633545,
+          -0.026191595941781998,
+          0.016240477561950684
+        ],
+        "dst_grasp_point": [
+          0.08609960973262787,
+          0.001870173029601574,
+          0.0209636390209198
+        ],
+        "grasp_position_error_m": 0.02850717277638431,
+        "src_end_point": [
+          0.07756634056568146,
+          -0.030693186447024345,
+          0.28072452545166016
+        ],
+        "dst_end_point": [
+          0.08001972734928131,
+          -0.049525801092386246,
+          0.07537306845188141
+        ],
+        "final_position_error_m": 0.2062278045585091,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.2062m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": false,
+        "dst_success": false,
+        "src_grasp_frame_index": 51,
+        "dst_grasp_frame_index": 42,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.09179196506738663,
+          0.02491750568151474,
+          0.018125154078006744
+        ],
+        "dst_grasp_point": [
+          0.1109151616692543,
+          0.03306630998849869,
+          0.048629969358444214
+        ],
+        "grasp_position_error_m": 0.03691400026007497,
+        "src_end_point": [
+          0.07612064480781555,
+          0.02020661160349846,
+          0.29645437002182007
+        ],
+        "dst_end_point": [
+          0.11789023131132126,
+          -0.0004397379234433174,
+          0.06438232958316803
+        ],
+        "final_position_error_m": 0.23670319401905382,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_invariance_broken(0.0369m)",
+          "final_invariance_broken(0.2367m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": true,
+        "dst_success": false,
+        "src_grasp_frame_index": 41,
+        "dst_grasp_frame_index": 41,
+        "src_grasp_frame_index_source": "annotated",
+        "dst_grasp_frame_index_source": "annotated",
+        "src_grasp_point": [
+          0.026213282719254494,
+          -0.004897968843579292,
+          0.020067110657691956
+        ],
+        "dst_grasp_point": [
+          0.040059469640254974,
+          0.0014027683064341545,
+          0.020422473549842834
+        ],
+        "grasp_position_error_m": 0.015216519433496025,
+        "src_end_point": [
+          -0.08447135239839554,
+          0.08065611124038696,
+          0.13409742712974548
+        ],
+        "dst_end_point": [
+          0.094272181391716,
+          0.07955188304185867,
+          0.29800888895988464
+        ],
+        "final_position_error_m": 0.24252306593597306,
+        "grasp_position_tol_m": 0.03,
+        "final_position_tol_m": 0.03,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "base_success_followup_fail",
+          "final_invariance_broken(0.2425m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 20,
+  "followup_mr_violation_rate_percent": 80.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

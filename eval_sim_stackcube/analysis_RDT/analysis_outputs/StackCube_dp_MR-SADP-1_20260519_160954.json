@@ -1,0 +1,590 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_115430",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR-SADP1_20260519_160702",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 80.0,
+    "success_count": 20,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      21,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 178.72,
+      "median": 113.0,
+      "std": 120.24359276069556,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0757544946670532,
+      "median": 0.9740573763847351,
+      "std": 0.4673649435809803,
+      "min": 0.6085931062698364,
+      "max": 2.189431667327881
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.34142711540662984,
+      "median": 0.3589396717578521,
+      "std": 0.14681372035629123,
+      "min": 2.357696789800084e-06,
+      "max": 0.7357783889548398
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.19265452722212,
+      "median": 0.1981182645986001,
+      "std": 0.10707599376203784,
+      "min": 1.1538361312452753e-06,
+      "max": 0.39481267832926575
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04913986319149572,
+      "median": 0.0542258090534053,
+      "std": 0.013036791217762094,
+      "min": 0.008851786577142775,
+      "max": 0.06178289872001518
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998837709427,
+      "median": 0.07999999821186066,
+      "std": 2.8033991415273995e-08,
+      "min": 0.0799998864531517,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025359633713960647,
+      "median": 0.0367632731795311,
+      "std": 0.017408631088774898,
+      "min": 0.0,
+      "max": 0.03962479531764984
+    }
+  },
+  "mr_rule": "MR-SADP-1",
+  "mr_compare": {
+    "mr_id": "MR-SADP1-SEMANTIC-AGNOSTIC-DECISIVENESS",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 4,
+    "violation_rate_percent": 16.0,
+    "config": {
+      "path_length_ratio_threshold": 1.15,
+      "metric": "path_len_ratio = path_length_f / path_length_s",
+      "violation_rule": "path_len_ratio > threshold"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 120,
+        "mr_point_count": 400,
+        "base_path_len_m": 0.5567168217106689,
+        "mr_path_len_m": 1.331866978518022,
+        "path_len_ratio": 2.392359861563885,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length ratio (2.392 > 1.150)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 102,
+        "mr_point_count": 151,
+        "base_path_len_m": 0.6393726601637407,
+        "mr_path_len_m": 0.7947224594399749,
+        "path_len_ratio": 1.2429722272398225,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length ratio (1.243 > 1.150)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 93,
+        "mr_point_count": 106,
+        "base_path_len_m": 0.5873697723753016,
+        "mr_path_len_m": 0.5780363417763704,
+        "path_len_ratio": 0.9841097873300712,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 110,
+        "mr_point_count": 111,
+        "base_path_len_m": 0.42422956648502086,
+        "mr_path_len_m": 0.43047241022279714,
+        "path_len_ratio": 1.0147157205225033,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 89,
+        "mr_point_count": 86,
+        "base_path_len_m": 0.4680058825336413,
+        "mr_path_len_m": 0.44655417248505913,
+        "path_len_ratio": 0.954163588858223,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 95,
+        "mr_point_count": 95,
+        "base_path_len_m": 0.5773481172991962,
+        "mr_path_len_m": 0.5863071236392428,
+        "path_len_ratio": 1.0155175120029079,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 149,
+        "mr_point_count": 101,
+        "base_path_len_m": 0.7735822214390119,
+        "mr_path_len_m": 0.6163115107007211,
+        "path_len_ratio": 0.7966981319119033,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 148,
+        "mr_point_count": 132,
+        "base_path_len_m": 0.831102564366298,
+        "mr_path_len_m": 0.7551484448994157,
+        "path_len_ratio": 0.9086104137763116,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 113,
+        "base_path_len_m": 1.3025756019133126,
+        "mr_path_len_m": 0.723191854977857,
+        "path_len_ratio": 0.5552014439051239,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 85,
+        "mr_point_count": 86,
+        "base_path_len_m": 0.42480201988452443,
+        "mr_path_len_m": 0.4275732120694388,
+        "path_len_ratio": 1.0065234910739542,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 169,
+        "mr_point_count": 400,
+        "base_path_len_m": 0.7866651942671481,
+        "mr_path_len_m": 1.236007689501837,
+        "path_len_ratio": 1.571199156272947,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length ratio (1.571 > 1.150)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 77,
+        "mr_point_count": 77,
+        "base_path_len_m": 0.45851472487469175,
+        "mr_path_len_m": 0.48517016445202477,
+        "path_len_ratio": 1.0581343152820615,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 120,
+        "mr_point_count": 131,
+        "base_path_len_m": 0.7518644486918711,
+        "mr_path_len_m": 0.7789580887793413,
+        "path_len_ratio": 1.0360352722284036,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 95,
+        "base_path_len_m": 0.6595405234712888,
+        "mr_path_len_m": 0.5827247306419379,
+        "path_len_ratio": 0.8835313523647423,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 93,
+        "mr_point_count": 95,
+        "base_path_len_m": 0.5228529494979014,
+        "mr_path_len_m": 0.5197154378017648,
+        "path_len_ratio": 0.993999246443671,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_path_len_m": 1.4207625214828923,
+        "mr_path_len_m": 1.3598070804872386,
+        "path_len_ratio": 0.9570966716295186,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 116,
+        "mr_point_count": 117,
+        "base_path_len_m": 0.4704740828015359,
+        "mr_path_len_m": 0.4687623897319911,
+        "path_len_ratio": 0.9963617696869672,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 197,
+        "base_path_len_m": 1.4505106914676098,
+        "mr_path_len_m": 0.7793817235275657,
+        "path_len_ratio": 0.5373153938899936,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 78,
+        "mr_point_count": 91,
+        "base_path_len_m": 0.4703777517632378,
+        "mr_path_len_m": 0.47310365151893635,
+        "path_len_ratio": 1.005795129011694,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_path_len_m": 1.4171758103954533,
+        "mr_path_len_m": 1.2599374716697138,
+        "path_len_ratio": 0.8890481071068641,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 320,
+        "base_path_len_m": 1.497913476332672,
+        "mr_path_len_m": 1.1574068033295095,
+        "path_len_ratio": 0.7726793447130058,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 126,
+        "mr_point_count": 146,
+        "base_path_len_m": 0.7460751266171675,
+        "mr_path_len_m": 0.7929573261011693,
+        "path_len_ratio": 1.0628384432229685,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "base_path_len_m": 0.9927774082937583,
+        "mr_path_len_m": 1.4939973033426275,
+        "path_len_ratio": 1.5048663384779204,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Excessive path length ratio (1.505 > 1.150)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 112,
+        "base_path_len_m": 0.6894069987318512,
+        "mr_path_len_m": 0.6747552677290714,
+        "path_len_ratio": 0.9787473422379939,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 99,
+        "mr_point_count": 106,
+        "base_path_len_m": 0.535457066369884,
+        "mr_path_len_m": 0.5337629540717319,
+        "path_len_ratio": 0.9968361379379354,
+        "path_length_ratio_threshold": 1.15,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "semantic_agnostic_decisiveness_pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 16.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

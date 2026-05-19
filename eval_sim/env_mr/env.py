@@ -38,6 +38,31 @@ def _get_table_actor(env):
     return None
 
 
+def _build_visual_box(scene, half_size, rgba, name):
+    builder = scene.create_actor_builder()
+    material = sapien.render.RenderMaterial(base_color=np.array(rgba, dtype=np.float32).tolist())
+    builder.add_box_visual(
+        half_size=[half_size, half_size, half_size],
+        material=material,
+    )
+    actor = builder.build_kinematic(name=name)
+    actor.set_pose(sapien.Pose(p=[0.0, 0.0, half_size]))
+    return actor
+
+
+def _build_collision_box(scene, half_size, rgba, name):
+    builder = scene.create_actor_builder()
+    material = sapien.render.RenderMaterial(base_color=np.array(rgba, dtype=np.float32).tolist())
+    builder.add_box_collision(half_size=[half_size, half_size, half_size])
+    builder.add_box_visual(
+        half_size=[half_size, half_size, half_size],
+        material=material,
+    )
+    actor = builder.build_kinematic(name=name)
+    actor.set_pose(sapien.Pose(p=[0.0, 0.0, half_size]))
+    return actor
+
+
 @register_env("identity")
 def env_identity(env, cfg):
     # No-op mutation for environment.
@@ -127,7 +152,7 @@ def env_translate_cube_xy(env, cfg):
 
 @register_env("MR-SADP-1-joint_reset_noise")
 def env_joint_reset_noise(env, cfg):
-    scale = float(cfg.get("scale", 0.05))
+    scale = float(cfg.get("scale", 0.1))
     num_joints = int(cfg.get("num_joints", 7))
     if scale <= 0 or num_joints <= 0:
         return env
@@ -163,7 +188,7 @@ def env_translate_cube_xy_and_joint_reset_noise(env, cfg):
     env_joint_reset_noise(env, cfg)
     return env
 
-
+@register_env("MR-SADP-2")
 @register_env("MR-BG-1-checkerboard_table")
 def env_checkerboard_table(env, cfg):
     table = _get_table_actor(env)
@@ -191,7 +216,7 @@ def env_checkerboard_table(env, cfg):
     )
     return env
 
-
+@register_env("MR-SADP-3")
 @register_env("MR-BG-1-darken")
 def env_darken_scene(env, cfg):
     ambient = float(cfg.get("ambient", 0.08))
@@ -210,6 +235,46 @@ def env_darken_scene(env, cfg):
             base_color[:3] *= dark_scale
             material.set_base_color(base_color)
             material.set_base_color_texture(None)
+
+    env.unwrapped.scene.update_render(
+        update_sensors=True,
+        update_human_render_cameras=True,
+    )
+    return env
+
+
+@register_env("MR-CMSI1")
+@register_env("MR-CMSI-1")
+def env_cmsi1_add_blue_cube(env, cfg):
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR-CMSI-1 requires env.unwrapped.scene")
+
+    runtime = getattr(env.unwrapped, "_mr_cmsi1_runtime", None)
+    if runtime is None:
+        runtime = {}
+        env.unwrapped._mr_cmsi1_runtime = runtime
+
+    distractor = runtime.get("blue_cube")
+    if distractor is None:
+        half_size = float(cfg.get("blue_cube_half_size", getattr(env.unwrapped, "cube_half_size", 0.02)))
+        rgba = cfg.get("blue_cube_rgba", [0.0, 0.0, 1.0, 1.0])
+        distractor = _build_collision_box(scene, half_size=half_size, rgba=rgba, name="mr_cmsi1_blue_cube")
+        runtime["blue_cube"] = distractor
+    else:
+        half_size = float(cfg.get("blue_cube_half_size", getattr(env.unwrapped, "cube_half_size", 0.02)))
+
+    spawn_half = float(getattr(env.unwrapped, "cube_spawn_half_size", half_size))
+    spawn_center = np.asarray(getattr(env.unwrapped, "cube_spawn_center", [0.0, 0.0, 0.0]), dtype=np.float32)
+    pos = np.array(
+        [
+            spawn_center[0] + spawn_half * 1.0,
+            spawn_center[1] - spawn_half * 4.0,
+            half_size,
+        ],
+        dtype=np.float32,
+    )
+    distractor.set_pose(Pose.create_from_pq(pos))
 
     env.unwrapped.scene.update_render(
         update_sensors=True,

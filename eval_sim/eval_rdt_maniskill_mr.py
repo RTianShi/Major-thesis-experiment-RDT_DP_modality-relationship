@@ -18,7 +18,7 @@ import re
 
 from eval_sim.mr import get_lang, get_vision, get_proprio  # registers MRs
 from eval_sim.env_mr import get_env  # registers env MRs
-from eval_sim.grasp_event import detect_grasp_event_index
+from scripts.grasp_event import detect_grasp_event_index
 from eval_sim.custom_envs import (
     pickcube_blue,
     pickcube_blue_cylinder,
@@ -261,6 +261,18 @@ def _get_cube_goal_xyz(env):
     return cube_pos, goal_pos, cube_name, goal_name
 
 
+def _get_named_actor_xyz(env, attr_names, keywords):
+    for name in attr_names:
+        candidate = getattr(env.unwrapped, name, None)
+        if candidate is not None:
+            pos = _pose_to_xyz(candidate)
+            if pos is not None:
+                return pos
+    scene = getattr(env.unwrapped, "scene", None)
+    actor, _ = _find_actor_by_keywords(scene, keywords)
+    return _pose_to_xyz(actor)
+
+
 def _refresh_obs(env):
     return env.get_obs()
 
@@ -495,6 +507,13 @@ for episode in tqdm.trange(total_episodes):
         cube_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
     if goal_pos is None:
         goal_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
+    red_sphere_initial = _get_named_actor_xyz(env, ["red_sphere"], ["red_sphere", "sphere"])
+    blue_cube_initial = _get_named_actor_xyz(env, ["blue_cube", "cube"], ["blue_cube", "cube"])
+    cmsi1_blue_cube_initial = _get_named_actor_xyz(
+        env,
+        ["mr_cmsi1_blue_cube"],
+        ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
+    )
     red_cube_initial = cube_pos.copy()
     green_goal = goal_pos.copy()
 
@@ -600,6 +619,13 @@ for episode in tqdm.trange(total_episodes):
         final_cube_pos, _, _, _ = _get_cube_goal_xyz(env)
         if final_cube_pos is None:
             final_cube_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
+        red_sphere_final = _get_named_actor_xyz(env, ["red_sphere"], ["red_sphere", "sphere"])
+        blue_cube_final = _get_named_actor_xyz(env, ["blue_cube", "cube"], ["blue_cube", "cube"])
+        cmsi1_blue_cube_final = _get_named_actor_xyz(
+            env,
+            ["mr_cmsi1_blue_cube"],
+            ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
+        )
 
         eef_arr = np.stack(eef_traj, axis=0)
         diffs = np.diff(eef_arr, axis=0)
@@ -621,8 +647,19 @@ for episode in tqdm.trange(total_episodes):
         result = {
             "episode_id": int(episode + 1),
             "seed": int(episode + base_seed),
+            "goal_point": None if np.any(np.isnan(green_goal)) else green_goal.tolist(),
             "metrics": {
                 "env_success": bool(info["success"]),
+            },
+            "positions": {
+                "red_sphere_initial": None if red_sphere_initial is None else red_sphere_initial.tolist(),
+                "blue_cube_initial": None if blue_cube_initial is None else blue_cube_initial.tolist(),
+                "cmsi1_blue_cube_initial": None if cmsi1_blue_cube_initial is None else cmsi1_blue_cube_initial.tolist(),
+                "red_cube_initial": None if red_cube_initial is None else red_cube_initial.tolist(),
+                "red_sphere_final": None if red_sphere_final is None else red_sphere_final.tolist(),
+                "blue_cube_final": None if blue_cube_final is None else blue_cube_final.tolist(),
+                "cmsi1_blue_cube_final": None if cmsi1_blue_cube_final is None else cmsi1_blue_cube_final.tolist(),
+                "red_cube_final": None if final_cube_pos is None else final_cube_pos.tolist(),
             },
             "mr_eval": {
                 "mr_type": args.mr_type,
@@ -631,6 +668,7 @@ for episode in tqdm.trange(total_episodes):
                 "grasp_frame_index": grasp_frame_index,
                 "initial_cube_yaw_deg": initial_cube_yaw_deg,
                 "initial_goal_pos": None if np.any(np.isnan(green_goal)) else green_goal.tolist(),
+                "goal_point": None if np.any(np.isnan(green_goal)) else green_goal.tolist(),
                 "eef_yaw_at_grasp": eef_yaw_at_grasp,
                 "gripper_fully_closed_frame_index": gripper_fully_closed_frame_index,
                 "gripper_fully_opened_frame_index": gripper_fully_opened_frame_index,

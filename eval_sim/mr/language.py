@@ -73,7 +73,7 @@ def lang_global_language_deprivation(text_embed, cfg):
     if encoder is None:
         raise ValueError("MR-GDIP2 requires cfg['encoder'] (text encoder) to be provided")
 
-    mode = str(cfg.get("mode", "empty")).strip().lower()
+    mode = str(cfg.get("mode", "do_nothing")).strip().lower()
     if mode == "empty":
         mutated = ""
     elif mode in {"do_nothing", "donothing", "noop"}:
@@ -117,6 +117,20 @@ def lang_replace_blue_cylinder_with_blue_triangular_prism(text_embed, cfg):
     if encoder is None:
         raise ValueError(
             "MR-JSAP-3 requires cfg['encoder'] (text encoder) to be provided"
+        )
+    mutated = cfg.get(
+        "mutated_text",
+        "Grasp a blue cube and move it to a target goal position.",
+    )
+    return encoder([str(mutated)])
+
+
+@register_language("MR-DCRB1")
+def lang_dcrb1_pick_blue_cube(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError(
+            "MR-DCRB1 requires cfg['encoder'] (text encoder) to be provided"
         )
     mutated = cfg.get(
         "mutated_text",

@@ -1,0 +1,489 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCube-v1_MR-SDPP-2_20260518_145800",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 84.0,
+    "success_count": 21,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 87.4,
+      "median": 1.0,
+      "std": 144.11384388739341,
+      "min": 1.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.40755296222865584,
+      "median": 0.0,
+      "std": 0.6354924124544097,
+      "min": 0.0,
+      "max": 2.254617929458618
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.15457872947870066,
+      "median": 0.0,
+      "std": 0.22340024662247762,
+      "min": 0.0,
+      "max": 0.6883934268544323
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.04515986180055551,
+      "median": 0.0,
+      "std": 0.09564737444377881,
+      "min": 0.0,
+      "max": 0.33930303118575134
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.06269533342075809,
+      "median": 0.07969517260789871,
+      "std": 0.022794847309610698,
+      "min": 0.010276831799419597,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0770817556977272,
+      "median": 0.07999961823225021,
+      "std": 0.009783404127245543,
+      "min": 0.0414904560893774,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.052413202226161956,
+      "median": 0.07969517260789871,
+      "std": 0.03352891406911276,
+      "min": 0.0,
+      "max": 0.07999999821186066
+    }
+  },
+  "mr_rule": "MR-SDPP-2",
+  "mr_compare": {
+    "mr_id": "MR-SDPP-2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 4,
+    "violation_rate_percent": 16.0,
+    "config": {
+      "path_length_threshold_m": 0.8
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": true,
+        "followup_path_length_m": 0.03855378374856314,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.25183744102060096,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.48324865939114986,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": false,
+        "followup_path_length_m": 1.0422756897674315,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Macro-Action Trigger (Robot executed full task sequence despite goal already met)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": false,
+        "followup_path_length_m": 1.554167351319526,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Macro-Action Trigger (Robot executed full task sequence despite goal already met)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.7233102494306021,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": false,
+        "followup_path_length_m": 0.8532911775689811,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Macro-Action Trigger (Robot executed full task sequence despite goal already met)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.3812178142189825,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0014411530765941604,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.7586545492934067,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": false,
+        "followup_path_length_m": 1.1807983622008718,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Macro-Action Trigger (Robot executed full task sequence despite goal already met)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": true,
+        "followup_path_length_m": 0.0,
+        "path_length_threshold_m": 0.8,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Stationary_After_Already_Satisfied"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 16.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

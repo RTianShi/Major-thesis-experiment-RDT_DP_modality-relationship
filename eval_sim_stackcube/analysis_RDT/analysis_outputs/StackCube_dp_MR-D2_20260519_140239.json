@@ -1,0 +1,769 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_115430",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCubeShapeDistractor-v1_20260519_135710",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.7422346210479736,
+      "median": 1.7247390747070312,
+      "std": 0.19387255911803392,
+      "min": 1.3346868753433228,
+      "max": 2.04093074798584
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.089108204755048,
+      "median": 3.3899168787763645e-06,
+      "std": 0.2729013685999379,
+      "min": 1.5071639327748382e-07,
+      "max": 1.200303371270587
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.014049591646403507,
+      "median": 9.362288968988903e-07,
+      "std": 0.03758873521333606,
+      "min": 3.725290298461914e-09,
+      "max": 0.17072985445928762
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.022238911760816698,
+      "median": 0.020293178543797693,
+      "std": 0.012423550815171365,
+      "min": 0.007389215550883819,
+      "max": 0.053675930554309165
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998420476913,
+      "median": 0.07999999821186066,
+      "std": 4.6028430273383145e-08,
+      "min": 0.07999981567263603,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.003065755218267441,
+      "median": 0.0,
+      "std": 0.010406888021104635,
+      "min": 0.0,
+      "max": 0.03996695205569267
+    }
+  },
+  "mr_rule": "MR-D2",
+  "mr_compare": {
+    "mr_id": "MR-D2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 24,
+    "violation_rate_percent": 96.0,
+    "config": {
+      "distance_thresh_m": 0.025,
+      "metric": "dist(Pgrasp_f, Pred_cube)",
+      "violation_rule": "distance > distance_thresh_m"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 58,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          0.09866346418857574,
+          -0.11254291981458664,
+          0.019882217049598694
+        ],
+        "red_cube_pos": [
+          0.060943763703107834,
+          -0.22651182115077972,
+          0.019999902695417404
+        ],
+        "distance_m": 0.12004874062814468,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.1200 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 53,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          0.02762993983924389,
+          0.20004193484783173,
+          0.020345501601696014
+        ],
+        "red_cube_pos": [
+          0.03240451589226723,
+          0.20149806141853333,
+          0.020060399547219276
+        ],
+        "distance_m": 0.004999816422377323,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "grasp_near_red_cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 54,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          0.03135014697909355,
+          0.03286173194646835,
+          0.020683743059635162
+        ],
+        "red_cube_pos": [
+          0.025433048605918884,
+          -0.0898643285036087,
+          0.02000000700354576
+        ],
+        "distance_m": 0.12287052316055382,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.1229 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 50,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.08885812759399414,
+          0.0815788209438324,
+          0.02118118852376938
+        ],
+        "red_cube_pos": [
+          -0.06160397455096245,
+          0.033772680908441544,
+          0.02000001259148121
+        ],
+        "distance_m": 0.055041902762889755,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0550 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 48,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.1050458773970604,
+          0.12998856604099274,
+          0.018459342420101166
+        ],
+        "red_cube_pos": [
+          -0.08424265682697296,
+          0.06931987404823303,
+          0.019999930635094643
+        ],
+        "distance_m": 0.06415479394595723,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0642 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 41,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.055194150656461716,
+          0.1580151915550232,
+          0.02004033327102661
+        ],
+        "red_cube_pos": [
+          -0.028932854533195496,
+          0.09311702847480774,
+          0.019999921321868896
+        ],
+        "distance_m": 0.07001020553023504,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0700 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 59,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          0.02729431726038456,
+          0.20072411000728607,
+          0.048068344593048096
+        ],
+        "red_cube_pos": [
+          0.03764041140675545,
+          0.1777120679616928,
+          0.019987136125564575
+        ],
+        "distance_m": 0.0377511590840333,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0378 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 52,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          0.062143925577402115,
+          0.2534830868244171,
+          0.04821644723415375
+        ],
+        "red_cube_pos": [
+          0.082267165184021,
+          0.23131540417671204,
+          0.019969003275036812
+        ],
+        "distance_m": 0.04116149920080914,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0412 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "grasp_frame_index": 55,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          0.04218171909451485,
+          0.04394384101033211,
+          0.01900598406791687
+        ],
+        "red_cube_pos": [
+          0.0814206674695015,
+          -0.17333917319774628,
+          0.019999926909804344
+        ],
+        "distance_m": 0.22079988961794297,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.2208 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 44,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.07078318297863007,
+          0.028734540566802025,
+          0.020421504974365234
+        ],
+        "red_cube_pos": [
+          -0.06870424747467041,
+          -0.1413143426179886,
+          0.019999917596578598
+        ],
+        "distance_m": 0.17006211330317314,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.1701 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 54,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.03808467835187912,
+          0.26524749398231506,
+          0.020696133375167847
+        ],
+        "red_cube_pos": [
+          -0.11998573690652847,
+          0.26025301218032837,
+          0.01999993436038494
+        ],
+        "distance_m": 0.0820561571968287,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0821 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 51,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          -0.04226517677307129,
+          0.2158595472574234,
+          0.04768254607915878
+        ],
+        "red_cube_pos": [
+          -0.029153501614928246,
+          0.19036899507045746,
+          0.0199823509901762
+        ],
+        "distance_m": 0.03986207576402406,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0399 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 53,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          -0.01196996308863163,
+          0.20670852065086365,
+          0.019130103290081024
+        ],
+        "red_cube_pos": [
+          -0.0012958463048562407,
+          0.1603616178035736,
+          0.01999998837709427
+        ],
+        "distance_m": 0.04756814977182132,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0476 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 52,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.09548188745975494,
+          0.0943012535572052,
+          0.01989714801311493
+        ],
+        "red_cube_pos": [
+          -0.10378968715667725,
+          0.009849955327808857,
+          0.02000000886619091
+        ],
+        "distance_m": 0.08485901183015107,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0849 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 50,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.07635750621557236,
+          0.07960323989391327,
+          0.02126888930797577
+        ],
+        "red_cube_pos": [
+          -0.040020618587732315,
+          -0.029941856861114502,
+          0.019999928772449493
+        ],
+        "distance_m": 0.11542143599170561,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.1154 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "grasp_frame_index": 43,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          0.030723679810762405,
+          0.019455324858427048,
+          0.049653418362140656
+        ],
+        "red_cube_pos": [
+          -0.006876051891595125,
+          -0.28058239817619324,
+          0.019999923184514046
+        ],
+        "distance_m": 0.30383499608198244,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.3038 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 53,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.10322863608598709,
+          0.11741602420806885,
+          0.01907356083393097
+        ],
+        "red_cube_pos": [
+          -0.10690239816904068,
+          0.029854541644454002,
+          0.019999947398900986
+        ],
+        "distance_m": 0.0876434136067786,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0876 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": false,
+        "grasp_frame_index": 49,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          -0.032547928392887115,
+          0.2251465618610382,
+          0.022366628050804138
+        ],
+        "red_cube_pos": [
+          -0.04479770362377167,
+          0.1816650778055191,
+          0.019999951124191284
+        ],
+        "distance_m": 0.0452360211397125,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0452 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 37,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.0031234202906489372,
+          5.536060780286789e-05,
+          0.019602343440055847
+        ],
+        "red_cube_pos": [
+          0.013927072286605835,
+          -0.06536825001239777,
+          0.0199999138712883
+        ],
+        "distance_m": 0.06761010417059302,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0676 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "grasp_frame_index": 52,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.059863463044166565,
+          0.071135014295578,
+          0.02013567090034485
+        ],
+        "red_cube_pos": [
+          -0.04298898205161095,
+          -0.25772562623023987,
+          0.019999919459223747
+        ],
+        "distance_m": 0.3292933151830949,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.3293 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "grasp_frame_index": 56,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.03647790476679802,
+          0.0026123300194740295,
+          0.020902618765830994
+        ],
+        "red_cube_pos": [
+          -0.005666992627084255,
+          -0.2510325610637665,
+          0.01999998837709427
+        ],
+        "distance_m": 0.25551097397397393,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.2555 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 59,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          -0.003749547526240349,
+          0.2165210247039795,
+          0.02290423959493637
+        ],
+        "red_cube_pos": [
+          -0.05985620245337486,
+          0.25435909628868103,
+          0.020000126212835312
+        ],
+        "distance_m": 0.06773559081382287,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0677 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "grasp_frame_index": 54,
+        "grasp_frame_index_source": "annotated",
+        "grasp_point": [
+          0.09790957719087601,
+          0.10222189128398895,
+          0.047448061406612396
+        ],
+        "red_cube_pos": [
+          0.12276653200387955,
+          0.0992923304438591,
+          0.019962629303336143
+        ],
+        "distance_m": 0.03717390895770219,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0372 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 50,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          0.07593707740306854,
+          0.03282732889056206,
+          0.019227199256420135
+        ],
+        "red_cube_pos": [
+          0.1133153960108757,
+          -0.11803285032510757,
+          0.019999945536255836
+        ],
+        "distance_m": 0.15542370961904012,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.1554 > 0.0250)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "grasp_frame_index": 43,
+        "grasp_frame_index_source": "inferred_from_gripper_signal",
+        "grasp_point": [
+          0.02134573832154274,
+          0.1448124796152115,
+          0.022449932992458344
+        ],
+        "red_cube_pos": [
+          0.04147784784436226,
+          0.07997438311576843,
+          0.019999910145998
+        ],
+        "distance_m": 0.06793587567300555,
+        "distance_thresh_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "grasp_far_from_red_cube(0.0679 > 0.0250)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 24,
+  "followup_mr_violation_rate_percent": 96.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

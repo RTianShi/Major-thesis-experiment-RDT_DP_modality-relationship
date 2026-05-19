@@ -1,0 +1,971 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCube-v1_MR-CMSI-1_20260518_152714",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 8.0,
+    "success_count": 2,
+    "success_episode_ids": [
+      18,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 373.6,
+      "median": 400.0,
+      "std": 89.52720256994517,
+      "min": 69.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.4966400003433227,
+      "median": 1.494246244430542,
+      "std": 0.5020942392265162,
+      "min": 0.43934452533721924,
+      "max": 2.797928810119629
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.06994798760471331,
+      "median": 0.024250110341673688,
+      "std": 0.13201967440416498,
+      "min": 1.901267030007133e-07,
+      "max": 0.6702935767078535
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.03734326983010241,
+      "median": 0.017031530974076513,
+      "std": 0.059519203076779194,
+      "min": 3.166496753692627e-08,
+      "max": 0.2719487636001576
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.01942059331104826,
+      "median": 0.015761161763948622,
+      "std": 0.015313613812105343,
+      "min": 0.007180010691517964,
+      "max": 0.06452729728754977
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999716877937,
+      "median": 0.07999999821186066,
+      "std": 3.075565016351684e-09,
+      "min": 0.07999998703598976,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.004400541186332703,
+      "median": 0.0,
+      "std": 0.011916730007122917,
+      "min": 0.0,
+      "max": 0.03672415390610695
+    }
+  },
+  "mr_rule": "MR-CMSI-1",
+  "mr_compare": {
+    "mr_id": "MR-CMSI1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 22,
+    "violation_rate_percent": 88.0,
+    "config": {
+      "blue_mismatch_threshold_m": 0.04,
+      "red_drift_threshold_m": 0.025
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 52,
+        "followup_close_frame_index": 53,
+        "followup_probe_frame_index": 52,
+        "followup_grasp_point": [
+          0.07524249702692032,
+          -0.09384769201278687,
+          0.04910904914140701
+        ],
+        "red_cube_center": [
+          0.04747920483350754,
+          -0.06759555637836456,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.048034485390470116,
+        "dist_to_blue_cube_m": 0.3085279730116945,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 56,
+        "followup_close_frame_index": 56,
+        "followup_probe_frame_index": 56,
+        "followup_grasp_point": [
+          0.10876592993736267,
+          0.003969711251556873,
+          0.048951320350170135
+        ],
+        "red_cube_center": [
+          0.08134449273347855,
+          0.03557664901018143,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0508833244659466,
+        "dist_to_blue_cube_m": 0.40510067008313555,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          -0.002301805652678013,
+          -0.019039211794734,
+          0.02041778713464737
+        ],
+        "red_cube_center": [
+          -0.01728055626153946,
+          -0.017892852425575256,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.015028361722727233,
+        "dist_to_blue_cube_m": 0.3944578063399543,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Target_Locked_On_Red_Cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.013978111557662487,
+          0.007591760251671076,
+          0.0194147527217865
+        ],
+        "red_cube_center": [
+          -0.025812998414039612,
+          0.032259680330753326,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.046820735018381375,
+        "dist_to_blue_cube_m": 0.4165707094183804,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 36,
+        "followup_close_frame_index": 37,
+        "followup_probe_frame_index": 36,
+        "followup_grasp_point": [
+          0.0079087745398283,
+          -0.04291752725839615,
+          0.019982069730758667
+        ],
+        "red_cube_center": [
+          -0.017325758934020996,
+          -0.046728502959012985,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.025520688409837948,
+        "dist_to_blue_cube_m": 0.3687664450552694,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 37,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 37,
+        "followup_grasp_point": [
+          0.013300567865371704,
+          -0.05481629818677902,
+          0.019551895558834076
+        ],
+        "red_cube_center": [
+          -0.017235681414604187,
+          -0.02174931764602661,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04501209303465995,
+        "dist_to_blue_cube_m": 0.3559055839691618,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 51,
+        "followup_close_frame_index": 52,
+        "followup_probe_frame_index": 51,
+        "followup_grasp_point": [
+          0.0635090321302414,
+          -0.026046043261885643,
+          0.017678186297416687
+        ],
+        "red_cube_center": [
+          0.04252726584672928,
+          0.006092503666877747,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0384514178134161,
+        "dist_to_blue_cube_m": 0.37573733894781747,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 38,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          0.045140404254198074,
+          0.03205729275941849,
+          0.04434029757976532
+        ],
+        "red_cube_center": [
+          -0.00238645076751709,
+          0.05759351700544357,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.059189110527459884,
+        "dist_to_blue_cube_m": 0.4362058400503629,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 56,
+        "followup_close_frame_index": 56,
+        "followup_probe_frame_index": 56,
+        "followup_grasp_point": [
+          0.10284720361232758,
+          -0.0435829795897007,
+          0.04912655055522919
+        ],
+        "red_cube_center": [
+          0.0740465447306633,
+          -0.019009694457054138,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04776693697020799,
+        "dist_to_blue_cube_m": 0.35761649741055,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          -0.003327007405459881,
+          -0.09860778599977493,
+          0.018503956496715546
+        ],
+        "red_cube_center": [
+          -0.0698588639497757,
+          -0.07567298412322998,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.07038985166326138,
+        "dist_to_blue_cube_m": 0.3186157233486214,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 54,
+        "followup_probe_frame_index": 54,
+        "followup_grasp_point": [
+          -0.05421150475740433,
+          0.0347597599029541,
+          0.020349696278572083
+        ],
+        "red_cube_center": [
+          -0.09937979280948639,
+          0.08065038174390793,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.06439134807025854,
+        "dist_to_blue_cube_m": 0.4612996476917617,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.023871656507253647,
+          0.03924883157014847,
+          0.018164493143558502
+        ],
+        "red_cube_center": [
+          -0.0065927654504776,
+          0.07196759432554245,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.044743351743487286,
+        "dist_to_blue_cube_m": 0.44580089195245387,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 47,
+        "followup_close_frame_index": 47,
+        "followup_probe_frame_index": 47,
+        "followup_grasp_point": [
+          0.012263411656022072,
+          -0.05230623111128807,
+          0.020318739116191864
+        ],
+        "red_cube_center": [
+          -0.015268564224243164,
+          -0.030500411987304688,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.03512271399605321,
+        "dist_to_blue_cube_m": 0.358592766044569,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 49,
+        "followup_close_frame_index": 50,
+        "followup_probe_frame_index": 49,
+        "followup_grasp_point": [
+          -0.02333269640803337,
+          -0.09251793473958969,
+          0.01962140202522278
+        ],
+        "red_cube_center": [
+          -0.06768909096717834,
+          -0.0983361229300499,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04473795243631708,
+        "dist_to_blue_cube_m": 0.3312949166968961,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.053592532873153687,
+          -0.09563152492046356,
+          0.017550304532051086
+        ],
+        "red_cube_center": [
+          0.016685545444488525,
+          -0.09305556863546371,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.03707778684788737,
+        "dist_to_blue_cube_m": 0.3078958044529468,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 35,
+        "followup_close_frame_index": 36,
+        "followup_probe_frame_index": 35,
+        "followup_grasp_point": [
+          -0.04087872803211212,
+          -0.09557095915079117,
+          0.020101502537727356
+        ],
+        "red_cube_center": [
+          -0.0721929520368576,
+          -0.09502899646759033,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.031319078074318794,
+        "dist_to_blue_cube_m": 0.33544577993484925,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.017713729292154312,
+          0.01282348483800888,
+          0.02404852956533432
+        ],
+        "red_cube_center": [
+          -0.015744946897029877,
+          0.05180185288190842,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.05152850456746657,
+        "dist_to_blue_cube_m": 0.4209639601468697,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.056848883628845215,
+          0.05954955145716667,
+          0.018714606761932373
+        ],
+        "red_cube_center": [
+          0.03548455983400345,
+          0.060509152710437775,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.021424457995556402,
+        "dist_to_blue_cube_m": 0.4615728186646666,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Target_Locked_On_Red_Cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 33,
+        "followup_close_frame_index": 34,
+        "followup_probe_frame_index": 33,
+        "followup_grasp_point": [
+          -0.03263574838638306,
+          -0.10269349068403244,
+          0.01917080581188202
+        ],
+        "red_cube_center": [
+          -0.07040230184793472,
+          -0.08787957578897476,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04057649808870282,
+        "dist_to_blue_cube_m": 0.3255519831507356,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 51,
+        "followup_probe_frame_index": 51,
+        "followup_grasp_point": [
+          0.020715124905109406,
+          -0.08731412142515182,
+          0.020077981054782867
+        ],
+        "red_cube_center": [
+          -0.03522966057062149,
+          -0.09928542375564575,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.05721133788444617,
+        "dist_to_blue_cube_m": 0.3225810907722975,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 52,
+        "followup_close_frame_index": 53,
+        "followup_probe_frame_index": 52,
+        "followup_grasp_point": [
+          0.07310503721237183,
+          -0.10688275843858719,
+          0.019876621663570404
+        ],
+        "red_cube_center": [
+          0.04838285595178604,
+          -0.07766574621200562,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.03827316647251789,
+        "dist_to_blue_cube_m": 0.29434856058830355,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 60,
+        "followup_probe_frame_index": 60,
+        "followup_grasp_point": [
+          -0.012370596639811993,
+          0.036602672189474106,
+          0.020144999027252197
+        ],
+        "red_cube_center": [
+          -0.08829166740179062,
+          0.09703236073255539,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.09703492808214327,
+        "dist_to_blue_cube_m": 0.4508315327443547,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 58,
+        "followup_close_frame_index": 59,
+        "followup_probe_frame_index": 58,
+        "followup_grasp_point": [
+          0.09986104816198349,
+          -0.055621225386857986,
+          0.04800674319267273
+        ],
+        "red_cube_center": [
+          0.08766341954469681,
+          -0.024287961423397064,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04375995045460484,
+        "dist_to_blue_cube_m": 0.3455157615893838,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": true,
+        "followup_grasp_frame_index": 46,
+        "followup_close_frame_index": 46,
+        "followup_probe_frame_index": 46,
+        "followup_grasp_point": [
+          0.09730220586061478,
+          -0.0028046234510838985,
+          0.018585331737995148
+        ],
+        "red_cube_center": [
+          0.09237150102853775,
+          0.01418449729681015,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.01774664359686935,
+        "dist_to_blue_cube_m": 0.3972070634732701,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Target_Locked_On_Red_Cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 45,
+        "followup_close_frame_index": 45,
+        "followup_probe_frame_index": 45,
+        "followup_grasp_point": [
+          0.055592864751815796,
+          -0.03243280202150345,
+          0.017547011375427246
+        ],
+        "red_cube_center": [
+          0.027164705097675323,
+          0.002531290054321289,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.10000000149011612,
+          -0.4000000059604645,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.045129426619526104,
+        "dist_to_blue_cube_m": 0.37024810648509604,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 22,
+  "followup_mr_violation_rate_percent": 88.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

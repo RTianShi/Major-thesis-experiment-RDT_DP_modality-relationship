@@ -1,0 +1,984 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCube-v1_MR-LTSEP2_20260518_185933",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 60.0,
+    "success_count": 15,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      17,
+      18,
+      21,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 217.56,
+      "median": 118.0,
+      "std": 149.90238957401579,
+      "min": 53.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.8416177356243133,
+      "median": 0.7101402282714844,
+      "std": 0.41272593895943427,
+      "min": 0.2388419806957245,
+      "max": 1.8900067806243896
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3389360936577382,
+      "median": 0.25308749276077563,
+      "std": 0.23746766586762358,
+      "min": 0.019907867818667907,
+      "max": 0.8290149932187321
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1792992643395206,
+      "median": 0.16640827139205905,
+      "std": 0.0971818539723532,
+      "min": 0.019737233960198053,
+      "max": 0.33928853356034105
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04542706297738821,
+      "median": 0.050052188820082624,
+      "std": 0.01259234234340019,
+      "min": 0.007168018762022257,
+      "max": 0.058269518292576504
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799926270544529,
+      "median": 0.07999991625547409,
+      "std": 2.4651941908590012e-05,
+      "min": 0.07989219948649406,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025902248662896456,
+      "median": 0.032667696475982666,
+      "std": 0.013470063594245284,
+      "min": 0.0,
+      "max": 0.0377622377127409
+    }
+  },
+  "mr_rule": "MR-LTSEP-2",
+  "mr_compare": {
+    "mr_id": "MR-LTSEP-2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 25,
+    "violation_rate_percent": 100.0,
+    "config": {
+      "stop_ratio": 0.3,
+      "invariance_proxy": "post_disappearance_stop_response"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 43,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.0499768927693367,
+          -0.07378118485212326,
+          0.018521755933761597
+        ],
+        "goal_point": [
+          -0.05239424854516983,
+          0.0035987645387649536,
+          0.07847815006971359
+        ],
+        "final_point": [
+          -0.0526701882481575,
+          -0.013774598017334938,
+          0.06124012917280197
+        ],
+        "dist_rem_m": 0.14164136521354453,
+        "dist_actual_m": 0.12634109829015644,
+        "response_ratio": 0.8919788234155979,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8920 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_success": false,
+        "dst_success": false,
+        "disappear_frame": 36,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.06457492709159851,
+          0.03698747605085373,
+          0.018681757152080536
+        ],
+        "goal_point": [
+          -0.017152369022369385,
+          -0.04564018175005913,
+          0.1922023743391037
+        ],
+        "final_point": [
+          0.031653985381126404,
+          -0.14322061836719513,
+          0.2841363549232483
+        ],
+        "dist_rem_m": 0.20884464406043643,
+        "dist_actual_m": 0.32252889665073603,
+        "response_ratio": 1.5443484227318807,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.5443 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 43,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.011095917783677578,
+          -0.007173342164605856,
+          0.021343261003494263
+        ],
+        "goal_point": [
+          0.0966324582695961,
+          0.023454882204532623,
+          0.1852535754442215
+        ],
+        "final_point": [
+          0.0906301736831665,
+          0.014298085123300552,
+          0.16770491003990173
+        ],
+        "dist_rem_m": 0.1985197277731861,
+        "dist_actual_m": 0.17952980862117882,
+        "response_ratio": 0.904342407855285,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.9043 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 39,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.02477234974503517,
+          0.028918173164129257,
+          0.019916437566280365
+        ],
+        "goal_point": [
+          -0.023258566856384277,
+          0.09296587854623795,
+          0.1859484314918518
+        ],
+        "final_point": [
+          -0.026205148547887802,
+          0.07841376215219498,
+          0.16943670809268951
+        ],
+        "dist_rem_m": 0.17796354432930458,
+        "dist_actual_m": 0.15750611905565945,
+        "response_ratio": 0.8850471013558225,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8850 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 35,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.00955567229539156,
+          -0.02676224708557129,
+          0.04870128631591797
+        ],
+        "goal_point": [
+          -0.021875128149986267,
+          0.025947205722332,
+          0.030186224728822708
+        ],
+        "final_point": [
+          0.004169235937297344,
+          0.008135790005326271,
+          0.049435533583164215
+        ],
+        "dist_rem_m": 0.06410139731331664,
+        "dist_actual_m": 0.03531891573203968,
+        "response_ratio": 0.5509851144025282,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.5510 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 36,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.016795968636870384,
+          -0.02573556639254093,
+          0.01994995027780533
+        ],
+        "goal_point": [
+          -0.07572983205318451,
+          0.01901797205209732,
+          0.14714036881923676
+        ],
+        "final_point": [
+          -0.07481680810451508,
+          0.011794943362474442,
+          0.12475942820310593
+        ],
+        "dist_rem_m": 0.1471512216369031,
+        "dist_actual_m": 0.12553877344460385,
+        "response_ratio": 0.8531276332477337,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8531 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_success": false,
+        "dst_success": true,
+        "disappear_frame": 42,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.03940322995185852,
+          -0.01132590789347887,
+          0.017179764807224274
+        ],
+        "goal_point": [
+          0.005669735372066498,
+          -0.07478807866573334,
+          0.02451871708035469
+        ],
+        "final_point": [
+          0.006377966143190861,
+          -0.05568227544426918,
+          0.018826104700565338
+        ],
+        "dist_rem_m": 0.07224441844294224,
+        "dist_actual_m": 0.05532509220035068,
+        "response_ratio": 0.7658043817467471,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.7658 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 34,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.008743626065552235,
+          0.05508791655302048,
+          0.019454851746559143
+        ],
+        "goal_point": [
+          -0.05173049122095108,
+          0.08990371972322464,
+          0.08035660535097122
+        ],
+        "final_point": [
+          -0.03530460223555565,
+          0.08676913380622864,
+          0.06868983805179596
+        ],
+        "dist_rem_m": 0.08227414124965,
+        "dist_actual_m": 0.064290503639537,
+        "response_ratio": 0.7814181061392785,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.7814 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 44,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.06265987455844879,
+          -0.017038028687238693,
+          0.017407171428203583
+        ],
+        "goal_point": [
+          -0.08699151128530502,
+          -0.09565507620573044,
+          0.29240506887435913
+        ],
+        "final_point": [
+          -0.07545691728591919,
+          -0.09217798709869385,
+          0.3013891577720642
+        ],
+        "dist_rem_m": 0.3228002804293812,
+        "dist_actual_m": 0.32460442096074466,
+        "response_ratio": 1.0055890302479404,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.0056 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 44,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.0679781511425972,
+          -0.08311985433101654,
+          0.01906263828277588
+        ],
+        "goal_point": [
+          0.008456267416477203,
+          -0.05714334174990654,
+          0.30881091952323914
+        ],
+        "final_point": [
+          0.0044328803196549416,
+          -0.05105530098080635,
+          0.2965843379497528
+        ],
+        "dist_rem_m": 0.3007840853970551,
+        "dist_actual_m": 0.2885997000085473,
+        "response_ratio": 0.9594912564192896,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.9595 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 45,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.09545884281396866,
+          0.0768173411488533,
+          0.019885234534740448
+        ],
+        "goal_point": [
+          0.07322252541780472,
+          0.09180855005979538,
+          0.1573648303747177
+        ],
+        "final_point": [
+          0.07181501388549805,
+          0.07662561535835266,
+          0.14169910550117493
+        ],
+        "dist_rem_m": 0.21812560511200452,
+        "dist_actual_m": 0.2069280045178023,
+        "response_ratio": 0.9486644376828094,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.9487 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_success": false,
+        "dst_success": false,
+        "disappear_frame": 36,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.014646939933300018,
+          0.06399133056402206,
+          0.019543007016181946
+        ],
+        "goal_point": [
+          0.015177294611930847,
+          -0.06066220998764038,
+          0.17357118427753448
+        ],
+        "final_point": [
+          0.07227577269077301,
+          -0.12780116498470306,
+          0.28563815355300903
+        ],
+        "dist_rem_m": 0.20038131032790593,
+        "dist_actual_m": 0.33933250113891306,
+        "response_ratio": 1.693433886541744,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.6934 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 42,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.013824589550495148,
+          -0.029623419046401978,
+          0.019322015345096588
+        ],
+        "goal_point": [
+          -0.09418362379074097,
+          0.0059773921966552734,
+          0.18590377271175385
+        ],
+        "final_point": [
+          -0.1040593832731247,
+          0.014846624806523323,
+          0.17312824726104736
+        ],
+        "dist_rem_m": 0.1883466857487879,
+        "dist_actual_m": 0.18378318686601838,
+        "response_ratio": 0.9757707502809144,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.9758 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_success": false,
+        "dst_success": false,
+        "disappear_frame": 43,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.05602193996310234,
+          -0.08043041825294495,
+          0.02112790197134018
+        ],
+        "goal_point": [
+          -0.09314455091953278,
+          -0.021994397044181824,
+          0.15714335441589355
+        ],
+        "final_point": [
+          -0.13648976385593414,
+          -0.04663969948887825,
+          0.1187775656580925
+        ],
+        "dist_rem_m": 0.15262064120763633,
+        "dist_actual_m": 0.1309669430611247,
+        "response_ratio": 0.8581207759633748,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8581 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_success": true,
+        "dst_success": false,
+        "disappear_frame": 41,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.0166337788105011,
+          -0.08021208643913269,
+          0.020045876502990723
+        ],
+        "goal_point": [
+          -0.09643149375915527,
+          0.0882243886590004,
+          0.2212628275156021
+        ],
+        "final_point": [
+          -0.09754321724176407,
+          0.055624350905418396,
+          0.2851112186908722
+        ],
+        "dist_rem_m": 0.2857321532126658,
+        "dist_actual_m": 0.3189789331086895,
+        "response_ratio": 1.1163564531405,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.1164 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_success": true,
+        "dst_success": false,
+        "disappear_frame": 36,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.05016918480396271,
+          -0.08598583936691284,
+          0.020310379564762115
+        ],
+        "goal_point": [
+          0.0627836063504219,
+          -0.07301868498325348,
+          0.22075459361076355
+        ],
+        "final_point": [
+          0.07890096306800842,
+          -0.1175612136721611,
+          0.28659406304359436
+        ],
+        "dist_rem_m": 0.23044383929038964,
+        "dist_actual_m": 0.2975955433491301,
+        "response_ratio": 1.2914016025141832,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.2914 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 36,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.017538253217935562,
+          0.05157960578799248,
+          0.01944343000650406
+        ],
+        "goal_point": [
+          -0.03161062300205231,
+          -0.0700971856713295,
+          0.11148519814014435
+        ],
+        "final_point": [
+          -0.03804968297481537,
+          -0.05778557062149048,
+          0.12780994176864624
+        ],
+        "dist_rem_m": 0.1532154047488145,
+        "dist_actual_m": 0.15532147769462934,
+        "response_ratio": 1.0137458302529538,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.0137 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 42,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.030411846935749054,
+          0.07228252291679382,
+          0.02024783194065094
+        ],
+        "goal_point": [
+          0.03860337287187576,
+          -0.04839259386062622,
+          0.09442463517189026
+        ],
+        "final_point": [
+          0.041465260088443756,
+          -0.03691641613841057,
+          0.07701706141233444
+        ],
+        "dist_rem_m": 0.1418865146658138,
+        "dist_actual_m": 0.12356913711730395,
+        "response_ratio": 0.870901208676153,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8709 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_success": true,
+        "dst_success": false,
+        "disappear_frame": 29,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.05862428620457649,
+          -0.06962738931179047,
+          0.02146483212709427
+        ],
+        "goal_point": [
+          -0.08844082802534103,
+          -0.023827575147151947,
+          0.2169950306415558
+        ],
+        "final_point": [
+          -0.1317722350358963,
+          -0.05898251757025719,
+          0.1702580451965332
+        ],
+        "dist_rem_m": 0.2030239091209938,
+        "dist_actual_m": 0.16614257722856754,
+        "response_ratio": 0.8183399578300578,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8183 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_success": true,
+        "dst_success": false,
+        "disappear_frame": 41,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.013629935681819916,
+          -0.0768386572599411,
+          0.020816586911678314
+        ],
+        "goal_point": [
+          0.07992666214704514,
+          -0.02496989816427231,
+          0.04089989885687828
+        ],
+        "final_point": [
+          0.10612530261278152,
+          0.025698496028780937,
+          0.05034308135509491
+        ],
+        "dist_rem_m": 0.10884183288664673,
+        "dist_actual_m": 0.16039638018879593,
+        "response_ratio": 1.4736648210972398,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.4737 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 42,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.04218607395887375,
+          -0.0795343741774559,
+          0.02083175629377365
+        ],
+        "goal_point": [
+          -0.03928384929895401,
+          -0.07840043306350708,
+          0.2756739556789398
+        ],
+        "final_point": [
+          -0.05186626315116882,
+          -0.08532095700502396,
+          0.26631125807762146
+        ],
+        "dist_rem_m": 0.26755033321891986,
+        "dist_actual_m": 0.2629439340481684,
+        "response_ratio": 0.9827830557512992,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.9828 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_success": false,
+        "dst_success": false,
+        "disappear_frame": 60,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          -0.08195222914218903,
+          0.07713286578655243,
+          0.019514448940753937
+        ],
+        "goal_point": [
+          -0.03509046882390976,
+          0.014031469821929932,
+          0.11600862443447113
+        ],
+        "final_point": [
+          -0.0947251245379448,
+          -0.002798663452267647,
+          0.06875596195459366
+        ],
+        "dist_rem_m": 0.12445455659406056,
+        "dist_actual_m": 0.09474662435749051,
+        "response_ratio": 0.7612949413056057,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.7613 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_success": true,
+        "dst_success": true,
+        "disappear_frame": 51,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.08972810953855515,
+          -0.022904034703969955,
+          0.018577836453914642
+        ],
+        "goal_point": [
+          0.08503969758749008,
+          -0.03247777372598648,
+          0.2790752947330475
+        ],
+        "final_point": [
+          0.08016809821128845,
+          -0.04226980730891228,
+          0.28549015522003174
+        ],
+        "dist_rem_m": 0.2607154837277087,
+        "dist_actual_m": 0.26778463898115795,
+        "response_ratio": 1.0271144435013007,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(1.0271 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_success": false,
+        "dst_success": false,
+        "disappear_frame": 43,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.0964089184999466,
+          0.019796470180153847,
+          0.019781209528446198
+        ],
+        "goal_point": [
+          0.07016486674547195,
+          -0.002519175410270691,
+          0.12193125486373901
+        ],
+        "final_point": [
+          0.0832897275686264,
+          -0.032856397330760956,
+          0.0957617461681366
+        ],
+        "dist_rem_m": 0.10780245847201889,
+        "dist_actual_m": 0.09336744387563428,
+        "response_ratio": 0.8660975380247813,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.8661 >= 0.3000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_success": true,
+        "dst_success": false,
+        "disappear_frame": 39,
+        "disappear_frame_source": "fallback_annotated",
+        "disappear_point": [
+          0.023131471127271652,
+          -0.006183795165270567,
+          0.01942894607782364
+        ],
+        "goal_point": [
+          -0.07070840895175934,
+          0.09788217395544052,
+          0.13533887267112732
+        ],
+        "final_point": [
+          -0.11655361950397491,
+          0.0609687939286232,
+          0.08390746265649796
+        ],
+        "dist_rem_m": 0.181853677733349,
+        "dist_actual_m": 0.1678656423061589,
+        "response_ratio": 0.9230808218918691,
+        "stop_ratio": 0.3,
+        "is_halted": false,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "continues_transport(0.9231 >= 0.3000)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 25,
+  "followup_mr_violation_rate_percent": 100.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

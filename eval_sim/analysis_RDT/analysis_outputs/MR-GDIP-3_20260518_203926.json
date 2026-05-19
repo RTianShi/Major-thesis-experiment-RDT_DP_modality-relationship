@@ -1,0 +1,864 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCube-v1_MR-GDIP3_20260518_203318",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 80.0,
+    "success_count": 20,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 143.76,
+      "median": 80.0,
+      "std": 128.48292649219974,
+      "min": 65.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6891221880912781,
+      "median": 0.6089392900466919,
+      "std": 0.26179305904666467,
+      "min": 0.40343326330184937,
+      "max": 1.2410519123077393
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.2766709440598862,
+      "median": 0.2031674992383706,
+      "std": 0.18544030664721728,
+      "min": 0.08980640670766624,
+      "max": 0.6999528871562919
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.19579437388413934,
+      "median": 0.19193804734454845,
+      "std": 0.07255521699236413,
+      "min": 0.07021386330610883,
+      "max": 0.32659623053271414
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.054836144632152584,
+      "median": 0.05885223543271422,
+      "std": 0.01206903902429044,
+      "min": 0.008028661757416558,
+      "max": 0.06588469634016791
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999806284905,
+      "median": 0.07999999821186066,
+      "std": 7.300048299977713e-10,
+      "min": 0.07999999448657036,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.035504072979092596,
+      "median": 0.03666792996227741,
+      "std": 0.00727313121380066,
+      "min": 0.0,
+      "max": 0.03915388695895672
+    }
+  },
+  "mr_rule": "MR-GDIP-3",
+  "mr_compare": {
+    "mr_id": "MR-GDIP3",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 25,
+    "violation_rate_percent": 100.0,
+    "config": {
+      "path_length_threshold_m": 0.1,
+      "grasp_error_threshold_m": 0.04
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.04887400567531586,
+          -0.07156579941511154,
+          0.018591098487377167
+        ],
+        "red_cube_center": [
+          0.04747920483350754,
+          -0.06759555637836456,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3514432969494217,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.004437713529708972,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 39,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          0.07515978813171387,
+          0.045190777629613876,
+          0.018194913864135742
+        ],
+        "red_cube_center": [
+          0.08134449273347855,
+          0.03557664901018143,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.857169589584019,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.011573261185426348,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          -0.011390365660190582,
+          -0.0033877352252602577,
+          0.020063921809196472
+        ],
+        "red_cube_center": [
+          -0.01728055626153946,
+          -0.017892852425575256,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.38096241509694834,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.015655569500019294,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 38,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          -0.024997014552354813,
+          0.036733414977788925,
+          0.020596377551555634
+        ],
+        "red_cube_center": [
+          -0.025812998414039612,
+          0.032259680330753326,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3317693931095016,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.004586479921663186,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 36,
+        "followup_close_frame_index": 37,
+        "followup_probe_frame_index": 36,
+        "followup_grasp_point": [
+          0.004811633378267288,
+          -0.03205963596701622,
+          0.048403844237327576
+        ],
+        "red_cube_center": [
+          -0.017325758934020996,
+          -0.046728502959012985,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.6781440741552257,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.03888467808881071,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 34,
+        "followup_close_frame_index": 35,
+        "followup_probe_frame_index": 34,
+        "followup_grasp_point": [
+          -0.016130631789565086,
+          -0.023420188575983047,
+          0.01986471563577652
+        ],
+        "red_cube_center": [
+          -0.017235681414604187,
+          -0.02174931764602661,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.2884550908233771,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.002007796323490619,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 41,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          0.039548784494400024,
+          -0.004839921370148659,
+          0.018399856984615326
+        ],
+        "red_cube_center": [
+          0.04252726584672928,
+          0.006092503666877747,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.8517723486297951,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.01144332664024846,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 34,
+        "followup_close_frame_index": 35,
+        "followup_probe_frame_index": 34,
+        "followup_grasp_point": [
+          -0.005095670931041241,
+          0.058085884898900986,
+          0.018510624766349792
+        ],
+        "red_cube_center": [
+          -0.00238645076751709,
+          0.05759351700544357,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3049833989117913,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.003130580983133818,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.06871567666530609,
+          -0.007198350504040718,
+          0.018932461738586426
+        ],
+        "red_cube_center": [
+          0.0740465447306633,
+          -0.019009694457054138,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.8552320466705541,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.013002524266147729,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          -0.06902097165584564,
+          -0.07154422998428345,
+          0.018913447856903076
+        ],
+        "red_cube_center": [
+          -0.0698588639497757,
+          -0.07567298412322998,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.48375294439851985,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.004350777956217819,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 49,
+        "followup_close_frame_index": 50,
+        "followup_probe_frame_index": 49,
+        "followup_grasp_point": [
+          -0.1049715131521225,
+          0.0792340412735939,
+          0.02029980719089508
+        ],
+        "red_cube_center": [
+          -0.09937979280948639,
+          0.08065038174390793,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.43602553198078864,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.00577609222033902,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 33,
+        "followup_close_frame_index": 34,
+        "followup_probe_frame_index": 33,
+        "followup_grasp_point": [
+          -0.014251797460019588,
+          0.07410326600074768,
+          0.01999630033969879
+        ],
+        "red_cube_center": [
+          -0.0065927654504776,
+          0.07196759432554245,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.8574478213127563,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.00795121868090933,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 43,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          -0.014541665092110634,
+          -0.02391965687274933,
+          0.01991979032754898
+        ],
+        "red_cube_center": [
+          -0.015268564224243164,
+          -0.030500411987304688,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3512289067381864,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.006621265267747804,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": true,
+        "followup_grasp_frame_index": 45,
+        "followup_close_frame_index": 45,
+        "followup_probe_frame_index": 45,
+        "followup_grasp_point": [
+          -0.06250771880149841,
+          -0.07898645848035812,
+          0.021022073924541473
+        ],
+        "red_cube_center": [
+          -0.06768909096717834,
+          -0.0983361229300499,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3615538223644068,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.02005743672197376,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 39,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          0.019101301208138466,
+          -0.07755505293607712,
+          0.018361486494541168
+        ],
+        "red_cube_center": [
+          0.016685545444488525,
+          -0.09305556863546371,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.47532080282372763,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.015772970167319923,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 39,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          -0.06928998231887817,
+          -0.07929681241512299,
+          0.020494796335697174
+        ],
+        "red_cube_center": [
+          -0.0721929520368576,
+          -0.09502899646759033,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.43300608927722645,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.016005426332978932,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 33,
+        "followup_close_frame_index": 34,
+        "followup_probe_frame_index": 33,
+        "followup_grasp_point": [
+          -0.019318874925374985,
+          0.05400826781988144,
+          0.018700435757637024
+        ],
+        "red_cube_center": [
+          -0.015744946897029877,
+          0.05180185288190842,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3461553941463972,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.004396600333033346,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.03342258930206299,
+          0.07728330045938492,
+          0.01957816630601883
+        ],
+        "red_cube_center": [
+          0.03548455983400345,
+          0.060509152710437775,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.31512507039443166,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.01690567060090574,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 38,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          -0.06847970932722092,
+          -0.0805562436580658,
+          0.020193174481391907
+        ],
+        "red_cube_center": [
+          -0.07040230184793472,
+          -0.08787957578897476,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.4086185998045613,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.0075739601301618295,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 45,
+        "followup_close_frame_index": 45,
+        "followup_probe_frame_index": 45,
+        "followup_grasp_point": [
+          -0.02642066590487957,
+          -0.08195053040981293,
+          0.022079385817050934
+        ],
+        "red_cube_center": [
+          -0.03522966057062149,
+          -0.09928542375564575,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3365354783543142,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.019555581340572243,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.0407152995467186,
+          -0.07729896157979965,
+          0.018413424491882324
+        ],
+        "red_cube_center": [
+          0.04838285595178604,
+          -0.07766574621200562,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.5140069546024506,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.007838569551631425,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": true,
+        "followup_grasp_frame_index": 60,
+        "followup_close_frame_index": 60,
+        "followup_probe_frame_index": 60,
+        "followup_grasp_point": [
+          -0.07958202064037323,
+          0.0840878039598465,
+          0.018595881760120392
+        ],
+        "red_cube_center": [
+          -0.08829166740179062,
+          0.09703236073255539,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.3993499479362252,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.01566496228934929,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 51,
+        "followup_close_frame_index": 52,
+        "followup_probe_frame_index": 51,
+        "followup_grasp_point": [
+          0.08640147000551224,
+          -0.027815012261271477,
+          0.016636811196804047
+        ],
+        "red_cube_center": [
+          0.08766341954469681,
+          -0.024287961423397064,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.5063999064400659,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.005034246733267696,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": true,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.09522097557783127,
+          0.021426234394311905,
+          0.018761850893497467
+        ],
+        "red_cube_center": [
+          0.09237150102853775,
+          0.01418449729681015,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.35451327112321795,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.007880055424890507,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 41,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          0.02502100169658661,
+          -0.0042016999796032906,
+          0.019244574010372162
+        ],
+        "red_cube_center": [
+          0.027164705097675323,
+          0.002531290054321289,
+          0.019999999552965164
+        ],
+        "followup_path_length_m": 0.34894734187919313,
+        "path_length_threshold_m": 0.1,
+        "grasp_error_m": 0.007106285022370617,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Task Intent Collapse (Robot executed grasp-and-place behavior under empty instruction)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 25,
+  "followup_mr_violation_rate_percent": 100.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

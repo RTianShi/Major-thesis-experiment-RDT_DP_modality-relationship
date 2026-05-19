@@ -1,0 +1,943 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCubeRedSphereBlueCube-v1_20260518_143014",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.3180230641365052,
+      "median": 1.3061776161193848,
+      "std": 0.23819366303644074,
+      "min": 0.9758872985839844,
+      "max": 1.761182427406311
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.004000202245404615,
+      "median": 1.6025206438918384e-06,
+      "std": 0.01853443500721284,
+      "min": 1.0931792699831835e-07,
+      "max": 0.09466005838735557
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.0019709836395651044,
+      "median": 1.0583365560032367e-06,
+      "std": 0.008633938076575667,
+      "min": 1.5284493911573504e-08,
+      "max": 0.04396845002943465
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.011001281085452503,
+      "median": 0.008330405699671245,
+      "std": 0.008595996906663989,
+      "min": 0.007385516230133362,
+      "max": 0.04589146808255464
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999463558197,
+      "median": 0.07999999821186066,
+      "std": 1.0770148634667787e-08,
+      "min": 0.07999994605779648,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0016490493714809418,
+      "median": 0.0,
+      "std": 0.008078659041571226,
+      "min": 0.0,
+      "max": 0.041226234287023544
+    }
+  },
+  "mr_rule": "MR-SDPP-1",
+  "mr_compare": {
+    "mr_id": "MR-SDPP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 1,
+    "violation_rate_percent": 4.0,
+    "red_closer_count": 22,
+    "config": {
+      "grasp_error_threshold_m": 0.04
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          -0.005218444392085075,
+          -0.013550854288041592,
+          0.021533772349357605
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.13366080932783175,
+        "dist_to_blue_cube_m": 0.10658801373809478,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          0.0025317221879959106,
+          0.05638357996940613,
+          0.02079889178276062
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.06370481183601334,
+        "dist_to_blue_cube_m": 0.1764035549036942,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 40,
+        "followup_grasp_point": [
+          0.002103337086737156,
+          0.043432485312223434,
+          0.020574137568473816
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.07663480103958484,
+        "dist_to_blue_cube_m": 0.1634470251793261,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 40,
+        "followup_grasp_point": [
+          -0.010212432593107224,
+          0.02471446990966797,
+          0.02049349993467331
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.09586400813503733,
+        "dist_to_blue_cube_m": 0.1450752023849107,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.002649446949362755,
+          0.059621412307024,
+          0.01862446963787079
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.060594870767920785,
+        "dist_to_blue_cube_m": 0.17964621467565184,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.0027925530448555946,
+          0.03715798258781433,
+          0.019081681966781616
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.08298163033822469,
+        "dist_to_blue_cube_m": 0.15718547104522118,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          -0.010491273365914822,
+          0.024537701159715652,
+          0.019401639699935913
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.09610444839746614,
+        "dist_to_blue_cube_m": 0.14491918828273465,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          0.000525863841176033,
+          0.058639612048864365,
+          0.02057359367609024
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.06141059241691298,
+        "dist_to_blue_cube_m": 0.17864130423188462,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          -0.012538578361272812,
+          0.057305824011564255,
+          0.02028203010559082
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.06399345805988993,
+        "dist_to_blue_cube_m": 0.1777488389999542,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          0.0039708977565169334,
+          0.06054112687706947,
+          0.020594999194145203
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.05963983008166945,
+        "dist_to_blue_cube_m": 0.18058576793066983,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          -0.01811431720852852,
+          0.05323818325996399,
+          0.01924024522304535
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.06927773134667474,
+        "dist_to_blue_cube_m": 0.17418430734272208,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          -0.0066773127764463425,
+          0.038587696850299835,
+          0.0195792093873024
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.0817572686801933,
+        "dist_to_blue_cube_m": 0.15872876334121022,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 238,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 238,
+        "followup_grasp_point": [
+          0.03049589693546295,
+          -0.08086760342121124,
+          0.021058902144432068
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.203178642129531,
+        "dist_to_blue_cube_m": 0.04962323303326442,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          0.024603579193353653,
+          0.0784258022904396,
+          0.05362676829099655
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.05719920221915703,
+        "dist_to_blue_cube_m": 0.20275328267391962,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 47,
+        "followup_probe_frame_index": 47,
+        "followup_grasp_point": [
+          -0.00011924095451831818,
+          0.08458877354860306,
+          0.019806034862995148
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.035555174037243856,
+        "dist_to_blue_cube_m": 0.20458889756125104,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Color Bias (Model locked onto red sphere, error: 0.0356m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          0.00441338587552309,
+          0.060920845717191696,
+          0.021946661174297333
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.05925313199746296,
+        "dist_to_blue_cube_m": 0.18098513450237586,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          -0.014703096821904182,
+          0.044583868235349655,
+          0.020090311765670776
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.07689109095217002,
+        "dist_to_blue_cube_m": 0.16523933554957285,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 37,
+        "followup_probe_frame_index": 37,
+        "followup_grasp_point": [
+          -0.024144824594259262,
+          0.055850718170404434,
+          0.020286351442337036
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.06859640266481906,
+        "dist_to_blue_cube_m": 0.17750078503996072,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 40,
+        "followup_grasp_point": [
+          -0.004094379022717476,
+          0.0615307092666626,
+          0.022371917963027954
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.05861583465147294,
+        "dist_to_blue_cube_m": 0.1815923659452033,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          -0.003070347011089325,
+          0.045488499104976654,
+          0.01913411170244217
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.07467486517806089,
+        "dist_to_blue_cube_m": 0.1655192413008426,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 47,
+        "followup_probe_frame_index": 47,
+        "followup_grasp_point": [
+          -0.014897304587066174,
+          0.048668865114450455,
+          0.02018008381128311
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.07292470111652001,
+        "dist_to_blue_cube_m": 0.1693255659033399,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 51,
+        "followup_probe_frame_index": 51,
+        "followup_grasp_point": [
+          -0.016039427369832993,
+          0.028727196156978607,
+          0.019631527364253998
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.09273259443309173,
+        "dist_to_blue_cube_m": 0.1495900300186732,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          -0.015726584941148758,
+          0.024626698344945908,
+          0.019121207296848297
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.09673901314390008,
+        "dist_to_blue_cube_m": 0.14548188494813538,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          -0.005182076245546341,
+          0.06035473942756653,
+          0.025140151381492615
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.059908187677064635,
+        "dist_to_blue_cube_m": 0.18050237156758406,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 218,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 218,
+        "followup_grasp_point": [
+          0.03358883410692215,
+          -0.06170150637626648,
+          0.03939121216535568
+        ],
+        "red_sphere_center": [
+          0.0,
+          0.11999999731779099,
+          0.023000000044703484
+        ],
+        "blue_cube_center": [
+          0.0,
+          -0.11999999731779099,
+          0.019999999552965164
+        ],
+        "dist_to_red_sphere_m": 0.185505574191527,
+        "dist_to_blue_cube_m": 0.070021017911055,
+        "grasp_error_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Synergy_Failure_Protection_Triggered"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 1,
+  "followup_mr_violation_rate_percent": 4.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

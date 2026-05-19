@@ -2,46 +2,33 @@ import torch
 import sapien
 
 from mani_skill.envs.tasks.tabletop.pick_cube import PickCubeEnv
-from mani_skill.utils.building import actors
 from mani_skill.utils.registration import register_env
-from mani_skill.utils.structs.pose import Pose
+import numpy as np
 
 
 @register_env("PickCubeBlueCube-v1", max_episode_steps=50)
 class PickCubeBlueCubeEnv(PickCubeEnv):
-    def __init__(
-        self,
-        *args,
-        blue_cube_scale=1.0,
-        blue_cube_offset=(0.15, 0.15),
-        **kwargs,
-    ):
-        self.blue_cube_scale = float(blue_cube_scale)
-        self.blue_cube_offset = (float(blue_cube_offset[0]), float(blue_cube_offset[1]))
-        self.blue_cube_half_size = None
-        super().__init__(*args, **kwargs)
+    def _iter_render_materials(self, actor):
+        if actor is None:
+            return
+        for obj in getattr(actor, "_objs", []):
+            render_body = obj.find_component_by_type(sapien.render.RenderBodyComponent)
+            if render_body is None:
+                continue
+            for shape in render_body.render_shapes:
+                for visual_part in shape.parts:
+                    yield visual_part.material
+
+    def _set_actor_base_color(self, actor, rgba):
+        for material in self._iter_render_materials(actor):
+            material.set_base_color(np.array(rgba, dtype=np.float32))
+            material.set_base_color_texture(None)
+            material.set_normal_texture(None)
+            material.set_emission_texture(None)
+            material.set_transmission_texture(None)
+            material.set_metallic_texture(None)
+            material.set_roughness_texture(None)
 
     def _load_scene(self, options: dict):
         super()._load_scene(options)
-        self.blue_cube_half_size = float(self.cube_half_size) * self.blue_cube_scale
-        self.blue_cube = actors.build_cube(
-            self.scene,
-            half_size=self.blue_cube_half_size,
-            color=[0, 0, 1, 1],
-            name="blue_cube",
-            initial_pose=sapien.Pose(p=[0, 0, self.blue_cube_half_size]),
-        )
-
-    def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
-        super()._initialize_episode(env_idx, options)
-        with torch.device(self.device):
-            b = len(env_idx)
-            xyz = torch.zeros((b, 3))
-            offset = torch.tensor(
-                [self.cube_spawn_half_size * 1, -self.cube_spawn_half_size * 4],
-                device=self.device,
-            )
-            xyz[:, 0] = self.cube_spawn_center[0] + offset[0]
-            xyz[:, 1] = self.cube_spawn_center[1] + offset[1]
-            xyz[:, 2] = self.blue_cube_half_size
-            self.blue_cube.set_pose(Pose.create_from_pq(xyz))
+        self._set_actor_base_color(self.cube, [0, 0, 1, 1])

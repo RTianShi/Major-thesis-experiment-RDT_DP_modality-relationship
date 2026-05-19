@@ -1,0 +1,640 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCubeCubeYaw000-v1_20260518_161244",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCubeCubeYaw045-v1_20260518_161503",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 80.0,
+    "success_count": 20,
+    "success_episode_ids": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 140.2,
+      "median": 75.0,
+      "std": 131.04625137713782,
+      "min": 47.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6945271503925323,
+      "median": 0.6007193326950073,
+      "std": 0.33852221904721413,
+      "min": 0.270153671503067,
+      "max": 1.4487829208374023
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.30191832421272946,
+      "median": 0.20776150928960904,
+      "std": 0.23060116070303915,
+      "min": 0.07151913393964526,
+      "max": 0.8156537388389576
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.2006798431304741,
+      "median": 0.1932812778031992,
+      "std": 0.08141696589222264,
+      "min": 0.0640498522438158,
+      "max": 0.3276534193376763
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05613738724662515,
+      "median": 0.05907188873628483,
+      "std": 0.008381604170748765,
+      "min": 0.040166622726246715,
+      "max": 0.06686332452227362
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998584389686,
+      "median": 0.07999999821186066,
+      "std": 2.3126102901752176e-08,
+      "min": 0.0799999088048935,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.03674958810210228,
+      "median": 0.036583345383405685,
+      "std": 0.00040223003283471547,
+      "min": 0.03651588223874569,
+      "max": 0.03789473697543144
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10,
+      12,
+      13,
+      15,
+      16,
+      17,
+      21,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 222.96,
+      "median": 99.0,
+      "std": 157.37254652575206,
+      "min": 68.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.8076290845870971,
+      "median": 0.7588830590248108,
+      "std": 0.33778845119137074,
+      "min": 0.2613953948020935,
+      "max": 1.5992234945297241
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.2967046114393575,
+      "median": 0.2680936033678474,
+      "std": 0.2033580980718457,
+      "min": 0.016165388519103367,
+      "max": 0.747755826398703
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18695099805663912,
+      "median": 0.2035576088600557,
+      "std": 0.08978938282877566,
+      "min": 0.016143077566144227,
+      "max": 0.3086022891236196
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04981758043722324,
+      "median": 0.05963785857671783,
+      "std": 0.016822803660062873,
+      "min": 0.010797788491472601,
+      "max": 0.0690226493558536
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999821186066,
+      "median": 0.07999999821186066,
+      "std": 0.0,
+      "min": 0.07999999821186066,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.03308215513825417,
+      "median": 0.037144728004932404,
+      "std": 0.012274024909084231,
+      "min": 0.0,
+      "max": 0.04197280295193195
+    }
+  },
+  "mr_rule": "MR-SEMP-1",
+  "mr_compare": {
+    "mr_id": "MR-SEMP-1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "passed_count": 23,
+    "pass_count": 23,
+    "drp_only_count": 2,
+    "violations": 2,
+    "pass_rate_percent": 92.0,
+    "violation_rate_percent": 8.0,
+    "drp_only_rate_percent": 8.0,
+    "config": {
+      "angle_delta": 45.0,
+      "angle_tol": 15.0,
+      "symmetry_period": 90.0
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "src_yaw_at_grasp": 0.6568313241004944,
+        "dst_yaw_at_grasp": -40.93529510498047,
+        "expected_dst_yaw": 45.656831324100494,
+        "actual_delta_yaw": -41.59212642908096,
+        "relative_diff_before_symmetry": -86.59212642908096,
+        "yaw_error": 3.407873570919037,
+        "yaw_error_corrected": 3.407873570919037,
+        "src_success": false,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "src_yaw_at_grasp": -0.8264695405960083,
+        "dst_yaw_at_grasp": -43.58706283569336,
+        "expected_dst_yaw": 44.17353045940399,
+        "actual_delta_yaw": -42.76059329509735,
+        "relative_diff_before_symmetry": -87.76059329509735,
+        "yaw_error": 2.239406704902649,
+        "yaw_error_corrected": 2.239406704902649,
+        "src_success": false,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "src_yaw_at_grasp": 2.602574586868286,
+        "dst_yaw_at_grasp": -41.85057067871094,
+        "expected_dst_yaw": 47.602574586868286,
+        "actual_delta_yaw": -44.453145265579224,
+        "relative_diff_before_symmetry": -89.45314526557922,
+        "yaw_error": 0.5468547344207764,
+        "yaw_error_corrected": 0.5468547344207764,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "src_yaw_at_grasp": 0.09967305511236191,
+        "dst_yaw_at_grasp": -40.83994674682617,
+        "expected_dst_yaw": 45.09967305511236,
+        "actual_delta_yaw": -40.939619801938534,
+        "relative_diff_before_symmetry": -85.93961980193853,
+        "yaw_error": 4.060380198061466,
+        "yaw_error_corrected": 4.060380198061466,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "src_yaw_at_grasp": 2.526292324066162,
+        "dst_yaw_at_grasp": 41.543216705322266,
+        "expected_dst_yaw": 47.52629232406616,
+        "actual_delta_yaw": 39.0169243812561,
+        "relative_diff_before_symmetry": -5.9830756187438965,
+        "yaw_error": 5.9830756187438965,
+        "yaw_error_corrected": 5.9830756187438965,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "src_yaw_at_grasp": 1.7613649368286133,
+        "dst_yaw_at_grasp": -38.639591217041016,
+        "expected_dst_yaw": 46.76136493682861,
+        "actual_delta_yaw": -40.40095615386963,
+        "relative_diff_before_symmetry": -85.40095615386963,
+        "yaw_error": 4.599043846130371,
+        "yaw_error_corrected": 4.599043846130371,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "src_yaw_at_grasp": 1.2460501194000244,
+        "dst_yaw_at_grasp": -35.333831787109375,
+        "expected_dst_yaw": 46.246050119400024,
+        "actual_delta_yaw": -36.5798819065094,
+        "relative_diff_before_symmetry": -81.5798819065094,
+        "yaw_error": 8.4201180934906,
+        "yaw_error_corrected": 8.4201180934906,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "src_yaw_at_grasp": -0.7239385843276978,
+        "dst_yaw_at_grasp": -39.93421173095703,
+        "expected_dst_yaw": 44.2760614156723,
+        "actual_delta_yaw": -39.21027314662933,
+        "relative_diff_before_symmetry": -84.21027314662933,
+        "yaw_error": 5.7897268533706665,
+        "yaw_error_corrected": 5.7897268533706665,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "src_yaw_at_grasp": 1.6091927289962769,
+        "dst_yaw_at_grasp": -32.39494705200195,
+        "expected_dst_yaw": 46.60919272899628,
+        "actual_delta_yaw": -34.00413978099823,
+        "relative_diff_before_symmetry": -79.00413978099823,
+        "yaw_error": 10.99586021900177,
+        "yaw_error_corrected": 10.99586021900177,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "src_yaw_at_grasp": 1.257685899734497,
+        "dst_yaw_at_grasp": -28.382600784301758,
+        "expected_dst_yaw": 46.2576858997345,
+        "actual_delta_yaw": -29.640286684036255,
+        "relative_diff_before_symmetry": -74.64028668403625,
+        "yaw_error": 15.359713315963745,
+        "yaw_error_corrected": 15.359713315963745,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 15.4)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "src_yaw_at_grasp": -2.863403081893921,
+        "dst_yaw_at_grasp": -42.29555130004883,
+        "expected_dst_yaw": 42.13659691810608,
+        "actual_delta_yaw": -39.43214821815491,
+        "relative_diff_before_symmetry": -84.43214821815491,
+        "yaw_error": 5.567851781845093,
+        "yaw_error_corrected": 5.567851781845093,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "src_yaw_at_grasp": 0.15967902541160583,
+        "dst_yaw_at_grasp": -41.993778228759766,
+        "expected_dst_yaw": 45.159679025411606,
+        "actual_delta_yaw": -42.15345725417137,
+        "relative_diff_before_symmetry": -87.15345725417137,
+        "yaw_error": 2.8465427458286285,
+        "yaw_error_corrected": 2.8465427458286285,
+        "src_success": false,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "src_yaw_at_grasp": -0.6987679600715637,
+        "dst_yaw_at_grasp": -38.86845016479492,
+        "expected_dst_yaw": 44.301232039928436,
+        "actual_delta_yaw": -38.16968220472336,
+        "relative_diff_before_symmetry": -83.16968220472336,
+        "yaw_error": 6.830317795276642,
+        "yaw_error_corrected": 6.830317795276642,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "src_yaw_at_grasp": 4.064343452453613,
+        "dst_yaw_at_grasp": 44.82138442993164,
+        "expected_dst_yaw": 49.06434345245361,
+        "actual_delta_yaw": 40.75704097747803,
+        "relative_diff_before_symmetry": -4.242959022521973,
+        "yaw_error": 4.242959022521973,
+        "yaw_error_corrected": 4.242959022521973,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "src_yaw_at_grasp": 0.4608827829360962,
+        "dst_yaw_at_grasp": -35.878292083740234,
+        "expected_dst_yaw": 45.460882782936096,
+        "actual_delta_yaw": -36.33917486667633,
+        "relative_diff_before_symmetry": -81.33917486667633,
+        "yaw_error": 8.66082513332367,
+        "yaw_error_corrected": 8.66082513332367,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "src_yaw_at_grasp": 4.954731464385986,
+        "dst_yaw_at_grasp": 14.894092559814453,
+        "expected_dst_yaw": 49.954731464385986,
+        "actual_delta_yaw": 9.939361095428467,
+        "relative_diff_before_symmetry": -35.06063890457153,
+        "yaw_error": 35.06063890457153,
+        "yaw_error_corrected": 35.06063890457153,
+        "src_success": true,
+        "dst_success": true,
+        "pass": false,
+        "drp_only": true,
+        "analyzable": true,
+        "reasons": [
+          "Shortcut_Sloppy_Grasp (Error: 35.1)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "src_yaw_at_grasp": -0.688521146774292,
+        "dst_yaw_at_grasp": 44.734317779541016,
+        "expected_dst_yaw": 44.31147885322571,
+        "actual_delta_yaw": 45.42283892631531,
+        "relative_diff_before_symmetry": 0.4228389263153076,
+        "yaw_error": 0.4228389263153076,
+        "yaw_error_corrected": 0.4228389263153076,
+        "src_success": false,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "src_yaw_at_grasp": 1.7745370864868164,
+        "dst_yaw_at_grasp": -39.65788269042969,
+        "expected_dst_yaw": 46.774537086486816,
+        "actual_delta_yaw": -41.432419776916504,
+        "relative_diff_before_symmetry": -86.4324197769165,
+        "yaw_error": 3.567580223083496,
+        "yaw_error_corrected": 3.567580223083496,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "src_yaw_at_grasp": 2.124199151992798,
+        "dst_yaw_at_grasp": 44.01935577392578,
+        "expected_dst_yaw": 47.1241991519928,
+        "actual_delta_yaw": 41.89515662193298,
+        "relative_diff_before_symmetry": -3.1048433780670166,
+        "yaw_error": 3.1048433780670166,
+        "yaw_error_corrected": 3.1048433780670166,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "src_yaw_at_grasp": 4.394204139709473,
+        "dst_yaw_at_grasp": 43.75312042236328,
+        "expected_dst_yaw": 49.39420413970947,
+        "actual_delta_yaw": 39.35891628265381,
+        "relative_diff_before_symmetry": -5.641083717346191,
+        "yaw_error": 5.641083717346191,
+        "yaw_error_corrected": 5.641083717346191,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "src_yaw_at_grasp": -0.3503120243549347,
+        "dst_yaw_at_grasp": -41.710411071777344,
+        "expected_dst_yaw": 44.649687975645065,
+        "actual_delta_yaw": -41.36009904742241,
+        "relative_diff_before_symmetry": -86.36009904742241,
+        "yaw_error": 3.639900952577591,
+        "yaw_error_corrected": 3.639900952577591,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "src_yaw_at_grasp": -2.464771270751953,
+        "dst_yaw_at_grasp": -42.68600845336914,
+        "expected_dst_yaw": 42.53522872924805,
+        "actual_delta_yaw": -40.22123718261719,
+        "relative_diff_before_symmetry": -85.22123718261719,
+        "yaw_error": 4.7787628173828125,
+        "yaw_error_corrected": 4.7787628173828125,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "src_yaw_at_grasp": -5.056599140167236,
+        "dst_yaw_at_grasp": -47.7285041809082,
+        "expected_dst_yaw": 39.943400859832764,
+        "actual_delta_yaw": -42.67190504074097,
+        "relative_diff_before_symmetry": -87.67190504074097,
+        "yaw_error": 2.328094959259033,
+        "yaw_error_corrected": 2.328094959259033,
+        "src_success": true,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "src_yaw_at_grasp": 2.6716792583465576,
+        "dst_yaw_at_grasp": -40.19874572753906,
+        "expected_dst_yaw": 47.67167925834656,
+        "actual_delta_yaw": -42.87042498588562,
+        "relative_diff_before_symmetry": -87.87042498588562,
+        "yaw_error": 2.12957501411438,
+        "yaw_error_corrected": 2.12957501411438,
+        "src_success": true,
+        "dst_success": true,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "src_yaw_at_grasp": 0.9960824251174927,
+        "dst_yaw_at_grasp": -38.80179214477539,
+        "expected_dst_yaw": 45.99608242511749,
+        "actual_delta_yaw": -39.79787456989288,
+        "relative_diff_before_symmetry": -84.79787456989288,
+        "yaw_error": 5.202125430107117,
+        "yaw_error_corrected": 5.202125430107117,
+        "src_success": false,
+        "dst_success": false,
+        "pass": true,
+        "drp_only": false,
+        "analyzable": true,
+        "reasons": [
+          "Equivariant_Pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 2,
+  "followup_mr_violation_rate_percent": 8.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

@@ -1,0 +1,678 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_115430",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR-FPDP1_20260519_153743",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 24.0,
+    "success_count": 6,
+    "success_episode_ids": [
+      4,
+      5,
+      6,
+      7,
+      12,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 350.0,
+      "median": 400.0,
+      "std": 99.2725541124031,
+      "min": 89.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.657875292301178,
+      "median": 1.8062005043029785,
+      "std": 0.4417898630133206,
+      "min": 0.5759706497192383,
+      "max": 2.21966552734375
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.2546937521055327,
+      "median": 0.13362499910148648,
+      "std": 0.2818657875527827,
+      "min": 9.353101400548328e-06,
+      "max": 1.1418657087806323
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1129665644782014,
+      "median": 0.05814561903445855,
+      "std": 0.11540915385259427,
+      "min": 5.8879023391631675e-06,
+      "max": 0.42090931180503505
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.03167274605248196,
+      "median": 0.03380539338744711,
+      "std": 0.014620546842983835,
+      "min": 0.007924479938519653,
+      "max": 0.05792148848681637
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999716877937,
+      "median": 0.07999999821186066,
+      "std": 4.41034096090458e-09,
+      "min": 0.07999997586011887,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0029678705334663393,
+      "median": 0.0,
+      "std": 0.010065644976247285,
+      "min": 0.0,
+      "max": 0.03762600012123585
+    }
+  },
+  "mr_rule": "MR-FPDP-1",
+  "mr_compare": {
+    "mr_id": "MR-FPDP1-HIGH-FREQUENCY-EDGE-BLURRING",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 4,
+    "violation_rate_percent": 16.0,
+    "config": {
+      "sample_points": 24,
+      "similarity_threshold": 0.95,
+      "metric": "eef_trajectory_similarity_under_visual_blur",
+      "violation_rule": "trajectory_similarity > similarity_threshold",
+      "invariance_expectation": "edge_blur_should_change_precision_dependent_execution"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 120,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1087791585614733,
+        "blurred_path_len_m": 1.2463821203199923,
+        "base_path_len_m": 0.5567168217106689,
+        "relative_deviation": 0.19539405730047596,
+        "trajectory_similarity": 0.8365442289869428,
+        "endpoint_deviation_m": 0.14443662799962959,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 102,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.09591654248432974,
+        "blurred_path_len_m": 1.502122767317303,
+        "base_path_len_m": 0.6393726601637407,
+        "relative_deviation": 0.15001664672331455,
+        "trajectory_similarity": 0.8695526302590927,
+        "endpoint_deviation_m": 0.2407646556706714,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 93,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.09504895881752384,
+        "blurred_path_len_m": 1.3682325662424264,
+        "base_path_len_m": 0.5873697723753016,
+        "relative_deviation": 0.16182133178755415,
+        "trajectory_similarity": 0.8607175411914849,
+        "endpoint_deviation_m": 0.06584527859414721,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 110,
+        "mr_point_count": 89,
+        "mean_pointwise_deviation_m": 0.01537127030777046,
+        "blurred_path_len_m": 0.3982731444369923,
+        "base_path_len_m": 0.42422956648502086,
+        "relative_deviation": 0.03623337815685509,
+        "trajectory_similarity": 0.9650335735939105,
+        "endpoint_deviation_m": 0.0063237217023435115,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Feature-Indifferent Execution (Trajectory identical despite visual blur)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 89,
+        "mr_point_count": 179,
+        "mean_pointwise_deviation_m": 0.04101898318267691,
+        "blurred_path_len_m": 0.6553947648872673,
+        "base_path_len_m": 0.4680058825336413,
+        "relative_deviation": 0.08764629829140742,
+        "trajectory_similarity": 0.91941654338447,
+        "endpoint_deviation_m": 0.011552850653401019,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 95,
+        "mr_point_count": 231,
+        "mean_pointwise_deviation_m": 0.05502711220293675,
+        "blurred_path_len_m": 0.93824910859553,
+        "base_path_len_m": 0.5773481172991962,
+        "relative_deviation": 0.0953101093675522,
+        "trajectory_similarity": 0.9129834477446889,
+        "endpoint_deviation_m": 0.013050284800794633,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 149,
+        "mr_point_count": 199,
+        "mean_pointwise_deviation_m": 0.04964286778092155,
+        "blurred_path_len_m": 0.8520782453808291,
+        "base_path_len_m": 0.7735822214390119,
+        "relative_deviation": 0.06417271028873474,
+        "trajectory_similarity": 0.9396970908309392,
+        "endpoint_deviation_m": 0.037305273114789164,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 148,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1506429797721749,
+        "blurred_path_len_m": 1.463035859316782,
+        "base_path_len_m": 0.831102564366298,
+        "relative_deviation": 0.18125678614292048,
+        "trajectory_similarity": 0.8465559831958586,
+        "endpoint_deviation_m": 0.3600694719606026,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.19020088999716486,
+        "blurred_path_len_m": 1.4845975724110134,
+        "base_path_len_m": 1.3025756019133126,
+        "relative_deviation": 0.146019079213356,
+        "trajectory_similarity": 0.8725858217704494,
+        "endpoint_deviation_m": 0.39341249566884046,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 85,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.09939549474830629,
+        "blurred_path_len_m": 1.3390131508524306,
+        "base_path_len_m": 0.42480201988452443,
+        "relative_deviation": 0.23398074890351359,
+        "trajectory_similarity": 0.8103854139447286,
+        "endpoint_deviation_m": 0.12250118172269969,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 169,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.06397042586451453,
+        "blurred_path_len_m": 1.4077184378636525,
+        "base_path_len_m": 0.7866651942671481,
+        "relative_deviation": 0.08131849016672071,
+        "trajectory_similarity": 0.9247969114500365,
+        "endpoint_deviation_m": 0.04091288740477648,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 77,
+        "mr_point_count": 96,
+        "mean_pointwise_deviation_m": 0.02181653843470588,
+        "blurred_path_len_m": 0.4586937555775138,
+        "base_path_len_m": 0.45851472487469175,
+        "relative_deviation": 0.04758088944835557,
+        "trajectory_similarity": 0.9545802238971626,
+        "endpoint_deviation_m": 0.007287958935777703,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Feature-Indifferent Execution (Trajectory identical despite visual blur)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 120,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.15165476351553636,
+        "blurred_path_len_m": 1.4495536114263472,
+        "base_path_len_m": 0.7518644486918711,
+        "relative_deviation": 0.20170492670506288,
+        "trajectory_similarity": 0.8321510362297385,
+        "endpoint_deviation_m": 0.09459017908963346,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 114,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.06860620689315704,
+        "blurred_path_len_m": 1.212648951447005,
+        "base_path_len_m": 0.6595405234712888,
+        "relative_deviation": 0.10402121545476745,
+        "trajectory_similarity": 0.9057796951737751,
+        "endpoint_deviation_m": 0.06658257910587985,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 93,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.0895731694243006,
+        "blurred_path_len_m": 1.115073260296739,
+        "base_path_len_m": 0.5228529494979014,
+        "relative_deviation": 0.17131617888034908,
+        "trajectory_similarity": 0.8537404485916786,
+        "endpoint_deviation_m": 0.1332193860068123,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.09287859444609903,
+        "blurred_path_len_m": 1.3691360857903503,
+        "base_path_len_m": 1.4207625214828923,
+        "relative_deviation": 0.06537235677441636,
+        "trajectory_similarity": 0.9386389590843697,
+        "endpoint_deviation_m": 0.15366187545609825,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 116,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.07908534887234185,
+        "blurred_path_len_m": 1.129253320309042,
+        "base_path_len_m": 0.4704740828015359,
+        "relative_deviation": 0.16809714235779297,
+        "trajectory_similarity": 0.8560931824398692,
+        "endpoint_deviation_m": 0.07711603877385492,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.09982292508655681,
+        "blurred_path_len_m": 1.5010507830768869,
+        "base_path_len_m": 1.4505106914676098,
+        "relative_deviation": 0.06881915843416303,
+        "trajectory_similarity": 0.9356119715004134,
+        "endpoint_deviation_m": 0.18241196944134266,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 78,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.06536610998111565,
+        "blurred_path_len_m": 1.2534992094764172,
+        "base_path_len_m": 0.4703777517632378,
+        "relative_deviation": 0.13896513969057223,
+        "trajectory_similarity": 0.8779899973687294,
+        "endpoint_deviation_m": 0.10710334966950595,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.12923608501699718,
+        "blurred_path_len_m": 1.1362131052800792,
+        "base_path_len_m": 1.4171758103954533,
+        "relative_deviation": 0.09119269752489971,
+        "trajectory_similarity": 0.9164284202673388,
+        "endpoint_deviation_m": 0.186950309799234,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.06736126941143529,
+        "blurred_path_len_m": 1.3210448970489619,
+        "base_path_len_m": 1.497913476332672,
+        "relative_deviation": 0.04497006701372049,
+        "trajectory_similarity": 0.9569652103602982,
+        "endpoint_deviation_m": 0.10100532809595415,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Feature-Indifferent Execution (Trajectory identical despite visual blur)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 126,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.10446742647033551,
+        "blurred_path_len_m": 1.41959894353063,
+        "base_path_len_m": 0.7460751266171675,
+        "relative_deviation": 0.1400226635942264,
+        "trajectory_similarity": 0.8771755439029892,
+        "endpoint_deviation_m": 0.26180139871374747,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.044919949914130675,
+        "blurred_path_len_m": 0.7775141637044972,
+        "base_path_len_m": 0.9927774082937583,
+        "relative_deviation": 0.04524674870606954,
+        "trajectory_similarity": 0.9567118972031424,
+        "endpoint_deviation_m": 0.0634907388582908,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Feature-Indifferent Execution (Trajectory identical despite visual blur)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 356,
+        "mean_pointwise_deviation_m": 0.06413395782537709,
+        "blurred_path_len_m": 1.5543925700728933,
+        "base_path_len_m": 0.6894069987318512,
+        "relative_deviation": 0.09302771504111516,
+        "trajectory_similarity": 0.9148898845281194,
+        "endpoint_deviation_m": 0.030207083724514614,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 99,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.15965737769909946,
+        "blurred_path_len_m": 1.5458137716580618,
+        "base_path_len_m": 0.535457066369884,
+        "relative_deviation": 0.29817026933922475,
+        "trajectory_similarity": 0.770314976100173,
+        "endpoint_deviation_m": 0.22116467131385706,
+        "sample_points": 24,
+        "similarity_threshold": 0.95,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_degradation_under_edge_blurring"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 16.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

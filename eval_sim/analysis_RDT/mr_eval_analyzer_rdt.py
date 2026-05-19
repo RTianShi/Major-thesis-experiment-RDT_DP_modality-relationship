@@ -14,7 +14,7 @@ import numpy as np
 
 # 将项目根目录添加到由于直接运行导致的路径问题
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
-from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
+from scripts.grasp_event import derive_grasp_and_yaw_from_raw
 
 
 @dataclass
@@ -23,6 +23,9 @@ class EpisodeRecord:
     episode_id: Optional[int]
     seed: Optional[int]
     success: Optional[bool]
+    goal_point: Optional[List[float]]
+    mr_eval: Dict[str, Optional[List[float]]]
+    trajectory: Dict[str, Optional[List[float]]]
     total_steps: Optional[int]
     path_len: Optional[float]
     gripper_width: List[Optional[float]]
@@ -33,6 +36,8 @@ class EpisodeRecord:
     mr_eval_grasp_frame_index: Optional[int]
     mr_eval_eef_yaw_at_grasp: Optional[float]
     mr_eval_initial_goal_pos: Optional[List[float]]
+    mr_eval_gripper_fully_closed_frame_index: Optional[int]
+    gripper_fully_closed_frame_index: Optional[int]
 
     # derived
     cube_path_len: Optional[float]
@@ -121,6 +126,13 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             episode_id=_safe_int(obj.get("episode_id")),
             seed=_safe_int(obj.get("seed")),
             success=bool(metrics.get("env_success")) if "env_success" in metrics else None,
+            goal_point=_safe_xyz(obj.get("goal_point")),
+            mr_eval={
+                "goal_point": _safe_xyz(mr_eval.get("goal_point")),
+            },
+            trajectory={
+                "goal_point": _safe_xyz(traj.get("goal_point")),
+            },
             total_steps=_safe_int(traj.get("total_steps")),
             path_len=_safe_float(traj.get("total_path_length_meters")),
             gripper_width=[None if x is None else float(x) for x in gripper_width],
@@ -131,6 +143,12 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             mr_eval_grasp_frame_index=_safe_int(mr_eval.get("grasp_frame_index")),
             mr_eval_eef_yaw_at_grasp=_safe_float(mr_eval.get("eef_yaw_at_grasp")),
             mr_eval_initial_goal_pos=_safe_xyz(mr_eval.get("initial_goal_pos")),
+            mr_eval_gripper_fully_closed_frame_index=_safe_int(
+                mr_eval.get("gripper_fully_closed_frame_index")
+            ),
+            gripper_fully_closed_frame_index=_safe_int(
+                traj.get("gripper_fully_closed_frame_index")
+            ),
             cube_path_len=None,
             cube_net_disp=None,
             gripper_mean=None,

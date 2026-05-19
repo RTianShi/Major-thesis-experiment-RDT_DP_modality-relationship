@@ -1,0 +1,944 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCube-v1_MR-DCRB1_20260518_155013",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 4.0,
+    "success_count": 1,
+    "success_episode_ids": [
+      18
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 386.76,
+      "median": 400.0,
+      "std": 64.86248838889856,
+      "min": 69.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.5438677597045898,
+      "median": 1.4661307334899902,
+      "std": 0.4953325570396796,
+      "min": 0.46187686920166016,
+      "max": 2.700960874557495
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.1142579810258945,
+      "median": 0.016565587347380787,
+      "std": 0.22007859075907688,
+      "min": 1.901267030007133e-07,
+      "max": 0.7914557824454378
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.049951610808412,
+      "median": 0.009997661957701258,
+      "std": 0.08876874175770343,
+      "min": 3.166496753692627e-08,
+      "max": 0.2953433107878361
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.018264124739593397,
+      "median": 0.010853864911041455,
+      "std": 0.014289749981252752,
+      "min": 0.0071796277223620565,
+      "max": 0.06297789775914904
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999448657036,
+      "median": 0.07999999821186066,
+      "std": 1.8250120749944284e-08,
+      "min": 0.0799999050796032,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.004414389580488205,
+      "median": 0.0,
+      "std": 0.011954911190097551,
+      "min": 0.0,
+      "max": 0.037307947874069214
+    }
+  },
+  "mr_rule": "MR-DCRB1",
+  "mr_compare": {
+    "mr_id": "MR-DCRB1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 10,
+    "violation_rate_percent": 40.0,
+    "config": {
+      "red_cube_threshold_m": 0.04
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 52,
+        "followup_close_frame_index": 53,
+        "followup_probe_frame_index": 52,
+        "followup_grasp_point": [
+          0.07476458698511124,
+          -0.0934402197599411,
+          0.0490097776055336
+        ],
+        "red_cube_center": [
+          0.04747920483350754,
+          -0.06759555637836456,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.04747920483350754,
+          -0.06759555637836456,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.047476372303761144,
+        "dist_to_blue_cube_m": 0.047476372303761144,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 56,
+        "followup_close_frame_index": 56,
+        "followup_probe_frame_index": 56,
+        "followup_grasp_point": [
+          0.11010993272066116,
+          0.007385543081909418,
+          0.04906443506479263
+        ],
+        "red_cube_center": [
+          0.08134449273347855,
+          0.03557664901018143,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.08134449273347855,
+          0.03557664901018143,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04966820313577325,
+        "dist_to_blue_cube_m": 0.04966820313577325,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          -0.0022978289052844048,
+          -0.018087081611156464,
+          0.019989021122455597
+        ],
+        "red_cube_center": [
+          -0.01728055626153946,
+          -0.017892852425575256,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.01728055626153946,
+          -0.017892852425575256,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.014983990274100606,
+        "dist_to_blue_cube_m": 0.014983990274100606,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0150m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.01310843788087368,
+          0.00973278097808361,
+          0.019020460546016693
+        ],
+        "red_cube_center": [
+          -0.025812998414039612,
+          0.032259680330753326,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.025812998414039612,
+          0.032259680330753326,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04498109485517709,
+        "dist_to_blue_cube_m": 0.04498109485517709,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 36,
+        "followup_close_frame_index": 37,
+        "followup_probe_frame_index": 36,
+        "followup_grasp_point": [
+          0.007110848091542721,
+          -0.042873263359069824,
+          0.01883377879858017
+        ],
+        "red_cube_center": [
+          -0.017325758934020996,
+          -0.046728502959012985,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.017325758934020996,
+          -0.046728502959012985,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0247663220148402,
+        "dist_to_blue_cube_m": 0.0247663220148402,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0248m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 37,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 37,
+        "followup_grasp_point": [
+          0.01274688821285963,
+          -0.052894141525030136,
+          0.01968807727098465
+        ],
+        "red_cube_center": [
+          -0.017235681414604187,
+          -0.02174931764602661,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.017235681414604187,
+          -0.02174931764602661,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04323253209597906,
+        "dist_to_blue_cube_m": 0.04323253209597906,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 47,
+        "followup_close_frame_index": 47,
+        "followup_probe_frame_index": 47,
+        "followup_grasp_point": [
+          0.059594638645648956,
+          -0.027485305443406105,
+          0.017297066748142242
+        ],
+        "red_cube_center": [
+          0.04252726584672928,
+          0.006092503666877747,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.04252726584672928,
+          0.006092503666877747,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.037763346311620115,
+        "dist_to_blue_cube_m": 0.037763346311620115,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0378m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 39,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          0.046505723148584366,
+          0.03455883264541626,
+          0.042405784130096436
+        ],
+        "red_cube_center": [
+          -0.00238645076751709,
+          0.05759351700544357,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.00238645076751709,
+          0.05759351700544357,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.05850692725075563,
+        "dist_to_blue_cube_m": 0.05850692725075563,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 55,
+        "followup_close_frame_index": 55,
+        "followup_probe_frame_index": 55,
+        "followup_grasp_point": [
+          0.10623650252819061,
+          -0.039372947067022324,
+          0.049294613301754
+        ],
+        "red_cube_center": [
+          0.0740465447306633,
+          -0.019009694457054138,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.0740465447306633,
+          -0.019009694457054138,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.048052365545878106,
+        "dist_to_blue_cube_m": 0.048052365545878106,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          -0.0031343502923846245,
+          -0.10232814401388168,
+          0.018402405083179474
+        ],
+        "red_cube_center": [
+          -0.0698588639497757,
+          -0.07567298412322998,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.0698588639497757,
+          -0.07567298412322998,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.07186939946668168,
+        "dist_to_blue_cube_m": 0.07186939946668168,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 45,
+        "followup_probe_frame_index": 45,
+        "followup_grasp_point": [
+          -0.05497824400663376,
+          0.03533151000738144,
+          0.02181299775838852
+        ],
+        "red_cube_center": [
+          -0.09937979280948639,
+          0.08065038174390793,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.09937979280948639,
+          0.08065038174390793,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.06347113228907068,
+        "dist_to_blue_cube_m": 0.06347113228907068,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.02487601898610592,
+          0.03794748708605766,
+          0.01875864714384079
+        ],
+        "red_cube_center": [
+          -0.0065927654504776,
+          0.07196759432554245,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.0065927654504776,
+          0.07196759432554245,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04635939005536899,
+        "dist_to_blue_cube_m": 0.04635939005536899,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 43,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          0.012053130194544792,
+          -0.048106782138347626,
+          0.02051115781068802
+        ],
+        "red_cube_center": [
+          -0.015268564224243164,
+          -0.030500411987304688,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.015268564224243164,
+          -0.030500411987304688,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.03250723824894393,
+        "dist_to_blue_cube_m": 0.03250723824894393,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0325m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 49,
+        "followup_close_frame_index": 50,
+        "followup_probe_frame_index": 49,
+        "followup_grasp_point": [
+          -0.020329192280769348,
+          -0.09123672544956207,
+          0.019035786390304565
+        ],
+        "red_cube_center": [
+          -0.06768909096717834,
+          -0.0983361229300499,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.06768909096717834,
+          -0.0983361229300499,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04789875943274449,
+        "dist_to_blue_cube_m": 0.04789875943274449,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 43,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          0.0530540868639946,
+          -0.10053350776433945,
+          0.017034612596035004
+        ],
+        "red_cube_center": [
+          0.016685545444488525,
+          -0.09305556863546371,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.016685545444488525,
+          -0.09305556863546371,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.037247602585962915,
+        "dist_to_blue_cube_m": 0.037247602585962915,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0372m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 35,
+        "followup_close_frame_index": 36,
+        "followup_probe_frame_index": 35,
+        "followup_grasp_point": [
+          -0.04141960293054581,
+          -0.09770975261926651,
+          0.020616069436073303
+        ],
+        "red_cube_center": [
+          -0.0721929520368576,
+          -0.09502899646759033,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.0721929520368576,
+          -0.09502899646759033,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.030896035520185494,
+        "dist_to_blue_cube_m": 0.030896035520185494,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0309m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 43,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          0.01588120311498642,
+          0.006795775610953569,
+          0.021684899926185608
+        ],
+        "red_cube_center": [
+          -0.015744946897029877,
+          0.05180185288190842,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.015744946897029877,
+          0.05180185288190842,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.05503271068345984,
+        "dist_to_blue_cube_m": 0.05503271068345984,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 42,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.05605470761656761,
+          0.06298218667507172,
+          0.018153250217437744
+        ],
+        "red_cube_center": [
+          0.03548455983400345,
+          0.060509152710437775,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.03548455983400345,
+          0.060509152710437775,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.02080041730098301,
+        "dist_to_blue_cube_m": 0.02080041730098301,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0208m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 29,
+        "followup_close_frame_index": 29,
+        "followup_probe_frame_index": 29,
+        "followup_grasp_point": [
+          -0.03374997526407242,
+          -0.10471820086240768,
+          0.020266443490982056
+        ],
+        "red_cube_center": [
+          -0.07040230184793472,
+          -0.08787957578897476,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.07040230184793472,
+          -0.08787957578897476,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04033612934759419,
+        "dist_to_blue_cube_m": 0.04033612934759419,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.017639104276895523,
+          -0.08636226505041122,
+          0.021254241466522217
+        ],
+        "red_cube_center": [
+          -0.03522966057062149,
+          -0.09928542375564575,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.03522966057062149,
+          -0.09928542375564575,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.05443975982864411,
+        "dist_to_blue_cube_m": 0.05443975982864411,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 53,
+        "followup_close_frame_index": 54,
+        "followup_probe_frame_index": 53,
+        "followup_grasp_point": [
+          0.07377853244543076,
+          -0.11304248869419098,
+          0.017212100327014923
+        ],
+        "red_cube_center": [
+          0.04838285595178604,
+          -0.07766574621200562,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.04838285595178604,
+          -0.07766574621200562,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04363744579274515,
+        "dist_to_blue_cube_m": 0.04363744579274515,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 61,
+        "followup_probe_frame_index": 61,
+        "followup_grasp_point": [
+          -0.015967121347784996,
+          0.03590143471956253,
+          0.019300714135169983
+        ],
+        "red_cube_center": [
+          -0.08829166740179062,
+          0.09703236073255539,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.08829166740179062,
+          0.09703236073255539,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.09470120948129189,
+        "dist_to_blue_cube_m": 0.09470120948129189,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Blue_Cube_Selected"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 57,
+        "followup_close_frame_index": 57,
+        "followup_probe_frame_index": 57,
+        "followup_grasp_point": [
+          0.08663984388113022,
+          -0.06226464360952377,
+          0.02223525196313858
+        ],
+        "red_cube_center": [
+          0.08766341954469681,
+          -0.024287961423397064,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.08766341954469681,
+          -0.024287961423397064,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.03805617493051956,
+        "dist_to_blue_cube_m": 0.03805617493051956,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0381m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 47,
+        "followup_close_frame_index": 47,
+        "followup_probe_frame_index": 47,
+        "followup_grasp_point": [
+          0.09683181345462799,
+          0.0006010588258504868,
+          0.017978176474571228
+        ],
+        "red_cube_center": [
+          0.09237150102853775,
+          0.01418449729681015,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.09237150102853775,
+          0.01418449729681015,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.014439250541250689,
+        "dist_to_blue_cube_m": 0.014439250541250689,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0144m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.05609908699989319,
+          -0.02311968430876732,
+          0.020556949079036713
+        ],
+        "red_cube_center": [
+          0.027164705097675323,
+          0.002531290054321289,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.027164705097675323,
+          0.002531290054321289,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.038671451157330686,
+        "dist_to_blue_cube_m": 0.038671451157330686,
+        "red_cube_threshold_m": 0.04,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: 0.0387m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 10,
+  "followup_mr_violation_rate_percent": 40.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

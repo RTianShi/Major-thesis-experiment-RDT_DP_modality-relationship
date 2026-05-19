@@ -1,0 +1,690 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_104708",
+  "mr_traj_dir": "eef_traj/StackCube/StackCube-v1_MR-A1_20260519_104959",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 72.0,
+    "success_count": 18,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 199.0,
+      "median": 123.0,
+      "std": 127.60376170003767,
+      "min": 86.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.1054242515563966,
+      "median": 0.9408177137374878,
+      "std": 0.46462506929211533,
+      "min": 0.5587470531463623,
+      "max": 2.0359442234039307
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.318890233304583,
+      "median": 0.33989591432889354,
+      "std": 0.15399790808301062,
+      "min": 3.47191429455156e-06,
+      "max": 0.6694976072723589
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1749403685780967,
+      "median": 0.17959510761641667,
+      "std": 0.10711804740508422,
+      "min": 1.191186785367032e-06,
+      "max": 0.38351938924340057
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.048575188378232444,
+      "median": 0.05385691231680573,
+      "std": 0.012594245979290136,
+      "min": 0.008224509131396189,
+      "max": 0.058528401859803125
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999821186066,
+      "median": 0.07999999821186066,
+      "std": 0.0,
+      "min": 0.07999999821186066,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.024634611904621125,
+      "median": 0.03727499768137932,
+      "std": 0.018522833835454958,
+      "min": 0.0,
+      "max": 0.04266076162457466
+    }
+  },
+  "mr_rule": "MR-A1",
+  "mr_compare": {
+    "mr_id": "MR-A1-LANG-EQUIV",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 2,
+    "violation_rate_percent": 8.0,
+    "config": {
+      "sample_points": 24,
+      "similarity_threshold": 0.85,
+      "metric": "trajectory_similarity",
+      "violation_rule": "trajectory_similarity < similarity_threshold",
+      "equivalence_expectation": "synonym_language_should_preserve_trajectory"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 120,
+        "mr_point_count": 128,
+        "mean_pointwise_deviation_m": 0.009321345632805742,
+        "followup_path_len_m": 0.5763786023692558,
+        "source_path_len_m": 0.5567168217106689,
+        "relative_deviation": 0.016743423710753498,
+        "trajectory_similarity": 0.9835323019354815,
+        "endpoint_deviation_m": 0.013162943994210181,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 102,
+        "mr_point_count": 105,
+        "mean_pointwise_deviation_m": 0.01958409172904216,
+        "followup_path_len_m": 0.5900794638716789,
+        "source_path_len_m": 0.6393726601637407,
+        "relative_deviation": 0.03063016758337267,
+        "trajectory_similarity": 0.9702801562123934,
+        "endpoint_deviation_m": 0.008429845785432486,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 93,
+        "mr_point_count": 109,
+        "mean_pointwise_deviation_m": 0.008815663143556083,
+        "followup_path_len_m": 0.5715801796009095,
+        "source_path_len_m": 0.5873697723753016,
+        "relative_deviation": 0.015008710965676473,
+        "trajectory_similarity": 0.9852132195482369,
+        "endpoint_deviation_m": 0.016479444034789546,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 110,
+        "mr_point_count": 97,
+        "mean_pointwise_deviation_m": 0.009115902320349515,
+        "followup_path_len_m": 0.392760159648139,
+        "source_path_len_m": 0.42422956648502086,
+        "relative_deviation": 0.021488135294010415,
+        "trajectory_similarity": 0.9789638914525174,
+        "endpoint_deviation_m": 0.007934115657835292,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 89,
+        "mr_point_count": 110,
+        "mean_pointwise_deviation_m": 0.009374318855900348,
+        "followup_path_len_m": 0.47849566594239196,
+        "source_path_len_m": 0.4680058825336413,
+        "relative_deviation": 0.02003034407420403,
+        "trajectory_similarity": 0.9803629919535543,
+        "endpoint_deviation_m": 0.013508903892199818,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 95,
+        "mr_point_count": 111,
+        "mean_pointwise_deviation_m": 0.004910743036038724,
+        "followup_path_len_m": 0.579442515979132,
+        "source_path_len_m": 0.5773481172991962,
+        "relative_deviation": 0.008505688143595095,
+        "trajectory_similarity": 0.9915660484183763,
+        "endpoint_deviation_m": 0.014572995118888347,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 149,
+        "mr_point_count": 138,
+        "mean_pointwise_deviation_m": 0.011085541603971648,
+        "followup_path_len_m": 0.7472122970568453,
+        "source_path_len_m": 0.7735822214390119,
+        "relative_deviation": 0.014330140089505167,
+        "trajectory_similarity": 0.9858723116634979,
+        "endpoint_deviation_m": 0.01048272351604198,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 148,
+        "mr_point_count": 169,
+        "mean_pointwise_deviation_m": 0.01622284390443574,
+        "followup_path_len_m": 0.779529976591301,
+        "source_path_len_m": 0.831102564366298,
+        "relative_deviation": 0.01951966532169876,
+        "trajectory_similarity": 0.9808540570764376,
+        "endpoint_deviation_m": 0.008151721721904029,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 121,
+        "mean_pointwise_deviation_m": 0.07369128152632172,
+        "followup_path_len_m": 0.7249588234296012,
+        "source_path_len_m": 1.3025756019133126,
+        "relative_deviation": 0.05657351590040448,
+        "trajectory_similarity": 0.9464556748309247,
+        "endpoint_deviation_m": 0.13409208958042093,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 85,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.07526138079488687,
+        "followup_path_len_m": 1.2285158243690764,
+        "source_path_len_m": 0.42480201988452443,
+        "relative_deviation": 0.17716813308784515,
+        "trajectory_similarity": 0.8494963224810435,
+        "endpoint_deviation_m": 0.14316026060879442,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Language equivalence broken (trajectory changed too much)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 169,
+        "mr_point_count": 210,
+        "mean_pointwise_deviation_m": 0.02948249158319634,
+        "followup_path_len_m": 0.8078424420341983,
+        "source_path_len_m": 0.7866651942671481,
+        "relative_deviation": 0.03747781368497182,
+        "trajectory_similarity": 0.963876033597426,
+        "endpoint_deviation_m": 0.05553281249272524,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 77,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.08129935250487068,
+        "followup_path_len_m": 1.4170285904649464,
+        "source_path_len_m": 0.45851472487469175,
+        "relative_deviation": 0.1773102325712421,
+        "trajectory_similarity": 0.849393789618224,
+        "endpoint_deviation_m": 0.0695626590969971,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Language equivalence broken (trajectory changed too much)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 120,
+        "mr_point_count": 123,
+        "mean_pointwise_deviation_m": 0.010885561857395377,
+        "followup_path_len_m": 0.7262768071182149,
+        "source_path_len_m": 0.7518644486918711,
+        "relative_deviation": 0.014478090932926256,
+        "trajectory_similarity": 0.9857285326688405,
+        "endpoint_deviation_m": 0.012066005908270996,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 116,
+        "mean_pointwise_deviation_m": 0.03199198182896381,
+        "followup_path_len_m": 0.5918703440621329,
+        "source_path_len_m": 0.6595405234712888,
+        "relative_deviation": 0.048506468807381006,
+        "trajectory_similarity": 0.9537375588511585,
+        "endpoint_deviation_m": 0.004572278464795807,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 93,
+        "mr_point_count": 108,
+        "mean_pointwise_deviation_m": 0.0038105699987148966,
+        "followup_path_len_m": 0.518581991539026,
+        "source_path_len_m": 0.5228529494979014,
+        "relative_deviation": 0.007288033858036391,
+        "trajectory_similarity": 0.9927646972732097,
+        "endpoint_deviation_m": 0.008095624593317573,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.07630414500882411,
+        "followup_path_len_m": 1.1247144250108114,
+        "source_path_len_m": 1.4207625214828923,
+        "relative_deviation": 0.05370647371045739,
+        "trajectory_similarity": 0.9490308970757875,
+        "endpoint_deviation_m": 0.18016744228079018,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 116,
+        "mr_point_count": 129,
+        "mean_pointwise_deviation_m": 0.02418902933695539,
+        "followup_path_len_m": 0.5131312219369508,
+        "source_path_len_m": 0.4704740828015359,
+        "relative_deviation": 0.05141415908165818,
+        "trajectory_similarity": 0.9510999936251904,
+        "endpoint_deviation_m": 0.008975641460417929,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 96,
+        "mean_pointwise_deviation_m": 0.060291355800552095,
+        "followup_path_len_m": 0.5153378654029782,
+        "source_path_len_m": 1.4505106914676098,
+        "relative_deviation": 0.04156560593121172,
+        "trajectory_similarity": 0.9600931466107216,
+        "endpoint_deviation_m": 0.05222185822507869,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 78,
+        "mr_point_count": 86,
+        "mean_pointwise_deviation_m": 0.008024380423229947,
+        "followup_path_len_m": 0.464661322048104,
+        "source_path_len_m": 0.4703777517632378,
+        "relative_deviation": 0.01705943870251112,
+        "trajectory_similarity": 0.9832267043071993,
+        "endpoint_deviation_m": 0.009664272200546746,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.06488226909031214,
+        "followup_path_len_m": 1.3753354631551489,
+        "source_path_len_m": 1.4171758103954533,
+        "relative_deviation": 0.04578279463590843,
+        "trajectory_similarity": 0.9562215071133889,
+        "endpoint_deviation_m": 0.09210532806347682,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.04550605300223968,
+        "followup_path_len_m": 1.1952353644330234,
+        "source_path_len_m": 1.497913476332672,
+        "relative_deviation": 0.030379627208943827,
+        "trajectory_similarity": 0.9705160831923326,
+        "endpoint_deviation_m": 0.1204210921128007,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 126,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.07534438613133804,
+        "followup_path_len_m": 1.4304811354072258,
+        "source_path_len_m": 0.7460751266171675,
+        "relative_deviation": 0.10098766658119591,
+        "trajectory_similarity": 0.9082753879570836,
+        "endpoint_deviation_m": 0.06808624889576569,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.037288761737877575,
+        "followup_path_len_m": 1.2035956261320808,
+        "source_path_len_m": 0.9927774082937583,
+        "relative_deviation": 0.03756004258997401,
+        "trajectory_similarity": 0.9637996443114597,
+        "endpoint_deviation_m": 0.013056548703059702,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 118,
+        "mean_pointwise_deviation_m": 0.004924936522657932,
+        "followup_path_len_m": 0.7033534484378532,
+        "source_path_len_m": 0.6894069987318512,
+        "relative_deviation": 0.007143728641741733,
+        "trajectory_similarity": 0.9929069422381491,
+        "endpoint_deviation_m": 0.00426189568046783,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 99,
+        "mr_point_count": 101,
+        "mean_pointwise_deviation_m": 0.006293542300637871,
+        "followup_path_len_m": 0.5221896145484106,
+        "source_path_len_m": 0.535457066369884,
+        "relative_deviation": 0.01175358902872412,
+        "trajectory_similarity": 0.9883829529678194,
+        "endpoint_deviation_m": 0.0076866960787293674,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "language_equivalence_pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 2,
+  "followup_mr_violation_rate_percent": 8.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

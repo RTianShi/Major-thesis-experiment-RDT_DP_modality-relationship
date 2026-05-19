@@ -1,7 +1,4 @@
-try:
-    from eval_sim.analysis_RDT.mr_rules import register_mr_rule
-except ImportError:
-    from . import register_mr_rule
+from .registry import register_mr_rule
 
 from typing import List, Dict, Any
 

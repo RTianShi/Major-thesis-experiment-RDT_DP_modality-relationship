@@ -38,6 +38,31 @@ def _get_table_actor(env):
     return None
 
 
+def _build_visual_box(scene, half_size, rgba, name):
+    builder = scene.create_actor_builder()
+    material = sapien.render.RenderMaterial(base_color=np.array(rgba, dtype=np.float32).tolist())
+    builder.add_box_visual(
+        half_size=[half_size, half_size, half_size],
+        material=material,
+    )
+    actor = builder.build_kinematic(name=name)
+    actor.set_pose(sapien.Pose(p=[0.0, 0.0, half_size]))
+    return actor
+
+
+def _build_collision_box(scene, half_size, rgba, name):
+    builder = scene.create_actor_builder()
+    material = sapien.render.RenderMaterial(base_color=np.array(rgba, dtype=np.float32).tolist())
+    builder.add_box_collision(half_size=[half_size, half_size, half_size])
+    builder.add_box_visual(
+        half_size=[half_size, half_size, half_size],
+        material=material,
+    )
+    actor = builder.build_kinematic(name=name)
+    actor.set_pose(sapien.Pose(p=[0.0, 0.0, half_size]))
+    return actor
+
+
 @register_env("identity")
 def env_identity(env, cfg):
     # No-op mutation for environment.
@@ -79,6 +104,46 @@ def env_spawn_cube_on_goal(env, cfg):
         raise ValueError("MR-SDPP-2 could not read goal_site pose")
 
     cube.set_pose(goal_pose)
+    env.unwrapped.scene.update_render(
+        update_sensors=True,
+        update_human_render_cameras=True,
+    )
+    return env
+
+
+@register_env("MR-CMSI1")
+@register_env("MR-CMSI-1")
+def env_cmsi1_add_blue_cube(env, cfg):
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR-CMSI1 requires env.unwrapped.scene")
+
+    runtime = getattr(env.unwrapped, "_mr_cmsi1_runtime", None)
+    if runtime is None:
+        runtime = {}
+        env.unwrapped._mr_cmsi1_runtime = runtime
+
+    distractor = runtime.get("blue_cube")
+    if distractor is None:
+        half_size = float(cfg.get("blue_cube_half_size", getattr(env.unwrapped, "cube_half_size", 0.02)))
+        rgba = cfg.get("blue_cube_rgba", [0.0, 0.0, 1.0, 1.0])
+        distractor = _build_collision_box(scene, half_size=half_size, rgba=rgba, name="mr_cmsi1_blue_cube")
+        runtime["blue_cube"] = distractor
+    else:
+        half_size = float(cfg.get("blue_cube_half_size", getattr(env.unwrapped, "cube_half_size", 0.02)))
+
+    spawn_half = float(getattr(env.unwrapped, "cube_spawn_half_size", half_size))
+    spawn_center = np.asarray(getattr(env.unwrapped, "cube_spawn_center", [0.0, 0.0, 0.0]), dtype=np.float32)
+    pos = np.array(
+        [
+            spawn_center[0] + spawn_half * 1.0,
+            spawn_center[1] - spawn_half * 4.0,
+            half_size,
+        ],
+        dtype=np.float32,
+    )
+    distractor.set_pose(Pose.create_from_pq(pos))
+
     env.unwrapped.scene.update_render(
         update_sensors=True,
         update_human_render_cameras=True,

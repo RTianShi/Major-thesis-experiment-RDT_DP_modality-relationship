@@ -1,0 +1,672 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_115430",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR-GDIP1_20260519_152308",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 0.0,
+    "success_count": 0,
+    "success_episode_ids": [],
+    "steps": {
+      "n": 25,
+      "mean": 400.0,
+      "median": 400.0,
+      "std": 0.0,
+      "min": 400.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.7769115304946899,
+      "median": 1.736809253692627,
+      "std": 0.1471927412898992,
+      "min": 1.5972721576690674,
+      "max": 2.261680841445923
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.05430923048145428,
+      "median": 7.25462536329924e-07,
+      "std": 0.1730360550499477,
+      "min": 1.613396604378187e-07,
+      "max": 0.8272792617150447
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.020155910939746266,
+      "median": 4.3523764034911704e-08,
+      "std": 0.058793229954159254,
+      "min": 4.16500117164066e-09,
+      "max": 0.2824930234767872
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0362511449943941,
+      "median": 0.03698271771892905,
+      "std": 0.00593913546620544,
+      "min": 0.025023366537516266,
+      "max": 0.05098349412017342
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999776482582,
+      "median": 0.07999999821186066,
+      "std": 2.1900144899933146e-09,
+      "min": 0.07999998703598976,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-GDIP-1",
+  "mr_compare": {
+    "mr_id": "MR-GDIP1-FULL-EPISODE-VISUAL-BLINDNESS",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 4,
+    "violation_rate_percent": 16.0,
+    "config": {
+      "sample_points": 24,
+      "similarity_threshold": 0.85,
+      "metric": "blind_success_and_trajectory_mimicry",
+      "violation_rule": "blind_success == True OR trajectory_similarity > similarity_threshold",
+      "expected_followup_success_rate_percent": 0.0,
+      "invariance_expectation": "full_episode_visual_blindness_should_prevent_grounded_object_reaching"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 120,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.11280955585567114,
+        "blind_path_len_m": 1.635288163615653,
+        "sighted_path_len_m": 0.5567168217106689,
+        "relative_deviation": 0.20263363968243686,
+        "trajectory_similarity": 0.831508422019574,
+        "endpoint_deviation_m": 0.247108625237949,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 102,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.3378376775633222,
+        "blind_path_len_m": 1.4700821159406845,
+        "sighted_path_len_m": 0.6393726601637407,
+        "relative_deviation": 0.5283893081646678,
+        "trajectory_similarity": 0.6542835615624841,
+        "endpoint_deviation_m": 0.2723863945539574,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 93,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.16900939507367874,
+        "blind_path_len_m": 1.235081913533223,
+        "sighted_path_len_m": 0.5873697723753016,
+        "relative_deviation": 0.28773934754968916,
+        "trajectory_similarity": 0.7765546668297434,
+        "endpoint_deviation_m": 0.2823289584386056,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 110,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.15137486811698472,
+        "blind_path_len_m": 1.1425554643945117,
+        "sighted_path_len_m": 0.42422956648502086,
+        "relative_deviation": 0.35682300357141566,
+        "trajectory_similarity": 0.7370158063121057,
+        "endpoint_deviation_m": 0.12994547315303903,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 89,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.3051329232801964,
+        "blind_path_len_m": 1.190775913776814,
+        "sighted_path_len_m": 0.4680058825336413,
+        "relative_deviation": 0.6519852306733832,
+        "trajectory_similarity": 0.6053322883476261,
+        "endpoint_deviation_m": 0.27729364303100684,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 95,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.24386866241318414,
+        "blind_path_len_m": 1.304591655727577,
+        "sighted_path_len_m": 0.5773481172991962,
+        "relative_deviation": 0.4223944880152875,
+        "trajectory_similarity": 0.70303984473065,
+        "endpoint_deviation_m": 0.23125015694490608,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 149,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.2888287919329367,
+        "blind_path_len_m": 1.238410374595531,
+        "sighted_path_len_m": 0.7735822214390119,
+        "relative_deviation": 0.37336534362909674,
+        "trajectory_similarity": 0.7281383680161285,
+        "endpoint_deviation_m": 0.3280005875302802,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 148,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.14839406128025368,
+        "blind_path_len_m": 1.1897706838234918,
+        "sighted_path_len_m": 0.831102564366298,
+        "relative_deviation": 0.1785508403447193,
+        "trajectory_similarity": 0.8484996707545562,
+        "endpoint_deviation_m": 0.3293590406563629,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "sighted_success": false,
+        "blind_success": false,
+        "sighted_point_count": 400,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1485563974488822,
+        "blind_path_len_m": 1.3145051163763488,
+        "sighted_path_len_m": 1.3025756019133126,
+        "relative_deviation": 0.11404819592096792,
+        "trajectory_similarity": 0.8976272334190302,
+        "endpoint_deviation_m": 0.3508520677987021,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind trajectory mimicked sighted trajectory (Memorized Path)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 85,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1889479678220991,
+        "blind_path_len_m": 1.2228150205512232,
+        "sighted_path_len_m": 0.42480201988452443,
+        "relative_deviation": 0.4447906530045727,
+        "trajectory_similarity": 0.6921417977894649,
+        "endpoint_deviation_m": 0.21993213739533815,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 169,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.4659240243931375,
+        "blind_path_len_m": 1.3019092025709609,
+        "sighted_path_len_m": 0.7866651942671481,
+        "relative_deviation": 0.592277410756922,
+        "trajectory_similarity": 0.628031267192712,
+        "endpoint_deviation_m": 0.5782944627331011,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 77,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.3530447377056323,
+        "blind_path_len_m": 1.380279062033226,
+        "sighted_path_len_m": 0.45851472487469175,
+        "relative_deviation": 0.7699746999447324,
+        "trajectory_similarity": 0.5649798271304246,
+        "endpoint_deviation_m": 0.4271568618589473,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 120,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.17355886319882277,
+        "blind_path_len_m": 1.2065156845804137,
+        "sighted_path_len_m": 0.7518644486918711,
+        "relative_deviation": 0.23083797019634136,
+        "trajectory_similarity": 0.8124546237718694,
+        "endpoint_deviation_m": 0.2069873046237978,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 114,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.29459442830443167,
+        "blind_path_len_m": 1.290948541352695,
+        "sighted_path_len_m": 0.6595405234712888,
+        "relative_deviation": 0.446666152905851,
+        "trajectory_similarity": 0.6912444851158966,
+        "endpoint_deviation_m": 0.45193962145758587,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 93,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.2040139164895203,
+        "blind_path_len_m": 1.2759379474995602,
+        "sighted_path_len_m": 0.5228529494979014,
+        "relative_deviation": 0.3901936800498802,
+        "trajectory_similarity": 0.7193242311129769,
+        "endpoint_deviation_m": 0.27841016858111167,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "sighted_success": false,
+        "blind_success": false,
+        "sighted_point_count": 400,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.362397572667054,
+        "blind_path_len_m": 1.183689009714333,
+        "sighted_path_len_m": 1.4207625214828923,
+        "relative_deviation": 0.2550725875629158,
+        "trajectory_similarity": 0.796766665059419,
+        "endpoint_deviation_m": 0.4024690330883548,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 116,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.27942967937647495,
+        "blind_path_len_m": 1.1724014844514292,
+        "sighted_path_len_m": 0.4704740828015359,
+        "relative_deviation": 0.5939321411979863,
+        "trajectory_similarity": 0.6273792805560771,
+        "endpoint_deviation_m": 0.32426299695265376,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "sighted_success": false,
+        "blind_success": false,
+        "sighted_point_count": 400,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.23780447100943072,
+        "blind_path_len_m": 1.3271349534780255,
+        "sighted_path_len_m": 1.4505106914676098,
+        "relative_deviation": 0.16394534173948275,
+        "trajectory_similarity": 0.8591468723999779,
+        "endpoint_deviation_m": 0.29742061610445886,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind trajectory mimicked sighted trajectory (Memorized Path)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 78,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1325537549767621,
+        "blind_path_len_m": 1.2296515546434819,
+        "sighted_path_len_m": 0.4703777517632378,
+        "relative_deviation": 0.28180277336646303,
+        "trajectory_similarity": 0.7801512219962279,
+        "endpoint_deviation_m": 0.2427767905144969,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "sighted_success": false,
+        "blind_success": false,
+        "sighted_point_count": 400,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.31450898997875015,
+        "blind_path_len_m": 1.2626582960031298,
+        "sighted_path_len_m": 1.4171758103954533,
+        "relative_deviation": 0.2219265864345995,
+        "trajectory_similarity": 0.8183797710121454,
+        "endpoint_deviation_m": 0.41494467506204763,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "sighted_success": false,
+        "blind_success": false,
+        "sighted_point_count": 400,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.05471788395619542,
+        "blind_path_len_m": 1.419736862660581,
+        "sighted_path_len_m": 1.497913476332672,
+        "relative_deviation": 0.03652940227906937,
+        "trajectory_similarity": 0.9647579680819952,
+        "endpoint_deviation_m": 0.11884310337728277,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind trajectory mimicked sighted trajectory (Memorized Path)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 126,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.4184036399268547,
+        "blind_path_len_m": 1.1959930840135655,
+        "sighted_path_len_m": 0.7460751266171675,
+        "relative_deviation": 0.5608063115895159,
+        "trajectory_similarity": 0.6406944875700854,
+        "endpoint_deviation_m": 0.4228703859163048,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "sighted_success": false,
+        "blind_success": false,
+        "sighted_point_count": 400,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.08304215849144943,
+        "blind_path_len_m": 1.2320877598478095,
+        "sighted_path_len_m": 0.9927774082937583,
+        "relative_deviation": 0.08364630157546618,
+        "trajectory_similarity": 0.922810328929415,
+        "endpoint_deviation_m": 0.08569913230294895,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind trajectory mimicked sighted trajectory (Memorized Path)."
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 114,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.16236905506805013,
+        "blind_path_len_m": 1.3222682316225431,
+        "sighted_path_len_m": 0.6894069987318512,
+        "relative_deviation": 0.23551988211132813,
+        "trajectory_similarity": 0.8093758866034126,
+        "endpoint_deviation_m": 0.44534579207940445,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "sighted_success": true,
+        "blind_success": false,
+        "sighted_point_count": 99,
+        "blind_point_count": 400,
+        "mean_pointwise_deviation_m": 0.22630885943806378,
+        "blind_path_len_m": 1.3081966915336862,
+        "sighted_path_len_m": 0.535457066369884,
+        "relative_deviation": 0.42264613477289276,
+        "trajectory_similarity": 0.7029154865413086,
+        "endpoint_deviation_m": 0.16736296507698198,
+        "sample_points": 24,
+        "similarity_threshold": 0.85,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "expected_failure_without_visual_grounding"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 4,
+  "followup_mr_violation_rate_percent": 16.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}
