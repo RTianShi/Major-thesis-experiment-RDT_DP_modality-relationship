@@ -1,0 +1,926 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PushCube/PushCube-v1_20260519_163706",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PushCube/PushCube-v1_MR5_20260521_202118",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 67.76,
+      "median": 69.0,
+      "std": 4.941902467673761,
+      "min": 55.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31570288896560667,
+      "median": 0.3156222105026245,
+      "std": 0.028153897417754127,
+      "min": 0.2694014608860016,
+      "max": 0.3927096128463745
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10198433989484892,
+      "median": 0.10157619634552086,
+      "std": 0.001292937342447149,
+      "min": 0.10047514511100394,
+      "max": 0.10585745032704967
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1012806836179553,
+      "median": 0.10115198446771026,
+      "std": 0.0006873139620494616,
+      "min": 0.10011986282101505,
+      "max": 0.10268857732895047
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009222110472555131,
+      "median": 0.0009050774347563118,
+      "std": 7.467344424752618e-05,
+      "min": 0.0008143039849036959,
+      "max": 0.0011090901736419516
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040871654748916623,
+      "median": 0.040877580642700195,
+      "std": 3.707190885317318e-05,
+      "min": 0.040800850838422775,
+      "max": 0.0409543551504612
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 68.8,
+      "median": 69.0,
+      "std": 5.184592558726288,
+      "min": 58.0,
+      "max": 78.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.3198734998703003,
+      "median": 0.31972256302833557,
+      "std": 0.0289442483380916,
+      "min": 0.2792469561100006,
+      "max": 0.4000307023525238
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10217789119843765,
+      "median": 0.10207020900836371,
+      "std": 0.0011321200177015374,
+      "min": 0.10044610086282607,
+      "max": 0.10447628209689733
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.10168732080330217,
+      "median": 0.1015490303379931,
+      "std": 0.0011091140672086293,
+      "min": 0.10019539297802052,
+      "max": 0.10434594128145241
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009061502845194362,
+      "median": 0.0009025733539167403,
+      "std": 5.678793768471665e-05,
+      "min": 0.0008073025336489081,
+      "max": 0.0010452324580722328
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0409023405611515,
+      "median": 0.040877776220440865,
+      "std": 4.7100468441767465e-05,
+      "min": 0.0408021192997694,
+      "max": 0.04103073291480541
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR5",
+  "mr_compare": {
+    "mr_id": "MR5",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "target_angle_threshold_deg": 45.0,
+      "contact_move_thresh_m": 0.002,
+      "violation_rule": "angle_to_target >= target_angle_threshold_deg"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 50,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.24747920036315918,
+          -0.06759555637836456,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005502423271536827,
+          -0.0003543049097061157,
+          -0.001152627170085907
+        ],
+        "target_vector": [
+          0.22479704953730106,
+          0.0018744245171546936,
+          -0.012606473756022751
+        ],
+        "angle_to_target_deg": 9.534766904861565,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 44,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.2813445031642914,
+          0.03557664901018143,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.0056438930332660675,
+          0.0004583820700645447,
+          -0.0007805526256561279
+        ],
+        "target_vector": [
+          0.22792582213878632,
+          0.0025984272360801697,
+          -0.01304924685973674
+        ],
+        "angle_to_target_deg": 6.055236035073052,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 54,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.18271943926811218,
+          -0.017892852425575256,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005823832005262375,
+          -0.00023553147912025452,
+          -0.0008035823702812195
+        ],
+        "target_vector": [
+          0.22651416808366776,
+          -0.0021869484335184097,
+          -0.014204496634192765
+        ],
+        "angle_to_target_deg": 4.608400067657752,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 53,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.17418700456619263,
+          0.032259680330753326,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005886036902666092,
+          0.00033363886177539825,
+          -0.00094643235206604
+        ],
+        "target_vector": [
+          0.2238442450761795,
+          0.003006957471370697,
+          -0.01578151632566005
+        ],
+        "angle_to_target_deg": 5.650147384685613,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 42,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.18267424404621124,
+          -0.046728502959012985,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.006081275641918182,
+          -8.571147918701172e-05,
+          -0.0010722354054450989
+        ],
+        "target_vector": [
+          0.22247584909200668,
+          -0.002577323466539383,
+          -0.01677432854194194
+        ],
+        "angle_to_target_deg": 5.688723342636447,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 58,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.18276432156562805,
+          -0.02174931764602661,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005384385585784912,
+          -7.311254739761353e-05,
+          -0.00037347525358200073
+        ],
+        "target_vector": [
+          0.2269502803683281,
+          -0.0049675628542900085,
+          -0.015523316455073655
+        ],
+        "angle_to_target_deg": 0.4780647854731789,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 50,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.24252727627754211,
+          0.006092503666877747,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.0054080067202448845,
+          0.00036751292645931244,
+          -0.00045283883810043335
+        ],
+        "target_vector": [
+          0.22716351877897978,
+          -0.0012897700071334839,
+          -0.014695027959533036
+        ],
+        "angle_to_target_deg": 4.336580081164985,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 41,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.19761355221271515,
+          0.05759351700544357,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005571635439991951,
+          0.00014435499906539917,
+          -0.0007820278406143188
+        ],
+        "target_vector": [
+          0.22474361211061478,
+          0.005805734544992447,
+          -0.017113471520133317
+        ],
+        "angle_to_target_deg": 3.6340951714459293,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 53,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.27404654026031494,
+          -0.019009694457054138,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005108702927827835,
+          0.0004835464060306549,
+          -0.0007721185684204102
+        ],
+        "target_vector": [
+          0.22550228610634804,
+          0.0001895613968372345,
+          -0.013784172129817307
+        ],
+        "angle_to_target_deg": 7.346695712749324,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 56,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.13014113903045654,
+          -0.07567298412322998,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.007057182490825653,
+          6.705522537231445e-08,
+          -0.0008127540349960327
+        ],
+        "target_vector": [
+          0.22395335882902145,
+          -0.009511314332485199,
+          -0.015436614048667252
+        ],
+        "angle_to_target_deg": 3.575430792140601,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 56,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.10062021017074585,
+          0.08065038174390793,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.006333179771900177,
+          9.007006883621216e-05,
+          -0.0010580196976661682
+        ],
+        "target_vector": [
+          0.22298254072666168,
+          0.0038594529032707214,
+          -0.019119272124953568
+        ],
+        "angle_to_target_deg": 4.586632341269279,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 50,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.19340723752975464,
+          0.07196759432554245,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005544712767004967,
+          -0.00041218847036361694,
+          -0.0012480393052101135
+        ],
+        "target_vector": [
+          0.22552501410245895,
+          0.0009145215153694153,
+          -0.016167210531421006
+        ],
+        "angle_to_target_deg": 9.631125197869382,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 47,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.18473143875598907,
+          -0.030500411987304688,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.003976490348577499,
+          -0.00016028434038162231,
+          -0.0012247338891029358
+        ],
+        "target_vector": [
+          0.22513774037361145,
+          -0.012211453169584274,
+          -0.018192710471339524
+        ],
+        "angle_to_target_deg": 12.51666727379505,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 50,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.1323109120130539,
+          -0.0983361229300499,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.00500015914440155,
+          8.797645568847656e-05,
+          -0.0008014962077140808
+        ],
+        "target_vector": [
+          0.22779660671949387,
+          -0.015896499156951904,
+          -0.016716690850444138
+        ],
+        "angle_to_target_deg": 6.988424449737817,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 47,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.21668554842472076,
+          -0.09305556863546371,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.004894793964922428,
+          -1.210719347000122e-05,
+          -0.0006118789315223694
+        ],
+        "target_vector": [
+          0.22749645542353392,
+          -0.0039770230650901794,
+          -0.01579989690799266
+        ],
+        "angle_to_target_deg": 3.2671031510051978,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 47,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.12780705094337463,
+          -0.09502899646759033,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005044035613536835,
+          -0.0003402233123779297,
+          -0.0012571439146995544
+        ],
+        "target_vector": [
+          0.22501278668642044,
+          -0.011667191982269287,
+          -0.01858382869977504
+        ],
+        "angle_to_target_deg": 9.290943379803062,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 49,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.18425506353378296,
+          0.05180185288190842,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.00697687640786171,
+          0.0004718899726867676,
+          1.3470649719238281e-05
+        ],
+        "target_vector": [
+          0.2210705392062664,
+          0.0031372345983982086,
+          -0.015135863912291825
+        ],
+        "angle_to_target_deg": 5.05384327512588,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 47,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.23548457026481628,
+          0.060509152710437775,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.0058153728023171425,
+          0.0003115162253379822,
+          -0.0006647855043411255
+        ],
+        "target_vector": [
+          0.2264452949166298,
+          0.0015632249414920807,
+          -0.013504775357432663
+        ],
+        "angle_to_target_deg": 4.084550095466044,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 50,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.12959769368171692,
+          -0.08787957578897476,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.006499871611595154,
+          -0.0004883557558059692,
+          2.3305416107177734e-05
+        ],
+        "target_vector": [
+          0.2245476096868515,
+          -0.010912708938121796,
+          -0.014680566382594407
+        ],
+        "angle_to_target_deg": 4.221639678493781,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 51,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.16477033495903015,
+          -0.09928542375564575,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.006157010793685913,
+          0.0001354217529296875,
+          -0.000553227961063385
+        ],
+        "target_vector": [
+          0.2259535975754261,
+          -0.005218274891376495,
+          -0.015404941630549729
+        ],
+        "angle_to_target_deg": 2.8553244874400106,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 48,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.24838286638259888,
+          -0.07766574621200562,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005043311044573784,
+          -0.0003822594881057739,
+          -9.991228580474854e-05
+        ],
+        "target_vector": [
+          0.2232088129967451,
+          0.0011849701404571533,
+          -0.014655770850367844
+        ],
+        "angle_to_target_deg": 5.325785979724337,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 58,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.11170833557844162,
+          0.09703236073255539,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.006876885890960693,
+          -0.0003093332052230835,
+          -0.0012651607394218445
+        ],
+        "target_vector": [
+          0.22392917424440384,
+          0.01076815277338028,
+          -0.018196540069766343
+        ],
+        "angle_to_target_deg": 7.824125966870803,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 45,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.28766342997550964,
+          -0.024287961423397064,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005601491779088974,
+          0.0003714989870786667,
+          -0.00038968026638031006
+        ],
+        "target_vector": [
+          0.22705892845988274,
+          -0.001171281561255455,
+          -0.012119876337237656
+        ],
+        "angle_to_target_deg": 4.18358848182353,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 49,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.2923715114593506,
+          0.01418449729681015,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.004782788455486298,
+          0.00014127325266599655,
+          -0.0006142035126686096
+        ],
+        "target_vector": [
+          0.22807302325963974,
+          0.0049959467723965645,
+          -0.012819195282645524
+        ],
+        "angle_to_target_deg": 4.1214778343705065,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "mr_contact_frame_index": 50,
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "goal_point": [
+          0.22716471552848816,
+          0.002531290054321289,
+          0.0010000000474974513
+        ],
+        "push_vector": [
+          0.005439372733235359,
+          -2.779671922326088e-05,
+          0.0001601576805114746
+        ],
+        "target_vector": [
+          0.2268860787153244,
+          -0.0002303924411535263,
+          -0.014750586939044297
+        ],
+        "angle_to_target_deg": 5.411343334104061,
+        "target_angle_threshold_deg": 45.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "push_direction_respects_specialized_instruction"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

@@ -70,6 +70,82 @@ def _to_uint8_rgb(img):
     return img
 
 
+def _to_numpy_1d(x):
+    if x is None:
+        return None
+    if hasattr(x, "detach"):
+        x = x.detach().cpu().numpy()
+    x = np.asarray(x).reshape(-1)
+    return x
+
+
+def _extract_gripper_width(obs):
+    try:
+        qpos = _to_numpy_1d(obs["agent"]["qpos"])
+        if qpos is None or qpos.size < 2:
+            return None, None
+        left = float(qpos[-2])
+        right = float(qpos[-1])
+        return float(left + right), [left, right]
+    except Exception:
+        return None, None
+
+
+def _extract_robot_joint_torques(env):
+    robot = getattr(getattr(getattr(env, "unwrapped", env), "agent", None), "robot", None)
+    if robot is None:
+        return None
+    for method_name in ("get_qf", "get_qforces", "get_qforce", "get_drive_forces"):
+        method = getattr(robot, method_name, None)
+        if callable(method):
+            try:
+                qf = method()
+                arr = _to_numpy_1d(qf)
+                if arr is None or arr.size == 0:
+                    continue
+                return [float(x) for x in arr.tolist()]
+            except Exception:
+                continue
+    return None
+
+
+def _tcp_pos_xyz(env):
+    try:
+        p = env.unwrapped.agent.tcp.pose.p
+    except Exception:
+        return None
+    arr = _to_numpy_1d(p)
+    if arr is None or arr.size < 3:
+        return None
+    return np.asarray(arr[:3], dtype=np.float32)
+
+
+def _tcp_linear_velocity_xyz(curr_tcp_xyz, prev_tcp_xyz, control_freq):
+    if curr_tcp_xyz is None or prev_tcp_xyz is None:
+        return None
+    try:
+        cf = float(control_freq)
+    except Exception:
+        cf = 0.0
+    if not np.isfinite(cf) or cf <= 0:
+        return None
+    vel = (np.asarray(curr_tcp_xyz, dtype=np.float32) - np.asarray(prev_tcp_xyz, dtype=np.float32)) * cf
+    return vel.astype(np.float32)
+
+
+def _tcp_to_obj_distance(tcp_xyz, obj_xyz):
+    if tcp_xyz is None or obj_xyz is None:
+        return None
+    try:
+        a = np.asarray(tcp_xyz, dtype=np.float32).reshape(-1)
+        b = np.asarray(obj_xyz, dtype=np.float32).reshape(-1)
+    except Exception:
+        return None
+    if a.size < 3 or b.size < 3:
+        return None
+    return float(np.linalg.norm(a[:3] - b[:3]))
+
+
 def _resolve_hf_snapshot_path(repo_id: str) -> str:
     repo_dir = os.path.expanduser(
         os.path.join("~", ".cache", "huggingface", "hub", f"models--{repo_id.replace('/', '--')}")
@@ -317,6 +393,7 @@ task2lang = {
     "PlugCharger-v1": "Pick up one of the misplaced shapes on the board/kit and insert it into the correct empty slot.",
     "PushCube-v1": "Push and move a cube to a goal region in front of it.",
     "PushCubeYellowCube-v1": "Push and move the yellow star-prism to a goal region in front of it.",
+    "PushCubeDCRB2-v1": "Push and move the yellow cube to a goal region in front of it.",
 }
 
 env_id = args.env_id
@@ -391,6 +468,30 @@ for episode in tqdm.trange(total_episodes):
     global_steps = 0
     video_frames = []
     eef_traj = []
+    eef_vel_traj = []
+    joint_torques_traj = []
+    cube_pos_traj = []
+    src_cube_pos_traj = []
+    dst_cube_pos_traj = []
+    target_pos_traj = []
+    tcp_to_obj_distance_traj = []
+    is_contact_traj = []
+    contact_frame_index = None
+    contact_eef_pos = None
+    gripper_width_traj = []
+    gripper_finger_qpos_traj = []
+    gripper_action_cmd_traj = []
+
+    initial_cube_pos = None if cube_pos is None else [float(x) for x in cube_pos.reshape(-1)[:3].tolist()]
+    initial_dst_cube_pos = None if goal_pos is None else [float(x) for x in goal_pos.reshape(-1)[:3].tolist()]
+    initial_cube_z = float(initial_cube_pos[2]) if initial_cube_pos is not None and len(initial_cube_pos) >= 3 else None
+    prev_cube_goal_distance = None
+    last_known_target_pos = initial_dst_cube_pos
+
+    control_freq = getattr(env.unwrapped, "control_freq", None)
+    if control_freq is None:
+        control_freq = float(args.video_fps)
+    last_eef_xyz = None
 
     success_time = 0
     done = False
@@ -465,8 +566,62 @@ for episode in tqdm.trange(total_episodes):
             img = _to_uint8_rgb(env.render())
             obs_window.append(img)
             proprio = obs['agent']['qpos'][:, :-1]
-            eef_xyz = env.unwrapped.agent.tcp.pose.p
-            eef_traj.append(np.array(eef_xyz, dtype=np.float32))
+            current_cube_xyz, current_goal_xyz, _, _ = _get_cube_goal_xyz(env)
+            current_cube_pos = None if current_cube_xyz is None else [
+                float(x) for x in np.asarray(current_cube_xyz, dtype=np.float32).reshape(-1)[:3].tolist()
+            ]
+            current_dst_cube_pos = None if current_goal_xyz is None else [
+                float(x) for x in np.asarray(current_goal_xyz, dtype=np.float32).reshape(-1)[:3].tolist()
+            ]
+            if current_dst_cube_pos is None and last_known_target_pos is not None:
+                current_dst_cube_pos = last_known_target_pos
+            elif current_dst_cube_pos is not None:
+                last_known_target_pos = current_dst_cube_pos
+            current_src_cube_pos = current_cube_pos
+
+            eef_xyz = _tcp_pos_xyz(env)
+            if eef_xyz is None:
+                eef_xyz = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
+            else:
+                eef_xyz = np.array(eef_xyz, dtype=np.float32).reshape(-1)[:3]
+            eef_traj.append(eef_xyz)
+
+            eef_vel = _tcp_linear_velocity_xyz(eef_xyz, last_eef_xyz, control_freq)
+            eef_vel_traj.append(None if eef_vel is None else [float(x) for x in eef_vel.tolist()])
+            last_eef_xyz = np.array(eef_xyz, dtype=np.float32)
+
+            joint_torques = _extract_robot_joint_torques(env)
+            joint_torques_traj.append(joint_torques)
+
+            tcp_to_obj_dist = _tcp_to_obj_distance(
+                eef_xyz,
+                None if current_cube_pos is None else np.asarray(current_cube_pos, dtype=np.float32),
+            )
+            tcp_to_obj_distance_traj.append(tcp_to_obj_dist)
+            contact_distance = float(mr_cfg.get("proprio", {}).get("contact_distance", 0.035))
+            is_contact = bool(
+                tcp_to_obj_dist is not None
+                and np.isfinite(tcp_to_obj_dist)
+                and tcp_to_obj_dist <= contact_distance
+            )
+            is_contact_traj.append(is_contact)
+            if contact_frame_index is None and is_contact:
+                contact_frame_index = len(is_contact_traj) - 1
+                contact_eef_pos = [float(x) for x in np.asarray(eef_xyz, dtype=np.float32).tolist()]
+
+            gripper_cmd = float(action[-1]) if getattr(action, "shape", None) is not None and action.shape[0] > 0 else None
+            gripper_action_cmd_traj.append(gripper_cmd)
+
+            gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
+            gripper_width_traj.append(gripper_width)
+            gripper_finger_qpos_traj.append(gripper_finger_qpos)
+
+            cube_pos_traj.append(current_cube_pos)
+            src_cube_pos_traj.append(current_src_cube_pos)
+            dst_cube_pos_traj.append(current_dst_cube_pos)
+            target_pos_traj.append(current_dst_cube_pos)
+            curr_goal_dist = mr_cfg["proprio"].get("runtime", {}).get("cube_goal_distance")
+            prev_cube_goal_distance = curr_goal_dist
             if args.save_video:
                 video_frames.append(img)
             if args.show:
@@ -491,40 +646,55 @@ for episode in tqdm.trange(total_episodes):
     if eef_traj:
         os.makedirs(args.traj_dir, exist_ok=True)
 
-        final_cube_pos, _, _, _ = _get_cube_goal_xyz(env)
-        if final_cube_pos is None:
-            final_cube_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
-
         eef_arr = np.stack(eef_traj, axis=0)
         diffs = np.diff(eef_arr, axis=0)
         total_path_length = float(np.linalg.norm(diffs, axis=1).sum()) if len(eef_arr) > 1 else 0.0
+        env_success = bool(info["success"]) if isinstance(info["success"], (bool, np.bool_)) else bool(
+            np.array(info["success"]).item()
+        )
 
-        env_success = bool(info["success"]) if isinstance(info["success"], (bool, np.bool_)) else bool(np.array(info["success"]).item())
-        if np.any(np.isnan(final_cube_pos)) or np.any(np.isnan(green_goal)):
-            real_target_distance = float("nan")
-            semantic_success = False
-        else:
-            real_target_distance = float(np.linalg.norm(final_cube_pos - green_goal))
-            semantic_success = real_target_distance < 0.025
+        grasp_frame_index = contact_frame_index
+        mr_eval_extra = {}
+        if "ltsep1" in str(mr_cfg.get("proprio", {}).get("type", "") or "").strip().lower().replace("_", "-"):
+            mr_eval_extra["proprio_phantom_fired_steps"] = mr_cfg.get("proprio", {}).get("_phantom_fired_steps")
 
         result = {
             "episode_id": int(episode + 1),
             "seed": int(episode + base_seed),
-            "mr_type": getattr(args, "mr_type", None),
             "metrics": {
                 "env_success": env_success,
-                "real_target_distance": real_target_distance,
-                "semantic_success": bool(semantic_success),
             },
-            "positions": {
-                "red_cube_initial": red_cube_initial.tolist(),
-                "green_goal": green_goal.tolist(),
-                "blue_cube_initial": None,
-                "red_cube_final": final_cube_pos.tolist(),
+            "mr_eval": {
+                "mr_type": args.mr_type,
+                "pair_key": f"{episode + base_seed}",
+                "grasp_frame_index": grasp_frame_index,
+                "contact_frame_index": contact_frame_index,
+                "contact_eef_pos": contact_eef_pos,
+                "initial_cube_pos": initial_cube_pos,
+                "initial_target_pos": initial_dst_cube_pos,
+                **mr_eval_extra,
+            },
+            "data_availability": {
+                "grasp_frame_index_available": grasp_frame_index is not None,
+                "contact_frame_index_available": contact_frame_index is not None,
+                "joint_torques_available": any(v is not None for v in joint_torques_traj),
             },
             "trajectory": {
                 "total_steps": int(global_steps),
+                "initial_cube_pos": initial_cube_pos,
+                "initial_target_pos": initial_dst_cube_pos,
                 "eef_path": eef_arr.tolist(),
+                "eef_vel": eef_vel_traj,
+                "joint_torques": joint_torques_traj,
+                "gripper_width": gripper_width_traj,
+                "gripper_finger_qpos": gripper_finger_qpos_traj,
+                "gripper_action_cmd": gripper_action_cmd_traj,
+                "cube_pos": cube_pos_traj,
+                "src_cube_pos": src_cube_pos_traj,
+                "dst_cube_pos": dst_cube_pos_traj,
+                "target_pos": target_pos_traj,
+                "tcp_to_obj_distance": tcp_to_obj_distance_traj,
+                "is_contact": is_contact_traj,
                 "total_path_length_meters": total_path_length,
             },
         }

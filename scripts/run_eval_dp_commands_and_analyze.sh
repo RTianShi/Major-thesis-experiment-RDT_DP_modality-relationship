@@ -15,14 +15,14 @@ cd "$ROOT_DIR"
 
 #第一处要修改的位置，执行评估命令，修改为当前MR所需的场景，--mr-type是保存的MR文件名
 COMMANDS=(
-  "python -m eval_sim_stackcube.eval_rdt_maniskill_stackcube_mr --pretrained_path ./mp_rank_00_model_states.pt -e StackCube-v1 --show"
-  "python -m eval_sim_stackcube.eval_rdt_maniskill_stackcube_mr --pretrained_path ./mp_rank_00_model_states.pt -e StackCube-v1 --show  --mr-type MR-SADP2"  
+  "python -m eval_sim.eval_rdt_maniskill_mr --pretrained_path ./mp_rank_00_model_states.py -e PickCube-v1 --show"
+  "python -m eval_sim.eval_rdt_maniskill_mr --pretrained_path ./mp_rank_00_model_states.py -e PickCube-v1 --show  --mr-type MR6"  
 )
 
 # 直接指定基线（原用例）或衍生（MR）轨迹目录/文件路径的快捷变量。
 # 若不为空则优先使用，脚本不会为该角色强制运行命令来生成轨迹。
-# eef_traj/StackCube/StackCube-v1_20260519_115430
-BASE_TRAJ_OVERRIDE="eef_traj/StackCube/StackCube-v1_20260519_115430"
+# eef_traj/PushCube/PushCube-v1_20260519_163706
+BASE_TRAJ_OVERRIDE="eef_traj/PickCube/PickCube-v1_20260422_150041"
 MR_TRAJ_OVERRIDE=""
 
 # 可选：直接指定某条命令对应的已存在轨迹目录（或单个 json 文件路径）。
@@ -49,15 +49,15 @@ MR_CONFIGS=(
 #第二处要修改的位置，决定了当前任务是否配置正确的MR
 MR_CONFIGS_INLINE=(
   $'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: identity\n  env:\n    type: identity\n'
-  $'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: identity\n  env:\n    type: MR-SADP2\n '
+  $'mr:\n  language:\n    type: identity\n  vision:\n    type: identity\n  proprio:\n    type: MR6\n  env:\n    type: identity\n '
 )
 
 #第三处要修改的位置，MR_ID决定了分析文件时使用哪个MR评测指标，通常与 --mr-type 保持一致（但不强制）
-MR_ID="MR-SADP-2"
+MR_ID="MR6"
 BASE_CMD_INDEX=0
 MR_CMD_INDEX=1
 ANALYSIS_OUT=""
-DEFAULT_TRAJ_ROOT="$ROOT_DIR/eef_traj/StackCube"
+DEFAULT_TRAJ_ROOT="$ROOT_DIR/eef_traj/PickCube"
 declare -a TMP_YAML_FILES=()
 
 cleanup() {
@@ -172,7 +172,7 @@ if [[ -n "${BASE_TRAJ_OVERRIDE:-}" && -n "${MR_TRAJ_OVERRIDE:-}" && -e "$BASE_TR
 
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID"
-  python -m eval_sim_stackcube.analysis_RDT.mr_eval_analyzer_rdt \
+  python -m eval_sim.analysis_RDT.mr_eval_analyzer_rdt \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID"
@@ -285,14 +285,14 @@ MR_TRAJ_DIR="$(resolve_dir_by_role "MR" "${MR_TRAJ_OVERRIDE:-}" "${MR_CMD_INDEX}
 if [[ -z "$ANALYSIS_OUT" ]]; then
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID"
-  python -m eval_sim_stackcube.analysis_RDT.mr_eval_analyzer_rdt \
+  python -m eval_sim.analysis_RDT.mr_eval_analyzer_rdt \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID"
 else
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID out=$ANALYSIS_OUT"
-  python -m eval_sim_stackcube.analysis_RDT.mr_eval_analyzer_rdt \
+  python -m eval_sim.analysis_RDT.mr_eval_analyzer_rdt \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID" \

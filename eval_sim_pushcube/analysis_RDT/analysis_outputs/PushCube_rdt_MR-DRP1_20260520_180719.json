@@ -1,0 +1,986 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PushCube/PushCube-v1_20260519_163706",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PushCube/PushCube-v1_MR-DRP1_20260520_180341",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 67.76,
+      "median": 69.0,
+      "std": 4.941902467673761,
+      "min": 55.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31570288896560667,
+      "median": 0.3156222105026245,
+      "std": 0.028153897417754127,
+      "min": 0.2694014608860016,
+      "max": 0.3927096128463745
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10198433989484892,
+      "median": 0.10157619634552086,
+      "std": 0.001292937342447149,
+      "min": 0.10047514511100394,
+      "max": 0.10585745032704967
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1012806836179553,
+      "median": 0.10115198446771026,
+      "std": 0.0006873139620494616,
+      "min": 0.10011986282101505,
+      "max": 0.10268857732895047
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009222110472555131,
+      "median": 0.0009050774347563118,
+      "std": 7.467344424752618e-05,
+      "min": 0.0008143039849036959,
+      "max": 0.0011090901736419516
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040871654748916623,
+      "median": 0.040877580642700195,
+      "std": 3.707190885317318e-05,
+      "min": 0.040800850838422775,
+      "max": 0.0409543551504612
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 36.0,
+    "success_count": 9,
+    "success_episode_ids": [
+      1,
+      5,
+      10,
+      14,
+      15,
+      16,
+      19,
+      20,
+      21
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 266.92,
+      "median": 400.0,
+      "std": 179.19596424026966,
+      "min": 1.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.2561325132846832,
+      "median": 0.3286166489124298,
+      "std": 0.14476534108694228,
+      "min": 0.0,
+      "max": 0.37554508447647095
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.01823372480775101,
+      "median": 7.774170223103381e-06,
+      "std": 0.025997528493457565,
+      "min": 0.0,
+      "max": 0.09867694612508357
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.017488550812754123,
+      "median": 1.0710776485077925e-06,
+      "std": 0.02490828432364959,
+      "min": 0.0,
+      "max": 0.09479798968788325
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.010059666518003017,
+      "median": 0.00038463148073596186,
+      "std": 0.017283514819398847,
+      "min": 0.00015992988752099534,
+      "max": 0.04087741859257221
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040841099619865415,
+      "median": 0.040802907198667526,
+      "std": 4.388162376699962e-05,
+      "min": 0.04080088064074516,
+      "max": 0.04095408506691456
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.009795405939221381,
+      "median": 0.0,
+      "std": 0.017431058128187706,
+      "min": 0.0,
+      "max": 0.04087741859257221
+    }
+  },
+  "mr_rule": "MR-DRP1",
+  "mr_compare": {
+    "mr_id": "MR-DRP1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 12,
+    "unavailable_count": 13,
+    "violations": 12,
+    "violation_rate_percent": 100.0,
+    "config": {
+      "trajectory_divergence_threshold_m": 0.08,
+      "approach_point_divergence_threshold_m": 0.05,
+      "contact_move_thresh_m": 0.002,
+      "sample_points": 32,
+      "metamorphic_expectation": "followup trajectory must diverge significantly from source",
+      "violation_rule": "trajectory_divergence <= threshold OR approach_point_divergence <= threshold"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 48,
+        "mr_contact_frame_index": 66,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 47,
+        "mr_approach_frame_index": 65,
+        "base_approach_point": [
+          0.017779847607016563,
+          -0.06609100103378296,
+          0.018711768090724945
+        ],
+        "mr_approach_point": [
+          0.0673617273569107,
+          -0.09210126847028732,
+          0.009695380926132202
+        ],
+        "trajectory_divergence_m": 0.018634291657924594,
+        "approach_point_divergence_m": 0.05671148075260665,
+        "max_pointwise_deviation_m": 0.03126392501440524,
+        "source_path_len_m": 0.3186404616116776,
+        "followup_path_len_m": 0.3211402279993947,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.018634m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 45,
+        "mr_contact_frame_index": 44,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 44,
+        "mr_approach_frame_index": 43,
+        "base_approach_point": [
+          0.047578003257513046,
+          0.03284713625907898,
+          0.014051377773284912
+        ],
+        "mr_approach_point": [
+          0.06991702318191528,
+          -0.061826445162296295,
+          0.014387845993041992
+        ],
+        "trajectory_divergence_m": 0.0766217796294169,
+        "approach_point_divergence_m": 0.09727400496122035,
+        "max_pointwise_deviation_m": 0.10914680182960329,
+        "source_path_len_m": 0.29187480122929216,
+        "followup_path_len_m": 0.33794180906674454,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.076622m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 55,
+        "mr_contact_frame_index": 178,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 54,
+        "mr_approach_frame_index": 177,
+        "base_approach_point": [
+          -0.046677179634571075,
+          -0.016586141660809517,
+          0.01651579886674881
+        ],
+        "mr_approach_point": [
+          0.07280153036117554,
+          -0.059249117970466614,
+          0.0096987783908844
+        ],
+        "trajectory_divergence_m": 0.05144217151011023,
+        "approach_point_divergence_m": 0.1270502398975084,
+        "max_pointwise_deviation_m": 0.07654014335702254,
+        "source_path_len_m": 0.31562220369567123,
+        "followup_path_len_m": 0.35186511596564085,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.051442m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 51,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.05300866812467575,
+          0.030060280114412308,
+          0.018694087862968445
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_approach_frame_index": 39,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.04871926084160805,
+          -0.043563492596149445,
+          0.021050818264484406
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 53,
+        "mr_contact_frame_index": 163,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 52,
+        "mr_approach_frame_index": 162,
+        "base_approach_point": [
+          -0.04756677895784378,
+          -0.017566746100783348,
+          0.01678081601858139
+        ],
+        "mr_approach_point": [
+          0.07215039432048798,
+          -0.05700346827507019,
+          0.009663045406341553
+        ],
+        "trajectory_divergence_m": 0.04736325335689203,
+        "approach_point_divergence_m": 0.12624626446788223,
+        "max_pointwise_deviation_m": 0.06679127804080053,
+        "source_path_len_m": 0.295412924819967,
+        "followup_path_len_m": 0.3202653805117306,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.047363m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": 57,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 49,
+        "mr_approach_frame_index": 56,
+        "base_approach_point": [
+          0.009807204827666283,
+          0.003463881090283394,
+          0.01626274734735489
+        ],
+        "mr_approach_point": [
+          0.0708155706524849,
+          -0.06825175881385803,
+          0.009905874729156494
+        ],
+        "trajectory_divergence_m": 0.06997070790447066,
+        "approach_point_divergence_m": 0.09436929340076346,
+        "max_pointwise_deviation_m": 0.10022365401798496,
+        "source_path_len_m": 0.28709434778285714,
+        "followup_path_len_m": 0.34259777467049457,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.069971m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 39,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 38,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.031684815883636475,
+          0.053983137011528015,
+          0.017717331647872925
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 53,
+        "mr_contact_frame_index": 61,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 52,
+        "mr_approach_frame_index": 60,
+        "base_approach_point": [
+          0.043752338737249374,
+          -0.018184348940849304,
+          0.014955341815948486
+        ],
+        "mr_approach_point": [
+          0.06658843159675598,
+          -0.06818071007728577,
+          0.013035230338573456
+        ],
+        "trajectory_divergence_m": 0.04335620502257692,
+        "approach_point_divergence_m": 0.054998273537071415,
+        "max_pointwise_deviation_m": 0.06062089359620439,
+        "source_path_len_m": 0.2964815356284462,
+        "followup_path_len_m": 0.35653530128348315,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.043356m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 54,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_approach_frame_index": 53,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.09863899648189545,
+          -0.0675225779414177,
+          0.01789756864309311
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 56,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 55,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.12992361187934875,
+          0.07271396368741989,
+          0.022747516632080078
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 51,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.034249670803546906,
+          0.06977830082178116,
+          0.017250336706638336
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 243,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 46,
+        "mr_approach_frame_index": 242,
+        "base_approach_point": [
+          -0.04703160375356674,
+          -0.01786528155207634,
+          0.019908994436264038
+        ],
+        "mr_approach_point": [
+          0.09342138469219208,
+          -0.055052466690540314,
+          0.010184265673160553
+        ],
+        "trajectory_divergence_m": 0.044327697057990084,
+        "approach_point_divergence_m": 0.14561764677188951,
+        "max_pointwise_deviation_m": 0.06734579776621943,
+        "source_path_len_m": 0.2871069254233608,
+        "followup_path_len_m": 0.31535804598542583,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.044328m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_approach_frame_index": 50,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.09969498217105865,
+          -0.08704978972673416,
+          0.019428618252277374
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 46,
+        "mr_contact_frame_index": 84,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 45,
+        "mr_approach_frame_index": 83,
+        "base_approach_point": [
+          -0.01411975547671318,
+          -0.08970250934362411,
+          0.019611671566963196
+        ],
+        "mr_approach_point": [
+          0.06827086955308914,
+          -0.09041489660739899,
+          0.009612448513507843
+        ],
+        "trajectory_divergence_m": 0.013257161187360825,
+        "approach_point_divergence_m": 0.08299823522273128,
+        "max_pointwise_deviation_m": 0.03140492938187125,
+        "source_path_len_m": 0.3273771171899114,
+        "followup_path_len_m": 0.30195788255774036,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.013257m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_approach_frame_index": 48,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.1021612286567688,
+          -0.08556780219078064,
+          0.02071787416934967
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 48,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.04759356006979942,
+          0.046570420265197754,
+          0.017384879291057587
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 49,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          0.005175410769879818,
+          0.05786406248807907,
+          0.015789270401000977
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_approach_frame_index": 50,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.10240794718265533,
+          -0.07364504039287567,
+          0.018687471747398376
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "missing_cube_motion",
+        "base_approach_frame_index": 48,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.06594641506671906,
+          -0.0920305997133255,
+          0.02112087607383728
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 64,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 46,
+        "mr_approach_frame_index": 63,
+        "base_approach_point": [
+          0.018633417785167694,
+          -0.07866010069847107,
+          0.01812276989221573
+        ],
+        "mr_approach_point": [
+          0.0712074339389801,
+          -0.09300657361745834,
+          0.010188907384872437
+        ],
+        "trajectory_divergence_m": 0.014288492922008005,
+        "approach_point_divergence_m": 0.055070814721066105,
+        "max_pointwise_deviation_m": 0.024454310135978825,
+        "source_path_len_m": 0.33169679060569635,
+        "followup_path_len_m": 0.32546881514859866,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.014288m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 56,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_approach_frame_index": 55,
+        "mr_approach_frame_index": null,
+        "base_approach_point": [
+          -0.11984303593635559,
+          0.08477137982845306,
+          0.02132636308670044
+        ],
+        "mr_approach_point": null,
+        "trajectory_divergence_m": null,
+        "approach_point_divergence_m": null,
+        "max_pointwise_deviation_m": null,
+        "source_path_len_m": null,
+        "followup_path_len_m": null,
+        "sample_points": null,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_followup_approach_point"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 53,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 43,
+        "mr_approach_frame_index": 52,
+        "base_approach_point": [
+          0.05738605186343193,
+          -0.01950950361788273,
+          0.013984523713588715
+        ],
+        "mr_approach_point": [
+          0.07067152857780457,
+          -0.07214725762605667,
+          0.010619178414344788
+        ],
+        "trajectory_divergence_m": 0.04301080864601582,
+        "approach_point_divergence_m": 0.05439267034754143,
+        "max_pointwise_deviation_m": 0.06505663802330854,
+        "source_path_len_m": 0.3002010764595971,
+        "followup_path_len_m": 0.35156425508570377,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.043011m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 46,
+        "mr_approach_frame_index": 46,
+        "base_approach_point": [
+          0.05979412421584129,
+          0.01219757180660963,
+          0.012242287397384644
+        ],
+        "mr_approach_point": [
+          0.07037412375211716,
+          -0.05534113198518753,
+          0.01362820714712143
+        ],
+        "trajectory_divergence_m": 0.05512084650576497,
+        "approach_point_divergence_m": 0.06837641167549248,
+        "max_pointwise_deviation_m": 0.07755657727569287,
+        "source_path_len_m": 0.2957121943319823,
+        "followup_path_len_m": 0.35469078309720276,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.055121m <= 0.080000m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 68,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_approach_frame_index": 51,
+        "mr_approach_frame_index": 67,
+        "base_approach_point": [
+          -0.00039889663457870483,
+          0.0009062484605237842,
+          0.016789183020591736
+        ],
+        "mr_approach_point": [
+          0.06894020736217499,
+          -0.06176060438156128,
+          0.00955120474100113
+        ],
+        "trajectory_divergence_m": 0.06278127155950072,
+        "approach_point_divergence_m": 0.09374131489252747,
+        "max_pointwise_deviation_m": 0.09230283758853182,
+        "source_path_len_m": 0.28941876884401946,
+        "followup_path_len_m": 0.354281960859997,
+        "sample_points": 32.0,
+        "trajectory_divergence_threshold_m": 0.08,
+        "approach_point_divergence_threshold_m": 0.05,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Blind Executor Trajectory Invariance (trajectory_divergence=0.062781m <= 0.080000m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 12,
+  "followup_mr_violation_rate_percent": 100.0,
+  "followup_unavailable_count": 13,
+  "followup_analyzable_count": 12
+}

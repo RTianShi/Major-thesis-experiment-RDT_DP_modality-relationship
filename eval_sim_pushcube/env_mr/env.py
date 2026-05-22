@@ -101,6 +101,15 @@ def _find_scene_actor_by_keywords(env, keywords):
     return None
 
 
+def _safe_actor_name(actor):
+    if actor is None:
+        return None
+    try:
+        return actor.get_name()
+    except Exception:
+        return None
+
+
 def _set_actor_base_color(actor, rgba):
     for material in _iter_render_materials(actor):
         material.set_base_color(np.array(rgba, dtype=np.float32))
@@ -819,6 +828,27 @@ def _place_scdp1_visual_distractors(env, cfg):
             pass
 
 
+def _ensure_mr2_visual_asset(env, cfg):
+    runtime = getattr(env.unwrapped, "_mr2_runtime", None)
+    if runtime is not None:
+        return runtime
+
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR2 requires env.unwrapped.scene")
+
+    duck = _build_visual_duck(
+        scene=scene,
+        scale=float(cfg.get("decor_scale", 0.9)),
+        body_rgba=cfg.get("decor_body_rgba", [0.98, 0.88, 0.12, 1.0]),
+        beak_rgba=cfg.get("decor_beak_rgba", [0.96, 0.42, 0.08, 1.0]),
+        name="mr2_non_interfering_duck",
+    )
+    runtime = {"decor_actor": duck}
+    env.unwrapped._mr2_runtime = runtime
+    return runtime
+
+
 def _safe_visual_distractor_positions(red_xy, green_xy, cfg):
     candidates = np.array(
         cfg.get(
@@ -898,6 +928,36 @@ def _resolve_green_cube_far_side_xy(red_xy, green_xy, bounds, cfg, min_center_di
 
 @register_env("identity")
 def env_identity(env, cfg):
+    return env
+
+
+@register_env("MR2")
+@register_env("MR-2")
+@register_env("Non-Interfering-Object-Addition")
+def env_mr2_non_interfering_object_addition(env, cfg):
+    task_anchor = _find_task_object_anchor(env)
+    if task_anchor is None:
+        raise ValueError("MR2 could not find a task object actor")
+
+    runtime = _ensure_mr2_visual_asset(env, cfg)
+    task_pos, _ = _actor_pose_tensor(task_anchor)
+    decor_actor = runtime["decor_actor"]
+
+    side_offset = float(cfg.get("side_offset", 0.10))
+    rear_offset = float(cfg.get("rear_offset", 0.08))
+    z_height = float(cfg.get("decor_z_height", 0.018))
+    side_sign = float(cfg.get("side_sign", 1.0))
+
+    decor_pos = task_pos.clone()
+    decor_pos[:, 0] = task_pos[:, 0] - rear_offset
+    decor_pos[:, 1] = task_pos[:, 1] + side_sign * side_offset
+    decor_pos[:, 2] = z_height
+
+    decor_quat = torch.zeros_like(_actor_pose_tensor(decor_actor)[1])
+    decor_quat[:, 0] = 1.0
+    _set_actor_pose(decor_actor, decor_pos, decor_quat)
+    _zero_actor_velocity(decor_actor, decor_pos)
+    _apply_scene_updates(env)
     return env
 
 
@@ -1065,12 +1125,8 @@ def env_extreme_diagonal_cube_position(env, cfg):
     task_anchor = _find_task_object_anchor(env)
     if task_anchor is None:
         raise ValueError("MR-DRP1 could not find a task object actor")
-    goal_anchor = _find_goal_anchor(env)
-    if goal_anchor is None:
-        raise ValueError("MR-DRP1 could not find a goal/target/region actor")
 
     task_pos, task_quat = _actor_pose_tensor(task_anchor)
-    goal_pos, goal_quat = _actor_pose_tensor(goal_anchor)
     target_xy = torch.as_tensor(
         cfg.get("target_xy", [0.1, -0.1]),
         dtype=task_pos.dtype,
@@ -1083,55 +1139,24 @@ def env_extreme_diagonal_cube_position(env, cfg):
     translated_task_pos[:, 0] = float(target_xy[0].item())
     translated_task_pos[:, 1] = float(target_xy[1].item())
 
-    goal_offset_xy = torch.as_tensor(
-        cfg.get(
-            "goal_offset_xy",
-            [
-                float(cfg.get("goal_forward_offset", 0.1))
-                + float(getattr(env.unwrapped, "goal_radius", 0.0)),
-                0.0,
-            ],
-        ),
-        dtype=goal_pos.dtype,
-        device=goal_pos.device,
-    ).reshape(-1)
-    if goal_offset_xy.numel() < 2:
-        raise ValueError("MR-DRP1 requires goal_offset_xy to contain at least two values")
-
-    translated_goal_pos = goal_pos.clone()
-    translated_goal_pos[:, 0] = translated_task_pos[:, 0] + float(goal_offset_xy[0].item())
-    translated_goal_pos[:, 1] = translated_task_pos[:, 1] + float(goal_offset_xy[1].item())
-
     task_bounds = cfg.get(
         "task_bounds_xy",
         [[-0.10, -0.20], [0.10, 0.20]],
     )
-    goal_bounds = cfg.get(
-        "goal_bounds_xy",
-        [[0.00, -0.20], [0.25, 0.20]],
-    )
-    translated_task_pos[..., :2] = _translate_xy_within_bounds(
-        task_pos[..., :2],
-        translated_task_pos[0, 0].item() - task_pos[0, 0].item(),
-        translated_task_pos[0, 1].item() - task_pos[0, 1].item(),
-        task_bounds,
-    )
-    translated_goal_pos[..., :2] = _translate_xy_within_bounds(
-        goal_pos[..., :2],
-        translated_goal_pos[0, 0].item() - goal_pos[0, 0].item(),
-        translated_goal_pos[0, 1].item() - goal_pos[0, 1].item(),
-        goal_bounds,
+    translated_task_pos[..., :2] = _validate_xy_within_bounds(
+        translated_task_pos[..., :2], task_bounds, "MR-DRP1 task position"
     )
 
     _set_actor_pose(task_anchor, translated_task_pos, task_quat)
-    _set_actor_pose(goal_anchor, translated_goal_pos, goal_quat)
     _zero_actor_velocity(task_anchor, translated_task_pos)
-    _zero_actor_velocity(goal_anchor, translated_goal_pos)
+    env.unwrapped._mr_drp1_runtime = {
+        "target_xy": [float(v) for v in target_xy[:2].tolist()],
+    }
     _apply_scene_updates(env)
     return env
 
 
-@register_env("MR-DRP2")
+@register_env("MR-DRP2-right")
 @register_env("MR-DRP-2")
 @register_env("DRP-Bilateral-Extreme-Entry")
 def env_bilateral_extreme_entry_pose(env, cfg):
@@ -1191,6 +1216,65 @@ def env_bilateral_extreme_entry_pose(env, cfg):
     _apply_scene_updates(env)
     return env
 
+@register_env("MR-DRP2-left")
+@register_env("MR-DRP-2")
+@register_env("DRP-Bilateral-Extreme-Entry")
+def env_bilateral_extreme_entry_pose(env, cfg):
+    robot = getattr(getattr(env.unwrapped, "agent", None), "robot", None)
+    if robot is None:
+        raise ValueError("MR-DRP2 requires env.unwrapped.agent.robot")
+
+    pose_variant = str(cfg.get("pose_variant", "left")).strip().lower()
+    current_qpos = robot.get_qpos().clone()
+    width = min(int(cfg.get("num_joints", 7)), current_qpos.shape[-1])
+    if width <= 0:
+        return env
+
+    left_delta = torch.as_tensor(
+        cfg.get(
+            "left_delta",
+            [0.45, 0.12, 0.0, -0.30, 0.0, 0.22, 0.55],
+        ),
+        dtype=current_qpos.dtype,
+        device=current_qpos.device,
+    ).reshape(-1)
+    right_delta = torch.as_tensor(
+        cfg.get(
+            "right_delta",
+            [-0.45, -0.12, 0.0, -0.30, 0.0, 0.22, -0.55],
+        ),
+        dtype=current_qpos.dtype,
+        device=current_qpos.device,
+    ).reshape(-1)
+
+    if pose_variant in {"left", "left_biased", "source"}:
+        delta = left_delta
+    elif pose_variant in {"right", "right_biased", "derived"}:
+        delta = right_delta
+    else:
+        raise ValueError(f"MR-DRP2 unknown pose_variant={pose_variant!r}")
+
+    target_qpos = current_qpos.clone()
+    target_qpos[..., :width] = target_qpos[..., :width] + delta[:width]
+
+    joint_limits = cfg.get("joint_limits", None)
+    if joint_limits is not None:
+        joint_limits = torch.as_tensor(
+            joint_limits,
+            dtype=target_qpos.dtype,
+            device=target_qpos.device,
+        )
+        if joint_limits.ndim == 2 and joint_limits.shape[0] >= width and joint_limits.shape[1] >= 2:
+            lower = joint_limits[:width, 0]
+            upper = joint_limits[:width, 1]
+            target_qpos[..., :width] = torch.max(
+                torch.min(target_qpos[..., :width], upper),
+                lower,
+            )
+
+    _apply_robot_qpos(env, target_qpos)
+    _apply_scene_updates(env)
+    return env
 
 @register_env("MR-SEMP1")
 @register_env("MR-SEMP-1")
@@ -1198,6 +1282,9 @@ def env_bilateral_extreme_entry_pose(env, cfg):
 @register_env("MR-SADP1")
 @register_env("MR-SADP-1")
 @register_env("SADP-Cross-Modal-Semantic-Noise")
+@register_env("MR4")
+@register_env("MR-4")
+@register_env("Target-Object-Relocation")
 def env_translate_task_and_goal_scene_xy(env, cfg):
     task_anchor = _find_task_object_anchor(env)
     if task_anchor is None:

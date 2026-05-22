@@ -362,3 +362,48 @@ def prop_sadp2_safe_joint_gaussian_noise(proprio, cfg):
     noise = np.random.randn(*out[..., resolved_indices].shape) * sigma
     out[..., resolved_indices] = out[..., resolved_indices] + noise
     return out
+
+
+@register_proprio("MR6")
+@register_proprio("MR-6")
+@register_proprio("Action-Optimality-Completeness")
+def prop_mr6_precontact_lateral_jog(proprio, cfg):
+    runtime = cfg.get("runtime", {})
+    step_index = int(runtime.get("step_index", 0))
+    tcp_to_obj_distance = float(runtime.get("tcp_to_obj_distance", float("nan")))
+    is_contact = bool(runtime.get("is_contact", False))
+    contact_distance = float(cfg.get("contact_distance", 0.035))
+
+    if is_contact:
+        return proprio
+    if torch.isfinite(torch.tensor(tcp_to_obj_distance)) and tcp_to_obj_distance <= contact_distance:
+        return proprio
+
+    fired_step = cfg.get("_mr6_fired_step", None)
+    if fired_step is None:
+        trigger_step = int(cfg.get("trigger_step", 1))
+        if step_index < trigger_step:
+            return proprio
+        cfg["_mr6_fired_step"] = step_index
+        fired_step = step_index
+
+    phase = int(step_index - int(fired_step))
+    if phase not in (0, 1):
+        return proprio
+
+    target_indices = cfg.get("target_indices", [0])
+    resolved_indices = _resolve_target_indices(proprio, target_indices)
+    if not resolved_indices:
+        return proprio
+
+    lateral_offset = float(cfg.get("lateral_offset", 0.02))
+    signed_offset = lateral_offset if phase == 0 else -lateral_offset
+
+    if torch.is_tensor(proprio):
+        out = proprio.clone()
+        out[..., resolved_indices] = out[..., resolved_indices] + signed_offset
+        return out
+
+    out = proprio.copy()
+    out[..., resolved_indices] = out[..., resolved_indices] + signed_offset
+    return out

@@ -10,6 +10,34 @@ from eval_sim.mr.language import *  # noqa: F401,F403
 from .registry import register_language
 
 
+@register_language("MR1")
+@register_language("MR-1")
+@register_language("Synonym-Substitution")
+def lang_mr1_synonym_substitution(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError("MR1 requires cfg['encoder'] (text encoder) to be provided")
+    mutated = cfg.get(
+        "mutated_text",
+        "Nudge the block until it reaches the target circular area.",
+    )
+    return encoder([str(mutated)])
+
+
+@register_language("MR5")
+@register_language("MR-5")
+@register_language("Instruction-Specialization")
+def lang_mr5_instruction_specialization(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError("MR5 requires cfg['encoder'] (text encoder) to be provided")
+    mutated = cfg.get(
+        "mutated_text",
+        "Carefully push the cube in a straight line to the goal.",
+    )
+    return encoder([str(mutated)])
+
+
 @register_language("MR-JDCP1")
 @register_language("MR-JDCP-1")
 @register_language("JDCP-Equivalent-Lang")
@@ -95,6 +123,20 @@ def lang_mr_dcrb1_ood_entity_rebinding(text_embed, cfg):
     mutated = cfg.get(
         "mutated_text",
         "Push and move the yellow star-prism to a goal region in front of it.",
+    )
+    return encoder([str(mutated)])
+
+
+@register_language("MR-DCRB2")
+@register_language("MR-DCRB-2")
+@register_language("DCRB-OOD-Object-Rebinding")
+def lang_mr_dcrb2_ood_object_rebinding(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError("MR-DCRB2 requires cfg['encoder'] (text encoder) to be provided")
+    mutated = cfg.get(
+        "mutated_text",
+        "Push and move the yellow cube to a goal region in front of it.",
     )
     return encoder([str(mutated)])
 

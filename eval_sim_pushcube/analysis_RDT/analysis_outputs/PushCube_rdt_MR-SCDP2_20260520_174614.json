@@ -1,0 +1,1203 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PushCube/PushCube-v1_20260519_163706",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PushCube/PushCube-v1_MR-SCDP2_20260520_174451",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 67.76,
+      "median": 69.0,
+      "std": 4.941902467673761,
+      "min": 55.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31570288896560667,
+      "median": 0.3156222105026245,
+      "std": 0.028153897417754127,
+      "min": 0.2694014608860016,
+      "max": 0.3927096128463745
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10198433989484892,
+      "median": 0.10157619634552086,
+      "std": 0.001292937342447149,
+      "min": 0.10047514511100394,
+      "max": 0.10585745032704967
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1012806836179553,
+      "median": 0.10115198446771026,
+      "std": 0.0006873139620494616,
+      "min": 0.10011986282101505,
+      "max": 0.10268857732895047
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009222110472555131,
+      "median": 0.0009050774347563118,
+      "std": 7.467344424752618e-05,
+      "min": 0.0008143039849036959,
+      "max": 0.0011090901736419516
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040871654748916623,
+      "median": 0.040877580642700195,
+      "std": 3.707190885317318e-05,
+      "min": 0.040800850838422775,
+      "max": 0.0409543551504612
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 69.04,
+      "median": 70.0,
+      "std": 4.828912921144882,
+      "min": 57.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31892364025115966,
+      "median": 0.3182886242866516,
+      "std": 0.030450388336033654,
+      "min": 0.2744849622249603,
+      "max": 0.39912548661231995
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.1018866548029753,
+      "median": 0.10189529878954177,
+      "std": 0.001005229883693524,
+      "min": 0.10028638951637084,
+      "max": 0.10377847539179043
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.10140846345962155,
+      "median": 0.10145713547957494,
+      "std": 0.0009415625716325746,
+      "min": 0.1001268114777463,
+      "max": 0.10345727400920032
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009068356498659008,
+      "median": 0.0008835303998972045,
+      "std": 8.215896206142839e-05,
+      "min": 0.0007956837071105838,
+      "max": 0.0011643410685893388
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040865671783685685,
+      "median": 0.04087759926915169,
+      "std": 4.173349906344759e-05,
+      "min": 0.04080084338784218,
+      "max": 0.040956323966383934
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-SCDP2",
+  "mr_compare": {
+    "mr_id": "MR-SCDP2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "path_length_ratio_threshold": 1.15,
+      "contact_drift_threshold_m": 0.03,
+      "final_drift_threshold_m": 0.03,
+      "contact_move_thresh_m": 0.002,
+      "violation_rule": "path_length_ratio > threshold OR contact_drift > threshold OR final_drift > threshold"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 48,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.02094721421599388,
+          -0.06650764495134354,
+          0.017197996377944946
+        ],
+        "mr_contact_point": [
+          0.023792851716279984,
+          -0.06871533393859863,
+          0.015031486749649048
+        ],
+        "base_final_point": [
+          0.11879762262105942,
+          -0.07320210337638855,
+          0.009873345494270325
+        ],
+        "mr_final_point": [
+          0.11787865310907364,
+          -0.07544044405221939,
+          0.009617872536182404
+        ],
+        "path_length_ratio": 1.0097623990723366,
+        "contact_drift_m": 0.004203011707928114,
+        "final_drift_m": 0.002433092759709839,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 45,
+        "mr_contact_frame_index": 48,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.05235258489847183,
+          0.03270716592669487,
+          0.013250373303890228
+        ],
+        "mr_contact_point": [
+          0.05522104725241661,
+          0.0358552411198616,
+          0.011483997106552124
+        ],
+        "base_final_point": [
+          0.15128187835216522,
+          0.034629810601472855,
+          0.009566836059093475
+        ],
+        "mr_final_point": [
+          0.14958055317401886,
+          0.03317127004265785,
+          0.009608857333660126
+        ],
+        "path_length_ratio": 1.0031611893375367,
+        "contact_drift_m": 0.004610698273402067,
+        "final_drift_m": 0.002241341944242185,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 55,
+        "mr_contact_frame_index": 55,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.040945954620838165,
+          -0.016425246372818947,
+          0.015922583639621735
+        ],
+        "mr_contact_point": [
+          -0.0413779579102993,
+          -0.013731524348258972,
+          0.015670202672481537
+        ],
+        "base_final_point": [
+          0.053094543516635895,
+          -0.021793397143483162,
+          0.009443901479244232
+        ],
+        "mr_final_point": [
+          0.05275687575340271,
+          -0.01828750967979431,
+          0.009571895003318787
+        ],
+        "path_length_ratio": 1.008447887913556,
+        "contact_drift_m": 0.0027397922075002973,
+        "final_drift_m": 0.0035244359504156926,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 52,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04715176671743393,
+          0.03019959107041359,
+          0.017731957137584686
+        ],
+        "mr_contact_point": [
+          -0.051731932908296585,
+          0.029883861541748047,
+          0.01737941801548004
+        ],
+        "base_final_point": [
+          0.044387973845005035,
+          0.029814457520842552,
+          0.009470030665397644
+        ],
+        "mr_final_point": [
+          0.04425535723567009,
+          0.033186428248882294,
+          0.009431585669517517
+        ],
+        "path_length_ratio": 1.019923398666514,
+        "contact_drift_m": 0.004604551151177171,
+        "final_drift_m": 0.003374796552910499,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": 42,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04381124675273895,
+          -0.04386287182569504,
+          0.02012503892183304
+        ],
+        "mr_contact_point": [
+          -0.04228285700082779,
+          -0.042023785412311554,
+          0.018566861748695374
+        ],
+        "base_final_point": [
+          0.054806821048259735,
+          -0.04663875326514244,
+          0.01590055227279663
+        ],
+        "mr_final_point": [
+          0.05629412457346916,
+          -0.04558267444372177,
+          0.015991076827049255
+        ],
+        "path_length_ratio": 1.0188696357499616,
+        "contact_drift_m": 0.0028541426335286888,
+        "final_drift_m": 0.0018263540040409185,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 53,
+        "mr_contact_frame_index": 54,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04233292117714882,
+          -0.018070390447974205,
+          0.01590830087661743
+        ],
+        "mr_contact_point": [
+          -0.04361311346292496,
+          -0.017281079664826393,
+          0.014914706349372864
+        ],
+        "base_final_point": [
+          0.05516885221004486,
+          -0.022460561245679855,
+          0.01496034860610962
+        ],
+        "mr_final_point": [
+          0.05091499537229538,
+          -0.02443680353462696,
+          0.00988607108592987
+        ],
+        "path_length_ratio": 0.9912272395868038,
+        "contact_drift_m": 0.001802535404790847,
+        "final_drift_m": 0.006910074090231772,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.014767490327358246,
+          0.002926007378846407,
+          0.015787869691848755
+        ],
+        "mr_contact_point": [
+          0.013793643563985825,
+          0.006235864479094744,
+          0.015195019543170929
+        ],
+        "base_final_point": [
+          0.11361532658338547,
+          0.0018525508930906653,
+          0.015065521001815796
+        ],
+        "mr_final_point": [
+          0.11084600538015366,
+          0.004349999129772186,
+          0.009641118347644806
+        ],
+        "path_length_ratio": 0.9786282763196607,
+        "contact_drift_m": 0.0035007146186718206,
+        "final_drift_m": 0.006582593089060739,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 39,
+        "mr_contact_frame_index": 41,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.025800079107284546,
+          0.053911589086055756,
+          0.01705782115459442
+        ],
+        "mr_contact_point": [
+          -0.024321340024471283,
+          0.05431412532925606,
+          0.016380921006202698
+        ],
+        "base_final_point": [
+          0.0698603019118309,
+          0.05432385951280594,
+          0.014777839183807373
+        ],
+        "mr_final_point": [
+          0.0707753598690033,
+          0.057609494775533676,
+          0.014706678688526154
+        ],
+        "path_length_ratio": 1.025672561231111,
+        "contact_drift_m": 0.0016753801100114446,
+        "final_drift_m": 0.0034114211057495016,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 53,
+        "mr_contact_frame_index": 52,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.04817575216293335,
+          -0.018323473632335663,
+          0.014591611921787262
+        ],
+        "mr_contact_point": [
+          0.048410214483737946,
+          -0.018210118636488914,
+          0.013920187950134277
+        ],
+        "base_final_point": [
+          0.1437995284795761,
+          -0.021908743306994438,
+          0.009494081139564514
+        ],
+        "mr_final_point": [
+          0.14338508248329163,
+          -0.02109423279762268,
+          0.009552396833896637
+        ],
+        "path_length_ratio": 0.9937323517953889,
+        "contact_drift_m": 0.0007201611518755795,
+        "final_drift_m": 0.0009157475492288891,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 54,
+        "mr_contact_frame_index": 55,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09338714182376862,
+          -0.06808388233184814,
+          0.016493812203407288
+        ],
+        "mr_contact_point": [
+          -0.09271328151226044,
+          -0.06749265640974045,
+          0.01757064461708069
+        ],
+        "base_final_point": [
+          0.0021261991932988167,
+          -0.07359281927347183,
+          0.014530554413795471
+        ],
+        "mr_final_point": [
+          0.002175820991396904,
+          -0.07241039723157883,
+          0.014641031622886658
+        ],
+        "path_length_ratio": 0.9984450375060139,
+        "contact_drift_m": 0.0014011437676183262,
+        "final_drift_m": 0.0011886081868006334,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 56,
+        "mr_contact_frame_index": 61,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.12390601634979248,
+          0.07279513776302338,
+          0.021510548889636993
+        ],
+        "mr_contact_point": [
+          -0.12567906081676483,
+          0.07925469428300858,
+          0.019308574497699738
+        ],
+        "base_final_point": [
+          -0.0287834033370018,
+          0.07877509295940399,
+          0.009449973702430725
+        ],
+        "mr_final_point": [
+          -0.026164842769503593,
+          0.08246999979019165,
+          0.014576815068721771
+        ],
+        "path_length_ratio": 1.0350508606521192,
+        "contact_drift_m": 0.007051116815050791,
+        "final_drift_m": 0.006840591957496871,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.02874874882400036,
+          0.07029666751623154,
+          0.016523897647857666
+        ],
+        "mr_contact_point": [
+          -0.028772154822945595,
+          0.07372075319290161,
+          0.016438409686088562
+        ],
+        "base_final_point": [
+          0.0626412108540535,
+          0.07330776751041412,
+          0.009442217648029327
+        ],
+        "mr_final_point": [
+          0.0636269748210907,
+          0.07421447336673737,
+          0.009423486888408661
+        ],
+        "path_length_ratio": 1.0222688350890319,
+        "contact_drift_m": 0.0034252326568528484,
+        "final_drift_m": 0.0013394763715555982,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.0419730618596077,
+          -0.017697971314191818,
+          0.019510284066200256
+        ],
+        "mr_contact_point": [
+          -0.04254211112856865,
+          -0.018849385902285576,
+          0.019353196024894714
+        ],
+        "base_final_point": [
+          0.05648645758628845,
+          -0.021461065858602524,
+          0.015067964792251587
+        ],
+        "mr_final_point": [
+          0.05551755055785179,
+          -0.02347552590072155,
+          0.015253342688083649
+        ],
+        "path_length_ratio": 0.9957084203339327,
+        "contact_drift_m": 0.0012939278484140157,
+        "final_drift_m": 0.0022430325577911863,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": 52,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09479817003011703,
+          -0.08738888055086136,
+          0.01854465901851654
+        ],
+        "mr_contact_point": [
+          -0.09384139627218246,
+          -0.08818089962005615,
+          0.017473772168159485
+        ],
+        "base_final_point": [
+          0.00435140635818243,
+          -0.09207785874605179,
+          0.014354422688484192
+        ],
+        "mr_final_point": [
+          0.004159192554652691,
+          -0.09550976753234863,
+          0.014414660632610321
+        ],
+        "path_length_ratio": 1.0274350261348653,
+        "contact_drift_m": 0.0016399722180903194,
+        "final_drift_m": 0.0034378151017239703,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 46,
+        "mr_contact_frame_index": 46,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.008775301277637482,
+          -0.08979637175798416,
+          0.018751785159111023
+        ],
+        "mr_contact_point": [
+          -0.011376134119927883,
+          -0.0889517292380333,
+          0.01708279550075531
+        ],
+        "base_final_point": [
+          0.08847177028656006,
+          -0.09292760491371155,
+          0.015404760837554932
+        ],
+        "mr_final_point": [
+          0.08993695676326752,
+          -0.09338122606277466,
+          0.015230424702167511
+        ],
+        "path_length_ratio": 1.014312747366884,
+        "contact_drift_m": 0.0032036352694624335,
+        "final_drift_m": 0.001543676341240473,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": 49,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09722476452589035,
+          -0.08487436175346375,
+          0.019511140882968903
+        ],
+        "mr_contact_point": [
+          -0.09939076751470566,
+          -0.087511345744133,
+          0.018997550010681152
+        ],
+        "base_final_point": [
+          0.0011459486559033394,
+          -0.08989205956459045,
+          0.01496695727109909
+        ],
+        "mr_final_point": [
+          -0.0012237261980772018,
+          -0.09096715599298477,
+          0.014695487916469574
+        ],
+        "path_length_ratio": 1.0137958478656452,
+        "contact_drift_m": 0.003450946116458509,
+        "final_drift_m": 0.002616273467058993,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04225917160511017,
+          0.0468878448009491,
+          0.016556516289711
+        ],
+        "mr_contact_point": [
+          -0.042245831340551376,
+          0.049168288707733154,
+          0.017240285873413086
+        ],
+        "base_final_point": [
+          0.056256696581840515,
+          0.047255948185920715,
+          0.015068680047988892
+        ],
+        "mr_final_point": [
+          0.05597679689526558,
+          0.051293253898620605,
+          0.01496180146932602
+        ],
+        "path_length_ratio": 1.0183002194992326,
+        "contact_drift_m": 0.002380786260512094,
+        "final_drift_m": 0.004048407623118121,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": 49,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.010657391510903835,
+          0.05770359933376312,
+          0.01569470763206482
+        ],
+        "mr_contact_point": [
+          0.007705162279307842,
+          0.062288735061883926,
+          0.016008228063583374
+        ],
+        "base_final_point": [
+          0.10740085691213608,
+          0.06081756576895714,
+          0.009790733456611633
+        ],
+        "mr_final_point": [
+          0.10715818405151367,
+          0.06560258567333221,
+          0.009659245610237122
+        ],
+        "path_length_ratio": 1.007518530118579,
+        "contact_drift_m": 0.0054623641531995415,
+        "final_drift_m": 0.0047929734670966555,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.09686878323554993,
+          -0.07327314466238022,
+          0.018053226172924042
+        ],
+        "mr_contact_point": [
+          -0.09331455826759338,
+          -0.07750532776117325,
+          0.01576097309589386
+        ],
+        "base_final_point": [
+          0.003050149418413639,
+          -0.08181653171777725,
+          0.014635331928730011
+        ],
+        "mr_final_point": [
+          0.0023698145523667336,
+          -0.08457823842763901,
+          0.014450229704380035
+        ],
+        "path_length_ratio": 1.0041060933491455,
+        "contact_drift_m": 0.005983169149682248,
+        "final_drift_m": 0.0028502881108256077,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.061933182179927826,
+          -0.09235025942325592,
+          0.01953154057264328
+        ],
+        "mr_contact_point": [
+          -0.062000058591365814,
+          -0.09316513687372208,
+          0.017346180975437164
+        ],
+        "base_final_point": [
+          0.03670736402273178,
+          -0.09613343328237534,
+          0.014751218259334564
+        ],
+        "mr_final_point": [
+          0.0376848429441452,
+          -0.09907876700162888,
+          0.01463579386472702
+        ],
+        "path_length_ratio": 1.0207055747023508,
+        "contact_drift_m": 0.0023333011556132058,
+        "final_drift_m": 0.003105443374214052,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.023836076259613037,
+          -0.07822511345148087,
+          0.016795970499515533
+        ],
+        "mr_contact_point": [
+          0.02060171216726303,
+          -0.07920190691947937,
+          0.015477888286113739
+        ],
+        "base_final_point": [
+          0.11936511099338531,
+          -0.08265030384063721,
+          0.009659633040428162
+        ],
+        "mr_final_point": [
+          0.11955675482749939,
+          -0.08516399562358856,
+          0.009390681982040405
+        ],
+        "path_length_ratio": 1.0036286629137885,
+        "contact_drift_m": 0.003626648215955581,
+        "final_drift_m": 0.0025352925690418845,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 56,
+        "mr_contact_frame_index": 57,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.11415540426969528,
+          0.08535406738519669,
+          0.020402133464813232
+        ],
+        "mr_contact_point": [
+          -0.11287464201450348,
+          0.0839170441031456,
+          0.01824338734149933
+        ],
+        "base_final_point": [
+          -0.017300566658377647,
+          0.09506602585315704,
+          0.009285666048526764
+        ],
+        "mr_final_point": [
+          -0.01485425978899002,
+          0.08811637759208679,
+          0.014855384826660156
+        ],
+        "path_length_ratio": 1.0163373950377652,
+        "contact_drift_m": 0.0028923299764037434,
+        "final_drift_m": 0.009236005387574305,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 46,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.06311295926570892,
+          -0.019496090710163116,
+          0.013178542256355286
+        ],
+        "mr_contact_point": [
+          0.0647386983036995,
+          -0.02064879797399044,
+          0.013047799468040466
+        ],
+        "base_final_point": [
+          0.15858420729637146,
+          -0.020116202533245087,
+          0.009705126285552979
+        ],
+        "mr_final_point": [
+          0.15760105848312378,
+          -0.024281475692987442,
+          0.00969434529542923
+        ],
+        "path_length_ratio": 1.0006733693771215,
+        "contact_drift_m": 0.001997211839646239,
+        "final_drift_m": 0.004279742785963712,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.06450474262237549,
+          0.012355673126876354,
+          0.0120977982878685
+        ],
+        "mr_contact_point": [
+          0.0671001449227333,
+          0.01491238921880722,
+          0.013587206602096558
+        ],
+        "base_final_point": [
+          0.16227658092975616,
+          0.01650082692503929,
+          0.009483970701694489
+        ],
+        "mr_final_point": [
+          0.16148823499679565,
+          0.011836648918688297,
+          0.009476952254772186
+        ],
+        "path_length_ratio": 0.9960898363107241,
+        "contact_drift_m": 0.003935892198972498,
+        "final_drift_m": 0.004730337730388911,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 53,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.005201422609388828,
+          0.0010377259459346533,
+          0.016358181834220886
+        ],
+        "mr_contact_point": [
+          0.0004717353731393814,
+          0.0010119873331859708,
+          0.015691496431827545
+        ],
+        "base_final_point": [
+          0.09867189824581146,
+          -0.0016221229452639818,
+          0.015205450356006622
+        ],
+        "mr_final_point": [
+          0.09878221154212952,
+          -0.0019274643855169415,
+          0.015090793371200562
+        ],
+        "path_length_ratio": 1.0195466428983662,
+        "contact_drift_m": 0.004776512666652474,
+        "final_drift_m": 0.0003443089348900546,
+        "path_length_ratio_threshold": 1.15,
+        "contact_drift_threshold_m": 0.03,
+        "final_drift_threshold_m": 0.03,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "syntax_variation_preserves_trajectory"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

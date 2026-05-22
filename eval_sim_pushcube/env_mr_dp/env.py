@@ -869,6 +869,27 @@ def _place_scdp1_visual_distractors(env, cfg):
             pass
 
 
+def _ensure_mr2_visual_asset(env, cfg):
+    runtime = getattr(env.unwrapped, "_mr2_runtime", None)
+    if runtime is not None:
+        return runtime
+
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR2 requires env.unwrapped.scene")
+
+    duck = _build_visual_duck(
+        scene=scene,
+        scale=float(cfg.get("decor_scale", 0.9)),
+        body_rgba=cfg.get("decor_body_rgba", [0.98, 0.88, 0.12, 1.0]),
+        beak_rgba=cfg.get("decor_beak_rgba", [0.96, 0.42, 0.08, 1.0]),
+        name="mr2_non_interfering_duck",
+    )
+    runtime = {"decor_actor": duck}
+    env.unwrapped._mr2_runtime = runtime
+    return runtime
+
+
 def _apply_scdp1_visual_state(env, cfg):
     _ensure_scdp1_visual_assets(env, cfg)
     _set_table_checkerboard_or_wood(env, cfg)
@@ -970,6 +991,36 @@ def _resolve_green_cube_far_side_xy(red_xy, green_xy, bounds, cfg, min_center_di
 
 @register_env("identity")
 def env_identity(env, cfg):
+    return env
+
+
+@register_env("MR2")
+@register_env("MR-2")
+@register_env("Non-Interfering-Object-Addition")
+def env_mr2_non_interfering_object_addition(env, cfg):
+    task_anchor = _find_task_object_anchor(env)
+    if task_anchor is None:
+        raise ValueError("MR2 could not find a task object actor")
+
+    runtime = _ensure_mr2_visual_asset(env, cfg)
+    task_pos, _ = _actor_pose_tensor(task_anchor)
+    decor_actor = runtime["decor_actor"]
+
+    side_offset = float(cfg.get("side_offset", 0.10))
+    rear_offset = float(cfg.get("rear_offset", 0.08))
+    z_height = float(cfg.get("decor_z_height", 0.018))
+    side_sign = float(cfg.get("side_sign", 1.0))
+
+    decor_pos = task_pos.clone()
+    decor_pos[:, 0] = task_pos[:, 0] - rear_offset
+    decor_pos[:, 1] = task_pos[:, 1] + side_sign * side_offset
+    decor_pos[:, 2] = z_height
+
+    decor_quat = torch.zeros_like(_actor_pose_tensor(decor_actor)[1])
+    decor_quat[:, 0] = 1.0
+    _set_actor_pose(decor_actor, decor_pos, decor_quat)
+    _zero_actor_velocity(decor_actor, decor_pos)
+    _apply_scene_updates(env)
     return env
 
 
@@ -1314,6 +1365,9 @@ def env_bilateral_extreme_entry_pose_mr(env, cfg):
 @register_env("MR-SADP1")
 @register_env("MR-SADP-1")
 @register_env("SADP-Cross-Modal-Semantic-Noise")
+@register_env("MR4")
+@register_env("MR-4")
+@register_env("Target-Object-Relocation")
 def env_translate_task_and_goal_scene_xy(env, cfg):
     task_anchor = _find_task_object_anchor(env)
     if task_anchor is None:

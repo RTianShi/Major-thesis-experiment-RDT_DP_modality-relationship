@@ -11,7 +11,7 @@ from statistics import mean
 from typing import Dict, List, Optional
 
 import numpy as np
-from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
+from scripts.grasp_event import derive_grasp_and_yaw_from_raw
 
 
 def _first_not_none(*vals):

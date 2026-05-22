@@ -1,0 +1,1132 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PushCube/PushCube-v1_20260519_163706",
+  "mr_traj_dir": "eef_traj/PushCube/PushCube-v1_MR-SESP1_20260520_163610",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 67.76,
+      "median": 69.0,
+      "std": 4.941902467673761,
+      "min": 55.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31570288896560667,
+      "median": 0.3156222105026245,
+      "std": 0.028153897417754127,
+      "min": 0.2694014608860016,
+      "max": 0.3927096128463745
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10198433989484892,
+      "median": 0.10157619634552086,
+      "std": 0.001292937342447149,
+      "min": 0.10047514511100394,
+      "max": 0.10585745032704967
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1012806836179553,
+      "median": 0.10115198446771026,
+      "std": 0.0006873139620494616,
+      "min": 0.10011986282101505,
+      "max": 0.10268857732895047
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009222110472555131,
+      "median": 0.0009050774347563118,
+      "std": 7.467344424752618e-05,
+      "min": 0.0008143039849036959,
+      "max": 0.0011090901736419516
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040871654748916623,
+      "median": 0.040877580642700195,
+      "std": 3.707190885317318e-05,
+      "min": 0.040800850838422775,
+      "max": 0.0409543551504612
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      17,
+      18,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 213.96,
+      "median": 76.0,
+      "std": 164.9806000716448,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.36168679237365725,
+      "median": 0.351504385471344,
+      "std": 0.0545280599187284,
+      "min": 0.27847394347190857,
+      "max": 0.4528178572654724
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.06437364007146824,
+      "median": 0.10055611611699053,
+      "std": 0.0484888594752279,
+      "min": 2.863662562927882e-06,
+      "max": 0.10862914637920837
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.06366005875412045,
+      "median": 0.10021776509522766,
+      "std": 0.04804525597338266,
+      "min": 1.0554691516778886e-06,
+      "max": 0.10384430707050447
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0005938914806465796,
+      "median": 0.0007940667748794352,
+      "std": 0.00035754596422307114,
+      "min": 0.00017308586411189707,
+      "max": 0.0010608967185314548
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040859580412507056,
+      "median": 0.04087758995592594,
+      "std": 3.9243698784943446e-05,
+      "min": 0.040800852701067924,
+      "max": 0.04095463640987873
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-SESP1",
+  "mr_compare": {
+    "mr_id": "MR-SESP1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 10,
+    "violation_rate_percent": 40.0,
+    "config": {
+      "position_tol_m": 0.025,
+      "contact_move_thresh_m": 0.002,
+      "similarity_threshold": 0.85,
+      "sample_points": 24,
+      "metric": "contact_anchor_drift_and_shift_compensated_trajectory_similarity",
+      "violation_rule": "anchor_drift(contact) > tol OR similarity(Tf - expected_shift, Ts) < similarity_threshold"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 48,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.02094721421599388,
+          -0.06650764495134354,
+          0.017197996377944946
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.10000000894069672,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 45,
+        "mr_contact_frame_index": 41,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.05235258489847183,
+          0.03270716592669487,
+          0.013250373303890228
+        ],
+        "mr_contact_point": [
+          0.0559111088514328,
+          -0.06006501987576485,
+          0.011791124939918518
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.008187418282113298,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.034077193069799595,
+        "shifted_followup_path_len_m": 0.27847396473667485,
+        "source_path_len_m": 0.29187480122929216,
+        "relative_deviation": 0.1167527752525272,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 55,
+        "mr_contact_frame_index": 46,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.040945954620838165,
+          -0.016425246372818947,
+          0.015922583639621735
+        ],
+        "mr_contact_point": [
+          -0.04114406555891037,
+          -0.09658078849315643,
+          0.019501619040966034
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.020165597189933517,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04891024436559533,
+        "shifted_followup_path_len_m": 0.33006082768311895,
+        "source_path_len_m": 0.31562220369567123,
+        "relative_deviation": 0.15496452338554575,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 49,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04715176671743393,
+          0.03019959107041359,
+          0.017731957137584686
+        ],
+        "mr_contact_point": [
+          -0.048499636352062225,
+          -0.0643797367811203,
+          0.0178520604968071
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.005587027838204302,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.033818401863233906,
+        "shifted_followup_path_len_m": 0.312401253416278,
+        "source_path_len_m": 0.32308115518661823,
+        "relative_deviation": 0.10467463459358907,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 40,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.04381124675273895,
+          -0.04386287182569504,
+          0.02012503892183304
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.09999999776482582,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 53,
+        "mr_contact_frame_index": 46,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04233292117714882,
+          -0.018070390447974205,
+          0.01590830087661743
+        ],
+        "mr_contact_point": [
+          -0.0424770712852478,
+          -0.09830142557621002,
+          0.01905820518732071
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.020018858794581845,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04470139740024862,
+        "shifted_followup_path_len_m": 0.30375726889963006,
+        "source_path_len_m": 0.295412924819967,
+        "relative_deviation": 0.15131835354695777,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": 43,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.014767490327358246,
+          0.002926007378846407,
+          0.015787869691848755
+        ],
+        "mr_contact_point": [
+          0.016716405749320984,
+          -0.09590437263250351,
+          0.016412347555160522
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.002357171679645305,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.02794838753562942,
+        "shifted_followup_path_len_m": 0.29382140999435025,
+        "source_path_len_m": 0.28709434778285714,
+        "relative_deviation": 0.09734913888575783,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 39,
+        "mr_contact_frame_index": 40,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.025800079107284546,
+          0.053911589086055756,
+          0.01705782115459442
+        ],
+        "mr_contact_point": [
+          -0.02896304428577423,
+          -0.04680134728550911,
+          0.017672903835773468
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.003300144174155279,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.028931160781262618,
+        "shifted_followup_path_len_m": 0.28946910419767957,
+        "source_path_len_m": 0.283866766865743,
+        "relative_deviation": 0.10191809735496735,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 53,
+        "mr_contact_frame_index": 59,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.04817575216293335,
+          -0.018323473632335663,
+          0.014591611921787262
+        ],
+        "mr_contact_point": [
+          0.04915980249643326,
+          -0.09286244958639145,
+          0.015957720577716827
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.025516630444997697,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04822630759643629,
+        "shifted_followup_path_len_m": 0.34495958316092545,
+        "source_path_len_m": 0.2964815356284462,
+        "relative_deviation": 0.16266209460299752,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Anchor Spatial Drift (Drift error: 0.025516630444997697m > 0.025m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 54,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.09338714182376862,
+          -0.06808388233184814,
+          0.016493812203407288
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.09999999403953552,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 56,
+        "mr_contact_frame_index": 61,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.12390601634979248,
+          0.07279513776302338,
+          0.021510548889636993
+        ],
+        "mr_contact_point": [
+          -0.12481570988893509,
+          -0.013230457901954651,
+          0.01977941393852234
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.014110577193006032,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.042245239648742654,
+        "shifted_followup_path_len_m": 0.3515043584987766,
+        "source_path_len_m": 0.36356040746732776,
+        "relative_deviation": 0.11619868055225217,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.02874874882400036,
+          0.07029666751623154,
+          0.016523897647857666
+        ],
+        "mr_contact_point": [
+          -0.03201648220419884,
+          -0.025179410353302956,
+          0.01594768464565277
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.005610346494899377,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03591445149677746,
+        "shifted_followup_path_len_m": 0.31595806701530865,
+        "source_path_len_m": 0.32507357122650277,
+        "relative_deviation": 0.11048099469074713,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 49,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.0419730618596077,
+          -0.017697971314191818,
+          0.019510284066200256
+        ],
+        "mr_contact_point": [
+          -0.042197465896606445,
+          -0.10018128156661987,
+          0.01909538358449936
+        ],
+        "expected_shift": [
+          0.0,
+          -0.09999999403953552,
+          0.0
+        ],
+        "contact_drift_error_m": 0.017523033712204362,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.05161480035178762,
+        "shifted_followup_path_len_m": 0.38855729178384135,
+        "source_path_len_m": 0.2871069254233608,
+        "relative_deviation": 0.17977553232363763,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.09479817003011703,
+          -0.08738888055086136,
+          0.01854465901851654
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 46,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.008775301277637482,
+          -0.08979637175798416,
+          0.018751785159111023
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.09722476452589035,
+          -0.08487436175346375,
+          0.019511140882968903
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.09999999403953552,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.04225917160511017,
+          0.0468878448009491,
+          0.016556516289711
+        ],
+        "mr_contact_point": [
+          -0.04263696074485779,
+          -0.05255614593625069,
+          0.017006568610668182
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.000808962102368699,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.02784870012401497,
+        "shifted_followup_path_len_m": 0.31049551013815735,
+        "source_path_len_m": 0.29896530275684985,
+        "relative_deviation": 0.09315027485535494,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 50,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.010657391510903835,
+          0.05770359933376312,
+          0.01569470763206482
+        ],
+        "mr_contact_point": [
+          0.008540275506675243,
+          -0.0379149504005909,
+          0.01770114153623581
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.005263561216062607,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03335877185475126,
+        "shifted_followup_path_len_m": 0.31409174481079644,
+        "source_path_len_m": 0.3032523969297093,
+        "relative_deviation": 0.11000332459856359,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 51,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.09686878323554993,
+          -0.07327314466238022,
+          0.018053226172924042
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 49,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          -0.061933182179927826,
+          -0.09235025942325592,
+          0.01953154057264328
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.09999999403953552,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_contact_point": [
+          0.023836076259613037,
+          -0.07822511345148087,
+          0.016795970499515533
+        ],
+        "mr_contact_point": null,
+        "expected_shift": [
+          0.0,
+          -0.09999999403953552,
+          0.0
+        ],
+        "contact_drift_error_m": null,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": null,
+        "shifted_followup_path_len_m": null,
+        "source_path_len_m": null,
+        "relative_deviation": null,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "Equivariance Breakdown: Robot failed to contact the shifted cube"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 56,
+        "mr_contact_frame_index": 57,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          -0.11415540426969528,
+          0.08535406738519669,
+          0.020402133464813232
+        ],
+        "mr_contact_point": [
+          -0.11496970057487488,
+          0.00014778319746255875,
+          0.020630545914173126
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.014817871721082216,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.046117336727003,
+        "shifted_followup_path_len_m": 0.37217793708330926,
+        "source_path_len_m": 0.3927096417694868,
+        "relative_deviation": 0.11743367572847374,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 44,
+        "mr_contact_frame_index": 59,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.06311295926570892,
+          -0.019496090710163116,
+          0.013178542256355286
+        ],
+        "mr_contact_point": [
+          0.06349558383226395,
+          -0.09714138507843018,
+          0.011730454862117767
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.02240482736295752,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.04633083643024253,
+        "shifted_followup_path_len_m": 0.37015486707000145,
+        "source_path_len_m": 0.3002010764595971,
+        "relative_deviation": 0.15433267920502616,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.06450474262237549,
+          0.012355673126876354,
+          0.0120977982878685
+        ],
+        "mr_contact_point": [
+          0.06580653041601181,
+          -0.08555388450622559,
+          0.0123029425740242
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.002471172020951025,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03427657957005141,
+        "shifted_followup_path_len_m": 0.3267480678932186,
+        "source_path_len_m": 0.2957121943319823,
+        "relative_deviation": 0.11591195840767625,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_contact_frame_index": 52,
+        "mr_contact_frame_index": 49,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_contact_point": [
+          0.005201422609388828,
+          0.0010377259459346533,
+          0.016358181834220886
+        ],
+        "mr_contact_point": [
+          7.410626858472824e-05,
+          -0.09040133655071259,
+          0.016097255051136017
+        ],
+        "expected_shift": [
+          0.0,
+          -0.10000000149011612,
+          0.0
+        ],
+        "contact_drift_error_m": 0.00998234101274364,
+        "trajectory_similarity_after_shift_compensation": null,
+        "mean_pointwise_deviation_m": 0.03602607311474416,
+        "shifted_followup_path_len_m": 0.31693217403024304,
+        "source_path_len_m": 0.28941876884401946,
+        "relative_deviation": 0.12447732142126622,
+        "position_tol_m": 0.025,
+        "contact_move_thresh_m": 0.002,
+        "similarity_threshold": 0.85,
+        "sample_points": 24,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "contact_translation_equivariance_pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 10,
+  "followup_mr_violation_rate_percent": 40.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

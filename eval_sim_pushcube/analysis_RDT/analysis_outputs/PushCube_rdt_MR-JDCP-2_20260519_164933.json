@@ -1,0 +1,577 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PushCube/PushCube-v1_20260519_163706",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PushCube/PushCube-v1_MR-JDCP2_20260519_164811",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 67.76,
+      "median": 69.0,
+      "std": 4.941902467673761,
+      "min": 55.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31570288896560667,
+      "median": 0.3156222105026245,
+      "std": 0.028153897417754127,
+      "min": 0.2694014608860016,
+      "max": 0.3927096128463745
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10198433989484892,
+      "median": 0.10157619634552086,
+      "std": 0.001292937342447149,
+      "min": 0.10047514511100394,
+      "max": 0.10585745032704967
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1012806836179553,
+      "median": 0.10115198446771026,
+      "std": 0.0006873139620494616,
+      "min": 0.10011986282101505,
+      "max": 0.10268857732895047
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009222110472555131,
+      "median": 0.0009050774347563118,
+      "std": 7.467344424752618e-05,
+      "min": 0.0008143039849036959,
+      "max": 0.0011090901736419516
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040871654748916623,
+      "median": 0.040877580642700195,
+      "std": 3.707190885317318e-05,
+      "min": 0.040800850838422775,
+      "max": 0.0409543551504612
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 100.0,
+    "success_count": 25,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 67.76,
+      "median": 69.0,
+      "std": 4.949989898979593,
+      "min": 54.0,
+      "max": 77.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.31772682547569275,
+      "median": 0.3203392028808594,
+      "std": 0.029627418910951487,
+      "min": 0.2725925147533417,
+      "max": 0.3974771797657013
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.10198170298642799,
+      "median": 0.10171126337286351,
+      "std": 0.0010676381980665886,
+      "min": 0.10052707260358193,
+      "max": 0.1053021418389475
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.10137257740072433,
+      "median": 0.10119025618372153,
+      "std": 0.0008225725402334419,
+      "min": 0.10020701747950324,
+      "max": 0.10347593645530599
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0009137290118628903,
+      "median": 0.0009072257239429324,
+      "std": 6.235234546444865e-05,
+      "min": 0.000829758866073037,
+      "max": 0.0011198321288382565
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040905413776636125,
+      "median": 0.04087813198566437,
+      "std": 4.268395067086944e-05,
+      "min": 0.04080174304544926,
+      "max": 0.04095585644245148
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-JDCP-2",
+  "mr_compare": {
+    "mr_id": "MR-JDCP2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 25,
+    "violation_rate_percent": 100.0,
+    "success_violation_count": 25,
+    "config": {
+      "progress_ratio_threshold": 0.3,
+      "metric": "progress_ratio = path_length_f / path_length_s",
+      "violation_rule": "progress_ratio > threshold OR mr_success == True"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3186404616116776,
+        "mr_path_len_m": 0.3219719767883567,
+        "progress_ratio": 1.0104554053174175,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.05% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.29187480122929216,
+        "mr_path_len_m": 0.2898279793139841,
+        "progress_ratio": 0.9929873291332878,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 99.30% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.31562220369567123,
+        "mr_path_len_m": 0.3203391717665038,
+        "progress_ratio": 1.0149449817395633,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.49% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.32308115518661823,
+        "mr_path_len_m": 0.32507902797931154,
+        "progress_ratio": 1.0061838109732502,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.62% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.26940146079897087,
+        "mr_path_len_m": 0.2725925013677005,
+        "progress_ratio": 1.0118449267471152,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.18% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.295412924819967,
+        "mr_path_len_m": 0.29558301182655006,
+        "progress_ratio": 1.0005757602064524,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.06% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.28709434778285714,
+        "mr_path_len_m": 0.28120667898406243,
+        "progress_ratio": 0.9794922162548186,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 97.95% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.283866766865743,
+        "mr_path_len_m": 0.28398585861812375,
+        "progress_ratio": 1.0004195339725592,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.04% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.2964815356284462,
+        "mr_path_len_m": 0.29965536372630397,
+        "progress_ratio": 1.0107049772631886,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.07% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.33432054200337247,
+        "mr_path_len_m": 0.33544476542433416,
+        "progress_ratio": 1.0033627111700194,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.34% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.36356040746732776,
+        "mr_path_len_m": 0.36843929883398713,
+        "progress_ratio": 1.0134197543694243,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.34% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.32507357122650277,
+        "mr_path_len_m": 0.3322669813355737,
+        "progress_ratio": 1.0221285602576986,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 102.21% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.2871069254233608,
+        "mr_path_len_m": 0.2925409052206501,
+        "progress_ratio": 1.0189266761478377,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.89% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3530405595003801,
+        "mr_path_len_m": 0.3592880609935912,
+        "progress_ratio": 1.0176962712217896,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.77% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3273771171899114,
+        "mr_path_len_m": 0.3342167604349126,
+        "progress_ratio": 1.0208922459324898,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 102.09% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.32710125299013587,
+        "mr_path_len_m": 0.3293635265278985,
+        "progress_ratio": 1.0069161261752515,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.69% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.29896530275684985,
+        "mr_path_len_m": 0.30276826462636763,
+        "progress_ratio": 1.0127204121496693,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.27% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3032523969297093,
+        "mr_path_len_m": 0.3011447737689434,
+        "progress_ratio": 0.9930499373389803,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 99.30% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.34360001569414417,
+        "mr_path_len_m": 0.33838518303800036,
+        "progress_ratio": 0.9848229557102646,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 98.48% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.33796019181613873,
+        "mr_path_len_m": 0.34492806283129407,
+        "progress_ratio": 1.020617431235647,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 102.06% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.33169679060569635,
+        "mr_path_len_m": 0.3312436262969078,
+        "progress_ratio": 0.9986337995373393,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 99.86% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3927096417694868,
+        "mr_path_len_m": 0.39747716307895853,
+        "progress_ratio": 1.0121400668646434,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 101.21% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.3002010764595971,
+        "mr_path_len_m": 0.3028526973964576,
+        "progress_ratio": 1.008832816218157,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.88% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.2957121943319823,
+        "mr_path_len_m": 0.2970811752640398,
+        "progress_ratio": 1.004629436858869,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 100.46% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_path_len_m": 0.28941876884401946,
+        "mr_path_len_m": 0.28548777291126615,
+        "progress_ratio": 0.9864176191874,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Pseudo-synergy (Model executed 98.64% of the task path without orders)",
+          "VIOLATION: Followup succeeded without valid instruction"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 25,
+  "followup_mr_violation_rate_percent": 100.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

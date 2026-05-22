@@ -1,7 +1,7 @@
 """PushCube vision mutations."""
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageEnhance
 
 from eval_sim.mr.vision import *  # noqa: F401,F403
 
@@ -12,6 +12,49 @@ def _black_color_for_image(im, fill_value):
     if im.mode in {"1", "L", "I", "F", "P"}:
         return fill_value
     return tuple([fill_value] * len(im.getbands()))
+
+
+def _apply_light_perturbation(im, brightness_factor, noise_std):
+    out = im
+    if abs(float(brightness_factor) - 1.0) > 1e-8:
+        out = ImageEnhance.Brightness(out).enhance(float(brightness_factor))
+
+    if float(noise_std) > 0.0:
+        arr = np.asarray(out).astype(np.float32)
+        noise = np.random.normal(loc=0.0, scale=float(noise_std), size=arr.shape).astype(np.float32)
+        arr = np.clip(arr + noise, 0.0, 255.0).astype(np.uint8)
+        out = Image.fromarray(arr, mode=out.mode)
+    return out
+
+
+@register_vision("MR3")
+@register_vision("MR-3")
+@register_vision("Visual-Perturbation")
+def vis_mr3_visual_perturbation(images, cfg):
+    runtime = cfg.get("runtime", {})
+    step_index = int(runtime.get("step_index", 0))
+    apply_mode = str(cfg.get("apply_mode", "always")).strip().lower()
+    if apply_mode == "initial" and step_index != 0:
+        return images
+
+    camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
+    target_camera_indices = {
+        int(camera_idx) % camera_group_size
+        for camera_idx in cfg.get("target_camera_indices", [0, 1, 2])
+    }
+    brightness_factor = float(cfg.get("brightness_factor", 0.7))
+    noise_std = float(cfg.get("noise_std", 18.0))
+
+    out = []
+    for idx, im in enumerate(images):
+        if im is None:
+            out.append(None)
+            continue
+        if idx % camera_group_size not in target_camera_indices:
+            out.append(im)
+            continue
+        out.append(_apply_light_perturbation(im, brightness_factor, noise_std))
+    return out
 
 
 @register_vision("MR-GDIP1")

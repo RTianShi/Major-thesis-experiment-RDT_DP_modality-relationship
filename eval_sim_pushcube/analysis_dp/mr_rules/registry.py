@@ -29,6 +29,12 @@ def _load_builtin_rules():
         "mr_semp_2",
         "mr_semp_3",
         "mr_sesp_1",
+        "mr1",
+        "mr2",
+        "mr3",
+        "mr4",
+        "mr5",
+        "mr6",
     ]
     pkg = __name__.rsplit(".", 1)[0]
     for module_name in module_names:

@@ -1,0 +1,1271 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PushCube/PushCube-v1_MR-DRP2-left_20260520_192603",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PushCube/PushCube-v1_MR-DRP2-right_20260520_193058",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 4.0,
+    "success_count": 1,
+    "success_episode_ids": [
+      22
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 386.28,
+      "median": 400.0,
+      "std": 67.21399854197041,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.47249714612960814,
+      "median": 0.49381592869758606,
+      "std": 0.06330899332413813,
+      "min": 0.2606106996536255,
+      "max": 0.5480603575706482
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.007254573187231499,
+      "median": 5.0496888363038805e-06,
+      "std": 0.02089966318326507,
+      "min": 1.263738031181228e-07,
+      "max": 0.10115000353430732
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.007006702389655367,
+      "median": 2.0261532103093395e-06,
+      "std": 0.020525072449307426,
+      "min": 9.313225746154785e-09,
+      "max": 0.10048840229023243
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0024306712287226976,
+      "median": 0.00035769100906861694,
+      "std": 0.00425356324569868,
+      "min": 0.0001474922373768095,
+      "max": 0.019512962925603006
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.03986513178795576,
+      "median": 0.04119018092751503,
+      "std": 0.004452690593646283,
+      "min": 0.02388985175639391,
+      "max": 0.04449446685612202
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 40.0,
+    "success_count": 10,
+    "success_episode_ids": [
+      1,
+      5,
+      10,
+      13,
+      14,
+      15,
+      16,
+      19,
+      20,
+      21
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 270.32,
+      "median": 400.0,
+      "std": 158.87371588780823,
+      "min": 66.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.4563631796836853,
+      "median": 0.49385327100753784,
+      "std": 0.07490887653986693,
+      "min": 0.33965587615966797,
+      "max": 0.5610170960426331
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.0598722764884224,
+      "median": 0.05371159570192269,
+      "std": 0.040396321648250445,
+      "min": 1.8167825684111246e-06,
+      "max": 0.1067144165825888
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.058939914765230556,
+      "median": 0.05332437163862109,
+      "std": 0.03968951690821963,
+      "min": 9.820874932012162e-07,
+      "max": 0.10373878927975824
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.0011855860463160883,
+      "median": 0.0007669556204667587,
+      "std": 0.0015286746860867942,
+      "min": 0.00019977657807089598,
+      "max": 0.007420825517836547
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.040835281312465666,
+      "median": 0.04080749861896038,
+      "std": 4.26408717273081e-05,
+      "min": 0.04080183058977127,
+      "max": 0.040954846888780594
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  },
+  "mr_rule": "MR-DRP2",
+  "mr_compare": {
+    "mr_id": "MR-DRP2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "mode": "trajectory_only",
+      "trajectory_similarity_threshold": 0.85,
+      "contact_point_drift_threshold_m": 0.025,
+      "contact_move_thresh_m": 0.002,
+      "sample_points": 24,
+      "min_start_pose_delta_m": 0.03,
+      "invariance_proxy": "absolute_approach_trajectory_divergence_under_bilateral_start_pose_change",
+      "attack_type": "left_biased_vs_right_biased_initial_proprioceptive_pose"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 60,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.12801004946231842,
+          0.20690715312957764,
+          0.045063987374305725
+        ],
+        "mr_start_point": [
+          -0.1102905422449112,
+          -0.2458038181066513,
+          0.15862971544265747
+        ],
+        "start_pose_delta_m": 0.4670742756836136,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.021789275109767914,
+          -0.0856032520532608,
+          0.01239185780286789
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 61,
+        "trajectory_similarity": 0.6641694542472563,
+        "mean_pointwise_deviation_m": 0.25563486121245926,
+        "source_path_len_m": 0.5055670736486754,
+        "followup_path_len_m": 0.3161429285535389,
+        "relative_deviation": 0.505639853813152,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 120,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14496371150016785,
+          0.2179267853498459,
+          0.033705152571201324
+        ],
+        "mr_start_point": [
+          -0.12438099086284637,
+          -0.23490116000175476,
+          0.1320268213748932
+        ],
+        "start_pose_delta_m": 0.46383612088379783,
+        "base_contact_point": [
+          0.07078851014375687,
+          0.08050913363695145,
+          0.011847838759422302
+        ],
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 121,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.5888653283369575,
+        "mean_pointwise_deviation_m": 0.24654180256552308,
+        "source_path_len_m": 0.35312010765056223,
+        "followup_path_len_m": 0.5301477481562865,
+        "relative_deviation": 0.6981811492012059,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 55,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.15288583934307098,
+          0.2200397104024887,
+          0.029977843165397644
+        ],
+        "mr_start_point": [
+          -0.11196625977754593,
+          -0.22004666924476624,
+          0.14084473252296448
+        ],
+        "start_pose_delta_m": 0.4556774085893113,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.03619580343365669,
+          -0.04884622246026993,
+          0.014736048877239227
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 56,
+        "trajectory_similarity": 0.6480645144552544,
+        "mean_pointwise_deviation_m": 0.26400058473802845,
+        "source_path_len_m": 0.4861385617290959,
+        "followup_path_len_m": 0.29731840990217495,
+        "relative_deviation": 0.5430562508743024,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14128504693508148,
+          0.2068650722503662,
+          0.028394997119903564
+        ],
+        "mr_start_point": [
+          -0.12152903527021408,
+          -0.24481254816055298,
+          0.1358988732099533
+        ],
+        "start_pose_delta_m": 0.46471502681897164,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.6304695207292399,
+        "mean_pointwise_deviation_m": 0.22382513152875183,
+        "source_path_len_m": 0.3818762762968042,
+        "followup_path_len_m": 0.5150620520387854,
+        "relative_deviation": 0.58611949843878,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 52,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.1488519161939621,
+          0.2438129037618637,
+          0.055938318371772766
+        ],
+        "mr_start_point": [
+          -0.12718237936496735,
+          -0.216498464345932,
+          0.12144006788730621
+        ],
+        "start_pose_delta_m": 0.4654531164631401,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.04241648688912392,
+          -0.0736335888504982,
+          0.017609119415283203
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 53,
+        "trajectory_similarity": 0.6324119603052873,
+        "mean_pointwise_deviation_m": 0.27436623687556644,
+        "source_path_len_m": 0.47202974788887697,
+        "followup_path_len_m": 0.2605161544746452,
+        "relative_deviation": 0.5812477669101407,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 56,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.14883115887641907,
+          0.21965418756008148,
+          0.034776270389556885
+        ],
+        "mr_start_point": [
+          -0.12474334985017776,
+          -0.23178115487098694,
+          0.131841778755188
+        ],
+        "start_pose_delta_m": 0.46238058334430426,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.04158727824687958,
+          -0.05720079690217972,
+          0.01493101567029953
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 57,
+        "trajectory_similarity": 0.6266183394002081,
+        "mean_pointwise_deviation_m": 0.2714533418102087,
+        "source_path_len_m": 0.4555597133413274,
+        "followup_path_len_m": 0.296808171325546,
+        "relative_deviation": 0.5958677509457969,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 64,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.1507035791873932,
+          0.2091551423072815,
+          0.036157384514808655
+        ],
+        "mr_start_point": [
+          -0.13333578407764435,
+          -0.23539632558822632,
+          0.1317143738269806
+        ],
+        "start_pose_delta_m": 0.455037126091302,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.020027028396725655,
+          -0.03221479803323746,
+          0.01480036973953247
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 65,
+        "trajectory_similarity": 0.6556089277319455,
+        "mean_pointwise_deviation_m": 0.2594012780805855,
+        "source_path_len_m": 0.4938159187887986,
+        "followup_path_len_m": 0.3321649426887886,
+        "relative_deviation": 0.525299546269851,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.14963118731975555,
+          0.24675828218460083,
+          0.03466375917196274
+        ],
+        "mr_start_point": [
+          -0.11095672100782394,
+          -0.21737118065357208,
+          0.1297551393508911
+        ],
+        "start_pose_delta_m": 0.4753464454514172,
+        "base_contact_point": null,
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.670677579415834,
+        "mean_pointwise_deviation_m": 0.2092522198972698,
+        "source_path_len_m": 0.4261500692213675,
+        "followup_path_len_m": 0.5061909657499017,
+        "relative_deviation": 0.4910294166550325,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 64,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.1668015569448471,
+          0.2270301729440689,
+          0.03316543251276016
+        ],
+        "mr_start_point": [
+          -0.11734781414270401,
+          -0.20521581172943115,
+          0.14115801453590393
+        ],
+        "start_pose_delta_m": 0.4482685151954458,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.049740467220544815,
+          -0.05270683392882347,
+          0.011529982089996338
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 65,
+        "trajectory_similarity": 0.6900233222608874,
+        "mean_pointwise_deviation_m": 0.24620314749047525,
+        "source_path_len_m": 0.5480603089934625,
+        "followup_path_len_m": 0.30764680927927834,
+        "relative_deviation": 0.4492263779193178,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.1573646366596222,
+          0.2287960946559906,
+          0.035259395837783813
+        ],
+        "mr_start_point": [
+          -0.12063967436552048,
+          -0.21973414719104767,
+          0.1314333975315094
+        ],
+        "start_pose_delta_m": 0.4601929370477676,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.0948282927274704,
+          -0.08558601886034012,
+          0.016913555562496185
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 51,
+        "trajectory_similarity": 0.6526509727607116,
+        "mean_pointwise_deviation_m": 0.27227443214242114,
+        "source_path_len_m": 0.511589666474592,
+        "followup_path_len_m": 0.26198642989009235,
+        "relative_deviation": 0.5322125327876293,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 47,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.15985754132270813,
+          0.21342363953590393,
+          0.031652241945266724
+        ],
+        "mr_start_point": [
+          -0.12211088091135025,
+          -0.21861769258975983,
+          0.13943612575531006
+        ],
+        "start_pose_delta_m": 0.44688017258131446,
+        "base_contact_point": [
+          -0.11582273244857788,
+          0.12144313007593155,
+          0.020607970654964447
+        ],
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 48,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.46968135112094145,
+        "mean_pointwise_deviation_m": 0.24622140083689106,
+        "source_path_len_m": 0.21806813783449538,
+        "followup_path_len_m": 0.5293829142893105,
+        "relative_deviation": 1.1291030559620903,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 57,
+        "mr_contact_frame_index": 63,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.1456812173128128,
+          0.21318534016609192,
+          0.03643394261598587
+        ],
+        "mr_start_point": [
+          -0.11462883651256561,
+          -0.22886189818382263,
+          0.14720872044563293
+        ],
+        "start_pose_delta_m": 0.4567724408163844,
+        "base_contact_point": [
+          -0.03044125810265541,
+          0.1155444085597992,
+          0.016328193247318268
+        ],
+        "mr_contact_point": [
+          -0.006009237840771675,
+          0.028156384825706482,
+          0.010008461773395538
+        ],
+        "contact_point_drift_m": 0.09095894300248843,
+        "base_approach_len": 58,
+        "mr_approach_len": 64,
+        "trajectory_similarity": 0.4759166307622635,
+        "mean_pointwise_deviation_m": 0.2560452772917238,
+        "source_path_len_m": 0.23251301766835855,
+        "followup_path_len_m": 0.3662317938604971,
+        "relative_deviation": 1.1012083532326356,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 50,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.17007234692573547,
+          0.2324470728635788,
+          0.037081390619277954
+        ],
+        "mr_start_point": [
+          -0.12507858872413635,
+          -0.2070786952972412,
+          0.13090026378631592
+        ],
+        "start_pose_delta_m": 0.45167390905031873,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.04101371020078659,
+          -0.05373217910528183,
+          0.01682756096124649
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 51,
+        "trajectory_similarity": 0.6663626789998802,
+        "mean_pointwise_deviation_m": 0.2611707325734906,
+        "source_path_len_m": 0.5216275820473034,
+        "followup_path_len_m": 0.27064226151376763,
+        "relative_deviation": 0.500684284271238,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 47,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.16453348100185394,
+          0.240647554397583,
+          0.03023681789636612
+        ],
+        "mr_start_point": [
+          -0.10485360771417618,
+          -0.20241360366344452,
+          0.13889583945274353
+        ],
+        "start_pose_delta_m": 0.46007788473648825,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.09571151435375214,
+          -0.09014511108398438,
+          0.019536279141902924
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 48,
+        "trajectory_similarity": 0.6483732926964746,
+        "mean_pointwise_deviation_m": 0.2764350793831984,
+        "source_path_len_m": 0.5097255666697156,
+        "followup_path_len_m": 0.24001590192750016,
+        "relative_deviation": 0.5423213930375964,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 53,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.16966833174228668,
+          0.2389606088399887,
+          0.030570127069950104
+        ],
+        "mr_start_point": [
+          -0.10805448889732361,
+          -0.19793792068958282,
+          0.1385328322649002
+        ],
+        "start_pose_delta_m": 0.4542384136642754,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.010669735260307789,
+          -0.09684640914201736,
+          0.01536635309457779
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 54,
+        "trajectory_similarity": 0.674629216195894,
+        "mean_pointwise_deviation_m": 0.25888892768713323,
+        "source_path_len_m": 0.5367846256058413,
+        "followup_path_len_m": 0.2507815114893958,
+        "relative_deviation": 0.4822957203644545,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 45,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.15806446969509125,
+          0.24310004711151123,
+          0.04239955544471741
+        ],
+        "mr_start_point": [
+          -0.1222277507185936,
+          -0.21328075230121613,
+          0.1261991262435913
+        ],
+        "start_pose_delta_m": 0.46539238559056384,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.09735588729381561,
+          -0.08718697726726532,
+          0.018481113016605377
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 46,
+        "trajectory_similarity": 0.6545464966371218,
+        "mean_pointwise_deviation_m": 0.27995558472045895,
+        "source_path_len_m": 0.5304446051609051,
+        "followup_path_len_m": 0.23990872996035645,
+        "relative_deviation": 0.5277753454303437,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 77,
+        "mr_contact_frame_index": 67,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.168296679854393,
+          0.2263437956571579,
+          0.030815966427326202
+        ],
+        "mr_start_point": [
+          -0.12145701795816422,
+          -0.20957711338996887,
+          0.13775089383125305
+        ],
+        "start_pose_delta_m": 0.4512826958458628,
+        "base_contact_point": [
+          0.001395183615386486,
+          0.09544776380062103,
+          0.011871784925460815
+        ],
+        "mr_contact_point": [
+          -0.035708509385585785,
+          0.011903330683708191,
+          0.018818967044353485
+        ],
+        "contact_point_drift_m": 0.09167671284753715,
+        "base_approach_len": 78,
+        "mr_approach_len": 68,
+        "trajectory_similarity": 0.5587591207034907,
+        "mean_pointwise_deviation_m": 0.25679732507410447,
+        "source_path_len_m": 0.32519164540281126,
+        "followup_path_len_m": 0.3375773810824316,
+        "relative_deviation": 0.7896799585856903,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": 73,
+        "mr_contact_frame_index": null,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_never_moved",
+        "base_start_point": [
+          -0.16194114089012146,
+          0.24437309801578522,
+          0.031368106603622437
+        ],
+        "mr_start_point": [
+          -0.10283008962869644,
+          -0.20010575652122498,
+          0.1439797580242157
+        ],
+        "start_pose_delta_m": 0.4623169394986914,
+        "base_contact_point": [
+          0.019443685188889503,
+          0.10523248463869095,
+          0.014391817152500153
+        ],
+        "mr_contact_point": null,
+        "contact_point_drift_m": null,
+        "base_approach_len": 74,
+        "mr_approach_len": 400,
+        "trajectory_similarity": 0.5334739260168141,
+        "mean_pointwise_deviation_m": 0.25241373702797015,
+        "source_path_len_m": 0.2886358443445544,
+        "followup_path_len_m": 0.5213227581358896,
+        "relative_deviation": 0.8745058591082516,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 53,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.16038894653320312,
+          0.22368095815181732,
+          0.029050320386886597
+        ],
+        "mr_start_point": [
+          -0.1204829066991806,
+          -0.22012095153331757,
+          0.13257278501987457
+        ],
+        "start_pose_delta_m": 0.4574598646210348,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.09442798793315887,
+          -0.0905783623456955,
+          0.01580078899860382
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 54,
+        "trajectory_similarity": 0.6288134176557791,
+        "mean_pointwise_deviation_m": 0.27226254821575807,
+        "source_path_len_m": 0.4612298816460377,
+        "followup_path_len_m": 0.2560906244037991,
+        "relative_deviation": 0.5902968542369961,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 51,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.15695786476135254,
+          0.22856420278549194,
+          0.029421396553516388
+        ],
+        "mr_start_point": [
+          -0.10796776413917542,
+          -0.2153017669916153,
+          0.13997384905815125
+        ],
+        "start_pose_delta_m": 0.46004225223334916,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          -0.059872619807720184,
+          -0.0947660431265831,
+          0.017417922616004944
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 52,
+        "trajectory_similarity": 0.6449568291275429,
+        "mean_pointwise_deviation_m": 0.27242749908080954,
+        "source_path_len_m": 0.49488059590765665,
+        "followup_path_len_m": 0.2542285961998892,
+        "relative_deviation": 0.5504913737447159,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": true,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 54,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.1499757617712021,
+          0.22514142096042633,
+          0.04601569473743439
+        ],
+        "mr_start_point": [
+          -0.10777938365936279,
+          -0.21646881103515625,
+          0.1574084460735321
+        ],
+        "start_pose_delta_m": 0.45739313110187313,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.027179231867194176,
+          -0.09664701670408249,
+          0.014197856187820435
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 55,
+        "trajectory_similarity": 0.6802597534370282,
+        "mean_pointwise_deviation_m": 0.2533866268094995,
+        "source_path_len_m": 0.539089858504012,
+        "followup_path_len_m": 0.2966175673322793,
+        "relative_deviation": 0.4700266992828502,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_contact_frame_index": 31,
+        "mr_contact_frame_index": 68,
+        "base_contact_frame_index_source": "cube_motion_onset",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.12872391939163208,
+          0.18529978394508362,
+          0.04832255095243454
+        ],
+        "mr_start_point": [
+          -0.12436038255691528,
+          -0.2578848898410797,
+          0.16019031405448914
+        ],
+        "start_pose_delta_m": 0.45710621517773453,
+        "base_contact_point": [
+          -0.11348216980695724,
+          0.1253855675458908,
+          0.026511915028095245
+        ],
+        "mr_contact_point": [
+          -0.08586107939481735,
+          0.05350794643163681,
+          0.01628035306930542
+        ],
+        "contact_point_drift_m": 0.07767883825545033,
+        "base_approach_len": 32,
+        "mr_approach_len": 69,
+        "trajectory_similarity": 0.3674811818010938,
+        "mean_pointwise_deviation_m": 0.25492866912148177,
+        "source_path_len_m": 0.1481086189190381,
+        "followup_path_len_m": 0.41796260756576914,
+        "relative_deviation": 1.7212277785186536,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 66,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.13939152657985687,
+          0.20272856950759888,
+          0.03530253469944
+        ],
+        "mr_start_point": [
+          -0.1182389110326767,
+          -0.24083074927330017,
+          0.14756715297698975
+        ],
+        "start_pose_delta_m": 0.4580345477568979,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.06317956745624542,
+          -0.06453803181648254,
+          0.014426849782466888
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 67,
+        "trajectory_similarity": 0.6590088746475811,
+        "mean_pointwise_deviation_m": 0.26298003458439506,
+        "source_path_len_m": 0.5082424842204615,
+        "followup_path_len_m": 0.32872489258321924,
+        "relative_deviation": 0.5174302478623996,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 65,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.15604658424854279,
+          0.22325848042964935,
+          0.030169866979122162
+        ],
+        "mr_start_point": [
+          -0.11175663024187088,
+          -0.21513013541698456,
+          0.14120987057685852
+        ],
+        "start_pose_delta_m": 0.4543963698455633,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.07067377865314484,
+          -0.028002901002764702,
+          0.013973310589790344
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 66,
+        "trajectory_similarity": 0.6634332132269177,
+        "mean_pointwise_deviation_m": 0.2569708783212112,
+        "source_path_len_m": 0.5065354699580807,
+        "followup_path_len_m": 0.3276340974279833,
+        "relative_deviation": 0.5073107285901958,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": false,
+        "mr_success": false,
+        "base_contact_frame_index": null,
+        "mr_contact_frame_index": 63,
+        "base_contact_frame_index_source": "cube_never_moved",
+        "mr_contact_frame_index_source": "cube_motion_onset",
+        "base_start_point": [
+          -0.16575004160404205,
+          0.21791225671768188,
+          0.03209522366523743
+        ],
+        "mr_start_point": [
+          -0.12385646998882294,
+          -0.21508662402629852,
+          0.13785496354103088
+        ],
+        "start_pose_delta_m": 0.4476921092076727,
+        "base_contact_point": null,
+        "mr_contact_point": [
+          0.005656306631863117,
+          -0.03718726709485054,
+          0.014494024217128754
+        ],
+        "contact_point_drift_m": null,
+        "base_approach_len": 400,
+        "mr_approach_len": 64,
+        "trajectory_similarity": 0.6631429120527924,
+        "mean_pointwise_deviation_m": 0.25270183910448757,
+        "source_path_len_m": 0.49747337806087355,
+        "followup_path_len_m": 0.3126821558612706,
+        "relative_deviation": 0.5079705774196536,
+        "sample_points": 24.0,
+        "trajectory_similarity_threshold": 0.85,
+        "contact_point_drift_threshold_m": 0.025,
+        "min_start_pose_delta_m": 0.03,
+        "mode": "trajectory_only",
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_diverged_under_pose_change"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}
