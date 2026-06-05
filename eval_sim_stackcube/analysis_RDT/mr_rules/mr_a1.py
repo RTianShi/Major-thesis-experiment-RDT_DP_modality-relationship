@@ -214,13 +214,16 @@ def _analyze_a1_lang_equivalence(
 @register_mr_rule("MR-A1")
 @register_mr_rule("mr-a1")
 @register_mr_rule("MR-A1-LANG-EQUIV")
+@register_mr_rule("MR1")
+@register_mr_rule("MR-1")
+@register_mr_rule("Synonym-Substitution")
 def analyze_mr_a1_lang_equivalence(
     base_records: List[Any], mr_records: List[Any], **kwargs
 ) -> Dict[str, Any]:
     return _analyze_a1_lang_equivalence(
         base_records,
         mr_records,
-        mr_id=kwargs.get("mr_id", "MR-A1-LANG-EQUIV"),
+        mr_id=kwargs.get("mr_id", "MR1"),
         similarity_threshold=float(kwargs.get("similarity_threshold", MR_A1_SIMILARITY_THRESHOLD)),
         sample_points=int(kwargs.get("sample_points", MR_A1_SAMPLE_POINTS)),
     )

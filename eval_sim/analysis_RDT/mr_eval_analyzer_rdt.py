@@ -129,6 +129,12 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             goal_point=_safe_xyz(obj.get("goal_point")),
             mr_eval={
                 "goal_point": _safe_xyz(mr_eval.get("goal_point")),
+                "mr6_injection_attempted": mr_eval.get("mr6_injection_attempted"),
+                "mr6_injection_applied": mr_eval.get("mr6_injection_applied"),
+                "mr6_injection_trigger_step": _safe_int(mr_eval.get("mr6_injection_trigger_step")),
+                "mr6_observed_lift_m": _safe_float(mr_eval.get("mr6_observed_lift_m")),
+                "mr6_return_error_m": _safe_float(mr_eval.get("mr6_return_error_m")),
+                "mr6_meta": mr_eval.get("mr6_meta"),
             },
             trajectory={
                 "goal_point": _safe_xyz(traj.get("goal_point")),

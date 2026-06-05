@@ -269,6 +269,113 @@ def _build_visual_box(scene, half_size, rgba, name):
     return actor
 
 
+def _build_visual_cylinder(scene, radius, half_length, rgba, name):
+    builder = scene.create_actor_builder()
+    material = sapien.render.RenderMaterial(base_color=np.array(rgba, dtype=np.float32).tolist())
+    try:
+        builder.add_cylinder_visual(
+            radius=radius,
+            half_length=half_length,
+            material=material,
+        )
+    except TypeError:
+        builder.add_cylinder_visual(
+            radius=radius,
+            half_length=half_length,
+            material=material,
+        )
+    actor = builder.build_kinematic(name=name)
+    actor.set_pose(sapien.Pose(p=[0.0, 0.0, half_length]))
+    return actor
+
+
+def _ensure_mr2_visual_asset(env, cfg):
+    runtime = getattr(env.unwrapped, "_mr_mr2_runtime", None)
+    if runtime is not None:
+        return runtime
+
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR-MR2 requires env.unwrapped.scene")
+
+    distractor_radius = float(cfg.get("distractor_radius", 0.018))
+    distractor_half_length = float(cfg.get("distractor_half_length", 0.03))
+    distractor_rgba = cfg.get("distractor_rgba", [0.95, 0.82, 0.15, 1.0])
+    actor = _build_visual_cylinder(
+        scene,
+        radius=distractor_radius,
+        half_length=distractor_half_length,
+        rgba=distractor_rgba,
+        name="mr_mr2_visual_cylinder",
+    )
+
+    runtime = {
+        "distractor_actor": actor,
+        "distractor_radius": distractor_radius,
+        "distractor_half_length": distractor_half_length,
+    }
+    env.unwrapped._mr_mr2_runtime = runtime
+    return runtime
+
+
+def _place_mr2_visual_distractor(env, red_xy, green_xy, cfg):
+    runtime = _ensure_mr2_visual_asset(env, cfg)
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR-MR2 requires env.unwrapped.scene")
+
+    bounds = np.array(cfg.get("placement_bounds", [[-0.1, -0.2], [0.1, 0.2]]), dtype=np.float32)
+    x_min, y_min = bounds[0]
+    x_max, y_max = bounds[1]
+    margin = float(cfg.get("corner_margin", 0.04))
+    candidates = [
+        np.array([x_max - margin, y_max - margin], dtype=np.float32),
+        np.array([x_min + margin, y_max - margin], dtype=np.float32),
+        np.array([x_max - margin, y_min + margin], dtype=np.float32),
+        np.array([x_min + margin, y_min + margin], dtype=np.float32),
+    ]
+
+    min_clearance = float(
+        cfg.get(
+            "distractor_clearance",
+            runtime["distractor_radius"] + max(
+                float(cfg.get("red_clearance_radius", 0.02)),
+                float(cfg.get("green_clearance_radius", 0.02)),
+            ) + 0.08,
+        )
+    )
+    path_midpoint = 0.5 * (np.asarray(red_xy, dtype=np.float32) + np.asarray(green_xy, dtype=np.float32))
+    candidate_xy = max(
+        candidates,
+        key=lambda xy: min(
+            float(np.linalg.norm(xy - red_xy)),
+            float(np.linalg.norm(xy - green_xy)),
+            float(np.linalg.norm(xy - path_midpoint)),
+        ),
+    )
+    for xy in candidates:
+        if (
+            np.linalg.norm(xy - red_xy) >= min_clearance
+            and np.linalg.norm(xy - green_xy) >= min_clearance
+            and np.linalg.norm(xy - path_midpoint) >= min_clearance
+        ):
+            candidate_xy = xy
+            break
+
+    actor = runtime["distractor_actor"]
+    actor.set_pose(
+        sapien.Pose(
+            p=[
+                float(candidate_xy[0]),
+                float(candidate_xy[1]),
+                float(runtime["distractor_half_length"]),
+            ]
+        )
+    )
+    _apply_scene_updates(env)
+    return env
+
+
 def _ensure_sadp2_visual_assets(env, cfg):
     runtime = getattr(env.unwrapped, "_mr_sadp2_runtime", None)
     if runtime is not None:
@@ -576,6 +683,64 @@ def env_mr_semp1_global_translation_equivariance(env, cfg):
     return env
 
 
+@register_env("MR4")
+@register_env("MR-4")
+@register_env("Target-Object-Relocation")
+def env_mr4_target_object_relocation(env, cfg):
+    red_cube = _find_actor_by_attr(
+        env,
+        ("cubeA", "cube_a", "red_cube", "obj", "object", "_obj", "cube"),
+    )
+    green_cube = _find_actor_by_attr(
+        env,
+        ("cubeB", "cube_b", "green_cube", "goal_cube", "target_cube"),
+    )
+    if red_cube is None:
+        raise ValueError("MR4 could not locate the movable red cube actor in StackCube")
+    if green_cube is None:
+        raise ValueError("MR4 could not locate the support green cube actor in StackCube")
+
+    rng = np.random.default_rng() if cfg.get("use_global_rng", False) else None
+    dx = cfg.get("dx", 0.03)
+    dy = cfg.get("dy", 0.0)
+    if isinstance(dx, (list, tuple)) and len(dx) == 2:
+        dx = float((rng or np.random).uniform(float(dx[0]), float(dx[1])))
+    else:
+        dx = float(dx)
+    if isinstance(dy, (list, tuple)) and len(dy) == 2:
+        dy = float((rng or np.random).uniform(float(dy[0]), float(dy[1])))
+    else:
+        dy = float(dy)
+
+    if abs(dx) < 1e-8 and abs(dy) < 1e-8:
+        return env
+
+    bounds = cfg.get("placement_bounds", [[-0.1, -0.2], [0.1, 0.2]])
+    red_pos_batch, red_quat_batch = _actor_pose_tensor(red_cube)
+    green_pos_batch, green_quat_batch = _actor_pose_tensor(green_cube)
+
+    dx, dy = _resolve_translation_vector(red_pos_batch, green_pos_batch, dx, dy, bounds, cfg)
+    red_new_batch = _translate_xy_within_bounds(red_pos_batch, dx, dy, bounds)
+    green_new_batch = _translate_xy_within_bounds(green_pos_batch, dx, dy, bounds)
+
+    if red_cube.pose.p.ndim == 1:
+        red_new, red_quat = red_new_batch[0], red_quat_batch[0]
+    else:
+        red_new, red_quat = red_new_batch, red_quat_batch
+
+    if green_cube.pose.p.ndim == 1:
+        green_new, green_quat = green_new_batch[0], green_quat_batch[0]
+    else:
+        green_new, green_quat = green_new_batch, green_quat_batch
+
+    _set_actor_pose(red_cube, red_new, red_quat)
+    _set_actor_pose(green_cube, green_new, green_quat)
+    _zero_actor_velocity(red_cube, red_new)
+    _zero_actor_velocity(green_cube, green_new)
+    _apply_scene_updates(env)
+    return env
+
+
 @register_env("MR-SEMP2")
 @register_env("Z-axis Rotation Equivariance")
 def env_mr_semp2_z_axis_rotation_equivariance(env, cfg):
@@ -656,4 +821,28 @@ def env_mr_sadp2_visual_redundancy_immunity(env, cfg):
     _set_table_visual_noise(env, cfg)
     _place_sadp2_visual_distractors(env, red_xy_ref, green_xy_ref, cfg)
     _apply_scene_updates(env)
+    return env
+
+
+@register_env("MR2")
+@register_env("MR-2")
+@register_env("mr2")
+@register_env("Non-Interfering-Object-Addition")
+def env_mr2_non_interfering_object_addition(env, cfg):
+    red_cube = _find_actor_by_attr(
+        env,
+        ("cubeA", "cube_a", "red_cube", "obj", "object", "_obj", "cube"),
+    )
+    green_cube = _find_actor_by_attr(
+        env,
+        ("cubeB", "cube_b", "green_cube", "goal_cube", "target_cube"),
+    )
+    if red_cube is None:
+        raise ValueError("MR2 could not locate the movable red cube actor in StackCube")
+    if green_cube is None:
+        raise ValueError("MR2 could not locate the support green cube actor in StackCube")
+
+    red_xy = _actor_pose_tensor(red_cube)[0][0, :2].detach().cpu().numpy()
+    green_xy = _actor_pose_tensor(green_cube)[0][0, :2].detach().cpu().numpy()
+    _place_mr2_visual_distractor(env, red_xy, green_xy, cfg)
     return env

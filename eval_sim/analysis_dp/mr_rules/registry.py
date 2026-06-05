@@ -12,6 +12,11 @@ def register_mr_rule(rule_id: str):
 
 def _load_builtin_rules():
     # 导入即注册
+    from . import mr1  # noqa: F401
+    from . import mr2  # noqa: F401
+    from . import mr3  # noqa: F401
+    from . import mr4  # noqa: F401
+    from . import mr6  # noqa: F401
     from . import mr_cptmp_1  # noqa: F401
     from . import mr_cptmp_2  # noqa: F401
     from . import default_rule  # noqa: F401

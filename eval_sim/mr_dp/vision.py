@@ -45,6 +45,20 @@ def _blackout_all_images(images, fill_value):
     return out
 
 
+def _apply_brightness_delta(im, delta_ratio):
+    arr = np.asarray(im).astype(np.float32)
+    arr = arr * (1.0 + float(delta_ratio))
+    arr = np.clip(arr, 0, 255).astype(np.uint8)
+    return Image.fromarray(arr)
+
+
+def _apply_gaussian_noise(im, sigma):
+    arr = np.asarray(im).astype(np.float32)
+    arr += np.random.randn(*arr.shape) * float(sigma)
+    arr = np.clip(arr, 0, 255).astype(np.uint8)
+    return Image.fromarray(arr)
+
+
 @register_vision("identity")
 def vis_identity(images, cfg):
     return images
@@ -84,6 +98,25 @@ def vis_high_frequency_feature_degradation(images, cfg):
             radius = float(cfg.get("radius", 7.5))
             degraded = im.filter(ImageFilter.GaussianBlur(radius=radius))
         out.append(degraded)
+    return out
+
+
+@register_vision("MR3")
+@register_vision("MR-3")
+@register_vision("Visual-Perturbation")
+def vis_mr3_visual_perturbation(images, cfg):
+    mode = str(cfg.get("mode", "brightness")).strip().lower()
+    brightness_delta = float(cfg.get("brightness_delta", 0.2))
+    sigma = float(cfg.get("sigma", 6.0))
+    out = []
+    for im in images:
+        if im is None:
+            out.append(im)
+            continue
+        if mode in {"noise", "gaussian_noise", "gaussian-noise"}:
+            out.append(_apply_gaussian_noise(im, sigma=sigma))
+        else:
+            out.append(_apply_brightness_delta(im, delta_ratio=brightness_delta))
     return out
 
 
@@ -130,8 +163,5 @@ def vis_noise(images, cfg):
         if im is None:
             out.append(None)
             continue
-        arr = np.array(im).astype(np.float32)
-        arr += np.random.randn(*arr.shape) * sigma
-        arr = np.clip(arr, 0, 255).astype(np.uint8)
-        out.append(im.fromarray(arr))
+        out.append(_apply_gaussian_noise(im, sigma=sigma))
     return out

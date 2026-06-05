@@ -1,0 +1,678 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_142739",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR2_20260523_115255",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 24.0,
+    "success_count": 6,
+    "success_episode_ids": [
+      2,
+      3,
+      7,
+      12,
+      18,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 328.72,
+      "median": 400.0,
+      "std": 127.02583044404787,
+      "min": 87.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.645095386505127,
+      "median": 1.903303861618042,
+      "std": 0.5001930012118477,
+      "min": 0.6911887526512146,
+      "max": 2.1372013092041016
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.29148478768151465,
+      "median": 0.2328912959642713,
+      "std": 0.3989400687998662,
+      "min": 1.6654378378005508e-07,
+      "max": 1.3407413535636992
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.11003352241464029,
+      "median": 0.09898575490353478,
+      "std": 0.1161343706711207,
+      "min": 7.957223565613414e-09,
+      "max": 0.35476724091225625
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.03589797364842423,
+      "median": 0.03444764105399372,
+      "std": 0.01487300232360286,
+      "min": 0.009828001096902881,
+      "max": 0.058088561358011284
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998897314071,
+      "median": 0.07999999821186066,
+      "std": 2.448782677292004e-08,
+      "min": 0.079999890178442,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.011821989789605141,
+      "median": 0.0,
+      "std": 0.0172348592709159,
+      "min": 0.0,
+      "max": 0.03791595436632633
+    }
+  },
+  "mr_rule": "MR2",
+  "mr_compare": {
+    "mr_id": "MR2",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 15,
+    "violation_rate_percent": 60.0,
+    "config": {
+      "sample_points": 24,
+      "similarity_threshold": 0.9,
+      "metric": "trajectory_similarity",
+      "violation_rule": "trajectory_similarity < similarity_threshold",
+      "expectation": "non_interfering_object_should_not_change_trajectory_much"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 120,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.136727227481046,
+        "followup_path_len_m": 1.4640732603807745,
+        "source_path_len_m": 0.5567168217106689,
+        "relative_deviation": 0.245595646025053,
+        "trajectory_similarity": 0.8028287536097302,
+        "endpoint_deviation_m": 0.2142327717964149,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 102,
+        "mr_point_count": 124,
+        "mean_pointwise_deviation_m": 0.02450342618450917,
+        "followup_path_len_m": 0.6508338591392414,
+        "source_path_len_m": 0.6393726601637407,
+        "relative_deviation": 0.038324169472986135,
+        "trajectory_similarity": 0.96309036175818,
+        "endpoint_deviation_m": 0.014870299304980778,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 93,
+        "mr_point_count": 94,
+        "mean_pointwise_deviation_m": 0.014248809107826199,
+        "followup_path_len_m": 0.5352952458499401,
+        "source_path_len_m": 0.5873697723753016,
+        "relative_deviation": 0.024258669373135328,
+        "trajectory_similarity": 0.9763158759613116,
+        "endpoint_deviation_m": 0.011194559409862782,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 110,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.10012263725278885,
+        "followup_path_len_m": 1.4287214801820933,
+        "source_path_len_m": 0.42422956648502086,
+        "relative_deviation": 0.23601051214407537,
+        "trajectory_similarity": 0.8090546076872162,
+        "endpoint_deviation_m": 0.05957025879122279,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 89,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.12161938424795453,
+        "followup_path_len_m": 1.4144297018340009,
+        "source_path_len_m": 0.4680058825336413,
+        "relative_deviation": 0.25986721275712227,
+        "trajectory_similarity": 0.7937344427049396,
+        "endpoint_deviation_m": 0.21854011546845842,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 95,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.15054194177203442,
+        "followup_path_len_m": 1.6041065633295828,
+        "source_path_len_m": 0.5773481172991962,
+        "relative_deviation": 0.2607472636721526,
+        "trajectory_similarity": 0.793180385010173,
+        "endpoint_deviation_m": 0.07457845900926782,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 149,
+        "mr_point_count": 119,
+        "mean_pointwise_deviation_m": 0.0332127389650513,
+        "followup_path_len_m": 0.6148464101444296,
+        "source_path_len_m": 0.7735822214390119,
+        "relative_deviation": 0.04293368958669863,
+        "trajectory_similarity": 0.9588337302597708,
+        "endpoint_deviation_m": 0.008698446277544668,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 148,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.13103262933535356,
+        "followup_path_len_m": 1.5192467752510872,
+        "source_path_len_m": 0.831102564366298,
+        "relative_deviation": 0.1576612020626645,
+        "trajectory_similarity": 0.8638105848397171,
+        "endpoint_deviation_m": 0.05112046326876857,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.039942712674353446,
+        "followup_path_len_m": 1.3808742018084064,
+        "source_path_len_m": 1.3025756019133126,
+        "relative_deviation": 0.030664410277363437,
+        "trajectory_similarity": 0.9702479197189788,
+        "endpoint_deviation_m": 0.04131667044600671,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 85,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1723651937662877,
+        "followup_path_len_m": 1.4071585215146507,
+        "source_path_len_m": 0.42480201988452443,
+        "relative_deviation": 0.4057541765294393,
+        "trajectory_similarity": 0.7113619270680915,
+        "endpoint_deviation_m": 0.16531446335801056,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 169,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.07857485761076487,
+        "followup_path_len_m": 1.453940274651145,
+        "source_path_len_m": 0.7866651942671481,
+        "relative_deviation": 0.09988348052434767,
+        "trajectory_similarity": 0.9091872163797476,
+        "endpoint_deviation_m": 0.04373563720304554,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 77,
+        "mr_point_count": 87,
+        "mean_pointwise_deviation_m": 0.024338176756178914,
+        "followup_path_len_m": 0.49461866386575226,
+        "source_path_len_m": 0.45851472487469175,
+        "relative_deviation": 0.053080469253916185,
+        "trajectory_similarity": 0.9495950491879102,
+        "endpoint_deviation_m": 0.025806568410403147,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 120,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.14603293542586018,
+        "followup_path_len_m": 1.591052610464414,
+        "source_path_len_m": 0.7518644486918711,
+        "relative_deviation": 0.19422774368429724,
+        "trajectory_similarity": 0.8373612196572426,
+        "endpoint_deviation_m": 0.047943248974389764,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 114,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.19994267929199583,
+        "followup_path_len_m": 1.2165387138822399,
+        "source_path_len_m": 0.6595405234712888,
+        "relative_deviation": 0.30315450253103327,
+        "trajectory_similarity": 0.7673687180282646,
+        "endpoint_deviation_m": 0.4037964221987672,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 93,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.13795012892523736,
+        "followup_path_len_m": 1.130446137434655,
+        "source_path_len_m": 0.5228529494979014,
+        "relative_deviation": 0.2638411604213224,
+        "trajectory_similarity": 0.7912386708996195,
+        "endpoint_deviation_m": 0.34822397957005047,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1910022469544849,
+        "followup_path_len_m": 1.5534242659106052,
+        "source_path_len_m": 1.4207625214828923,
+        "relative_deviation": 0.1344364340038546,
+        "trajectory_similarity": 0.8814949608684749,
+        "endpoint_deviation_m": 0.28082298697569597,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 116,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.12281778997393152,
+        "followup_path_len_m": 1.2078237999271448,
+        "source_path_len_m": 0.4704740828015359,
+        "relative_deviation": 0.2610511279231098,
+        "trajectory_similarity": 0.7929892594021557,
+        "endpoint_deviation_m": 0.12202334826912145,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 102,
+        "mean_pointwise_deviation_m": 0.055423435331718264,
+        "followup_path_len_m": 0.5193104348109293,
+        "source_path_len_m": 1.4505106914676098,
+        "relative_deviation": 0.038209601389177957,
+        "trajectory_similarity": 0.963196640314199,
+        "endpoint_deviation_m": 0.056253201461699556,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 78,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.12943166527993544,
+        "followup_path_len_m": 1.158122058477045,
+        "source_path_len_m": 0.4703777517632378,
+        "relative_deviation": 0.2751653639968163,
+        "trajectory_similarity": 0.7842120153465026,
+        "endpoint_deviation_m": 0.3046517812998398,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.1918128873723514,
+        "followup_path_len_m": 1.4125738853310308,
+        "source_path_len_m": 1.4171758103954533,
+        "relative_deviation": 0.1353486885433271,
+        "trajectory_similarity": 0.880786678216908,
+        "endpoint_deviation_m": 0.25782571794132625,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.16057902170434832,
+        "followup_path_len_m": 1.3428026913250788,
+        "source_path_len_m": 1.497913476332672,
+        "relative_deviation": 0.10720180053222599,
+        "trajectory_similarity": 0.9031777220009084,
+        "endpoint_deviation_m": 0.28036395972992817,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 126,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.13056434713588067,
+        "followup_path_len_m": 1.4142613924219973,
+        "source_path_len_m": 0.7460751266171675,
+        "relative_deviation": 0.17500160838745799,
+        "trajectory_similarity": 0.8510626648182843,
+        "endpoint_deviation_m": 0.26205896390073774,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.08115675831527294,
+        "followup_path_len_m": 1.5819920428355392,
+        "source_path_len_m": 0.9927774082937583,
+        "relative_deviation": 0.08174718485461248,
+        "trajectory_similarity": 0.9244304159057282,
+        "endpoint_deviation_m": 0.13484984448285797,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 92,
+        "mean_pointwise_deviation_m": 0.018343386295066544,
+        "followup_path_len_m": 0.6100519770528763,
+        "source_path_len_m": 0.6894069987318512,
+        "relative_deviation": 0.026607484880206894,
+        "trajectory_similarity": 0.9740821245976872,
+        "endpoint_deviation_m": 0.025660361324317836,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "non_interfering_object_addition_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 99,
+        "mr_point_count": 400,
+        "mean_pointwise_deviation_m": 0.10382791452492435,
+        "followup_path_len_m": 1.5113524665628635,
+        "source_path_len_m": 0.535457066369884,
+        "relative_deviation": 0.19390520929870764,
+        "trajectory_similarity": 0.837587433417259,
+        "endpoint_deviation_m": 0.2614371764448424,
+        "sample_points": 24,
+        "similarity_threshold": 0.9,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Non-interfering object addition changed behavior too much"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 15,
+  "followup_mr_violation_rate_percent": 60.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

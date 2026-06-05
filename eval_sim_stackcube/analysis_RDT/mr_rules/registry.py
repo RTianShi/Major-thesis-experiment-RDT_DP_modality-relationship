@@ -37,6 +37,13 @@ def _load_builtin_rules():
     from . import mr_d3  # noqa: F401
     from . import mr_e1  # noqa: F401
     from . import mr_sadp_1  # noqa: F401
+    from . import mr1
+    from . import mr2
+    from . import mr3
+    from . import mr4
+    from . import mr5
+    from . import mr6
+
 
 
 _load_builtin_rules()

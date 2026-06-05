@@ -3,6 +3,14 @@
 from .registry import register_language
 
 
+MR1_STACKCUBE_DEFAULT_MUTATED_TEXT = (
+    "Grasp the red block and place it onto the green box, ensuring it stays."
+)
+MR5_STACKCUBE_DEFAULT_MUTATED_TEXT = (
+    "Grasp the red cube and stack it vertically on the green cube."
+)
+
+
 @register_language("MR-SADP1")
 @register_language("Semantic Agnostic Decisiveness")
 def lang_mr_sadp1_semantic_agnostic_decisiveness(text_embed, cfg):
@@ -45,6 +53,21 @@ def lang_mr_b1_color_comutate(text_embed, cfg):
     return encoder([str(mutated)])
 
 
+
+@register_language("MR1")
+@register_language("MR-1")
+@register_language("Synonym-Substitution")
+def lang_mr1_synonym_substitution(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError("MR1 requires cfg['encoder'] (text encoder) to be provided")
+    mutated = cfg.get(
+        "mutated_text",
+        MR1_STACKCUBE_DEFAULT_MUTATED_TEXT,
+    )
+    return encoder([str(mutated)])
+
+
 @register_language("MR-A1")
 @register_language("JDCP-Equivalent-Lang")
 def lang_mr_a1_equivalent_lang(text_embed, cfg):
@@ -53,6 +76,20 @@ def lang_mr_a1_equivalent_lang(text_embed, cfg):
         raise ValueError("MR-A1 requires cfg['encoder'] (text encoder) to be provided")
     mutated = cfg.get(
         "mutated_text",
-        "Grasp the scarlet block and place it onto the verdant box.",
+        MR1_STACKCUBE_DEFAULT_MUTATED_TEXT,
+    )
+    return encoder([str(mutated)])
+
+
+@register_language("MR5")
+@register_language("MR-5")
+@register_language("Instruction-Specialization")
+def lang_mr5_instruction_specialization(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError("MR5 requires cfg['encoder'] (text encoder) to be provided")
+    mutated = cfg.get(
+        "mutated_text",
+        MR5_STACKCUBE_DEFAULT_MUTATED_TEXT,
     )
     return encoder([str(mutated)])

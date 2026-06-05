@@ -1,0 +1,992 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_142739",
+  "mr_traj_dir": "eef_traj/StackCube/StackCube-v1_MR5_20260523_122530",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 84.0,
+    "success_count": 21,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      21,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 184.68,
+      "median": 111.0,
+      "std": 120.97097833778149,
+      "min": 87.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0838049817085267,
+      "median": 0.7803950905799866,
+      "std": 0.4842750129201398,
+      "min": 0.5927481651306152,
+      "max": 2.134105682373047
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3350172257250053,
+      "median": 0.33676985275200716,
+      "std": 0.127387620070627,
+      "min": 2.4041313475823757e-06,
+      "max": 0.5714351026356367
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.18945337161163261,
+      "median": 0.18361290942345013,
+      "std": 0.1027483051846383,
+      "min": 1.1471595820389653e-06,
+      "max": 0.38866987065334696
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04820993939463448,
+      "median": 0.0536304004910521,
+      "std": 0.012935851710765249,
+      "min": 0.008015796772670001,
+      "max": 0.05891410001293496
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999821186066,
+      "median": 0.07999999821186066,
+      "std": 0.0,
+      "min": 0.07999999821186066,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.02551606550812721,
+      "median": 0.03670867532491684,
+      "std": 0.017517876633206336,
+      "min": 0.0,
+      "max": 0.039130909368395805
+    }
+  },
+  "mr_rule": "MR5",
+  "mr_compare": {
+    "mr_id": "MR5",
+    "paired_episodes": 25,
+    "analyzable_episodes": 0,
+    "unavailable_count": 25,
+    "violations": 0,
+    "violation_rate_percent": null,
+    "config": {
+      "metric": "release_angle_to_world_z_deg",
+      "violation_rule": "theta > max_release_angle_deg",
+      "max_release_angle_deg": 10.0,
+      "expectation": "specialized_instruction_should_keep_release_orientation_near_vertical"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 57,
+        "mr_grasp_frame_index": 57,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.06716343760490417,
+          -0.21288897097110748,
+          0.02004174143075943
+        ],
+        "mr_grasp_point": [
+          0.07467984408140182,
+          -0.21610543131828308,
+          0.020552612841129303
+        ],
+        "mr_release_hover_point": [
+          0.06440269201993942,
+          -0.2109537124633789,
+          0.09843754768371582
+        ],
+        "mr_release_frame_index": 110,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 46,
+        "mr_grasp_frame_index": 48,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.024649567902088165,
+          0.19599634408950806,
+          0.017421409487724304
+        ],
+        "mr_grasp_point": [
+          0.027985520660877228,
+          0.18932943046092987,
+          0.018650062382221222
+        ],
+        "mr_release_hover_point": [
+          0.029466040432453156,
+          0.18192389607429504,
+          0.11688179522752762
+        ],
+        "mr_release_frame_index": 105,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 37,
+        "mr_grasp_frame_index": 36,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.0249038003385067,
+          -0.08796191960573196,
+          0.019270583987236023
+        ],
+        "mr_grasp_point": [
+          0.024340897798538208,
+          -0.08897610753774643,
+          0.020815812051296234
+        ],
+        "mr_release_hover_point": [
+          0.026781294494867325,
+          -0.08520865440368652,
+          0.11550752818584442
+        ],
+        "mr_release_frame_index": 91,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 53,
+        "mr_grasp_frame_index": 51,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0599241629242897,
+          0.029270851984620094,
+          0.019675664603710175
+        ],
+        "mr_grasp_point": [
+          -0.060037966817617416,
+          0.026777168735861778,
+          0.019650906324386597
+        ],
+        "mr_release_hover_point": [
+          -0.05750206485390663,
+          0.025601381435990334,
+          0.11846356838941574
+        ],
+        "mr_release_frame_index": 108,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 42,
+        "mr_grasp_frame_index": 42,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.08675944805145264,
+          0.07045798003673553,
+          0.018720462918281555
+        ],
+        "mr_grasp_point": [
+          -0.08355712890625,
+          0.07079575210809708,
+          0.01930302381515503
+        ],
+        "mr_release_hover_point": [
+          -0.08106167614459991,
+          0.0720890536904335,
+          0.12087251245975494
+        ],
+        "mr_release_frame_index": 103,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 37,
+        "mr_grasp_frame_index": 37,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.02987554296851158,
+          0.10188045352697372,
+          0.02144378423690796
+        ],
+        "mr_grasp_point": [
+          -0.031094513833522797,
+          0.09891365468502045,
+          0.019694015383720398
+        ],
+        "mr_release_hover_point": [
+          -0.029235921800136566,
+          0.09453605115413666,
+          0.11638209968805313
+        ],
+        "mr_release_frame_index": 105,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": false,
+        "base_grasp_frame_index": 42,
+        "mr_grasp_frame_index": 42,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.05952594429254532,
+          0.1952371597290039,
+          0.04859036207199097
+        ],
+        "mr_grasp_point": [
+          0.041867852210998535,
+          0.18779297173023224,
+          0.019400179386138916
+        ],
+        "mr_release_hover_point": [
+          0.1312159299850464,
+          0.013251351192593575,
+          0.12124018371105194
+        ],
+        "mr_release_frame_index": 93,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 53,
+        "mr_grasp_frame_index": 51,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.06889042258262634,
+          0.23401856422424316,
+          0.01743929088115692
+        ],
+        "mr_grasp_point": [
+          0.07205294072628021,
+          0.21818362176418304,
+          0.020122267305850983
+        ],
+        "mr_release_hover_point": [
+          0.07405929267406464,
+          0.21576537191867828,
+          0.12288195639848709
+        ],
+        "mr_release_frame_index": 132,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 50,
+        "mr_grasp_frame_index": 50,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.08507326245307922,
+          -0.14690886437892914,
+          0.02170170098543167
+        ],
+        "mr_grasp_point": [
+          0.08441746979951859,
+          -0.15332536399364471,
+          0.021124713122844696
+        ],
+        "mr_release_hover_point": [
+          0.08197379857301712,
+          -0.15541328489780426,
+          0.12260410934686661
+        ],
+        "mr_release_frame_index": 122,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 39,
+        "mr_grasp_frame_index": 38,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.049254968762397766,
+          -0.13271047174930573,
+          0.02139512449502945
+        ],
+        "mr_grasp_point": [
+          -0.050667956471443176,
+          -0.13238853216171265,
+          0.021863706409931183
+        ],
+        "mr_release_hover_point": [
+          -0.04862290993332863,
+          -0.13066436350345612,
+          0.10486208647489548
+        ],
+        "mr_release_frame_index": 87,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 58,
+        "mr_grasp_frame_index": 54,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.0805659219622612,
+          0.26241207122802734,
+          0.04664428532123566
+        ],
+        "mr_grasp_point": [
+          -0.07610604166984558,
+          0.25335466861724854,
+          0.047001659870147705
+        ],
+        "mr_release_hover_point": [
+          -0.1063733622431755,
+          0.2576959729194641,
+          0.1168476790189743
+        ],
+        "mr_release_frame_index": 90,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 42,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.05603673681616783,
+          0.17980320751667023,
+          0.020457670092582703
+        ],
+        "mr_grasp_point": [
+          -0.05650125443935394,
+          0.1756197214126587,
+          0.020995542407035828
+        ],
+        "mr_release_hover_point": [
+          0.005065895617008209,
+          0.19498558342456818,
+          0.10534863919019699
+        ],
+        "mr_release_frame_index": 81,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 50,
+        "mr_grasp_frame_index": 50,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.00778637919574976,
+          0.17299805581569672,
+          0.019658543169498444
+        ],
+        "mr_grasp_point": [
+          0.006261629983782768,
+          0.16716554760932922,
+          0.020719558000564575
+        ],
+        "mr_release_hover_point": [
+          0.007212134078145027,
+          0.1563485860824585,
+          0.11868040263652802
+        ],
+        "mr_release_frame_index": 124,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 45,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.08873201161623001,
+          0.018367042765021324,
+          0.019117772579193115
+        ],
+        "mr_grasp_point": [
+          -0.08485108613967896,
+          0.011625084094703197,
+          0.02050519734621048
+        ],
+        "mr_release_hover_point": [
+          -0.08148866146802902,
+          0.0032934225164353848,
+          0.11921463161706924
+        ],
+        "mr_release_frame_index": 109,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 43,
+        "mr_grasp_frame_index": 43,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.04287015646696091,
+          -0.014381161890923977,
+          0.02060946822166443
+        ],
+        "mr_grasp_point": [
+          -0.0399620421230793,
+          -0.012670893222093582,
+          0.020197652280330658
+        ],
+        "mr_release_hover_point": [
+          -0.03686603531241417,
+          -0.008103652857244015,
+          0.1185096725821495
+        ],
+        "mr_release_frame_index": 108,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 41,
+        "mr_grasp_frame_index": 40,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_grasp_point": [
+          -0.00359373539686203,
+          -0.23317186534404755,
+          0.019754573702812195
+        ],
+        "mr_grasp_point": [
+          0.0007293121889233589,
+          -0.22575348615646362,
+          0.021095164120197296
+        ],
+        "mr_release_hover_point": [
+          -0.016444910317659378,
+          -0.21214401721954346,
+          0.10941500216722488
+        ],
+        "mr_release_frame_index": 399,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 49,
+        "mr_grasp_frame_index": 45,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.1084679588675499,
+          0.03368593007326126,
+          0.018829509615898132
+        ],
+        "mr_grasp_point": [
+          -0.10399622470140457,
+          0.030945295467972755,
+          0.018404707312583923
+        ],
+        "mr_release_hover_point": [
+          -0.09990820288658142,
+          0.03292740881443024,
+          0.11917692422866821
+        ],
+        "mr_release_frame_index": 130,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 33,
+        "mr_grasp_frame_index": 32,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.06305251270532608,
+          0.1992548108100891,
+          0.021680213510990143
+        ],
+        "mr_grasp_point": [
+          -0.05484067648649216,
+          0.19135859608650208,
+          0.018921345472335815
+        ],
+        "mr_release_hover_point": [
+          -0.049873434007167816,
+          0.19089989364147186,
+          0.11715999990701675
+        ],
+        "mr_release_frame_index": 95,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 30,
+        "mr_grasp_frame_index": 30,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.009125483222305775,
+          -0.05298704281449318,
+          0.021315529942512512
+        ],
+        "mr_grasp_point": [
+          0.011660327203571796,
+          -0.054945554584264755,
+          0.021744966506958008
+        ],
+        "mr_release_hover_point": [
+          0.015319920144975185,
+          -0.04520101472735405,
+          0.1172909289598465
+        ],
+        "mr_release_frame_index": 86,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 44,
+        "mr_grasp_frame_index": 44,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "inferred_from_gripper_signal",
+        "base_grasp_point": [
+          -0.031215503811836243,
+          -0.21029911935329437,
+          0.020817987620830536
+        ],
+        "mr_grasp_point": [
+          -0.03191246837377548,
+          -0.20222626626491547,
+          0.020398207008838654
+        ],
+        "mr_release_hover_point": [
+          -0.06959201395511627,
+          -0.08631505817174911,
+          0.10604766756296158
+        ],
+        "mr_release_frame_index": 399,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": true,
+        "base_grasp_frame_index": 60,
+        "mr_grasp_frame_index": 60,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.014848905615508556,
+          -0.23149384558200836,
+          0.04806914180517197
+        ],
+        "mr_grasp_point": [
+          -0.003470801282674074,
+          -0.22017857432365417,
+          0.018699459731578827
+        ],
+        "mr_release_hover_point": [
+          0.05965103209018707,
+          -0.16277748346328735,
+          0.12165963649749756
+        ],
+        "mr_release_frame_index": 92,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 61,
+        "mr_grasp_frame_index": 66,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          -0.07348596304655075,
+          0.2419470250606537,
+          0.0194813534617424
+        ],
+        "mr_grasp_point": [
+          -0.07899800688028336,
+          0.23365554213523865,
+          0.019454114139080048
+        ],
+        "mr_release_hover_point": [
+          -0.021847441792488098,
+          0.19904664158821106,
+          0.11773644387722015
+        ],
+        "mr_release_frame_index": 96,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_grasp_frame_index": 106,
+        "mr_grasp_frame_index": 105,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.11616818606853485,
+          0.10559873282909393,
+          0.021494776010513306
+        ],
+        "mr_grasp_point": [
+          0.12643185257911682,
+          0.12109984457492828,
+          0.019571378827095032
+        ],
+        "mr_release_hover_point": [
+          0.12348198145627975,
+          0.1362089216709137,
+          0.12636587023735046
+        ],
+        "mr_release_frame_index": 142,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 51,
+        "mr_grasp_frame_index": 44,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.10692811012268066,
+          -0.13257259130477905,
+          0.017705149948596954
+        ],
+        "mr_grasp_point": [
+          0.10470829159021378,
+          -0.13015638291835785,
+          0.01967649906873703
+        ],
+        "mr_release_hover_point": [
+          0.1022338718175888,
+          -0.12958557903766632,
+          0.12251158803701401
+        ],
+        "mr_release_frame_index": 110,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_grasp_frame_index": 39,
+        "mr_grasp_frame_index": 41,
+        "base_grasp_frame_index_source": "annotated",
+        "mr_grasp_frame_index_source": "annotated",
+        "base_grasp_point": [
+          0.03432657569646835,
+          0.08666343986988068,
+          0.018501020967960358
+        ],
+        "mr_grasp_point": [
+          0.03466181457042694,
+          0.08656042069196701,
+          0.018634021282196045
+        ],
+        "mr_release_hover_point": [
+          0.03605429083108902,
+          0.08327865600585938,
+          0.11833184957504272
+        ],
+        "mr_release_frame_index": 101,
+        "mr_release_angle_deg": null,
+        "max_release_angle_deg": 10.0,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "missing_mr_release_angle_deg"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": null,
+  "followup_unavailable_count": 25,
+  "followup_analyzable_count": 0
+}

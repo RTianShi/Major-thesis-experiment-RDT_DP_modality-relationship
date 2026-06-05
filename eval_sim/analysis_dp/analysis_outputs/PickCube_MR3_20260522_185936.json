@@ -1,0 +1,609 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj_dp/PickCube/PickCube-v1_20260421_153203",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCube-v1_MR3_20260522_141832",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 56.00000000000001,
+    "success_count": 14,
+    "success_episode_ids": [
+      2,
+      3,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      23
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 247.68,
+      "median": 233.0,
+      "std": 148.0323532205038,
+      "min": 57.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6705032801628112,
+      "median": 0.5545661449432373,
+      "std": 0.3124853579944371,
+      "min": 0.30650556087493896,
+      "max": 1.5584840774536133
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28112024226162186,
+      "median": 0.1959706660254523,
+      "std": 0.21755070449813674,
+      "min": 0.08008315310927194,
+      "max": 0.9277501005992768
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.15462773960573634,
+      "median": 0.17659622473865733,
+      "std": 0.08608699468812535,
+      "min": 0.022539561263933285,
+      "max": 0.2993244103053892
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05390115375090118,
+      "median": 0.05395223716739565,
+      "std": 0.005987932783034684,
+      "min": 0.040934974397532645,
+      "max": 0.06545244533111129
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799994084239006,
+      "median": 0.07999999821186066,
+      "std": 1.242984056570895e-06,
+      "min": 0.07999521866440773,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.043546322509646414,
+      "median": 0.043568842113018036,
+      "std": 0.005084735670505532,
+      "min": 0.03662733919918537,
+      "max": 0.05200224928557873
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 72.0,
+    "success_count": 18,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.0,
+      "median": 84.0,
+      "std": 146.99224469338512,
+      "min": 53.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.8114381217956543,
+      "median": 0.6414330005645752,
+      "std": 0.4372626807508327,
+      "min": 0.27658867835998535,
+      "max": 1.8006205558776855
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.3081561871282225,
+      "median": 0.20278988100056122,
+      "std": 0.22997874395777887,
+      "min": 0.07250309195535493,
+      "max": 0.774454827061097
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.19465099562545432,
+      "median": 0.19339403965674506,
+      "std": 0.08739795649988416,
+      "min": 0.022998463693066573,
+      "max": 0.3338578478860786
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.051682968235178775,
+      "median": 0.05800065549888781,
+      "std": 0.01466620730654602,
+      "min": 0.00779965945519507,
+      "max": 0.06480359774574919
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999418854714,
+      "median": 0.07999999821186066,
+      "std": 1.2640541827946004e-08,
+      "min": 0.07999993860721588,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.03396305337548256,
+      "median": 0.03664501942694187,
+      "std": 0.010034032855455743,
+      "min": 0.0,
+      "max": 0.03902335464954376
+    }
+  },
+  "mr_rule": "MR3",
+  "mr_compare": {
+    "mr_id": "MR3",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 12,
+    "violation_rate_percent": 48.0,
+    "config": {
+      "similarity_threshold": 0.9,
+      "sample_points": 32,
+      "metric": "trajectory_similarity",
+      "violation_rule": "trajectory_similarity <= similarity_threshold"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.8672662232662696,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.04417440586417573,
+        "source_path_len_m": 0.28863015188446317,
+        "followup_path_len_m": 0.35374549869977867,
+        "relative_deviation": 0.1530484794321089,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.867266 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": false,
+        "trajectory_similarity": 0.7648692880388139,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.1410517129074386,
+        "source_path_len_m": 0.45883467254578353,
+        "followup_path_len_m": 0.8893839266492718,
+        "relative_deviation": 0.3074129339982783,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.764869 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9619982207621156,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.015155143749963122,
+        "source_path_len_m": 0.3836457559419859,
+        "followup_path_len_m": 0.35305335345662253,
+        "relative_deviation": 0.039502962082173666,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.8785156301589024,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.04461495063745118,
+        "source_path_len_m": 0.3226335332276574,
+        "followup_path_len_m": 0.3411040248510359,
+        "relative_deviation": 0.1382836749519458,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.878516 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9020693014078581,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.024300535890516752,
+        "source_path_len_m": 0.22383959013597782,
+        "followup_path_len_m": 0.20481412598955864,
+        "relative_deviation": 0.10856227835189786,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9716887837855976,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.008839384889647516,
+        "source_path_len_m": 0.3033826271463723,
+        "followup_path_len_m": 0.2842784625053258,
+        "relative_deviation": 0.02913609448501083,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": false,
+        "mr_success": false,
+        "trajectory_similarity": 0.927429445085081,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.06572638740579499,
+        "source_path_len_m": 0.8399630824191495,
+        "followup_path_len_m": 0.9256176101963238,
+        "relative_deviation": 0.07824913830319617,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9500237583142777,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.01372455721227471,
+        "source_path_len_m": 0.2608970779755446,
+        "followup_path_len_m": 0.28675608566185185,
+        "relative_deviation": 0.05260525460373761,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.6303186437181166,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.1932114774010973,
+        "source_path_len_m": 0.32943180476045386,
+        "followup_path_len_m": 0.7539594303634735,
+        "relative_deviation": 0.5864991619178691,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.630319 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9497973447035944,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.03370631638251589,
+        "source_path_len_m": 0.6376987354719671,
+        "followup_path_len_m": 0.4709892543743291,
+        "relative_deviation": 0.05285617566352788,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9676986829734237,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.014591817206888149,
+        "source_path_len_m": 0.43714880980477533,
+        "followup_path_len_m": 0.43304851614400935,
+        "relative_deviation": 0.03337951946707725,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": false,
+        "mr_success": false,
+        "trajectory_similarity": 0.6652418890404866,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.18355910999570935,
+        "source_path_len_m": 0.3647744597856949,
+        "followup_path_len_m": 0.8693563237904033,
+        "relative_deviation": 0.5032126155530472,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.665242 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.980004558114328,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.0066863373481222685,
+        "source_path_len_m": 0.3277067401518776,
+        "followup_path_len_m": 0.3428050963747688,
+        "relative_deviation": 0.020403417229146542,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "trajectory_similarity": 0.8445324133900025,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.0670510352709787,
+        "source_path_len_m": 0.3642352330312457,
+        "followup_path_len_m": 1.1716105820359302,
+        "relative_deviation": 0.1840871755128279,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.844532 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9652088392342455,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.017777459434992253,
+        "source_path_len_m": 0.49319886454241585,
+        "followup_path_len_m": 0.4989741300219381,
+        "relative_deviation": 0.03604521565856802,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": false,
+        "trajectory_similarity": 0.7952315500786803,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.1285973696044208,
+        "source_path_len_m": 0.4994162216193889,
+        "followup_path_len_m": 1.1172816115190725,
+        "relative_deviation": 0.2574953796803709,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.795232 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": false,
+        "mr_success": false,
+        "trajectory_similarity": 0.8796197456659587,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.08849399229432689,
+        "source_path_len_m": 0.6466265038691577,
+        "followup_path_len_m": 0.8929109454951673,
+        "relative_deviation": 0.13685487953991027,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.879620 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.8745968443871841,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.13601515411156584,
+        "source_path_len_m": 0.9486079037922929,
+        "followup_path_len_m": 0.30930915571014717,
+        "relative_deviation": 0.1433839561823298,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.874597 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.9640524581167041,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.014398633355499074,
+        "source_path_len_m": 0.3861470674394097,
+        "followup_path_len_m": 0.40690867871880326,
+        "relative_deviation": 0.0372879521032705,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.9090874258327385,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.034426945895002975,
+        "source_path_len_m": 0.34425494943516455,
+        "followup_path_len_m": 0.33908634925571085,
+        "relative_deviation": 0.1000042147585355,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.8942022848768362,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.13280987365550578,
+        "source_path_len_m": 1.1225090479383668,
+        "followup_path_len_m": 0.4867048468281203,
+        "relative_deviation": 0.11831519211308658,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.894202 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": false,
+        "trajectory_similarity": 0.7572428070471372,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.16301358584939174,
+        "source_path_len_m": 0.5084951915693879,
+        "followup_path_len_m": 0.9570910161471324,
+        "relative_deviation": 0.32058038807855144,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.757243 <= 0.900000)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "trajectory_similarity": 0.948433689176046,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.02422672250589581,
+        "source_path_len_m": 0.4455901427844131,
+        "followup_path_len_m": 0.4644354223261203,
+        "relative_deviation": 0.0543699695745228,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.928818323166805,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.024817759769591434,
+        "source_path_len_m": 0.3238360072349237,
+        "followup_path_len_m": 0.3313054203308597,
+        "relative_deviation": 0.07663681374254232,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "trajectory_stable_under_visual_perturbation"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": false,
+        "mr_success": true,
+        "trajectory_similarity": 0.8649070202413963,
+        "similarity_threshold": 0.9,
+        "mean_pointwise_deviation_m": 0.04717258421261718,
+        "source_path_len_m": 0.3020134674749642,
+        "followup_path_len_m": 0.3513348921988116,
+        "relative_deviation": 0.1561936446311872,
+        "sample_points": 32.0,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Visual perturbation changed trajectory too much (similarity=0.864907 <= 0.900000)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 12,
+  "followup_mr_violation_rate_percent": 48.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

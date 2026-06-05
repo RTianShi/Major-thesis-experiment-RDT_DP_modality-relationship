@@ -3,6 +3,9 @@ import torch
 from .registry import register_language
 
 
+MR1_DEFAULT_MUTATED_TEXT = "Pick up the red block and transport it to the green sphere destination."
+
+
 @register_language("identity")
 def lang_identity(text_embed, cfg):
     return text_embed
@@ -41,6 +44,17 @@ def lang_replace_red_with_blue(text_embed, cfg):
     # Replace standalone 'red' (case-insensitive) with 'blue'
     mutated = re.sub(r"\bred\b", "blue", str(text), flags=re.IGNORECASE)
     return encoder([mutated])
+
+
+@register_language("MR1")
+@register_language("MR-1")
+@register_language("Synonym-Substitution")
+def lang_mr1_synonym_substitution(text_embed, cfg):
+    encoder = cfg.get("encoder")
+    if encoder is None:
+        raise ValueError("MR1 requires cfg['encoder'] (text encoder) to be provided")
+    mutated = cfg.get("mutated_text", MR1_DEFAULT_MUTATED_TEXT)
+    return encoder([str(mutated)])
 
 
 @register_language("MR-JDCP-1")

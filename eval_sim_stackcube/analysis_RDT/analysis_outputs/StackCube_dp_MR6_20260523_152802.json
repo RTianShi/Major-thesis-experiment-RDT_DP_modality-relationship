@@ -1,0 +1,515 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260523_151422",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR6_20260523_152517",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_rule": "MR6",
+  "mr_compare": {
+    "mr_id": "MR6",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 17,
+    "violation_rate_percent": 68.0,
+    "config": {
+      "progress_ratio_tol": 0.3,
+      "metric": "post_grasp_progress_ratio",
+      "violation_rule": "progress_ratio_followup > 0.3",
+      "expectation": "injected_pause_or_detour_should_not_push_release_progress_ratio_too_high"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.45602499965544163,
+        "mr_progress_ratio": 0.45602499965544163,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.5408029044449103,
+        "mr_progress_ratio": 0.5408029044449103,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6647181110196336,
+        "mr_progress_ratio": 0.6647181110196336,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.5582575089981091,
+        "mr_progress_ratio": 0.5582575089981091,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6051181515183227,
+        "mr_progress_ratio": 0.6051181515183227,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6526545686448233,
+        "mr_progress_ratio": 0.6526545686448233,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.13411193818883738,
+        "mr_progress_ratio": 0.13411193818883738,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6130603752955653,
+        "mr_progress_ratio": 0.6130603752955653,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_progress_ratio": 0.20592337470173178,
+        "mr_progress_ratio": 0.20592337470173178,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.4602174557302757,
+        "mr_progress_ratio": 0.4602174557302757,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.19208026056392294,
+        "mr_progress_ratio": 0.19208026056392294,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.3947079643708308,
+        "mr_progress_ratio": 0.3947079643708308,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6749954667350127,
+        "mr_progress_ratio": 0.6749954667350127,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.706853171030572,
+        "mr_progress_ratio": 0.706853171030572,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6765148253600419,
+        "mr_progress_ratio": 0.6765148253600419,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_progress_ratio": 0.12068383457901063,
+        "mr_progress_ratio": 0.12068383457901063,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.5710914864148557,
+        "mr_progress_ratio": 0.5710914864148557,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": false,
+        "base_progress_ratio": 0.09635006149790194,
+        "mr_progress_ratio": 0.09635006149790194,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6632689284965442,
+        "mr_progress_ratio": 0.6632689284965442,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_progress_ratio": 0.10302065490656112,
+        "mr_progress_ratio": 0.10302065490656112,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_progress_ratio": 0.10646281476058558,
+        "mr_progress_ratio": 0.10646281476058558,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.48779595666787195,
+        "mr_progress_ratio": 0.48779595666787195,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_progress_ratio": 0.10307052779108683,
+        "mr_progress_ratio": 0.10307052779108683,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "action_optimality_completeness_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6122423765326971,
+        "mr_progress_ratio": 0.6122423765326971,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_progress_ratio": 0.6365135689937192,
+        "mr_progress_ratio": 0.6365135689937192,
+        "progress_ratio_tol": 0.3,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: progress_ratio > 0.3"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 17,
+  "followup_mr_violation_rate_percent": 68.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

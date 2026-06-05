@@ -11,7 +11,9 @@ from statistics import mean
 from typing import Dict, List, Optional
 
 import numpy as np
-from eval_sim.grasp_event import derive_grasp_and_yaw_from_raw
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
+from scripts.grasp_event import derive_grasp_and_yaw_from_raw
 
 
 def _first_not_none(*vals):
@@ -27,6 +29,7 @@ class EpisodeRecord:
     episode_id: Optional[int]
     seed: Optional[int]
     success: Optional[bool]
+    mr_eval: Dict[str, Optional[List[float]]]
     total_steps: Optional[int]
     path_len: Optional[float]
     gripper_width: List[Optional[float]]
@@ -126,6 +129,15 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
             episode_id=_safe_int(obj.get("episode_id")),
             seed=_safe_int(obj.get("seed")),
             success=bool(metrics.get("env_success")) if "env_success" in metrics else None,
+            mr_eval={
+                "mr6_injection_attempted": mr_eval.get("mr6_injection_attempted"),
+                "mr6_injection_applied": mr_eval.get("mr6_injection_applied"),
+                "mr6_injection_trigger_step": _safe_int(mr_eval.get("mr6_injection_trigger_step")),
+                "mr6_observed_lift_m": _safe_float(mr_eval.get("mr6_observed_lift_m")),
+                "mr6_return_error_m": _safe_float(mr_eval.get("mr6_return_error_m")),
+                "mr6_meta": mr_eval.get("mr6_meta"),
+                "goal_point": _safe_xyz_list(goal_point),
+            },
             total_steps=_safe_int(traj.get("total_steps")),
             path_len=_safe_float(traj.get("total_path_length_meters")),
             gripper_width=[None if x is None else float(x) for x in gripper_width],
@@ -211,22 +223,7 @@ def summarize(records: List[EpisodeRecord]) -> Dict:
     }
 
 
-try:
-    from eval_sim.analysis_dp.mr_rules import MR_RULE_REGISTRY
-    from eval_sim.analysis_dp.mr_rules import mr_cptmp_1
-    from eval_sim.analysis_dp.mr_rules import mr_cptmp_2
-    from eval_sim.analysis_dp.mr_rules import mr_fpdp_1
-    from eval_sim.analysis_dp.mr_rules import mr_fpdp_2
-    from eval_sim.analysis_dp.mr_rules import mr_ltsep_1  # noqa: F401
-    from eval_sim.analysis_dp.mr_rules import mr_ltsep_2
-    from eval_sim.analysis_dp.mr_rules import mr_ltsep_3
-    from eval_sim.analysis_dp.mr_rules import mr_ltsep_4
-    from eval_sim.analysis_dp.mr_rules import mr_ltsep_5
-    from eval_sim.analysis_dp.mr_rules import mr_gdip_1
-    from eval_sim.analysis_dp.mr_rules import mr_sesp_1  # noqa: F401
-except Exception:
-    # 兼容直接运行该脚本（python eval_sim/analysis_dp/mr_eval_analyzer_dp.py）
-    from mr_rules import MR_RULE_REGISTRY
+from eval_sim.analysis_dp.mr_rules import MR_RULE_REGISTRY
 
 
 def _default_output_path(mr_id: str) -> str:

@@ -43,6 +43,7 @@ class EpisodeRecord:
     eef_path: List[List[float]]
     gripper_action_cmd: List[Optional[float]]
     eef_yaw_deg: List[Optional[float]]
+    eef_quat: List[List[float]]
     mr_eval_grasp_frame_index: Optional[int]
     mr_eval_eef_yaw_at_grasp: Optional[float]
     mr_eval_expected_delta_yaw_deg: Optional[float]
@@ -168,6 +169,7 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
         eef_path = _normalize_xyz_sequence(traj.get("eef_path", []) or [])
         gripper_action_cmd = traj.get("gripper_action_cmd", []) or []
         eef_yaw_deg = traj.get("eef_yaw_deg", []) or []
+        eef_quat = traj.get("eef_quat", []) or []
 
         rec = EpisodeRecord(
             file=fp,
@@ -193,10 +195,12 @@ def load_records(traj_dir: str) -> List[EpisodeRecord]:
                 "gripper_width": gripper_width,
                 "gripper_action_cmd": gripper_action_cmd,
                 "gripper_finger_qpos": gripper_finger_qpos,
+                "eef_quat": eef_quat,
             },
             eef_path=eef_path,
             gripper_action_cmd=[None if x is None else float(x) for x in gripper_action_cmd],
             eef_yaw_deg=[None if x is None else float(x) for x in eef_yaw_deg],
+            eef_quat=eef_quat,
             mr_eval_grasp_frame_index=_safe_int(mr_eval.get("grasp_frame_index")),
             mr_eval_eef_yaw_at_grasp=_safe_float(mr_eval.get("eef_yaw_at_grasp")),
             mr_eval_expected_delta_yaw_deg=_safe_float(mr_eval.get("expected_delta_yaw_deg")),

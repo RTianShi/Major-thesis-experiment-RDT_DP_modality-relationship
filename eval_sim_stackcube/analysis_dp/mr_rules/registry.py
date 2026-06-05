@@ -31,6 +31,10 @@ def _load_builtin_rules():
         "mr_scdp_1",
         "mr_scdp_2",
         "mr_scdp_3",
+        "mr2",
+        "mr3",
+        "mr4",
+        "mr6",
     ]
     pkg = __name__.rsplit(".", 1)[0]
     for module_name in module_names:

@@ -63,6 +63,102 @@ def _build_collision_box(scene, half_size, rgba, name):
     return actor
 
 
+def _build_collision_cylinder(scene, radius, half_length, rgba, name):
+    builder = scene.create_actor_builder()
+    material = sapien.render.RenderMaterial(base_color=np.array(rgba, dtype=np.float32).tolist())
+    try:
+        builder.add_cylinder_collision(radius=radius, half_length=half_length)
+        builder.add_cylinder_visual(radius=radius, half_length=half_length, material=material)
+    except Exception:
+        builder.add_box_collision(half_size=[radius, radius, half_length])
+        builder.add_box_visual(
+            half_size=[radius, radius, half_length],
+            material=material,
+        )
+    actor = builder.build_kinematic(name=name)
+    actor.set_pose(sapien.Pose(p=[0.0, 0.0, half_length]))
+    return actor
+
+
+def _actor_xyz(actor):
+    if actor is None:
+        return None
+    pose = getattr(actor, "pose", None)
+    if pose is None and hasattr(actor, "get_pose"):
+        pose = actor.get_pose()
+    if pose is None:
+        return None
+    try:
+        xyz = np.asarray(pose.p, dtype=np.float32).reshape(-1)
+    except Exception:
+        return None
+    return xyz[:3].copy() if xyz.size >= 3 else None
+
+
+def _get_task_anchor_positions(env):
+    cube = None
+    for key in ["cube", "obj", "object", "_obj"]:
+        candidate = getattr(env.unwrapped, key, None)
+        if candidate is not None:
+            cube = candidate
+            break
+
+    cube_xyz = _actor_xyz(cube)
+
+    goal_site = getattr(env.unwrapped, "goal_site", None)
+    goal_xyz = _actor_xyz(goal_site)
+    if goal_xyz is None:
+        for key in ["goal", "_goal", "target", "_target", "goal_region", "target_site"]:
+            candidate = getattr(env.unwrapped, key, None)
+            goal_xyz = _actor_xyz(candidate)
+            if goal_xyz is not None:
+                break
+
+    return cube_xyz, goal_xyz
+
+
+def _sample_non_interfering_xy(env, cube_xyz, goal_xyz, cfg):
+    center = np.asarray(getattr(env.unwrapped, "cube_spawn_center", [0.0, 0.0, 0.0]), dtype=np.float32)
+    extent_x = float(cfg.get("table_extent_x", 0.32))
+    extent_y = float(cfg.get("table_extent_y", 0.24))
+    min_distance = float(cfg.get("min_distance", 0.2))
+    margin = float(cfg.get("table_margin", 0.04))
+    max_tries = int(cfg.get("max_tries", 128))
+
+    low_x = float(center[0] - extent_x + margin)
+    high_x = float(center[0] + extent_x - margin)
+    low_y = float(center[1] - extent_y + margin)
+    high_y = float(center[1] + extent_y - margin)
+
+    best_xy = None
+    best_clearance = -1.0
+    for _ in range(max_tries):
+        xy = np.array(
+            [np.random.uniform(low_x, high_x), np.random.uniform(low_y, high_y)],
+            dtype=np.float32,
+        )
+        clearance = float("inf")
+        if cube_xyz is not None:
+            clearance = min(clearance, float(np.linalg.norm(xy - cube_xyz[:2])))
+        if goal_xyz is not None:
+            clearance = min(clearance, float(np.linalg.norm(xy - goal_xyz[:2])))
+        if clearance > min_distance:
+            return xy
+        if clearance > best_clearance:
+            best_clearance = clearance
+            best_xy = xy
+    return best_xy
+
+
+def _move_actor_offstage(actor):
+    if actor is None:
+        return
+    try:
+        actor.set_pose(sapien.Pose(p=[10.0, 10.0, -10.0]))
+    except Exception:
+        pass
+
+
 @register_env("identity")
 def env_identity(env, cfg):
     # No-op mutation for environment.
@@ -190,6 +286,16 @@ def env_translate_cube_xy(env, cfg):
     return env
 
 
+@register_env("MR4")
+@register_env("MR-4")
+@register_env("Target-Object-Relocation")
+def env_mr4_target_object_relocation(env, cfg):
+    cfg = dict(cfg or {})
+    cfg.setdefault("dx", 0.05)
+    cfg.setdefault("dy", 0.05)
+    return env_translate_cube_xy(env, cfg)
+
+
 @register_env("MR-SADP-1-joint_reset_noise")
 def env_joint_reset_noise(env, cfg):
     scale = float(cfg.get("scale", 0.05))
@@ -232,6 +338,81 @@ def env_translate_cube_xy_and_joint_reset_noise(env, cfg):
 @register_env("MR-SADP-1")
 def env_sadp1(env, cfg):
     return env_translate_cube_xy_and_joint_reset_noise(env, cfg)
+
+
+@register_env("MR2")
+@register_env("MR-2")
+@register_env("Non-interfering-Object-Addition")
+def env_mr2_non_interfering_object_addition(env, cfg):
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is None:
+        raise ValueError("MR2 requires env.unwrapped.scene")
+
+    runtime = getattr(env.unwrapped, "_mr2_runtime", None)
+    if runtime is None:
+        runtime = {}
+        env.unwrapped._mr2_runtime = runtime
+
+    cube_xyz, goal_xyz = _get_task_anchor_positions(env)
+    xy = _sample_non_interfering_xy(env, cube_xyz, goal_xyz, cfg)
+    if xy is None:
+        raise ValueError("MR2 could not sample a non-interfering distractor position")
+
+    distractor_type = cfg.get("distractor_type", "random")
+    if distractor_type == "random":
+        distractor_type = str(np.random.choice(["blue_cup", "yellow_block"]))
+    distractor_type = str(distractor_type).strip().lower()
+
+    block_half_size = float(cfg.get("yellow_block_half_size", getattr(env.unwrapped, "cube_half_size", 0.02)))
+    cup_radius = float(cfg.get("blue_cup_radius", max(0.015, block_half_size * 0.7)))
+    cup_half_length = float(cfg.get("blue_cup_half_length", max(0.025, block_half_size * 1.2)))
+
+    blue_cup = runtime.get("blue_cup")
+    if blue_cup is None:
+        blue_cup = _build_collision_cylinder(
+            scene,
+            radius=cup_radius,
+            half_length=cup_half_length,
+            rgba=cfg.get("blue_cup_rgba", [0.1, 0.35, 0.95, 1.0]),
+            name="mr2_blue_cup",
+        )
+        runtime["blue_cup"] = blue_cup
+
+    yellow_block = runtime.get("yellow_block")
+    if yellow_block is None:
+        yellow_block = _build_collision_box(
+            scene,
+            half_size=block_half_size,
+            rgba=cfg.get("yellow_block_rgba", [0.95, 0.82, 0.15, 1.0]),
+            name="mr2_yellow_block",
+        )
+        runtime["yellow_block"] = yellow_block
+
+    _move_actor_offstage(blue_cup)
+    _move_actor_offstage(yellow_block)
+
+    if distractor_type == "blue_cup":
+        pos = np.array([xy[0], xy[1], cup_half_length], dtype=np.float32)
+        blue_cup.set_pose(Pose.create_from_pq(pos))
+        runtime["active_name"] = "mr2_blue_cup"
+        runtime["active_type"] = "blue_cup"
+    elif distractor_type == "yellow_block":
+        pos = np.array([xy[0], xy[1], block_half_size], dtype=np.float32)
+        yellow_block.set_pose(Pose.create_from_pq(pos))
+        runtime["active_name"] = "mr2_yellow_block"
+        runtime["active_type"] = "yellow_block"
+    else:
+        raise ValueError(f"MR2 unknown distractor_type: {distractor_type}")
+
+    runtime["active_xy"] = xy.tolist()
+    runtime["cube_xyz"] = None if cube_xyz is None else cube_xyz.tolist()
+    runtime["goal_xyz"] = None if goal_xyz is None else goal_xyz.tolist()
+
+    env.unwrapped.scene.update_render(
+        update_sensors=True,
+        update_human_render_cameras=True,
+    )
+    return env
 
 
 @register_env("MR-BG-1-checkerboard_table")

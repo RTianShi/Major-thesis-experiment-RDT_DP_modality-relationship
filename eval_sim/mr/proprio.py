@@ -168,3 +168,16 @@ def prop_terminal_region_state_bias_noise(proprio, cfg):
             f"before={before.reshape(-1).tolist()} after={after.reshape(-1).tolist()}"
         )
     return out
+
+
+@register_proprio("MR6")
+@register_proprio("MR-6")
+@register_proprio("Action-Optimality-Completeness")
+def prop_action_optimality_completeness(proprio, cfg):
+    runtime = cfg.setdefault("runtime", {})
+    runtime.setdefault("injection_attempted", False)
+    runtime.setdefault("injection_applied", False)
+    runtime.setdefault("injection_trigger_step", None)
+    runtime.setdefault("observed_lift_m", None)
+    runtime.setdefault("return_error_m", None)
+    return proprio

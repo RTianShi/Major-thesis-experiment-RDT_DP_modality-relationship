@@ -277,6 +277,200 @@ def _refresh_obs(env):
     return env.get_obs()
 
 
+def _sync_robot_kinematics(env):
+    scene = getattr(env.unwrapped, "scene", None)
+    if scene is not None and getattr(scene, "device", None) is not None and scene.device.type == "cuda":
+        scene._gpu_apply_all()
+        scene.px.gpu_update_articulation_kinematics()
+        scene._gpu_fetch_all()
+    env.unwrapped.scene.update_render(
+        update_sensors=True,
+        update_human_render_cameras=True,
+    )
+
+
+def _tcp_pos_xyz(env):
+    try:
+        tcp_pos = np.asarray(env.unwrapped.agent.tcp.pose.p, dtype=np.float32).reshape(-1)
+    except Exception:
+        return None
+    if tcp_pos.size < 3:
+        return None
+    return tcp_pos[:3]
+
+
+def _tcp_to_cube_distance(obs, env):
+    tcp_pos = _tcp_pos_xyz(env)
+    cube_pos = _extract_cube_pos(obs, env)
+    if tcp_pos is None or cube_pos is None:
+        return None
+    try:
+        cube_arr = np.asarray(cube_pos, dtype=np.float32).reshape(-1)
+    except Exception:
+        return None
+    if cube_arr.size < 3:
+        return None
+    return float(np.linalg.norm(tcp_pos[:3] - cube_arr[:3]))
+
+
+def _compose_hold_action(base_action, qpos_target):
+    action = np.asarray(base_action, dtype=np.float32).copy()
+    qpos_arr = np.asarray(qpos_target, dtype=np.float32).reshape(-1)
+    if action.ndim != 1 or qpos_arr.size == 0:
+        return action
+    if action.shape[0] == qpos_arr.size:
+        action[:] = qpos_arr[: action.shape[0]]
+        return action
+    if action.shape[0] > 1:
+        arm_width = min(action.shape[0] - 1, qpos_arr.size)
+        action[:arm_width] = qpos_arr[:arm_width]
+    return action
+
+
+def _maybe_execute_mr6_takeover(env, obs, base_action, proprio_cfg):
+    if str(proprio_cfg.get("type", "")).strip() not in {"MR6", "MR-6", "Action-Optimality-Completeness"}:
+        return [], None
+
+    runtime = proprio_cfg.setdefault("runtime", {})
+    if runtime.get("injection_attempted") or runtime.get("is_grasped", False):
+        return [], None
+
+    tcp_to_cube_distance = runtime.get("tcp_to_cube_distance", None)
+    trigger_distance = float(proprio_cfg.get("trigger_distance", 0.06))
+    min_trigger_step = int(proprio_cfg.get("min_trigger_step", 1))
+    current_step = int(runtime.get("global_step", 0))
+
+    if tcp_to_cube_distance is None or not np.isfinite(float(tcp_to_cube_distance)):
+        return [], None
+    if float(tcp_to_cube_distance) > trigger_distance or current_step < min_trigger_step:
+        return [], None
+
+    runtime["injection_attempted"] = True
+    runtime["injection_trigger_step"] = current_step
+
+    robot = getattr(getattr(env.unwrapped, "agent", None), "robot", None)
+    if robot is None or not hasattr(robot, "get_qpos"):
+        runtime["injection_error"] = "missing_robot_qpos_interface"
+        return [], None
+
+    start_tcp = _tcp_pos_xyz(env)
+    if start_tcp is None:
+        runtime["injection_error"] = "missing_tcp_pose"
+        return [], None
+
+    start_qpos = robot.get_qpos().clone()
+    start_qvel = robot.get_qvel().clone()
+    num_arm_joints = int(proprio_cfg.get("num_arm_joints", min(7, start_qpos.shape[-1])))
+    joint_delta = float(proprio_cfg.get("joint_delta", 0.04))
+    target_lift_m = float(proprio_cfg.get("lift_m", 0.05))
+    lift_tol_m = float(proprio_cfg.get("lift_tol_m", 0.005))
+    max_search_steps = int(proprio_cfg.get("max_search_steps", 12))
+
+    current_qpos = start_qpos.clone()
+    best_lift_m = 0.0
+    accepted_search_steps = 0
+
+    try:
+        for _ in range(max_search_steps):
+            best_candidate_qpos = None
+            best_candidate_lift_m = best_lift_m
+            for joint_idx in range(min(num_arm_joints, current_qpos.shape[-1])):
+                for direction in (-1.0, 1.0):
+                    candidate_qpos = current_qpos.clone()
+                    candidate_qpos[..., joint_idx] = candidate_qpos[..., joint_idx] + direction * joint_delta
+                    robot.set_qpos(candidate_qpos)
+                    robot.set_qvel(torch.zeros_like(start_qvel))
+                    _sync_robot_kinematics(env)
+                    candidate_tcp = _tcp_pos_xyz(env)
+                    if candidate_tcp is None:
+                        continue
+                    candidate_lift_m = float(candidate_tcp[2] - start_tcp[2])
+                    if candidate_lift_m > best_candidate_lift_m + 1e-4:
+                        best_candidate_lift_m = candidate_lift_m
+                        best_candidate_qpos = candidate_qpos.clone()
+
+            if best_candidate_qpos is None:
+                break
+
+            current_qpos = best_candidate_qpos
+            best_lift_m = best_candidate_lift_m
+            accepted_search_steps += 1
+            if best_lift_m >= target_lift_m - lift_tol_m:
+                break
+
+        robot.set_qpos(start_qpos)
+        robot.set_qvel(torch.zeros_like(start_qvel))
+        _sync_robot_kinematics(env)
+
+        if best_lift_m <= 1e-4:
+            runtime["injection_error"] = "failed_to_find_upward_qpos"
+            return [], None
+
+        qpos_up = current_qpos.clone()
+        robot.set_qpos(qpos_up)
+        robot.set_qvel(torch.zeros_like(start_qvel))
+        _sync_robot_kinematics(env)
+        up_tcp = _tcp_pos_xyz(env)
+        up_action = _compose_hold_action(base_action, qpos_up.detach().cpu().numpy())
+        obs_up, reward_up, terminated_up, truncated_up, info_up = env.step(up_action)
+
+        transitions = [
+            {
+                "obs": obs_up,
+                "reward": reward_up,
+                "terminated": terminated_up,
+                "truncated": truncated_up,
+                "info": info_up,
+                "action": up_action,
+                "phase": "lift_up",
+            }
+        ]
+
+        final_tcp = up_tcp
+        if not (terminated_up or truncated_up):
+            robot.set_qpos(start_qpos)
+            robot.set_qvel(torch.zeros_like(start_qvel))
+            _sync_robot_kinematics(env)
+            return_action = _compose_hold_action(base_action, start_qpos.detach().cpu().numpy())
+            obs_back, reward_back, terminated_back, truncated_back, info_back = env.step(return_action)
+            final_tcp = _tcp_pos_xyz(env)
+            transitions.append(
+                {
+                    "obs": obs_back,
+                    "reward": reward_back,
+                    "terminated": terminated_back,
+                    "truncated": truncated_back,
+                    "info": info_back,
+                    "action": return_action,
+                    "phase": "return_back",
+                }
+            )
+
+        observed_lift_m = None if up_tcp is None else float(up_tcp[2] - start_tcp[2])
+        return_error_m = None
+        if final_tcp is not None:
+            return_error_m = float(np.linalg.norm(final_tcp[:3] - start_tcp[:3]))
+
+        runtime["injection_applied"] = True
+        runtime["observed_lift_m"] = observed_lift_m
+        runtime["return_error_m"] = return_error_m
+
+        return transitions, {
+            "trigger_step": current_step,
+            "target_lift_m": target_lift_m,
+            "observed_lift_m": observed_lift_m,
+            "return_error_m": return_error_m,
+            "accepted_search_steps": accepted_search_steps,
+            "tcp_to_cube_distance_at_trigger_m": float(tcp_to_cube_distance),
+        }
+    finally:
+        try:
+            robot.set_qvel(torch.zeros_like(start_qvel))
+        except Exception:
+            pass
+        _sync_robot_kinematics(env)
+
+
 def _to_bool_scalar(value):
     if isinstance(value, (bool, np.bool_)):
         return bool(value)
@@ -480,10 +674,24 @@ policy = create_model(
 text_embed = policy.encode_instruction(task2lang[env_id])
 mr_cfg["language"]["encoder"] = policy.encode_instruction
 mr_cfg["language"]["text"] = task2lang[env_id]
+resolved_language_text = str(
+    mr_cfg["language"].get(
+        "mutated_text" if mr_cfg["language"]["type"] != "identity" else "text",
+        task2lang[env_id],
+    )
+)
+mr_cfg["language"]["resolved_text"] = resolved_language_text
+run_config["language"] = {
+    "base_text": task2lang[env_id],
+    "mr_type": mr_cfg["language"]["type"],
+    "resolved_text": resolved_language_text,
+    "policy_language_conditioned": True,
+}
 text_embed = lang_mut(text_embed, mr_cfg["language"])
 text_embed_path = f"text_embed_{env_id}.pt"
 torch.save(text_embed, text_embed_path)
 print(f"Saved text embedding to {text_embed_path}")
+print(f"Using language instruction: {resolved_language_text}")
 
 MAX_EPISODE_STEPS = 400 
 total_episodes = args.num_traj  
@@ -513,6 +721,16 @@ for episode in tqdm.trange(total_episodes):
         env,
         ["mr_cmsi1_blue_cube"],
         ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
+    )
+    mr2_blue_cup_initial = _get_named_actor_xyz(
+        env,
+        ["mr2_blue_cup"],
+        ["mr2_blue_cup", "blue_cup"],
+    )
+    mr2_yellow_block_initial = _get_named_actor_xyz(
+        env,
+        ["mr2_yellow_block"],
+        ["mr2_yellow_block", "yellow_block"],
     )
     red_cube_initial = cube_pos.copy()
     green_goal = goal_pos.copy()
@@ -564,6 +782,8 @@ for episode in tqdm.trange(total_episodes):
         mr_cfg["proprio"]["runtime"] = {
             "is_grasped": _current_is_grasped(env),
             "cube_goal_distance": cube_goal_distance,
+            "tcp_to_cube_distance": _tcp_to_cube_distance(obs, env),
+            "global_step": global_steps,
         }
         prop_in = torch.as_tensor(proprio)
         prop_in = prop_mut(prop_in, mr_cfg["proprio"])
@@ -571,8 +791,55 @@ for episode in tqdm.trange(total_episodes):
 
         actions = policy.step(proprio, images, text_embed).squeeze(0).cpu().numpy()
         actions = actions[::4, :]
+        mr6_runtime = mr_cfg["proprio"].setdefault("runtime", {})
+        mr6_meta = None
         for idx in range(actions.shape[0]):
             action = actions[idx]
+            mr6_transitions, maybe_mr6_meta = _maybe_execute_mr6_takeover(env, obs, action, mr_cfg["proprio"])
+            if maybe_mr6_meta is not None:
+                mr6_meta = maybe_mr6_meta
+            if mr6_transitions:
+                for transition in mr6_transitions:
+                    obs = transition["obs"]
+                    info = transition["info"]
+                    terminated = transition["terminated"]
+                    truncated = transition["truncated"]
+                    action_used = transition["action"]
+                    img = _to_uint8_rgb(env.render())
+                    obs_window.append(img)
+                    proprio = obs['agent']['qpos'][:, :-1]
+                    eef_xyz = env.unwrapped.agent.tcp.pose.p
+                    eef_traj.append(np.array(eef_xyz, dtype=np.float32))
+                    gripper_cmd = float(action_used[-1]) if action_used.shape[0] > 0 else None
+                    gripper_action_cmd_traj.append(gripper_cmd)
+                    eef_yaw = _extract_eef_yaw(env)
+                    gripper_width, gripper_finger_qpos = _extract_gripper_width(obs)
+                    cube_pos = _extract_cube_pos(obs, env)
+                    cube_yaw_deg = _extract_cube_yaw_deg(obs, env)
+                    if cube_yaw_deg is None:
+                        cube_yaw_deg = inferred_cube_yaw_deg
+                    gripper_width_traj.append(gripper_width)
+                    gripper_finger_qpos_traj.append(gripper_finger_qpos)
+                    cube_pos_traj.append(cube_pos)
+                    eef_yaw_traj.append(eef_yaw)
+                    cube_yaw_traj.append(cube_yaw_deg)
+                    if args.save_video:
+                        video_frames.append(img)
+                    if args.show:
+                        cv2.imshow("maniskill", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+                        cv2.waitKey(1)
+                    global_steps += 1
+                    if terminated or truncated:
+                        assert "success" in info, sorted(info.keys())
+                        if info['success']:
+                            success_count += 1
+                            success_episode_ids.append(int(episode + 1))
+                        done = True
+                        break
+                if done:
+                    break
+                proprio = obs['agent']['qpos'][:, :-1]
+                continue
             obs, reward, terminated, truncated, info = env.step(action)
             img = _to_uint8_rgb(env.render())
             obs_window.append(img)
@@ -626,6 +893,16 @@ for episode in tqdm.trange(total_episodes):
             ["mr_cmsi1_blue_cube"],
             ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
         )
+        mr2_blue_cup_final = _get_named_actor_xyz(
+            env,
+            ["mr2_blue_cup"],
+            ["mr2_blue_cup", "blue_cup"],
+        )
+        mr2_yellow_block_final = _get_named_actor_xyz(
+            env,
+            ["mr2_yellow_block"],
+            ["mr2_yellow_block", "yellow_block"],
+        )
 
         eef_arr = np.stack(eef_traj, axis=0)
         diffs = np.diff(eef_arr, axis=0)
@@ -655,10 +932,14 @@ for episode in tqdm.trange(total_episodes):
                 "red_sphere_initial": None if red_sphere_initial is None else red_sphere_initial.tolist(),
                 "blue_cube_initial": None if blue_cube_initial is None else blue_cube_initial.tolist(),
                 "cmsi1_blue_cube_initial": None if cmsi1_blue_cube_initial is None else cmsi1_blue_cube_initial.tolist(),
+                "mr2_blue_cup_initial": None if mr2_blue_cup_initial is None else mr2_blue_cup_initial.tolist(),
+                "mr2_yellow_block_initial": None if mr2_yellow_block_initial is None else mr2_yellow_block_initial.tolist(),
                 "red_cube_initial": None if red_cube_initial is None else red_cube_initial.tolist(),
                 "red_sphere_final": None if red_sphere_final is None else red_sphere_final.tolist(),
                 "blue_cube_final": None if blue_cube_final is None else blue_cube_final.tolist(),
                 "cmsi1_blue_cube_final": None if cmsi1_blue_cube_final is None else cmsi1_blue_cube_final.tolist(),
+                "mr2_blue_cup_final": None if mr2_blue_cup_final is None else mr2_blue_cup_final.tolist(),
+                "mr2_yellow_block_final": None if mr2_yellow_block_final is None else mr2_yellow_block_final.tolist(),
                 "red_cube_final": None if final_cube_pos is None else final_cube_pos.tolist(),
             },
             "mr_eval": {
@@ -666,6 +947,12 @@ for episode in tqdm.trange(total_episodes):
                 "pair_key": f"{episode + base_seed}",
                 "expected_delta_yaw_deg": 45.0,
                 "grasp_frame_index": grasp_frame_index,
+                "mr6_injection_attempted": bool(mr6_runtime.get("injection_attempted", False)),
+                "mr6_injection_applied": bool(mr6_runtime.get("injection_applied", False)),
+                "mr6_injection_trigger_step": mr6_runtime.get("injection_trigger_step"),
+                "mr6_observed_lift_m": mr6_runtime.get("observed_lift_m"),
+                "mr6_return_error_m": mr6_runtime.get("return_error_m"),
+                "mr6_meta": mr6_meta,
                 "initial_cube_yaw_deg": initial_cube_yaw_deg,
                 "initial_goal_pos": None if np.any(np.isnan(green_goal)) else green_goal.tolist(),
                 "goal_point": None if np.any(np.isnan(green_goal)) else green_goal.tolist(),

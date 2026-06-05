@@ -1,0 +1,588 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCube-v1_MR6_20260522_163557",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 72.0,
+    "success_count": 18,
+    "success_episode_ids": [
+      1,
+      4,
+      5,
+      6,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 140.08,
+      "median": 81.0,
+      "std": 131.00989886264318,
+      "min": 50.0,
+      "max": 402.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6687348067760468,
+      "median": 0.5591979026794434,
+      "std": 0.29976278718671073,
+      "min": 0.2971463203430176,
+      "max": 1.2641817331314087
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28003935510176864,
+      "median": 0.20499372026659707,
+      "std": 0.21351709493797105,
+      "min": 1.2717337767358279e-06,
+      "max": 0.711776105391137
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1840084157341445,
+      "median": 0.17996899856142537,
+      "std": 0.08948190510948414,
+      "min": 7.251241920591438e-07,
+      "max": 0.34068926363783814
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.057968661988961244,
+      "median": 0.0584503417067668,
+      "std": 0.010161443611173325,
+      "min": 0.04049447898414746,
+      "max": 0.07999992311000824
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.0799999937415123,
+      "median": 0.07999999821186066,
+      "std": 1.1967404487884797e-08,
+      "min": 0.07999995350837708,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.04032774552702904,
+      "median": 0.036656320095062256,
+      "std": 0.011704877205563461,
+      "min": 0.0365394726395607,
+      "max": 0.07999948039650917
+    }
+  },
+  "mr_rule": "MR6",
+  "mr_compare": {
+    "mr_id": "MR6",
+    "paired_episodes": 25,
+    "analyzable_episodes": 2,
+    "unavailable_count": 23,
+    "violations": 0,
+    "violation_rate_percent": 0.0,
+    "config": {
+      "progress_ratio_threshold": 0.3,
+      "violation_rule": "(grasp_frame_index == None) AND (progress_ratio > 0.3)",
+      "note": "If the disturbed run skips the real grasp and still advances toward the goal, mark violation."
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 44,
+        "progress_ratio": 0.8327716272195934,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": false,
+        "mr_success": false,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 40,
+        "progress_ratio": -1.7752030629413005,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": false,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 45,
+        "progress_ratio": -0.6087075725860083,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 40,
+        "progress_ratio": 0.8496489975842358,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 37,
+        "progress_ratio": 0.8190458546619865,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 36,
+        "progress_ratio": 0.7967278592256665,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": false,
+        "mr_success": false,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 40,
+        "progress_ratio": -1.0640216230399917,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 37,
+        "progress_ratio": 0.8333778849230228,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": false,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 46,
+        "progress_ratio": 0.8237804714377039,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 44,
+        "progress_ratio": 0.8800813940343668,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 46,
+        "progress_ratio": 0.8035648807378598,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": false,
+        "mr_success": false,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 36,
+        "progress_ratio": -1.6632939298087543,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 44,
+        "progress_ratio": 0.8135423311305386,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 46,
+        "progress_ratio": 0.8523914561424837,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 40,
+        "progress_ratio": 0.8046995786849774,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 39,
+        "progress_ratio": 0.9321741439126251,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 35,
+        "progress_ratio": 0.7537733485739361,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 43,
+        "progress_ratio": 0.9418396435769201,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 39,
+        "progress_ratio": 0.7913215216658248,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 46,
+        "progress_ratio": 0.8186472632334076,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 43,
+        "progress_ratio": 0.7855037563048436,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "mr_success": false,
+        "mr6_injection_applied": true,
+        "mr6_observed_lift_m": 0.06587328761816025,
+        "mr6_return_error_m": 0.0,
+        "mr_grasp_frame_index": null,
+        "progress_ratio": 0.15014590743518652,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "no_phantom_progress_after_disturbance"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": false,
+        "mr6_injection_applied": true,
+        "mr6_observed_lift_m": 0.05724047124385834,
+        "mr6_return_error_m": 0.061386629939079285,
+        "mr_grasp_frame_index": null,
+        "progress_ratio": -0.5870227558455814,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "no_phantom_progress_after_disturbance"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": false,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 45,
+        "progress_ratio": 0.8014328179738672,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "mr6_injection_applied": false,
+        "mr6_observed_lift_m": null,
+        "mr6_return_error_m": null,
+        "mr_grasp_frame_index": 42,
+        "progress_ratio": 0.7849110059986115,
+        "progress_ratio_threshold": 0.3,
+        "analyzable": false,
+        "violated": false,
+        "reasons": [
+          "mr6_injection_not_applied"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 0,
+  "followup_mr_violation_rate_percent": 0.0,
+  "followup_unavailable_count": 23,
+  "followup_analyzable_count": 2
+}

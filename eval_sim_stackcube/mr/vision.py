@@ -51,6 +51,23 @@ def _resolve_camera_group_size(images, cfg):
     return camera_group_size
 
 
+def _apply_brightness_and_gaussian_noise(im, cfg):
+    if im is None:
+        return None
+
+    arr = np.asarray(im, dtype=np.float32)
+    brightness_scale = float(cfg.get("brightness_scale", 0.92))
+    brightness_bias = float(cfg.get("brightness_bias", 0.0))
+    noise_std = float(cfg.get("gaussian_noise_std", 4.0))
+
+    arr = arr * brightness_scale + brightness_bias
+    if noise_std > 0.0:
+        arr = arr + np.random.normal(0.0, noise_std, size=arr.shape).astype(np.float32)
+
+    arr = np.clip(arr, 0.0, 255.0).astype(np.uint8)
+    return Image.fromarray(arr, mode=im.mode)
+
+
 @register_vision("MR-GDIP1")
 @register_vision("Full-Episode Visual Blindness")
 def vis_mr_gdip1_full_episode_visual_blindness(images, cfg):
@@ -130,6 +147,30 @@ def vis_mr_fpdp2_spatial_downsampling(images, cfg):
         )
         degraded = reduced.resize(im.size, resample=upsample_resample)
         out.append(degraded)
+    return out
+
+
+@register_vision("MR3")
+@register_vision("MR-3")
+@register_vision("Visual-Perturbation")
+def vis_mr3_visual_perturbation(images, cfg):
+    if not images:
+        return images
+
+    camera_group_size = _resolve_camera_group_size(images, cfg)
+    target_camera_indices = cfg.get("target_camera_indices", None)
+    if target_camera_indices is None:
+        target_camera_indices = list(range(camera_group_size))
+    if not target_camera_indices:
+        return images
+
+    target_camera_indices = _target_camera_index_set(camera_group_size, target_camera_indices)
+    out = []
+    for idx, im in enumerate(images):
+        if im is None or idx % camera_group_size not in target_camera_indices:
+            out.append(im)
+            continue
+        out.append(_apply_brightness_and_gaussian_noise(im, cfg))
     return out
 
 

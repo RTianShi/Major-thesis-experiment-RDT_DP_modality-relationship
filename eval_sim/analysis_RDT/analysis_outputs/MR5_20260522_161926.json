@@ -1,0 +1,588 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/PickCube/PickCube-v1_MR5_20260522_161653",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 160.04,
+      "median": 84.0,
+      "std": 136.56895108332643,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.6966076445579529,
+      "median": 0.6488085389137268,
+      "std": 0.2881594885744237,
+      "min": 0.26973938941955566,
+      "max": 1.49267578125
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.30017120345446563,
+      "median": 0.22693503028231754,
+      "std": 0.18113729865107936,
+      "min": 0.09831406301918781,
+      "max": 0.7130169231704433
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.2013301163473622,
+      "median": 0.1930562795583339,
+      "std": 0.07294634743490196,
+      "min": 0.07698110020346628,
+      "max": 0.3307760763754638
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05470134572051515,
+      "median": 0.05852167593429283,
+      "std": 0.008091320544925836,
+      "min": 0.04021232889499515,
+      "max": 0.06446314978280238
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999687075615,
+      "median": 0.07999999821186066,
+      "std": 6.570043469979942e-09,
+      "min": 0.07999996468424797,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.035437379777431485,
+      "median": 0.036633750423789024,
+      "std": 0.007248010169400758,
+      "min": 0.0,
+      "max": 0.038282060995697975
+    }
+  },
+  "mr_rule": "MR5",
+  "mr_compare": {
+    "mr_id": "MR5",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 10,
+    "violation_rate_percent": 40.0,
+    "config": {
+      "metric": "average_velocity_m_per_step",
+      "violation_rule": "AvgVelocity_f >= AvgVelocity_s"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 85,
+        "mr_total_steps": 70,
+        "base_path_len_m": 0.5656698942184448,
+        "mr_path_len_m": 0.5073521137237549,
+        "base_avg_velocity_m_per_step": 0.006654939931981704,
+        "mr_avg_velocity_m_per_step": 0.007247887338910784,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.007248 >= base=0.006655)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": false,
+        "mr_success": false,
+        "base_total_steps": 400,
+        "mr_total_steps": 400,
+        "base_path_len_m": 1.3143341541290283,
+        "mr_path_len_m": 1.155456304550171,
+        "base_avg_velocity_m_per_step": 0.0032858353853225707,
+        "mr_avg_velocity_m_per_step": 0.002888640761375427,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 123,
+        "mr_total_steps": 98,
+        "base_path_len_m": 0.5581986904144287,
+        "mr_path_len_m": 0.5152446031570435,
+        "base_avg_velocity_m_per_step": 0.004538200735076656,
+        "mr_avg_velocity_m_per_step": 0.005257597991398403,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.005258 >= base=0.004538)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 66,
+        "mr_total_steps": 68,
+        "base_path_len_m": 0.45474082231521606,
+        "mr_path_len_m": 0.4731364846229553,
+        "base_avg_velocity_m_per_step": 0.006890012459321456,
+        "mr_avg_velocity_m_per_step": 0.006957889479749343,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.006958 >= base=0.006890)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 56,
+        "mr_total_steps": 56,
+        "base_path_len_m": 0.2839500904083252,
+        "mr_path_len_m": 0.26973938941955566,
+        "base_avg_velocity_m_per_step": 0.005070537328720093,
+        "mr_avg_velocity_m_per_step": 0.004816774811063494,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 66,
+        "mr_total_steps": 68,
+        "base_path_len_m": 0.3964548707008362,
+        "mr_path_len_m": 0.3947141766548157,
+        "base_avg_velocity_m_per_step": 0.0060068919803157,
+        "mr_avg_velocity_m_per_step": 0.00580462024492376,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": false,
+        "mr_success": false,
+        "base_total_steps": 400,
+        "mr_total_steps": 400,
+        "base_path_len_m": 1.2531640529632568,
+        "mr_path_len_m": 0.8740314841270447,
+        "base_avg_velocity_m_per_step": 0.003132910132408142,
+        "mr_avg_velocity_m_per_step": 0.0021850787103176116,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 85,
+        "mr_total_steps": 70,
+        "base_path_len_m": 0.5010195970535278,
+        "mr_path_len_m": 0.37539708614349365,
+        "base_avg_velocity_m_per_step": 0.005894348200629739,
+        "mr_avg_velocity_m_per_step": 0.0053628155163356235,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 118,
+        "mr_total_steps": 178,
+        "base_path_len_m": 0.8090620040893555,
+        "mr_path_len_m": 0.845131516456604,
+        "base_avg_velocity_m_per_step": 0.006856457661774199,
+        "mr_avg_velocity_m_per_step": 0.00474792986773373,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 78,
+        "mr_total_steps": 82,
+        "base_path_len_m": 0.6549556851387024,
+        "mr_path_len_m": 0.6488085389137268,
+        "base_avg_velocity_m_per_step": 0.008396867758188492,
+        "mr_avg_velocity_m_per_step": 0.00791229925504545,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 83,
+        "mr_total_steps": 98,
+        "base_path_len_m": 0.6693680286407471,
+        "mr_path_len_m": 0.6732727289199829,
+        "base_avg_velocity_m_per_step": 0.008064675043864423,
+        "mr_avg_velocity_m_per_step": 0.0068701298869386015,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": false,
+        "mr_success": false,
+        "base_total_steps": 400,
+        "mr_total_steps": 400,
+        "base_path_len_m": 1.3105920553207397,
+        "mr_path_len_m": 1.2485761642456055,
+        "base_avg_velocity_m_per_step": 0.003276480138301849,
+        "mr_avg_velocity_m_per_step": 0.0031214404106140138,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 80,
+        "mr_total_steps": 79,
+        "base_path_len_m": 0.49227553606033325,
+        "mr_path_len_m": 0.5145484209060669,
+        "base_avg_velocity_m_per_step": 0.006153444200754166,
+        "mr_avg_velocity_m_per_step": 0.006513271150709708,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.006513 >= base=0.006153)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": false,
+        "mr_success": true,
+        "base_total_steps": 400,
+        "mr_total_steps": 76,
+        "base_path_len_m": 1.4759280681610107,
+        "mr_path_len_m": 0.5386102795600891,
+        "base_avg_velocity_m_per_step": 0.003689820170402527,
+        "mr_avg_velocity_m_per_step": 0.0070869773626327515,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.007087 >= base=0.003690)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 79,
+        "mr_total_steps": 79,
+        "base_path_len_m": 0.7508463859558105,
+        "mr_path_len_m": 0.7598617076873779,
+        "base_avg_velocity_m_per_step": 0.009504384632352033,
+        "mr_avg_velocity_m_per_step": 0.00961850262895415,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.009619 >= base=0.009504)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 84,
+        "mr_total_steps": 84,
+        "base_path_len_m": 0.6603223085403442,
+        "mr_path_len_m": 0.6613444685935974,
+        "base_avg_velocity_m_per_step": 0.007860979863575526,
+        "mr_avg_velocity_m_per_step": 0.007873148435638064,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.007873 >= base=0.007861)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": false,
+        "base_total_steps": 74,
+        "mr_total_steps": 400,
+        "base_path_len_m": 0.5114967823028564,
+        "mr_path_len_m": 1.0728658437728882,
+        "base_avg_velocity_m_per_step": 0.00691211867976833,
+        "mr_avg_velocity_m_per_step": 0.0026821646094322203,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": true,
+        "mr_success": false,
+        "base_total_steps": 69,
+        "mr_total_steps": 400,
+        "base_path_len_m": 0.4579983949661255,
+        "mr_path_len_m": 0.930864691734314,
+        "base_avg_velocity_m_per_step": 0.00663765789805979,
+        "mr_avg_velocity_m_per_step": 0.002327161729335785,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 83,
+        "mr_total_steps": 77,
+        "base_path_len_m": 0.628408670425415,
+        "mr_path_len_m": 0.5721615552902222,
+        "base_avg_velocity_m_per_step": 0.007571188800306205,
+        "mr_avg_velocity_m_per_step": 0.007430669549223665,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 71,
+        "mr_total_steps": 85,
+        "base_path_len_m": 0.5122663974761963,
+        "mr_path_len_m": 0.5189469456672668,
+        "base_avg_velocity_m_per_step": 0.007215019682763328,
+        "mr_avg_velocity_m_per_step": 0.006105258184320787,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 99,
+        "mr_total_steps": 94,
+        "base_path_len_m": 0.7511695623397827,
+        "mr_path_len_m": 0.6743813753128052,
+        "base_avg_velocity_m_per_step": 0.007587571336765482,
+        "mr_avg_velocity_m_per_step": 0.007174269950136225,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": false,
+        "mr_success": false,
+        "base_total_steps": 400,
+        "mr_total_steps": 400,
+        "base_path_len_m": 1.331012487411499,
+        "mr_path_len_m": 1.49267578125,
+        "base_avg_velocity_m_per_step": 0.0033275312185287475,
+        "mr_avg_velocity_m_per_step": 0.003731689453125,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.003732 >= base=0.003328)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 100,
+        "mr_total_steps": 97,
+        "base_path_len_m": 0.6898801326751709,
+        "mr_path_len_m": 0.6689357161521912,
+        "base_avg_velocity_m_per_step": 0.006898801326751709,
+        "mr_avg_velocity_m_per_step": 0.006896244496414342,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "followup_average_velocity_reduced"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": false,
+        "mr_success": true,
+        "base_total_steps": 400,
+        "mr_total_steps": 70,
+        "base_path_len_m": 1.3074647188186646,
+        "mr_path_len_m": 0.49193745851516724,
+        "base_avg_velocity_m_per_step": 0.0032686617970466613,
+        "mr_avg_velocity_m_per_step": 0.007027677978788103,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.007028 >= base=0.003269)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_total_steps": 83,
+        "mr_total_steps": 72,
+        "base_path_len_m": 0.534511923789978,
+        "mr_path_len_m": 0.5371962785720825,
+        "base_avg_velocity_m_per_step": 0.006439902696264796,
+        "mr_avg_velocity_m_per_step": 0.007461059424612258,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Specialized 'slowly' instruction did not reduce average velocity (followup=0.007461 >= base=0.006440)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 10,
+  "followup_mr_violation_rate_percent": 40.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

@@ -1,0 +1,514 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_142739",
+  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCube-v1_MR3_20260523_120213",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 179.88,
+      "median": 116.0,
+      "std": 125.4841248923544,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.0870910835266114,
+      "median": 0.8860939145088196,
+      "std": 0.49319423336858814,
+      "min": 0.602871835231781,
+      "max": 2.0957303047180176
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.33014583654106855,
+      "median": 0.3603720712277592,
+      "std": 0.15973766264014935,
+      "min": 6.635476390094335e-06,
+      "max": 0.7067134151121148
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1765532150610285,
+      "median": 0.1731871708807138,
+      "std": 0.10381078439865257,
+      "min": 3.449210961483144e-06,
+      "max": 0.39651264700499583
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04861344824282788,
+      "median": 0.05422532184278233,
+      "std": 0.01405929447696287,
+      "min": 0.012618579100799252,
+      "max": 0.06034734791943005
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999998360872268,
+      "median": 0.07999999821186066,
+      "std": 5.095804977387058e-08,
+      "min": 0.07999975979328156,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.025150756612420083,
+      "median": 0.036608146503567696,
+      "std": 0.017258206904091782,
+      "min": 0.0,
+      "max": 0.03820876032114029
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 68.0,
+    "success_count": 17,
+    "success_episode_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      12,
+      13,
+      17,
+      18,
+      19,
+      22,
+      24,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 206.0,
+      "median": 131.0,
+      "std": 134.81958314725645,
+      "min": 77.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.2260515451431275,
+      "median": 0.9847107529640198,
+      "std": 0.5846989680444776,
+      "min": 0.6034470200538635,
+      "max": 2.290109634399414
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.32270704134644107,
+      "median": 0.32882377794904966,
+      "std": 0.17663793364957903,
+      "min": 4.205210965584885e-06,
+      "max": 0.8085855030949383
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1714770384971531,
+      "median": 0.16907481218773596,
+      "std": 0.10509059301871439,
+      "min": 2.3377079692912934e-06,
+      "max": 0.3971299227943204
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.04641037523011296,
+      "median": 0.053226390208053115,
+      "std": 0.013330454388960898,
+      "min": 0.012343335662735625,
+      "max": 0.06182941929369733
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999997079372406,
+      "median": 0.07999999821186066,
+      "std": 6.554715766939403e-08,
+      "min": 0.07999977469444275,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.02215194173157215,
+      "median": 0.03654930554330349,
+      "std": 0.01809067555357497,
+      "min": 0.0,
+      "max": 0.0381456334143877
+    }
+  },
+  "mr_rule": "MR3",
+  "mr_compare": {
+    "mr_id": "MR3",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 2,
+    "violation_rate_percent": 8.0,
+    "config": {
+      "sample_points": 24,
+      "similarity_threshold": 0.9,
+      "metric": "trajectory_similarity",
+      "violation_rule": "trajectory_similarity < similarity_threshold",
+      "expectation": "light_visual_perturbation_should_not_change_trajectory_much"
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 120,
+        "mr_point_count": 111,
+        "trajectory_similarity": 0.9719237206438773,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 102,
+        "mr_point_count": 138,
+        "trajectory_similarity": 0.9689189850636136,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 93,
+        "mr_point_count": 94,
+        "trajectory_similarity": 0.9784148843926104,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 110,
+        "mr_point_count": 110,
+        "trajectory_similarity": 0.9830790344770052,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 89,
+        "mr_point_count": 102,
+        "trajectory_similarity": 0.9797396792021567,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 95,
+        "mr_point_count": 95,
+        "trajectory_similarity": 0.9902374625857997,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 149,
+        "mr_point_count": 141,
+        "trajectory_similarity": 0.9726335059144074,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 148,
+        "mr_point_count": 151,
+        "trajectory_similarity": 0.9887182819560563,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.953548138679839,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 85,
+        "mr_point_count": 85,
+        "trajectory_similarity": 0.9844757193623158,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 169,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.9324389035660597,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 77,
+        "mr_point_count": 77,
+        "trajectory_similarity": 0.9809526668851717,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 120,
+        "mr_point_count": 122,
+        "trajectory_similarity": 0.9939197104682355,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 114,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.8366995852770017,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: visual perturbation changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "base_success": true,
+        "mr_success": false,
+        "base_point_count": 93,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.8080786886265221,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: visual perturbation changed behavior too much"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.9777022478837891,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 116,
+        "mr_point_count": 116,
+        "trajectory_similarity": 0.9889525578580284,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "base_success": false,
+        "mr_success": true,
+        "base_point_count": 400,
+        "mr_point_count": 182,
+        "trajectory_similarity": 0.9620665774466151,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 78,
+        "mr_point_count": 90,
+        "trajectory_similarity": 0.9713763089880582,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.9731351200172706,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.9375299975611151,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 126,
+        "mr_point_count": 131,
+        "trajectory_similarity": 0.9857803801908561,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "base_success": false,
+        "mr_success": false,
+        "base_point_count": 400,
+        "mr_point_count": 400,
+        "trajectory_similarity": 0.9631924018712089,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 114,
+        "mr_point_count": 104,
+        "trajectory_similarity": 0.9883425533545547,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "base_success": true,
+        "mr_success": true,
+        "base_point_count": 99,
+        "mr_point_count": 101,
+        "trajectory_similarity": 0.9905647661519271,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "visual_perturbation_pass"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 2,
+  "followup_mr_violation_rate_percent": 8.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}

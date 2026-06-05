@@ -178,11 +178,19 @@ def _resolve_hf_snapshot_path(repo_id: str) -> str:
 def _pose_to_xyz(obj):
     if obj is None:
         return None
+    pose = None
     if hasattr(obj, "pose"):
-        return np.array(obj.pose.p, dtype=np.float32)
-    if hasattr(obj, "get_pose"):
-        return np.array(obj.get_pose().p, dtype=np.float32)
-    return None
+        pose = getattr(obj, "pose", None)
+    elif hasattr(obj, "get_pose"):
+        pose = obj.get_pose()
+    if pose is None or not hasattr(pose, "p"):
+        return None
+    arr = np.asarray(pose.p, dtype=np.float32).reshape(-1)
+    if arr.size < 3:
+        padded = np.full(3, np.nan, dtype=np.float32)
+        padded[: arr.size] = arr
+        return padded
+    return arr[:3]
 
 
 def _find_actor_by_keywords(scene, keywords):
@@ -377,6 +385,18 @@ def _extract_eef_yaw(env):
     return None
 
 
+def _extract_eef_quat(env):
+    try:
+        eef_pose = env.unwrapped.agent.tcp.pose
+        if hasattr(eef_pose, "q"):
+            q = np.asarray(eef_pose.q, dtype=np.float64).reshape(-1)
+            if q.size >= 4:
+                return [float(q[0]), float(q[1]), float(q[2]), float(q[3])]
+    except Exception:
+        return None
+    return None
+
+
 def _infer_cube_yaw_from_env_id(env_id: str):
     m = re.search(r"Yaw(\d{3})", str(env_id))
     return float(int(m.group(1))) if m else None
@@ -558,7 +578,11 @@ for episode in tqdm.trange(total_episodes):
         goal_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
     red_cube_initial = cube_pos.copy()
     green_goal = goal_pos.copy()
-    initial_cube_height = float(red_cube_initial[2]) if np.isfinite(red_cube_initial[2]) else float("nan")
+    initial_cube_height = (
+        float(red_cube_initial[2])
+        if red_cube_initial is not None and len(red_cube_initial) >= 3 and np.isfinite(red_cube_initial[2])
+        else float("nan")
+    )
 
     initial_goal_point = goal_pos
     goal_point = initial_goal_point.tolist() if initial_goal_point is not None else None
@@ -597,6 +621,7 @@ for episode in tqdm.trange(total_episodes):
     dst_cube_yaw_traj = []
     src_cube_quat_traj = []
     dst_cube_quat_traj = []
+    eef_quat_traj = []
     gripper_action_cmd_traj = []
     inferred_cube_yaw_deg = _infer_cube_yaw_from_env_id(env_id)
     initial_cube_yaw_deg = initial_src_cube_yaw_deg
@@ -684,6 +709,7 @@ for episode in tqdm.trange(total_episodes):
                 obs, env, role="dst"
             )
             eef_yaw = _extract_eef_yaw(env)
+            eef_quat = _extract_eef_quat(env)
             gripper_cmd = float(action[-1]) if action.shape[0] > 0 else None
             gripper_action_cmd_traj.append(gripper_cmd)
 
@@ -704,6 +730,7 @@ for episode in tqdm.trange(total_episodes):
             src_cube_quat_traj.append(current_src_cube_quat)
             dst_cube_quat_traj.append(current_dst_cube_quat)
             eef_yaw_traj.append(eef_yaw)
+            eef_quat_traj.append(eef_quat)
             curr_goal_dist = mr_cfg["proprio"].get("runtime", {}).get("cube_goal_distance")
             prev_cube_goal_distance = curr_goal_dist
             if args.save_video:
@@ -797,6 +824,7 @@ for episode in tqdm.trange(total_episodes):
                 "dst_cube_pos": dst_cube_pos_traj,
                 "goal_point": goal_point,
                 "eef_yaw_deg": eef_yaw_traj,
+                "eef_quat": eef_quat_traj,
                 "cube_yaw_deg": cube_yaw_traj,
                 "src_cube_yaw_deg": src_cube_yaw_traj,
                 "dst_cube_yaw_deg": dst_cube_yaw_traj,

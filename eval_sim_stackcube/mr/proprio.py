@@ -177,6 +177,50 @@ def _resolve_indices(last_dim, indices):
     return sorted(set(resolved))
 
 
+@register_proprio("MR6")
+@register_proprio("MR-6")
+@register_proprio("Action-Optimality-Completeness")
+def prop_mr6_action_optimality_completeness(proprio, cfg):
+    runtime = cfg.get("runtime", {})
+    is_grasped = bool(runtime.get("is_grasped", False))
+    cube_goal_distance = runtime.get("cube_goal_distance", None)
+    previous_cube_goal_distance = runtime.get("previous_cube_goal_distance", None)
+    step_index = int(runtime.get("step_index", 0))
+    if not is_grasped:
+        return proprio
+    if cube_goal_distance is None or previous_cube_goal_distance is None:
+        return proprio
+
+    out = proprio.clone() if torch.is_tensor(proprio) else torch.as_tensor(proprio).clone()
+    progress_epsilon = float(cfg.get("progress_epsilon", 1e-4))
+    moving_toward_goal = float(cube_goal_distance) < float(previous_cube_goal_distance) - progress_epsilon
+    if not moving_toward_goal:
+        return out
+
+    trigger_distance = float(cfg.get("trigger_distance", 0.10))
+    if float(cube_goal_distance) > trigger_distance:
+        return out
+
+    detour_cycle = max(1, int(cfg.get("detour_cycle", 6)))
+    pause_cycle = max(1, int(cfg.get("pause_cycle", 8)))
+    arm_indices = _resolve_indices(out.shape[-1], cfg.get("arm_indices", list(range(min(7, out.shape[-1])))))
+    if not arm_indices:
+        return out
+
+    mode = str(cfg.get("mode", "pause")).strip().lower()
+    if mode == "detour":
+        detour_bias = cfg.get("detour_bias", [0.05, -0.04, 0.03, -0.02, 0.01, -0.01, 0.0])
+        num_arm_dims = min(len(detour_bias), len(arm_indices))
+        if num_arm_dims > 0 and (step_index % detour_cycle) < max(1, detour_cycle // 2):
+            bias = torch.as_tensor(detour_bias[:num_arm_dims], dtype=out.dtype, device=out.device)
+            out[..., arm_indices[:num_arm_dims]] = out[..., arm_indices[:num_arm_dims]] + bias
+    else:
+        pause_scale = float(cfg.get("pause_scale", 0.985))
+        if (step_index % pause_cycle) == 0:
+            out[..., arm_indices] = out[..., arm_indices] * pause_scale
+    return out
+
+
 @register_proprio("MR-SCDP2")
 @register_proprio("Proprioceptive-Noise-Debunking")
 def prop_mr_scdp2_proprioceptive_noise_debunking(proprio, cfg):

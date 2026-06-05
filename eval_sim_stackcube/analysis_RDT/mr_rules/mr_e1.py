@@ -220,7 +220,7 @@ def analyze_mr_e1_lang_equivalence(
     return _analyze_a1_lang_equivalence(
         base_records,
         mr_records,
-        mr_id=kwargs.get("mr_id", "MR-A1-LANG-EQUIV"),
+        mr_id=kwargs.get("mr_id", "MR-E1-LANG-EQUIV"),
         similarity_threshold=float(kwargs.get("similarity_threshold", MR_A1_SIMILARITY_THRESHOLD)),
         sample_points=int(kwargs.get("sample_points", MR_A1_SAMPLE_POINTS)),
     )
