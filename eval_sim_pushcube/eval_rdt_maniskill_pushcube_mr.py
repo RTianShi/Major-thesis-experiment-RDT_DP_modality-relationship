@@ -36,8 +36,32 @@ def parse_args(args=None):
     parser.add_argument("--text-encoder-device", type=str, default="cpu", choices=["cuda", "cpu"], help="Device for T5 text encoder only.")
     parser.add_argument("--show", action="store_true", help="Show real-time rendering with OpenCV window.")
     parser.add_argument("--save-video", action="store_true", help="Save episode videos to disk.")
+    parser.add_argument(
+        "--save-video-episodes",
+        type=str,
+        default=None,
+        help="Comma-separated 1-based episode indices to save when --save-video is enabled. Example: 3 or 1,3,5.",
+    )
     parser.add_argument("--video-dir", type=str, default="videos", help="Directory to save videos.")
     parser.add_argument("--video-fps", type=int, default=25, help="FPS for saved videos.")
+    parser.add_argument(
+        "--video-width",
+        type=int,
+        default=None,
+        help="Output video width in pixels. If set, frames will be resized to this width (preserves aspect if height not set).",
+    )
+    parser.add_argument(
+        "--video-height",
+        type=int,
+        default=None,
+        help="Output video height in pixels. If set, frames will be resized to this height (preserves aspect if width not set).",
+    )
+    parser.add_argument(
+        "--video-scale",
+        type=float,
+        default=None,
+        help="Scale factor to resize frames (overrides width/height if set).",
+    )
     parser.add_argument(
         "--traj-dir",
         type=str,
@@ -68,6 +92,18 @@ def _to_uint8_rgb(img):
         else:
             img = np.clip(img, 0.0, 255.0).astype(np.uint8)
     return img
+
+
+def _parse_episode_indices(spec):
+    if not spec:
+        return None
+    indices = set()
+    for token in str(spec).split(","):
+        token = token.strip()
+        if not token:
+            continue
+        indices.add(int(token))
+    return indices
 
 
 def _to_numpy_1d(x):
@@ -326,6 +362,7 @@ def _get_history_frame(obs_window, history_len, delay_steps, history_idx):
 
 
 args = parse_args()
+save_video_episode_ids = _parse_episode_indices(getattr(args, "save_video_episodes", None))
 
 def _slugify(s: str) -> str:
     s = str(s).strip().replace(" ", "_")
@@ -622,7 +659,9 @@ for episode in tqdm.trange(total_episodes):
             target_pos_traj.append(current_dst_cube_pos)
             curr_goal_dist = mr_cfg["proprio"].get("runtime", {}).get("cube_goal_distance")
             prev_cube_goal_distance = curr_goal_dist
-            if args.save_video:
+            if args.save_video and (
+                save_video_episode_ids is None or (episode + 1) in save_video_episode_ids
+            ):
                 video_frames.append(img)
             if args.show:
                 cv2.imshow("maniskill", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
@@ -635,12 +674,34 @@ for episode in tqdm.trange(total_episodes):
                     success_episode_ids.append(int(episode + 1))
                     done = True
                     break 
-    if args.save_video and video_frames:
+    if args.save_video and video_frames and (
+        save_video_episode_ids is None or (episode + 1) in save_video_episode_ids
+    ):
         os.makedirs(args.video_dir, exist_ok=True)
-        h, w = video_frames[0].shape[:2]
+        orig_h, orig_w = video_frames[0].shape[:2]
+
+        if getattr(args, "video_scale", None) is not None:
+            scale = float(args.video_scale)
+            target_w = int(round(orig_w * scale))
+            target_h = int(round(orig_h * scale))
+        else:
+            target_w = args.video_width or orig_w
+            target_h = args.video_height or orig_h
+            if args.video_width and not args.video_height:
+                target_h = int(round(orig_h * (target_w / orig_w)))
+            if args.video_height and not args.video_width:
+                target_w = int(round(orig_w * (target_h / orig_h)))
+
         out_path = os.path.join(args.video_dir, f"{env_id}_ep{episode+1:04d}.mp4")
-        writer = cv2.VideoWriter(out_path, cv2.VideoWriter_fourcc(*"mp4v"), args.video_fps, (w, h))
+        writer = cv2.VideoWriter(
+            out_path,
+            cv2.VideoWriter_fourcc(*"mp4v"),
+            args.video_fps,
+            (int(target_w), int(target_h)),
+        )
         for frame in video_frames:
+            if (frame.shape[1], frame.shape[0]) != (int(target_w), int(target_h)):
+                frame = cv2.resize(frame, (int(target_w), int(target_h)), interpolation=cv2.INTER_LINEAR)
             writer.write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
         writer.release()
     if eef_traj:
