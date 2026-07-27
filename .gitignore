@@ -193,3 +193,5 @@ diffusion_policy/
 pretrained_weights/
 data/
 assets/
+videos/
+picture/
