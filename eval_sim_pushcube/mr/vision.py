@@ -86,9 +86,10 @@ def vis_high_frequency_edge_deprivation(images, cfg):
     camera_group_size = max(1, int(cfg.get("camera_group_size", 3)))
     target_camera_indices = {
         int(camera_idx) % camera_group_size
-        for camera_idx in cfg.get("target_camera_indices", [0])
+        for camera_idx in cfg.get("target_camera_indices", [0, 1, 2])
     }
-    radius = float(cfg.get("radius", 5.0))
+    radius = float(cfg.get("radius", 12.0))
+    blur_strength = float(np.clip(cfg.get("blur_strength", 1.0), 0.0, 1.0))
 
     out = []
     for idx, im in enumerate(images):
@@ -98,7 +99,12 @@ def vis_high_frequency_edge_deprivation(images, cfg):
         if idx % camera_group_size not in target_camera_indices:
             out.append(im)
             continue
-        out.append(im.filter(ImageFilter.GaussianBlur(radius=radius)))
+
+        blurred = im.filter(ImageFilter.GaussianBlur(radius=radius))
+        if blur_strength >= 1.0:
+            out.append(blurred)
+            continue
+        out.append(Image.blend(im, blurred, alpha=blur_strength))
     return out
 
 

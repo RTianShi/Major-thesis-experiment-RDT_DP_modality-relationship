@@ -104,11 +104,53 @@ def _pick_center_from_positions(positions: Dict[str, Any], candidates: List[str]
     return None
 
 
+def _flatten_eef_path(path: Any) -> List[List[float]]:
+    seq = _flatten_path(path)
+    out = []
+    for p in seq:
+        try:
+            arr = np.asarray(p, dtype=np.float64).reshape(-1)
+        except Exception:
+            continue
+        if arr.size >= 3:
+            out.append([float(arr[0]), float(arr[1]), float(arr[2])])
+    return out
+
+
+def _resample_path(pts: List[List[float]], n: int = 32) -> Optional[np.ndarray]:
+    if not pts:
+        return None
+    arr = np.asarray(pts, dtype=np.float64)
+    if arr.shape[0] == 1:
+        return np.tile(arr[0], (n, 1))
+    d = np.linalg.norm(np.diff(arr, axis=0), axis=1)
+    cum = np.concatenate(([0.0], np.cumsum(d)))
+    total = float(cum[-1])
+    if total <= 1e-8:
+        return np.tile(arr[0], (n, 1))
+    xi = np.linspace(0.0, total, n)
+    out = np.zeros((n, 3), dtype=np.float64)
+    for i in range(3):
+        out[:, i] = np.interp(xi, cum, arr[:, i])
+    return out
+
+
+def _trajectory_rmse(path_a: Any, path_b: Any, n: int = 32) -> Optional[float]:
+    pa = _resample_path(_flatten_eef_path(path_a), n)
+    pb = _resample_path(_flatten_eef_path(path_b), n)
+    if pa is None or pb is None:
+        return None
+    diff = pa - pb
+    mse = float(np.mean(np.sum(diff * diff, axis=1)))
+    return float(np.sqrt(mse))
+
+
 @register_mr_rule("MR-CMSI1")
 @register_mr_rule("MR-CMSI-1")
 def analyze_mr_cmsi1(base_records: List[Any], mr_records: List[Any], **kwargs) -> Dict[str, Any]:
     blue_mismatch_threshold_m = float(kwargs.get("blue_mismatch_threshold_m", 0.04))
     red_drift_threshold_m = float(kwargs.get("red_drift_threshold_m", 0.025))
+    traj_sim_threshold_m = float(kwargs.get("traj_sim_threshold_m", 0.04))
 
     bmap = {_pair_key(record): record for record in base_records}
     mmap = {_pair_key(record): record for record in mr_records}
@@ -122,6 +164,8 @@ def analyze_mr_cmsi1(base_records: List[Any], mr_records: List[Any], **kwargs) -
         base = bmap[key]
         mr = mmap[key]
         positions = _load_positions(mr)
+        source_success = getattr(base, "success", None)
+        followup_success = getattr(mr, "success", None)
 
         grasp_frame_index = _grasp_index(mr)
         close_frame_index = _close_frame_index(mr)
@@ -150,28 +194,28 @@ def analyze_mr_cmsi1(base_records: List[Any], mr_records: List[Any], **kwargs) -
         violated = False
         reasons: List[str] = []
 
-        if probe_frame_index is None:
+        # Use trajectory similarity (RMSE) between base and MR `eef_path` as the primary violation criterion.
+        base_eef_path = getattr(base, "eef_path", None)
+        mr_eef_path = getattr(mr, "eef_path", None)
+        traj_rmse = _trajectory_rmse(base_eef_path, mr_eef_path, n=32)
+        if traj_rmse is None:
             analyzable = False
-            reasons.append("missing_followup_grasp_or_close_frame")
-        elif grasp_point is None:
-            analyzable = False
-            reasons.append("missing_followup_probe_point")
-        elif red_cube_center is None or blue_cube_center is None:
-            analyzable = False
-            reasons.append("missing_red_or_blue_cube_center")
+            reasons.append("missing_eef_path_for_similarity")
         else:
-            if dist_to_blue_cube_m is not None and dist_to_blue_cube_m < blue_mismatch_threshold_m:
+            analyzable = True
+            if traj_rmse > traj_sim_threshold_m:
                 violated = True
                 reasons.append(
-                    "VIOLATION: Semantic Target Mismatch (Robot grasped the blue cube instead of red)"
+                    f"VIOLATION: Trajectory dissimilarity (rmse={traj_rmse:.4f}m > {traj_sim_threshold_m:.4f}m)"
                 )
-            if dist_to_red_cube_m is not None and dist_to_red_cube_m > red_drift_threshold_m:
-                violated = True
-                reasons.append(
-                    "VIOLATION: Distractor-Induced Drift (Precision degraded due to visual noise)"
-                )
-            if not violated:
-                reasons.append("Target_Locked_On_Red_Cube")
+            else:
+                reasons.append("Trajectory_Similar")
+
+        # If both source and followup failed, do not count as a violation.
+        if source_success is False and followup_success is False:
+            if violated:
+                violated = False
+                reasons.append("both_failed_not_violation")
 
         if not analyzable:
             unavailable_count += 1

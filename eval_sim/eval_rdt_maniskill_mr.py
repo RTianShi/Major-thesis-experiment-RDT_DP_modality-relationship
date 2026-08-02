@@ -309,6 +309,28 @@ def _get_named_actor_xyz(env, attr_names, keywords):
     return _pose_to_xyz(actor)
 
 
+def _get_cmsi1_blue_cube_xyz(env):
+    runtime = getattr(env.unwrapped, "_mr_cmsi1_runtime", None)
+    if isinstance(runtime, dict):
+        blue_cube_xyz = runtime.get("blue_cube_xyz")
+        if blue_cube_xyz is not None:
+            arr = _to_numpy_1d(blue_cube_xyz)
+            if arr is not None and arr.size >= 3:
+                return np.asarray(arr[:3], dtype=np.float32)
+    return _get_named_actor_xyz(
+        env,
+        ["mr_cmsi1_blue_cube"],
+        ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
+    )
+
+
+def _get_blue_cube_xyz(env):
+    cmsi1_blue_cube_xyz = _get_cmsi1_blue_cube_xyz(env)
+    if cmsi1_blue_cube_xyz is not None:
+        return cmsi1_blue_cube_xyz
+    return _get_named_actor_xyz(env, ["blue_cube"], ["blue_cube"])
+
+
 def _refresh_obs(env):
     return env.get_obs()
 
@@ -753,12 +775,8 @@ for episode in tqdm.trange(total_episodes):
     if goal_pos is None:
         goal_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
     red_sphere_initial = _get_named_actor_xyz(env, ["red_sphere"], ["red_sphere", "sphere"])
-    blue_cube_initial = _get_named_actor_xyz(env, ["blue_cube", "cube"], ["blue_cube", "cube"])
-    cmsi1_blue_cube_initial = _get_named_actor_xyz(
-        env,
-        ["mr_cmsi1_blue_cube"],
-        ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
-    )
+    cmsi1_blue_cube_initial = _get_cmsi1_blue_cube_xyz(env)
+    blue_cube_initial = _get_blue_cube_xyz(env)
     mr2_blue_cup_initial = _get_named_actor_xyz(
         env,
         ["mr2_blue_cup"],
@@ -949,12 +967,8 @@ for episode in tqdm.trange(total_episodes):
         if final_cube_pos is None:
             final_cube_pos = np.array([np.nan, np.nan, np.nan], dtype=np.float32)
         red_sphere_final = _get_named_actor_xyz(env, ["red_sphere"], ["red_sphere", "sphere"])
-        blue_cube_final = _get_named_actor_xyz(env, ["blue_cube", "cube"], ["blue_cube", "cube"])
-        cmsi1_blue_cube_final = _get_named_actor_xyz(
-            env,
-            ["mr_cmsi1_blue_cube"],
-            ["mr_cmsi1_blue_cube", "cmsi1_blue_cube"],
-        )
+        cmsi1_blue_cube_final = _get_cmsi1_blue_cube_xyz(env)
+        blue_cube_final = _get_blue_cube_xyz(env)
         mr2_blue_cup_final = _get_named_actor_xyz(
             env,
             ["mr2_blue_cup"],

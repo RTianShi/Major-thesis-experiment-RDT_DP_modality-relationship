@@ -31,109 +31,143 @@ def _first_position(positions, names):
     return None, None
 
 
-def _add_unique_point(points, point, tolerance=1e-6):
-    if point is None:
-        return
-    key = tuple(round(float(v) / tolerance) for v in point[:3])
-    seen = {tuple(round(float(v) / tolerance) for v in existing[:3]) for existing in points}
-    if key not in seen:
-        points.append(point)
+def _first_point(mapping, names):
+    for name in names:
+        point = _xyz(mapping.get(name))
+        if point is not None:
+            return point, name
+    return None, None
 
 
-def _object_color(name):
-    lower_name = name.lower()
-    if "blue" in lower_name:
-        return "#1f77b4"
-    if "red" in lower_name:
-        return "#d62728"
-    if "green" in lower_name:
-        return "#2ca02c"
-    if "yellow" in lower_name:
-        return "#bcbd22"
-    return "#7f7f7f"
+def _trajectory_endpoints(trajectory, names):
+    for name in names:
+        points = _xyz_array(trajectory.get(name))
+        if points:
+            return points[0], points[-1], f"trajectory.{name}"
+    return None, None, None
 
 
-def _object_positions(positions):
+def _stackcube_object_positions(record):
+    positions = record.get("positions", {})
+    trajectory = record.get("trajectory", {})
+    objects = []
+
+    red_initial, red_final, _ = _trajectory_endpoints(trajectory, ["src_cube_pos", "cube_pos"])
+    if red_initial is None:
+        red_initial, _ = _first_point(positions, ["red_cube_initial", "src_cube_initial"])
+    if red_final is None:
+        red_final, _ = _first_point(positions, ["red_cube_final", "src_cube_final"])
+
+    green_initial, green_final, _ = _trajectory_endpoints(trajectory, ["dst_cube_pos"])
+    if green_initial is None:
+        green_initial, _ = _first_point(positions, ["green_cube_initial", "dst_cube_initial"])
+    if green_final is None:
+        green_final, _ = _first_point(positions, ["green_cube_final", "dst_cube_final"])
+
+    for name, color, initial, final in (
+        ("red_cube", "#d62728", red_initial, red_final),
+        ("green_cube", "#2ca02c", green_initial, green_final),
+    ):
+        if initial is not None:
+            objects.append(
+                {
+                    "name": name,
+                    "phase": "initial",
+                    "point": initial,
+                    "color": color,
+                }
+            )
+        if final is not None:
+            objects.append(
+                {
+                    "name": name,
+                    "phase": "final",
+                    "point": final,
+                    "color": color,
+                }
+            )
+    return objects
+
+
+def _episode_name(path):
+    return Path(path).name
+
+
+def _default_base_json_path(json_path):
+    path = Path(json_path)
+    parent = path.parent
+    root = parent.parent
+    if "_MR-" not in parent.name and "_MR" not in parent.name:
+        return None
+
+    preferred = root / "StackCube-v1_20260523_151422" / path.name
+    if preferred.exists() and preferred.resolve() != path.resolve():
+        return preferred
+
+    candidates = sorted(
+        candidate
+        for candidate in root.glob("StackCube-v1_*")
+        if candidate.is_dir()
+        and "_MR" not in candidate.name
+        and (candidate / path.name).exists()
+        and (candidate / path.name).resolve() != path.resolve()
+    )
+    return candidates[-1] / path.name if candidates else None
+
+
+def _original_stackcube_object_positions(json_path, base_json_path=None):
+    if base_json_path is None:
+        base_json_path = _default_base_json_path(json_path)
+    if base_json_path is None:
+        return [], None
+
+    base_json_path = Path(base_json_path)
+    if not base_json_path.exists():
+        raise FileNotFoundError(f"base JSON not found: {base_json_path}")
+
+    base_record = _load_record(base_json_path)
+    objects = []
+    for item in _stackcube_object_positions(base_record):
+        if item["phase"] != "initial":
+            continue
+        original = dict(item)
+        original["phase"] = "original"
+        original["name"] = f"original_{item['name']}"
+        objects.append(original)
+    return objects, base_json_path
+
+
+def _distractor_positions(record, json_path):
+    positions = record.get("positions", {})
     objects = []
     for name, raw_point in positions.items():
-        if raw_point is None:
+        lower_name = str(name).lower()
+        if not any(token in lower_name for token in ("distractor", "mug", "cup")):
             continue
         point = _xyz(raw_point)
         if point is None:
             continue
-        if name.endswith("_initial"):
-            phase = "initial"
-            object_name = name[: -len("_initial")]
-        elif name.endswith("_final"):
-            phase = "final"
-            object_name = name[: -len("_final")]
-        else:
-            phase = "position"
-            object_name = name
-        lower_name = object_name.lower()
-        if "goal" in lower_name or "target" in lower_name:
-            continue
-        if not any(color in lower_name for color in ("red", "blue")):
-            continue
-        if not any(kind in lower_name for kind in ("cube", "block")):
-            continue
         objects.append(
             {
-                "name": object_name,
-                "phase": phase,
+                "name": str(name),
+                "phase": "position",
                 "point": point,
-                "color": _object_color(object_name),
+                "color": "#8c564b",
+            }
+        )
+
+    path_text = str(json_path)
+    env_id = str(record.get("env_id") or "")
+    if not objects and ("StackCubeMugDistractor" in path_text or "StackCubeMugDistractor" in env_id):
+        objects.append(
+            {
+                "name": "patterned_ceramic_mug",
+                "phase": "position",
+                "point": [0.0, 0.27, 0.0],
+                "color": "#8c564b",
             }
         )
     return objects
-
-
-def _is_blue_cube_episode(record, json_path):
-    env_id = str(record.get("env_id") or "")
-    path_text = str(json_path)
-    return "PickCubeBlueCube" in env_id or "PickCubeBlueCube" in path_text
-
-
-def _add_cube_trajectory_object_points(objects, cube, color_name):
-    if not cube:
-        return
-    color = _object_color(color_name)
-    objects.append(
-        {
-            "name": color_name,
-            "phase": "initial",
-            "point": cube[0],
-            "color": color,
-        }
-    )
-    objects.append(
-        {
-            "name": color_name,
-            "phase": "final",
-            "point": cube[-1],
-            "color": color,
-        }
-    )
-
-
-def _goal_points(record):
-    points = []
-    for point in _xyz_array([record.get("goal_point")]):
-        _add_unique_point(points, point)
-
-    for section_name in ("positions", "mr_eval", "trajectory"):
-        section = record.get(section_name, {})
-        if not isinstance(section, dict):
-            continue
-        for key, value in section.items():
-            lower_key = str(key).lower()
-            if "goal" not in lower_key and "target" not in lower_key:
-                continue
-            for point in _xyz_array([value]):
-                _add_unique_point(points, point)
-            for point in _xyz_array(value if isinstance(value, list) else []):
-                _add_unique_point(points, point)
-    return points
 
 
 def _merge_duplicate_objects(objects, tolerance=1e-6):
@@ -155,39 +189,16 @@ def _merge_duplicate_objects(objects, tolerance=1e-6):
             continue
         names = sorted({item["name"] for item in items})
         colors = {item["color"] for item in items}
-        if "#d62728" in colors:
-            color = "#d62728"
-        elif "#1f77b4" in colors:
-            color = "#1f77b4"
-        else:
-            color = items[0]["color"] if len(colors) == 1 else "#7f7f7f"
         merged.append(
             {
                 "name": " / ".join(names),
                 "phase": items[0]["phase"],
                 "point": items[0]["point"],
-                "color": color,
+                "color": items[0]["color"] if len(colors) == 1 else "#7f7f7f",
                 "merged_count": len(items),
             }
         )
     return merged
-
-
-def _spread_overlapping_plot_points(items, pixel_offset=8, tolerance=1e-6):
-    groups = {}
-    for item in items:
-        point = item["plot_point"]
-        key = (
-            round(point[0] / tolerance),
-            round(point[1] / tolerance),
-        )
-        groups.setdefault(key, []).append(item)
-
-    for group in groups.values():
-        if len(group) <= 1:
-            continue
-        for index, item in enumerate(group):
-            item["plot_offset"] = (index - (len(group) - 1) / 2.0) * pixel_offset
 
 
 def _compact_object_label(name, phase):
@@ -253,6 +264,7 @@ def _rotate_xy(points, rotate_deg):
 def plot_topdown(
     json_path,
     output_path=None,
+    base_json_path=None,
     contact_threshold=0.03,
     paper_mode=False,
     smooth_window=1,
@@ -261,7 +273,7 @@ def plot_topdown(
     fixed_scale=True,
     fixed_extent=0.30,
     fixed_center="data",
-    show_nearest=True,
+    plot_shift_y=0,
 ):
     if paper_mode and smooth_window <= 1:
         smooth_window = 7
@@ -276,36 +288,42 @@ def plot_topdown(
     cube = _xyz_array(trajectory.get("cube_pos"))
     cube_source = "trajectory.cube_pos"
     if len(cube) == 0:
+        cube = _xyz_array(trajectory.get("src_cube_pos"))
+        cube_source = "trajectory.src_cube_pos"
+    if len(cube) == 0:
         cube, cube_source = _first_position(
             positions,
             [
                 "red_cube_initial",
-                "blue_cube_initial",
-                "red_sphere_initial",
+                "src_cube_initial",
                 "red_cube_final",
-                "blue_cube_final",
-                "red_sphere_final",
+                "src_cube_final",
             ],
         )
+    if len(cube) == 0:
+        cube_point, cube_source = _first_point(
+            trajectory,
+            ["initial_cube_pos", "src_cube_initial"],
+        )
+        cube = [cube_point] if cube_point is not None else []
 
     eef_xy = _rotate_xy([(point[0], point[1]) for point in eef], rotate_deg)
     display_eef_xy = _moving_average_xy(eef_xy, smooth_window)
     cube_xy = _rotate_xy([(point[0], point[1]) for point in cube], rotate_deg) if cube is not None else []
-    object_points = _object_positions(positions)
-    has_blue_object = any(item["color"] == "#1f77b4" for item in object_points)
-    if not has_blue_object and _is_blue_cube_episode(record, json_path):
-        _add_cube_trajectory_object_points(object_points, cube, "blue_cube")
-    has_red_object = any(item["color"] == "#d62728" for item in object_points)
-    if not has_red_object and not _is_blue_cube_episode(record, json_path):
-        _add_cube_trajectory_object_points(object_points, cube, "red_cube")
-    object_points = _merge_duplicate_objects(object_points)
+    object_points = _merge_duplicate_objects(_stackcube_object_positions(record))
+    original_object_points, resolved_base_json_path = _original_stackcube_object_positions(
+        json_path, base_json_path
+    )
+    distractor_points = _distractor_positions(record, json_path)
     for item in object_points:
         item["plot_point"] = _rotate_xy([(item["point"][0], item["point"][1])], rotate_deg)[0]
-        item["plot_offset"] = 0.0
-    _spread_overlapping_plot_points(object_points)
+    for item in original_object_points:
+        item["plot_point"] = _rotate_xy([(item["point"][0], item["point"][1])], rotate_deg)[0]
+    for item in distractor_points:
+        item["plot_point"] = _rotate_xy([(item["point"][0], item["point"][1])], rotate_deg)[0]
     object_xy = [item["plot_point"] for item in object_points]
-    goal_points = _goal_points(record)
-    goal_xy = _rotate_xy([(point[0], point[1]) for point in goal_points], rotate_deg)
+    original_object_xy = [item["plot_point"] for item in original_object_points]
+    distractor_xy = [item["plot_point"] for item in distractor_points]
 
     nearest_text = "nearest: unavailable"
     nearest_idx = None
@@ -333,7 +351,7 @@ def plot_topdown(
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    all_xy = list(eef_xy) + list(cube_xy) + list(object_xy) + list(goal_xy)
+    all_xy = list(eef_xy) + list(cube_xy) + list(object_xy) + list(original_object_xy) + list(distractor_xy)
     if fixed_scale:
         if fixed_center == "origin":
             center_x = 0.0
@@ -368,9 +386,10 @@ def plot_topdown(
     plot_width = 700
     plot_height = int(plot_width * span_y / span_x) if fixed_scale else max(520, min(900, int(plot_width * span_y / span_x))) if compact else 720
     width = plot_width + legend_width + 95
-    height = plot_height + 115
+    shift_y = int(plot_shift_y)
+    height = plot_height + 115 + max(0, shift_y)
     margin_left = 58
-    margin_top = 52
+    margin_top = 52 + shift_y
     margin_right = legend_width + 32
     margin_bottom = 48
     plot_right = width - margin_right
@@ -392,9 +411,8 @@ def plot_topdown(
             f'fill="{color}" stroke="{stroke}" {extra}/>'
         )
 
-    def square(point, size, color, stroke="none", extra="", offset_x=0.0):
+    def square(point, size, color, stroke="none", extra=""):
         x, y = screen(point)
-        x += offset_x
         half = size / 2
         return (
             f'<rect x="{x - half:.2f}" y="{y - half:.2f}" width="{size}" height="{size}" '
@@ -443,21 +461,31 @@ def plot_topdown(
             )
             svg.append(circle(cube_xy[0], 6, "#ff7f0e"))
             svg.append(circle(cube_xy[-1], 6, "white", "#ff7f0e", 'stroke-width="2"'))
+    for item in original_object_points:
+        xy = item["plot_point"]
+        svg.append(
+            square(
+                xy,
+                22,
+                "none",
+                item["color"],
+                'stroke-width="2.2" stroke-dasharray="5 4" opacity="0.85"',
+            )
+        )
     for item in object_points:
         xy = item["plot_point"]
-        offset_x = item.get("plot_offset", 0.0)
         if item["phase"] == "initial":
-            svg.append(square(xy, 20, item["color"], "black", 'stroke-width="0.8"', offset_x=offset_x))
+            svg.append(square(xy, 20, item["color"], "black", 'stroke-width="0.8"'))
         elif item["phase"] == "final":
-            svg.append(square(xy, 20, "white", item["color"], 'stroke-width="2.6"', offset_x=offset_x))
+            svg.append(square(xy, 20, "white", item["color"], 'stroke-width="2.6"'))
         else:
             svg.append(circle(xy, 9, item["color"], "black", 'stroke-width="0.8"'))
-    for xy in goal_xy:
-        svg.append(circle(xy, 8, "#2ca02c", "black", 'stroke-width="0.8"'))
+    for item in distractor_points:
+        svg.append(circle(item["plot_point"], 10, item["color"], "black", 'stroke-width="1.2" opacity="0.9"'))
     if not paper_mode:
         for index in contact_indices:
             svg.append(circle(eef_xy[index], 3, "#2ca02c", extra='opacity="0.65"'))
-    if show_nearest and nearest_idx is not None:
+    if nearest_idx is not None:
         svg.append(circle(eef_xy[nearest_idx], 9, "#e377c2", "black", 'stroke-width="1.5"'))
 
     legend_x = plot_right + 18
@@ -483,18 +511,28 @@ def plot_topdown(
         svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="4" fill="#2ca02c" opacity="0.65"/>')
         legend_text(y, f"near cube <= {contact_threshold:.3f} m")
         y += 22
-    if show_nearest:
-        svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="7" fill="#e377c2" stroke="black" stroke-width="1.2"/>')
-        legend_text(y, "nearest point")
-        y += 26
-    svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="#1f77b4" stroke="black" stroke-width="0.8"/>')
-    legend_text(y, "blue object")
-    y += 24
+    svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="7" fill="#e377c2" stroke="black" stroke-width="1.2"/>')
+    legend_text(y, "nearest point")
+    y += 26
     svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="#d62728" stroke="black" stroke-width="0.8"/>')
-    legend_text(y, "red object")
+    legend_text(y, "red cube")
     y += 24
-    svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="8" fill="#2ca02c" stroke="black" stroke-width="0.8"/>')
-    legend_text(y, "green goal point")
+    svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="#2ca02c" stroke="black" stroke-width="0.8"/>')
+    legend_text(y, "green cube")
+    y += 24
+    svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="#7f7f7f" stroke="black" stroke-width="0.8"/>')
+    legend_text(y, "initial position")
+    y += 24
+    svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="white" stroke="#7f7f7f" stroke-width="2.6"/>')
+    legend_text(y, "final position")
+    if original_object_points:
+        y += 24
+        svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="none" stroke="#7f7f7f" stroke-width="2.2" stroke-dasharray="5 4"/>')
+        legend_text(y, f"original position ({_episode_name(resolved_base_json_path)})")
+    if distractor_points:
+        y += 24
+        svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="8" fill="#8c564b" stroke="black" stroke-width="1.2" opacity="0.9"/>')
+        legend_text(y, "distractor object")
     svg.append("</g>")
     svg.append("</svg>")
 
@@ -508,6 +546,11 @@ def main():
     )
     parser.add_argument("json_path", help="Episode JSON containing trajectory.eef_path")
     parser.add_argument("-o", "--output", help="Output SVG path")
+    parser.add_argument(
+        "--base-json",
+        default=None,
+        help="Optional base StackCube episode JSON whose original cube positions are drawn as dashed boxes.",
+    )
     parser.add_argument(
         "--contact-threshold",
         type=float,
@@ -540,7 +583,7 @@ def main():
     parser.add_argument(
         "--auto-scale",
         action="store_true",
-        help="Scale axes to the current trajectory instead of using a fixed PickCube workspace range.",
+        help="Scale axes to the current trajectory instead of using a fixed StackCube workspace range.",
     )
     parser.add_argument(
         "--fixed-extent",
@@ -555,15 +598,17 @@ def main():
         help="Center fixed-scale plots on the data bounds or world origin; default is data.",
     )
     parser.add_argument(
-        "--hide-nearest",
-        action="store_true",
-        help="Do not draw the pink nearest-point marker or its legend entry.",
+        "--plot-shift-y",
+        type=int,
+        default=0,
+        help="Shift the whole plot area downward by this many pixels; negative values move it upward.",
     )
     args = parser.parse_args()
 
     output_path, nearest_text = plot_topdown(
         args.json_path,
         output_path=args.output,
+        base_json_path=args.base_json,
         contact_threshold=args.contact_threshold,
         paper_mode=args.paper_mode,
         smooth_window=args.smooth_window,
@@ -572,7 +617,7 @@ def main():
         fixed_scale=not args.auto_scale,
         fixed_extent=args.fixed_extent,
         fixed_center=args.fixed_center,
-        show_nearest=not args.hide_nearest,
+        plot_shift_y=args.plot_shift_y,
     )
     print(f"saved: {output_path}")
     print(nearest_text)

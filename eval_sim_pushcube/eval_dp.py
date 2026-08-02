@@ -31,8 +31,32 @@ def parse_args(args=None):
     parser.add_argument("--show", action="store_true", help="Show real-time rendering with OpenCV window.")
     parser.add_argument("--vis", action="store_true", help="Alias of --show for backward compatibility.")
     parser.add_argument("--save-video", action="store_true", help="whether or not to save videos locally")
+    parser.add_argument(
+        "--save-video-episodes",
+        type=str,
+        default=None,
+        help="Comma-separated 1-based episode indices to save when --save-video is enabled. Example: 3 or 1,3,5.",
+    )
     parser.add_argument("--video-dir", type=str, default="videos", help="Directory to save videos.")
     parser.add_argument("--video-fps", type=int, default=25, help="FPS for saved videos.")
+    parser.add_argument(
+        "--video-width",
+        type=int,
+        default=None,
+        help="Output video width in pixels. If set, frames will be resized to this width (preserves aspect if height not set).",
+    )
+    parser.add_argument(
+        "--video-height",
+        type=int,
+        default=None,
+        help="Output video height in pixels. If set, frames will be resized to this height (preserves aspect if width not set).",
+    )
+    parser.add_argument(
+        "--video-scale",
+        type=float,
+        default=None,
+        help="Scale factor to resize frames (overrides width/height if set).",
+    )
     parser.add_argument(
         "--traj-dir",
         type=str,
@@ -87,6 +111,19 @@ def _slugify(s: str) -> str:
         else:
             safe.append("_")
     return "".join(safe)
+
+
+def _parse_episode_indices(spec):
+    if not spec:
+        return None
+    indices = set()
+    for token in str(spec).split(","):
+        token = token.strip()
+        if not token:
+            continue
+        indices.add(int(token))
+    return indices
+
 
 def _to_uint8_rgb(img):
     if hasattr(img, "detach"):
@@ -292,7 +329,22 @@ def _find_articulation_by_keywords(scene, keywords):
     return None, None
 
 
-def _get_cube_goal_xyz(env):
+def _goal_xyz_from_obs(obs):
+    if not isinstance(obs, dict):
+        return None
+    extra = obs.get("extra", {})
+    if not isinstance(extra, dict):
+        return None
+    for key in ("goal_pos", "goal_region_pos", "target_region_pos"):
+        if key not in extra:
+            continue
+        arr = _to_numpy_1d(extra[key])
+        if arr is not None and arr.size >= 3:
+            return np.asarray(arr[:3], dtype=np.float32)
+    return None
+
+
+def _get_cube_goal_xyz(env, obs=None):
     cube_pos = None
     goal_pos = None
 
@@ -302,7 +354,7 @@ def _get_cube_goal_xyz(env):
             if cube_pos is not None:
                 break
 
-    for key in ["cubeB", "cube_b", "green_cube", "goal_cube", "target_cube", "goal", "_goal", "target", "_target", "goal_site", "target_site", "goal_region"]:
+    for key in ["goal_region", "goal_site", "target_site", "goal", "_goal"]:
         if hasattr(env.unwrapped, key):
             goal_pos = _pose_to_xyz(getattr(env.unwrapped, key))
             if goal_pos is not None:
@@ -313,15 +365,17 @@ def _get_cube_goal_xyz(env):
         actor, _ = _find_actor_by_keywords(scene, ["cubea", "red", "cube", "block", "obj"])
         cube_pos = _pose_to_xyz(actor)
     if goal_pos is None:
-        actor, _ = _find_actor_by_keywords(scene, ["cubeb", "green", "goal", "target", "region"])
+        actor, _ = _find_actor_by_keywords(scene, ["goal_region", "target_region", "goal_site", "target_site", "goal", "region"])
         goal_pos = _pose_to_xyz(actor)
 
     if cube_pos is None:
         articulation, _ = _find_articulation_by_keywords(scene, ["cubea", "red", "cube", "block", "obj"])
         cube_pos = _pose_to_xyz(articulation)
     if goal_pos is None:
-        articulation, _ = _find_articulation_by_keywords(scene, ["cubeb", "green", "goal", "target", "region"])
+        articulation, _ = _find_articulation_by_keywords(scene, ["goal_region", "target_region", "goal_site", "target_site", "goal", "region"])
         goal_pos = _pose_to_xyz(articulation)
+    if goal_pos is None:
+        goal_pos = _goal_xyz_from_obs(obs)
 
     return cube_pos, goal_pos
 
@@ -441,7 +495,7 @@ def _build_policy_obs(
     previous_cube_goal_distance=None,
     cube_lifted=False,
 ):
-    curr_cube_pos, curr_goal_pos = _get_cube_goal_xyz(env)
+    curr_cube_pos, curr_goal_pos = _get_cube_goal_xyz(env, obs)
     if curr_cube_pos is None or curr_goal_pos is None:
         cube_goal_distance = float("nan")
     else:
@@ -501,7 +555,7 @@ def _build_policy_obs(
         "agent_pos": proprio,
         "head_cam": img_tensor.permute(2, 0, 1).unsqueeze(0),
     }
-    return policy_obs, img_mut, cube_goal_distance
+    return policy_obs, delayed_img, cube_goal_distance
 
 def _extract_eef_yaw(env):
     """从环境获取末端执行器 yaw 角（单位：度），失败返回 None。"""
@@ -539,6 +593,7 @@ def _extract_eef_yaw(env):
     return None
 
 args = parse_args()
+save_video_episode_ids = _parse_episode_indices(getattr(args, "save_video_episodes", None))
 if args.vis:
     args.show = True
 if args.record_dir:
@@ -732,7 +787,7 @@ for episode in tqdm.trange(total_episodes):
     info = {"success": False}
 
     # Record initial anchor positions (PushCube: obj + goal_region)
-    initial_cube_xyz, initial_goal_xyz = _get_cube_goal_xyz(env)
+    initial_cube_xyz, initial_goal_xyz = _get_cube_goal_xyz(env, obs)
     initial_cube_pos = None if initial_cube_xyz is None else [float(x) for x in np.asarray(initial_cube_xyz, dtype=np.float32).reshape(-1)[:3].tolist()]
     initial_dst_cube_pos = None if initial_goal_xyz is None else [float(x) for x in np.asarray(initial_goal_xyz, dtype=np.float32).reshape(-1)[:3].tolist()]
     initial_cube_z = float(initial_cube_pos[2]) if initial_cube_pos is not None and len(initial_cube_pos) >= 3 else None
@@ -760,7 +815,7 @@ for episode in tqdm.trange(total_episodes):
             current_img = _to_uint8_rgb(env.render())
             obs_window.append(current_img)
             # PushCube: compute cube + goal positions from stable env sources.
-            current_cube_xyz, current_goal_xyz = _get_cube_goal_xyz(env)
+            current_cube_xyz, current_goal_xyz = _get_cube_goal_xyz(env, obs)
             current_cube_pos = None if current_cube_xyz is None else [
                 float(x) for x in np.asarray(current_cube_xyz, dtype=np.float32).reshape(-1)[:3].tolist()
             ]
@@ -831,7 +886,9 @@ for episode in tqdm.trange(total_episodes):
             target_pos_traj.append(current_dst_cube_pos)
             curr_goal_dist = mr_cfg["proprio"].get("runtime", {}).get("cube_goal_distance")
             prev_cube_goal_distance = curr_goal_dist
-            if args.save_video:
+            if args.save_video and (
+                save_video_episode_ids is None or (episode + 1) in save_video_episode_ids
+            ):
                  video_frames.append(img)
             if args.show:
                  cv2.imshow("maniskill", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
@@ -843,12 +900,34 @@ for episode in tqdm.trange(total_episodes):
                      success_count += 1
                      break 
 
-    if args.save_video and video_frames:
+    if args.save_video and video_frames and (
+        save_video_episode_ids is None or (episode + 1) in save_video_episode_ids
+    ):
         os.makedirs(args.video_dir, exist_ok=True)
-        h, w = video_frames[0].shape[:2]
+        orig_h, orig_w = video_frames[0].shape[:2]
+
+        if getattr(args, "video_scale", None) is not None:
+            scale = float(args.video_scale)
+            target_w = int(round(orig_w * scale))
+            target_h = int(round(orig_h * scale))
+        else:
+            target_w = args.video_width or orig_w
+            target_h = args.video_height or orig_h
+            if args.video_width and not args.video_height:
+                target_h = int(round(orig_h * (target_w / orig_w)))
+            if args.video_height and not args.video_width:
+                target_w = int(round(orig_w * (target_h / orig_h)))
+
         out_path = os.path.join(args.video_dir, f"{env_id}_ep{episode+1:04d}.mp4")
-        writer = cv2.VideoWriter(out_path, cv2.VideoWriter_fourcc(*"mp4v"), args.video_fps, (w, h))
+        writer = cv2.VideoWriter(
+            out_path,
+            cv2.VideoWriter_fourcc(*"mp4v"),
+            args.video_fps,
+            (int(target_w), int(target_h)),
+        )
         for frame in video_frames:
+            if (frame.shape[1], frame.shape[0]) != (int(target_w), int(target_h)):
+                frame = cv2.resize(frame, (int(target_w), int(target_h)), interpolation=cv2.INTER_LINEAR)
             writer.write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
         writer.release()
     if eef_traj:

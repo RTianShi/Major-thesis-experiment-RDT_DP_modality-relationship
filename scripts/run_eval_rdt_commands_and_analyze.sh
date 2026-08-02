@@ -23,7 +23,7 @@ COMMANDS=(
 # 若不为空则优先使用，脚本不会为该角色强制运行命令来生成轨迹。
 # eef_traj/PushCube/PushCube-v1_20260519_163706
 BASE_TRAJ_OVERRIDE="eef_traj/PickCube/PickCube-v1_20260422_150041"
-MR_TRAJ_OVERRIDE=""
+MR_TRAJ_OVERRIDE="eef_traj/PickCube/PickCube-v1_MR-CMSI1_20260802_152632"
 
 # 可选：直接指定某条命令对应的已存在轨迹目录（或单个 json 文件路径）。
 # 若对应项非空，则脚本不会运行该命令，直接使用该路径作为 traj-dir。
@@ -53,7 +53,7 @@ MR_CONFIGS_INLINE=(
 )
 
 #第三处要修改的位置，MR_ID决定了分析文件时使用哪个MR评测指标，通常与 --mr-type 保持一致（但不强制）
-MR_ID="MR6"
+MR_ID="MR-CMSI1"
 BASE_CMD_INDEX=0
 MR_CMD_INDEX=1
 ANALYSIS_OUT=""
@@ -285,14 +285,14 @@ MR_TRAJ_DIR="$(resolve_dir_by_role "MR" "${MR_TRAJ_OVERRIDE:-}" "${MR_CMD_INDEX}
 if [[ -z "$ANALYSIS_OUT" ]]; then
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID"
-  python -m eval_sim.analysis_rdt.mr_eval_analyzer_rdt \
+  python -m eval_sim.analysis_RDT.mr_eval_analyzer_rdt \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID"
 else
   echo
   echo "[ANALYZE] base=$BASE_TRAJ_DIR mr=$MR_TRAJ_DIR mr_id=$MR_ID out=$ANALYSIS_OUT"
-  python -m eval_sim.analysis_rdt.mr_eval_analyzer_rdt \
+  python -m eval_sim.analysis_RDT.mr_eval_analyzer_rdt \
     --base-traj-dir "$BASE_TRAJ_DIR" \
     --mr-traj-dir "$MR_TRAJ_DIR" \
     --mr-id "$MR_ID" \

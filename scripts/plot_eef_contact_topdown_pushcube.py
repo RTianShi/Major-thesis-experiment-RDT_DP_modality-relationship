@@ -131,16 +131,43 @@ def _target_position(record):
     positions = record.get("positions", {})
     trajectory = record.get("trajectory", {})
     mr_eval = record.get("mr_eval", {})
+    initial_cube, _ = _first_point(trajectory, ["initial_cube_pos"])
+    if initial_cube is None:
+        initial_cube, _ = _first_point(mr_eval, ["initial_cube_pos"])
+
     point, source = _first_point(
         positions,
         ["initial_target_pos", "target_pos", "dst_cube_pos", "goal_pos", "goal"],
     )
     if point is not None:
+        if _target_matches_initial_cube(record, point, initial_cube):
+            return _infer_pushcube_target_from_initial_cube(initial_cube), "inferred.initial_cube_pos+0.20x"
         return point, f"positions.{source}"
     point, source = _first_point(mr_eval, ["initial_target_pos", "target_pos", "dst_cube_pos"])
     if point is not None:
+        if _target_matches_initial_cube(record, point, initial_cube):
+            return _infer_pushcube_target_from_initial_cube(initial_cube), "inferred.initial_cube_pos+0.20x"
         return point, f"mr_eval.{source}"
-    return _first_traj_point(trajectory, ["target_pos", "dst_cube_pos"])
+    point, source = _first_traj_point(trajectory, ["target_pos", "dst_cube_pos"])
+    if point is not None and _target_matches_initial_cube(record, point, initial_cube):
+        return _infer_pushcube_target_from_initial_cube(initial_cube), "inferred.initial_cube_pos+0.20x"
+    return point, source
+
+
+def _target_matches_initial_cube(record, target_point, initial_cube):
+    if target_point is None or initial_cube is None:
+        return False
+    mr_type = str(record.get("mr_eval", {}).get("mr_type") or "").lower()
+    if any(token in mr_type for token in ("semp", "sadp", "jsap")):
+        return False
+    dist = math.hypot(float(target_point[0]) - float(initial_cube[0]), float(target_point[1]) - float(initial_cube[1]))
+    return dist < 1e-4
+
+
+def _infer_pushcube_target_from_initial_cube(initial_cube):
+    if initial_cube is None:
+        return None
+    return [float(initial_cube[0]) + 0.20, float(initial_cube[1]), float(initial_cube[2])]
 
 
 def _merge_duplicate_objects(objects, tolerance=1e-6):
@@ -238,10 +265,15 @@ def plot_topdown(
     json_path,
     output_path=None,
     contact_threshold=0.03,
+    target_radius=0.05,
     paper_mode=False,
     smooth_window=1,
     rotate_deg=180,
     compact=True,
+    fixed_scale=True,
+    fixed_extent=0.30,
+    fixed_center="data",
+    show_nearest=True,
 ):
     if paper_mode and smooth_window <= 1:
         smooth_window = 7
@@ -311,23 +343,39 @@ def plot_topdown(
     all_xy = list(eef_xy) + list(cube_xy) + list(object_xy)
     if target_xy is not None:
         all_xy.append(target_xy)
-    min_x = min(point[0] for point in all_xy)
-    max_x = max(point[0] for point in all_xy)
-    min_y = min(point[1] for point in all_xy)
-    max_y = max(point[1] for point in all_xy)
+    if fixed_scale:
+        if fixed_center == "origin":
+            center_x = 0.0
+            center_y = 0.0
+        else:
+            raw_min_x = min(point[0] for point in all_xy)
+            raw_max_x = max(point[0] for point in all_xy)
+            raw_min_y = min(point[1] for point in all_xy)
+            raw_max_y = max(point[1] for point in all_xy)
+            center_x = (raw_min_x + raw_max_x) / 2.0
+            center_y = (raw_min_y + raw_max_y) / 2.0
+        min_x = center_x - fixed_extent
+        max_x = center_x + fixed_extent
+        min_y = center_y - fixed_extent
+        max_y = center_y + fixed_extent
+    else:
+        min_x = min(point[0] for point in all_xy)
+        max_x = max(point[0] for point in all_xy)
+        min_y = min(point[1] for point in all_xy)
+        max_y = max(point[1] for point in all_xy)
+        span_x = max(max_x - min_x, 1e-6)
+        span_y = max(max_y - min_y, 1e-6)
+        pad = max(span_x, span_y) * (0.04 if compact else 0.08)
+        min_x -= pad
+        max_x += pad
+        min_y -= pad
+        max_y += pad
     span_x = max(max_x - min_x, 1e-6)
     span_y = max(max_y - min_y, 1e-6)
-    pad = max(span_x, span_y) * (0.04 if compact else 0.08)
-    min_x -= pad
-    max_x += pad
-    min_y -= pad
-    max_y += pad
-    span_x = max_x - min_x
-    span_y = max_y - min_y
 
     legend_width = 230
     plot_width = 700
-    plot_height = max(520, min(900, int(plot_width * span_y / span_x))) if compact else 720
+    plot_height = int(plot_width * span_y / span_x) if fixed_scale else max(520, min(900, int(plot_width * span_y / span_x))) if compact else 720
     width = plot_width + legend_width + 95
     height = plot_height + 115
     margin_left = 58
@@ -353,6 +401,14 @@ def plot_topdown(
             f'fill="{color}" stroke="{stroke}" {extra}/>'
         )
 
+    def metric_circle(point, radius_m, color, stroke="none", extra=""):
+        x, y = screen(point)
+        radius_px = max(1.0, float(radius_m) * scale)
+        return (
+            f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{radius_px:.2f}" '
+            f'fill="{color}" stroke="{stroke}" {extra}/>'
+        )
+
     def square(point, size, color, stroke="none", extra=""):
         x, y = screen(point)
         half = size / 2
@@ -363,7 +419,10 @@ def plot_topdown(
 
     title = html.escape(f"Top-down EEF trajectory: {Path(json_path).name}")
     nearest_label = html.escape(nearest_text)
-    footer = html.escape(f"Rotated {rotate_deg}°, units: meters. EEF is recorded TCP / gripper-end center.")
+    scale_text = f"fixed +/-{fixed_extent:.2f} m around {fixed_center}" if fixed_scale else "auto-scaled"
+    footer = html.escape(
+        f"Rotated {rotate_deg}°, units: meters, scale: {scale_text}. EEF is recorded TCP / gripper-end center."
+    )
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="white"/>',
@@ -409,11 +468,12 @@ def plot_topdown(
         else:
             svg.append(circle(xy, 9, item["color"], "black", 'stroke-width="0.8"'))
     if target_xy is not None:
-        svg.append(circle(target_xy, 9, "none", "#d62728", 'stroke-width="2.8"'))
+        svg.append(metric_circle(target_xy, target_radius, "#d62728", "#d62728", 'stroke-width="1.8" opacity="0.18"'))
+        svg.append(circle(target_xy, 4, "#d62728", "none", 'opacity="0.85"'))
     if not paper_mode:
         for index in contact_indices:
             svg.append(circle(eef_xy[index], 3, "#2ca02c", extra='opacity="0.65"'))
-    if nearest_idx is not None:
+    if show_nearest and nearest_idx is not None:
         svg.append(circle(eef_xy[nearest_idx], 9, "#e377c2", "black", 'stroke-width="1.5"'))
 
     legend_x = plot_right + 18
@@ -439,15 +499,17 @@ def plot_topdown(
         svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="4" fill="#2ca02c" opacity="0.65"/>')
         legend_text(y, f"near cube <= {contact_threshold:.3f} m")
         y += 22
-    svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="7" fill="#e377c2" stroke="black" stroke-width="1.2"/>')
-    legend_text(y, "nearest point")
-    y += 26
+    if show_nearest:
+        svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="7" fill="#e377c2" stroke="black" stroke-width="1.2"/>')
+        legend_text(y, "nearest point")
+        y += 26
     svg.append(f'<rect x="{legend_x + 2}" y="{y - 10}" width="20" height="20" fill="#1f77b4" stroke="black" stroke-width="0.8"/>')
     legend_text(y, "blue object")
     if target_xy is not None:
         y += 24
-        svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="8" fill="none" stroke="#d62728" stroke-width="2.4"/>')
-        legend_text(y, f"target ({target_source})")
+        svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="10" fill="#d62728" stroke="#d62728" stroke-width="1.2" opacity="0.18"/>')
+        svg.append(f'<circle cx="{legend_x + 12}" cy="{y}" r="3" fill="#d62728" opacity="0.85"/>')
+        legend_text(y, f"target disk r={target_radius:.3f}m ({target_source})")
     svg.append("</g>")
     svg.append("</svg>")
 
@@ -466,6 +528,12 @@ def main():
         type=float,
         default=0.03,
         help="XY distance threshold in meters for highlighting near-contact frames",
+    )
+    parser.add_argument(
+        "--target-radius",
+        type=float,
+        default=0.05,
+        help="Target disk radius in meters; default is 0.05.",
     )
     parser.add_argument(
         "--paper-mode",
@@ -490,16 +558,43 @@ def main():
         action="store_true",
         help="Use larger margins and a less compact canvas.",
     )
+    parser.add_argument(
+        "--auto-scale",
+        action="store_true",
+        help="Scale axes to the current trajectory instead of using a fixed PushCube workspace range.",
+    )
+    parser.add_argument(
+        "--fixed-extent",
+        type=float,
+        default=0.30,
+        help="Half-width/height in meters for the fixed top-down workspace; default is +/-0.30 m.",
+    )
+    parser.add_argument(
+        "--fixed-center",
+        choices=["data", "origin"],
+        default="data",
+        help="Center fixed-scale plots on the data bounds or world origin; default is data.",
+    )
+    parser.add_argument(
+        "--hide-nearest",
+        action="store_true",
+        help="Do not draw the pink nearest-point marker or its legend entry.",
+    )
     args = parser.parse_args()
 
     output_path, nearest_text = plot_topdown(
         args.json_path,
         output_path=args.output,
         contact_threshold=args.contact_threshold,
+        target_radius=args.target_radius,
         paper_mode=args.paper_mode,
         smooth_window=args.smooth_window,
         rotate_deg=args.rotate_deg,
         compact=not args.loose_layout,
+        fixed_scale=not args.auto_scale,
+        fixed_extent=args.fixed_extent,
+        fixed_center=args.fixed_center,
+        show_nearest=not args.hide_nearest,
     )
     print(f"saved: {output_path}")
     print(nearest_text)

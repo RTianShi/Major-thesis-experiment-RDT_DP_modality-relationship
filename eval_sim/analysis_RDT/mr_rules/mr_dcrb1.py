@@ -98,7 +98,7 @@ def _pick_center_from_positions(positions: Dict[str, Any], candidates: List[str]
 @register_mr_rule("MR-DCRB1")
 @register_mr_rule("MR-DCRB-1")
 def analyze_mr_dcrb1(base_records: List[Any], mr_records: List[Any], **kwargs) -> Dict[str, Any]:
-    red_cube_threshold_m = float(kwargs.get("red_cube_threshold_m", 0.04))
+    closer_margin_m = float(kwargs.get("closer_margin_m", 0.02))
 
     bmap = {_pair_key(record): record for record in base_records}
     mmap = {_pair_key(record): record for record in mr_records}
@@ -112,6 +112,8 @@ def analyze_mr_dcrb1(base_records: List[Any], mr_records: List[Any], **kwargs) -
         base = bmap[key]
         mr = mmap[key]
         positions = _load_positions(mr)
+        source_success = getattr(base, "success", None)
+        followup_success = getattr(mr, "success", None)
 
         grasp_frame_index = _grasp_index(mr)
         close_frame_index = _close_frame_index(mr)
@@ -124,32 +126,50 @@ def analyze_mr_dcrb1(base_records: List[Any], mr_records: List[Any], **kwargs) -
         )
         blue_cube_center = _pick_center_from_positions(
             positions,
-            ["dcrb1_blue_cube_initial", "dcrb1_blue_cube", "blue_cube_initial", "blue_cube", "blue_cube_pos"],
+            [
+                "dcrb1_blue_cube_initial",
+                "dcrb1_blue_cube",
+                "cmsi1_blue_cube_initial",
+                "cmsi1_blue_cube",
+                "cmsi1_blue_cube_final",
+                "blue_cube_initial",
+                "blue_cube",
+                "blue_cube_pos",
+            ],
         )
 
         dist_to_red_cube_m = _l2_distance(grasp_point, red_cube_center)
         dist_to_blue_cube_m = _l2_distance(grasp_point, blue_cube_center)
 
-        analyzable = True
+        analyzable = False
         violated = False
         reasons: List[str] = []
 
+        if source_success is True and followup_success is True:
+            violated = True
+            analyzable = True
+            reasons.append("VIOLATION: Both source and followup succeeded")
+
         if probe_frame_index is None:
-            analyzable = False
             reasons.append("missing_followup_grasp_or_close_frame")
         elif grasp_point is None:
-            analyzable = False
             reasons.append("missing_followup_probe_point")
         elif red_cube_center is None:
-            analyzable = False
             reasons.append("missing_red_cube_center")
-        elif dist_to_red_cube_m is not None and dist_to_red_cube_m < red_cube_threshold_m:
+        elif blue_cube_center is None:
+            reasons.append("missing_blue_cube_center")
+        elif dist_to_red_cube_m is None or dist_to_blue_cube_m is None:
+            reasons.append("missing_probe_distance")
+        elif dist_to_red_cube_m + closer_margin_m < dist_to_blue_cube_m:
+            analyzable = True
             violated = True
             reasons.append(
-                f"VIOLATION: Residual Red-Cube Bias (Robot still targeted red cube, error: {dist_to_red_cube_m:.4f}m)"
+                "VIOLATION: Closer to red cube at probe frame "
+                f"(red={dist_to_red_cube_m:.4f}m, blue={dist_to_blue_cube_m:.4f}m, margin={closer_margin_m:.4f}m)"
             )
         else:
-            reasons.append("Blue_Cube_Selected")
+            analyzable = True
+            reasons.append("Blue_Cube_Selected_Or_Not_Closer_To_Red")
 
         if not analyzable:
             unavailable_count += 1
@@ -159,8 +179,8 @@ def analyze_mr_dcrb1(base_records: List[Any], mr_records: List[Any], **kwargs) -
 
         details.append({
             "key(seed_or_episode)": key,
-            "source_success": getattr(base, "success", None),
-            "followup_success": getattr(mr, "success", None),
+            "source_success": source_success,
+            "followup_success": followup_success,
             "followup_grasp_frame_index": grasp_frame_index,
             "followup_close_frame_index": close_frame_index,
             "followup_probe_frame_index": probe_frame_index,
@@ -169,7 +189,7 @@ def analyze_mr_dcrb1(base_records: List[Any], mr_records: List[Any], **kwargs) -
             "blue_cube_center": blue_cube_center,
             "dist_to_red_cube_m": dist_to_red_cube_m,
             "dist_to_blue_cube_m": dist_to_blue_cube_m,
-            "red_cube_threshold_m": red_cube_threshold_m,
+            "closer_margin_m": closer_margin_m,
             "analyzable": analyzable,
             "violated": violated,
             "reasons": reasons,
@@ -186,7 +206,8 @@ def analyze_mr_dcrb1(base_records: List[Any], mr_records: List[Any], **kwargs) -
         "violations": violations,
         "violation_rate_percent": violation_rate_percent,
         "config": {
-            "red_cube_threshold_m": red_cube_threshold_m,
+            "closer_margin_m": closer_margin_m,
+            "dual_success_is_violation": True,
         },
         "details": details,
     }

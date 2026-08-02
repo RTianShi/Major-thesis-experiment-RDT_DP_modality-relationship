@@ -151,6 +151,61 @@ def _sample_non_interfering_xy(env, cube_xyz, goal_xyz, cfg):
     return best_xy
 
 
+def _table_xy_bounds(env, half_size, cfg):
+    center = np.asarray(getattr(env.unwrapped, "cube_spawn_center", [0.0, 0.0, 0.0]), dtype=np.float32)
+    extent_x = float(cfg.get("table_extent_x", 0.32))
+    extent_y = float(cfg.get("table_extent_y", 0.24))
+    margin = float(cfg.get("table_margin", max(0.04, half_size * 2.0)))
+    low = np.array([center[0] - extent_x + margin, center[1] - extent_y + margin], dtype=np.float32)
+    high = np.array([center[0] + extent_x - margin, center[1] + extent_y - margin], dtype=np.float32)
+    return low, high
+
+
+def _cmsi1_equal_goal_radius_xy(env, red_xyz, goal_xyz, half_size, cfg):
+    if red_xyz is None or goal_xyz is None:
+        return None
+
+    red_xy = np.asarray(red_xyz[:2], dtype=np.float32)
+    goal_xy = np.asarray(goal_xyz[:2], dtype=np.float32)
+    vec = red_xy - goal_xy
+    radius = float(np.linalg.norm(vec))
+    if radius <= 1e-6:
+        return None
+
+    low, high = _table_xy_bounds(env, half_size, cfg)
+    min_y_separation = float(cfg.get("min_y_separation", max(half_size * 7.0, 0.14)))
+    max_x_delta = float(cfg.get("max_x_delta", half_size * 0.25))
+
+    x = float(np.clip(red_xy[0], low[0], high[0]))
+    y_dir = -1.0 if red_xy[1] >= goal_xy[1] else 1.0
+    mirrored_y = float(goal_xy[1] - (red_xy[1] - goal_xy[1]))
+    separated_y = float(red_xy[1] + y_dir * min_y_separation)
+    target_y = separated_y if abs(separated_y - red_xy[1]) > abs(mirrored_y - red_xy[1]) else mirrored_y
+
+    candidates = [
+        np.array([x, target_y], dtype=np.float32),
+        np.array([x, separated_y], dtype=np.float32),
+        np.array([x, mirrored_y], dtype=np.float32),
+    ]
+    opposite_y = float(red_xy[1] - y_dir * min_y_separation)
+    candidates.append(np.array([x, opposite_y], dtype=np.float32))
+
+    best_xy = None
+    best_score = -float("inf")
+    for xy in candidates:
+        xy[1] = np.clip(xy[1], low[1], high[1])
+        x_delta = abs(float(xy[0] - red_xy[0]))
+        y_delta = abs(float(xy[1] - red_xy[1]))
+        if x_delta > max_x_delta:
+            continue
+        score = y_delta - x_delta * 10.0
+        if score > best_score:
+            best_score = score
+            best_xy = xy.copy()
+
+    return best_xy.astype(np.float32) if best_xy is not None else None
+
+
 def _move_actor_offstage(actor):
     if actor is None:
         return
@@ -446,17 +501,29 @@ def env_cmsi1_add_blue_cube(env, cfg):
     else:
         half_size = float(cfg.get("blue_cube_half_size", getattr(env.unwrapped, "cube_half_size", 0.02)))
 
-    spawn_half = float(getattr(env.unwrapped, "cube_spawn_half_size", half_size))
-    spawn_center = np.asarray(getattr(env.unwrapped, "cube_spawn_center", [0.0, 0.0, 0.0]), dtype=np.float32)
-    pos = np.array(
-        [
-            spawn_center[0] + spawn_half * 1.0,
-            spawn_center[1] - spawn_half * 4.0,
-            half_size,
-        ],
-        dtype=np.float32,
-    )
+    red_xyz, goal_xyz = _get_task_anchor_positions(env)
+    xy = _cmsi1_equal_goal_radius_xy(env, red_xyz, goal_xyz, half_size, cfg)
+    if xy is None:
+        spawn_half = float(getattr(env.unwrapped, "cube_spawn_half_size", half_size))
+        spawn_center = np.asarray(getattr(env.unwrapped, "cube_spawn_center", [0.0, 0.0, 0.0]), dtype=np.float32)
+        xy = np.array(
+            [
+                spawn_center[0] + spawn_half * 1.0,
+                spawn_center[1] - spawn_half * 4.0,
+            ],
+            dtype=np.float32,
+        )
+    pos = np.array([xy[0], xy[1], half_size], dtype=np.float32)
     distractor.set_pose(Pose.create_from_pq(pos))
+    runtime["blue_cube_xyz"] = pos.tolist()
+    runtime["red_cube_xyz"] = None if red_xyz is None else red_xyz.tolist()
+    runtime["goal_xyz"] = None if goal_xyz is None else goal_xyz.tolist()
+    if red_xyz is not None and goal_xyz is not None:
+        runtime["red_goal_radius"] = float(np.linalg.norm(red_xyz[:2] - goal_xyz[:2]))
+        runtime["blue_goal_radius"] = float(np.linalg.norm(pos[:2] - goal_xyz[:2]))
+        runtime["red_blue_xy_distance"] = float(np.linalg.norm(pos[:2] - red_xyz[:2]))
+        runtime["red_blue_y_delta"] = float(abs(pos[1] - red_xyz[1]))
+        runtime["red_blue_x_delta"] = float(abs(pos[0] - red_xyz[0]))
 
     env.unwrapped.scene.update_render(
         update_sensors=True,

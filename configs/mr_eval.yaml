@@ -6,5 +6,5 @@ mr:
   proprio:
     type: identity
   env:
-    type: identity
+    type: MR-CMSI1
    

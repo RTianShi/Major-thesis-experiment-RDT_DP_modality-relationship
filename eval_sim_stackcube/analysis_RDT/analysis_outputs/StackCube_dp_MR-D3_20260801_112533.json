@@ -1,7 +1,7 @@
 {
   "mode": "compare",
-  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260519_115430",
-  "mr_traj_dir": "/home/hjl/RoboticsDiffusionTransformer/eef_traj/StackCube/StackCubeMugDistractor-v1_20260519_140632",
+  "base_traj_dir": "eef_traj/StackCube/StackCube-v1_20260523_151422",
+  "mr_traj_dir": "eef_traj/StackCube/StackCubeMugDistractor-v1_20260519_140632",
   "base_summary": {
     "episodes": 25,
     "success_rate_percent": 76.0,
@@ -158,8 +158,8 @@
     "paired_episodes": 25,
     "analyzable_episodes": 25,
     "unavailable_count": 0,
-    "violations": 17,
-    "violation_rate_percent": 68.0,
+    "violations": 16,
+    "violation_rate_percent": 64.0,
     "config": {
       "distance_thresh_m": 0.025,
       "metric": "dist(Pgrasp_f, Pred_cube)",
@@ -235,7 +235,7 @@
         "analyzable": true,
         "violated": false,
         "reasons": [
-          "grasp_near_red_cube"
+          "base_and_mr_success_no_violation"
         ]
       },
       {
@@ -331,7 +331,7 @@
         "analyzable": true,
         "violated": false,
         "reasons": [
-          "grasp_near_red_cube"
+          "base_and_mr_success_no_violation"
         ]
       },
       {
@@ -353,9 +353,9 @@
         "distance_m": 0.04889357411873967,
         "distance_thresh_m": 0.025,
         "analyzable": true,
-        "violated": true,
+        "violated": false,
         "reasons": [
-          "grasp_far_from_red_cube(0.0489 > 0.0250)"
+          "base_and_mr_success_no_violation"
         ]
       },
       {
@@ -427,7 +427,7 @@
         "analyzable": true,
         "violated": false,
         "reasons": [
-          "grasp_near_red_cube"
+          "base_and_mr_success_no_violation"
         ]
       },
       {
@@ -739,7 +739,7 @@
         "analyzable": true,
         "violated": false,
         "reasons": [
-          "grasp_near_red_cube"
+          "base_and_mr_success_no_violation"
         ]
       },
       {
@@ -768,8 +768,8 @@
       }
     ]
   },
-  "followup_mr_violation_count": 17,
-  "followup_mr_violation_rate_percent": 68.0,
+  "followup_mr_violation_count": 16,
+  "followup_mr_violation_rate_percent": 64.0,
   "followup_unavailable_count": 0,
   "followup_analyzable_count": 25
 }

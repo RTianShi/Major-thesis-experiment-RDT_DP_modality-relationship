@@ -78,6 +78,10 @@ def _point_l2(a: Optional[List[float]], b: Optional[List[float]]) -> Optional[fl
     return float(np.linalg.norm(np.asarray(a, dtype=np.float64)[:3] - np.asarray(b, dtype=np.float64)[:3]))
 
 
+def _is_true(value: Any) -> bool:
+    return value is True or isinstance(value, np.bool_) and bool(value)
+
+
 def _analyze_d2_cmsi_shape_distractor(
     base_records: List[Any],
     mr_records: List[Any],
@@ -117,7 +121,9 @@ def _analyze_d2_cmsi_shape_distractor(
 
         dist = _point_l2(grasp_point, red_cube)
         if analyzable:
-            if dist is None:
+            if _is_true(base_success) and _is_true(mr_success):
+                reasons.append("base_and_mr_success_no_violation")
+            elif dist is None:
                 analyzable = False
                 reasons.append("cannot_compute_distance")
             elif dist > dist_thresh:
@@ -170,7 +176,6 @@ def _analyze_d2_cmsi_shape_distractor(
 
 
 @register_mr_rule("MR-D3")
-@register_mr_rule("MR-D2-CMSI-SHAPE-DISTRACTOR")
 def analyze_mr_d2_cmsi_shape_distractor(base_records: List[Any], mr_records: List[Any], **kwargs) -> Dict[str, Any]:
     return _analyze_d2_cmsi_shape_distractor(
         base_records,

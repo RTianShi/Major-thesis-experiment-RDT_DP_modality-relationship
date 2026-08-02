@@ -1,0 +1,974 @@
+{
+  "mode": "compare",
+  "base_traj_dir": "eef_traj/PickCube/PickCube-v1_20260422_150041",
+  "mr_traj_dir": "eef_traj/PickCube/PickCube-v1_MR-CMSI1_20260802_152632",
+  "base_summary": {
+    "episodes": 25,
+    "success_rate_percent": 76.0,
+    "success_count": 19,
+    "success_episode_ids": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      25
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 159.28,
+      "median": 84.0,
+      "std": 136.03309009208016,
+      "min": 56.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 0.7550036525726318,
+      "median": 0.6549556851387024,
+      "std": 0.3452372593894917,
+      "min": 0.2839500904083252,
+      "max": 1.4759280681610107
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.28646338587348724,
+      "median": 0.2217693414590535,
+      "std": 0.20496102014937193,
+      "min": 0.024441059183844645,
+      "max": 0.7484752525171072
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.1946666513534843,
+      "median": 0.21036637876975284,
+      "std": 0.08478288788428133,
+      "min": 0.02069950767470602,
+      "max": 0.3190953922881427
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.05145878950246515,
+      "median": 0.056027920614625956,
+      "std": 0.013821227697916934,
+      "min": 0.00886240790168813,
+      "max": 0.06402843760352739
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999567866325,
+      "median": 0.07999999821186066,
+      "std": 7.2020566306081845e-09,
+      "min": 0.07999996840953827,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.032385778576135636,
+      "median": 0.03661470673978329,
+      "std": 0.01196419617525692,
+      "min": 0.0,
+      "max": 0.037941111251711845
+    }
+  },
+  "mr_summary": {
+    "episodes": 25,
+    "success_rate_percent": 20.0,
+    "success_count": 5,
+    "success_episode_ids": [
+      4,
+      8,
+      12,
+      17,
+      24
+    ],
+    "steps": {
+      "n": 25,
+      "mean": 334.48,
+      "median": 400.0,
+      "std": 131.0444565786741,
+      "min": 68.0,
+      "max": 400.0
+    },
+    "eef_path_length_m": {
+      "n": 25,
+      "mean": 1.1107803797721862,
+      "median": 1.16202712059021,
+      "std": 0.47949641910108565,
+      "min": 0.39107248187065125,
+      "max": 2.2696547508239746
+    },
+    "cube_path_length_m": {
+      "n": 25,
+      "mean": 0.13121468997147123,
+      "median": 0.0643788638773333,
+      "std": 0.17456173647636994,
+      "min": 1.942399571349399e-06,
+      "max": 0.683764169578847
+    },
+    "cube_net_displacement_m": {
+      "n": 25,
+      "mean": 0.06984036784225538,
+      "median": 0.04110792085468151,
+      "std": 0.07597919359519403,
+      "min": 2.3335903530367948e-07,
+      "max": 0.30125554525193304
+    },
+    "gripper_width_mean": {
+      "n": 25,
+      "mean": 0.028366196383999023,
+      "median": 0.01665175210684538,
+      "std": 0.020525057685243504,
+      "min": 0.007781132937707298,
+      "max": 0.06413787386494957
+    },
+    "gripper_width_max": {
+      "n": 25,
+      "mean": 0.07999999791383744,
+      "median": 0.07999999821186066,
+      "std": 1.4600096599955427e-09,
+      "min": 0.07999999076128006,
+      "max": 0.07999999821186066
+    },
+    "gripper_width_min": {
+      "n": 25,
+      "mean": 0.010500520691275597,
+      "median": 0.0,
+      "std": 0.01686736598448646,
+      "min": 0.0,
+      "max": 0.042047567665576935
+    }
+  },
+  "mr_rule": "MR-CMSI1",
+  "mr_compare": {
+    "mr_id": "MR-CMSI1",
+    "paired_episodes": 25,
+    "analyzable_episodes": 25,
+    "unavailable_count": 0,
+    "violations": 22,
+    "violation_rate_percent": 88.0,
+    "config": {
+      "blue_mismatch_threshold_m": 0.04,
+      "red_drift_threshold_m": 0.025
+    },
+    "details": [
+      {
+        "key(seed_or_episode)": 20241201,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.06051250547170639,
+          -0.004871973302215338,
+          0.03916124999523163
+        ],
+        "red_cube_center": [
+          0.04747920483350754,
+          -0.06759555637836456,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.04747920483350754,
+          0.07479308545589447,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.06686754308293019,
+        "dist_to_blue_cube_m": 0.08296711415356098,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1170m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241202,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 55,
+        "followup_close_frame_index": 55,
+        "followup_probe_frame_index": 55,
+        "followup_grasp_point": [
+          0.09998350590467453,
+          0.0009216537582688034,
+          0.04883913695812225
+        ],
+        "red_cube_center": [
+          0.08134449273347855,
+          0.03557664901018143,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.08134449273347855,
+          -0.12685701251029968,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.048786036467206834,
+        "dist_to_blue_cube_m": 0.13231211664713005,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.2046m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241203,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 45,
+        "followup_probe_frame_index": 45,
+        "followup_grasp_point": [
+          -0.020662035793066025,
+          0.04959120973944664,
+          0.020180977880954742
+        ],
+        "red_cube_center": [
+          -0.01728055626153946,
+          -0.017892852425575256,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.01728055626153946,
+          0.12210714817047119,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0675689707134116,
+        "dist_to_blue_cube_m": 0.0725949618328261,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0876m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241204,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          -0.025090187788009644,
+          0.019958343356847763,
+          0.019702211022377014
+        ],
+        "red_cube_center": [
+          -0.025812998414039612,
+          0.032259680330753326,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.025812998414039612,
+          -0.10774032026529312,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.012326152057946866,
+        "dist_to_blue_cube_m": 0.12770105647210103,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Trajectory_Similar"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241205,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 38,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          0.003666011616587639,
+          0.0040686605498194695,
+          0.04815353453159332
+        ],
+        "red_cube_center": [
+          -0.017325758934020996,
+          -0.046728502959012985,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.017325758934020996,
+          0.09862291067838669,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0617545770221552,
+        "dist_to_blue_cube_m": 0.10086516831898855,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0804m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241206,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 38,
+        "followup_close_frame_index": 38,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          0.006238220259547234,
+          0.0013994565233588219,
+          0.04849344491958618
+        ],
+        "red_cube_center": [
+          -0.017235681414604187,
+          -0.02174931764602661,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.017235681414604187,
+          0.11825068295001984,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04357483487304974,
+        "dist_to_blue_cube_m": 0.12254431690650998,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1147m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241207,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 41,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          0.03831084072589874,
+          -0.008264104835689068,
+          0.0182499960064888
+        ],
+        "red_cube_center": [
+          0.04252726584672928,
+          0.006092503666877747,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.04252726584672928,
+          -0.15566866099834442,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.01506495804535228,
+        "dist_to_blue_cube_m": 0.14747523158388892,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1241m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241208,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 35,
+        "followup_close_frame_index": 36,
+        "followup_probe_frame_index": 35,
+        "followup_grasp_point": [
+          -0.0021969713270664215,
+          0.042529184371232986,
+          0.019312620162963867
+        ],
+        "red_cube_center": [
+          -0.00238645076751709,
+          0.05759351700544357,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.00238645076751709,
+          -0.08240648359060287,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.015081197253477395,
+        "dist_to_blue_cube_m": 0.12493770256393484,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Trajectory_Similar"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241209,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 55,
+        "followup_close_frame_index": 55,
+        "followup_probe_frame_index": 55,
+        "followup_grasp_point": [
+          0.09750377386808395,
+          -0.03349022567272186,
+          0.048969537019729614
+        ],
+        "red_cube_center": [
+          0.0740465447306633,
+          -0.019009694457054138,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.0740465447306633,
+          -0.17230045795440674,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.03998951717802621,
+        "dist_to_blue_cube_m": 0.14372806366864835,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1389m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241210,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 46,
+        "followup_probe_frame_index": 46,
+        "followup_grasp_point": [
+          -0.045517697930336,
+          0.002812209539115429,
+          0.04938969761133194
+        ],
+        "red_cube_center": [
+          -0.0698588639497757,
+          -0.07567298412322998,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.0698588639497757,
+          0.06432701647281647,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.08727068430672329,
+        "dist_to_blue_cube_m": 0.07239004204473436,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1162m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241211,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 52,
+        "followup_close_frame_index": 53,
+        "followup_probe_frame_index": 52,
+        "followup_grasp_point": [
+          -0.062368106096982956,
+          0.06394822150468826,
+          0.04881703108549118
+        ],
+        "red_cube_center": [
+          -0.09937979280948639,
+          0.08065038174390793,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.09937979280948639,
+          -0.05934961885213852,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.049792051738281204,
+        "dist_to_blue_cube_m": 0.1319190801071196,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0963m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241212,
+        "source_success": false,
+        "followup_success": true,
+        "followup_grasp_frame_index": 38,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 38,
+        "followup_grasp_point": [
+          -0.0017131669446825981,
+          0.054439727216959,
+          0.01969427615404129
+        ],
+        "red_cube_center": [
+          -0.0065927654504776,
+          0.07196759432554245,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.0065927654504776,
+          -0.1932920217514038,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.018196979797498482,
+        "dist_to_blue_cube_m": 0.2477799899009166,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1661m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241213,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 48,
+        "followup_probe_frame_index": 48,
+        "followup_grasp_point": [
+          -0.012081760913133621,
+          0.03128863126039505,
+          0.019927717745304108
+        ],
+        "red_cube_center": [
+          -0.015268564224243164,
+          -0.030500411987304688,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.015268564224243164,
+          0.10949958860874176,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.06187121144336456,
+        "dist_to_blue_cube_m": 0.0782758889400071,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1031m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241214,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          -0.04301302880048752,
+          -0.02350091189146042,
+          0.021220289170742035
+        ],
+        "red_cube_center": [
+          -0.06768909096717834,
+          -0.0983361229300499,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.06768909096717834,
+          0.05434732884168625,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.07880803234439919,
+        "dist_to_blue_cube_m": 0.08167463336955728,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0800m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241215,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          0.05065545439720154,
+          -0.03703121468424797,
+          0.01820206642150879
+        ],
+        "red_cube_center": [
+          0.016685545444488525,
+          -0.09305556863546371,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.016685545444488525,
+          0.20000000298023224,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0655432339257982,
+        "dist_to_blue_cube_m": 0.23945977830380408,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1604m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241216,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 56,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 56,
+        "followup_grasp_point": [
+          -0.04177512228488922,
+          -0.04088703915476799,
+          0.04835210740566254
+        ],
+        "red_cube_center": [
+          -0.0721929520368576,
+          -0.09502899646759033,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.0721929520368576,
+          0.044971004128456116,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.06826740018613711,
+        "dist_to_blue_cube_m": 0.09539753656638468,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1408m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241217,
+        "source_success": true,
+        "followup_success": true,
+        "followup_grasp_frame_index": 39,
+        "followup_close_frame_index": 40,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          -0.018970094621181488,
+          0.032956477254629135,
+          0.019480183720588684
+        ],
+        "red_cube_center": [
+          -0.015744946897029877,
+          0.05180185288190842,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.015744946897029877,
+          -0.19199621677398682,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.019126420702145017,
+        "dist_to_blue_cube_m": 0.22497641284604547,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": false,
+        "reasons": [
+          "Trajectory_Similar"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241218,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 43,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          0.03986857458949089,
+          0.06388047337532043,
+          0.01774856448173523
+        ],
+        "red_cube_center": [
+          0.03548455983400345,
+          0.060509152710437775,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.03548455983400345,
+          -0.15729433298110962,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.005971126215527572,
+        "dist_to_blue_cube_m": 0.22122970757124963,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1631m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241219,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 39,
+        "followup_probe_frame_index": 39,
+        "followup_grasp_point": [
+          -0.06198326498270035,
+          -0.025892846286296844,
+          0.021939300000667572
+        ],
+        "red_cube_center": [
+          -0.07040230184793472,
+          -0.08787957578897476,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.07040230184793472,
+          0.052120424807071686,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.06258590657969888,
+        "dist_to_blue_cube_m": 0.0784902002459673,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0932m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241220,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": null,
+        "followup_close_frame_index": 42,
+        "followup_probe_frame_index": 42,
+        "followup_grasp_point": [
+          -0.021357828751206398,
+          -0.02770022116601467,
+          0.02008119970560074
+        ],
+        "red_cube_center": [
+          -0.03522966057062149,
+          -0.09928542375564575,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.03522966057062149,
+          0.049345627427101135,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.07291690847320291,
+        "dist_to_blue_cube_m": 0.07828471815702123,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0999m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241221,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 44,
+        "followup_close_frame_index": 44,
+        "followup_probe_frame_index": 44,
+        "followup_grasp_point": [
+          0.08217232674360275,
+          -0.03878238797187805,
+          0.03376632183790207
+        ],
+        "red_cube_center": [
+          0.04838285595178604,
+          -0.07766574621200562,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.04838285595178604,
+          0.06233425438404083,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.053321248238145,
+        "dist_to_blue_cube_m": 0.10749797824600514,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1480m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241222,
+        "source_success": false,
+        "followup_success": false,
+        "followup_grasp_frame_index": 64,
+        "followup_close_frame_index": 64,
+        "followup_probe_frame_index": 64,
+        "followup_grasp_point": [
+          -0.08287432789802551,
+          0.04990510642528534,
+          0.018715977668762207
+        ],
+        "red_cube_center": [
+          -0.08829166740179062,
+          0.09703236073255539,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          -0.08829166740179062,
+          -0.06896942108869553,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.0474549721108365,
+        "dist_to_blue_cube_m": 0.11900483003294597,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.0405m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241223,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 56,
+        "followup_close_frame_index": 56,
+        "followup_probe_frame_index": 56,
+        "followup_grasp_point": [
+          0.1004144549369812,
+          0.012147431261837482,
+          0.04844343662261963
+        ],
+        "red_cube_center": [
+          0.08766341954469681,
+          -0.024287961423397064,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.08766341954469681,
+          0.11571203917264938,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.047949513616281095,
+        "dist_to_blue_cube_m": 0.1081538072729337,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1164m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241224,
+        "source_success": false,
+        "followup_success": true,
+        "followup_grasp_frame_index": 43,
+        "followup_close_frame_index": 43,
+        "followup_probe_frame_index": 43,
+        "followup_grasp_point": [
+          0.08461659401655197,
+          0.0072448598220944405,
+          0.018960192799568176
+        ],
+        "red_cube_center": [
+          0.09237150102853775,
+          0.01418449729681015,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.09237150102853775,
+          -0.1258154958486557,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.010458410449462902,
+        "dist_to_blue_cube_m": 0.13329020231088062,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1548m > 0.0400m)"
+        ]
+      },
+      {
+        "key(seed_or_episode)": 20241225,
+        "source_success": true,
+        "followup_success": false,
+        "followup_grasp_frame_index": 41,
+        "followup_close_frame_index": 41,
+        "followup_probe_frame_index": 41,
+        "followup_grasp_point": [
+          0.05468419939279556,
+          0.02891058288514614,
+          0.04802106320858002
+        ],
+        "red_cube_center": [
+          0.027164705097675323,
+          0.002531290054321289,
+          0.019999999552965164
+        ],
+        "blue_cube_center": [
+          0.027164705097675323,
+          0.19323305785655975,
+          0.019999999552965164
+        ],
+        "dist_to_red_cube_m": 0.04731141157168725,
+        "dist_to_blue_cube_m": 0.16895081637974416,
+        "blue_mismatch_threshold_m": 0.04,
+        "red_drift_threshold_m": 0.025,
+        "analyzable": true,
+        "violated": true,
+        "reasons": [
+          "VIOLATION: Trajectory dissimilarity (rmse=0.1026m > 0.0400m)"
+        ]
+      }
+    ]
+  },
+  "followup_mr_violation_count": 22,
+  "followup_mr_violation_rate_percent": 88.0,
+  "followup_unavailable_count": 0,
+  "followup_analyzable_count": 25
+}
